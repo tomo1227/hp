@@ -1,0 +1,7 @@
+#body-container{
+    @apply flex flex-col items-center h-screen
+}
+
+#main-contents{
+    @apply flex flex-row w-screen h-screen
+}

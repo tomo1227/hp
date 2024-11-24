@@ -1,27 +1,32 @@
+@import "./styles/home.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+    :root {
+        --background: #151515;
+        --foreground: #ededed;
+    }
 }
 
 body {
-	color: var(--foreground);
-	background: var(--background);
-	font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-	.text-balance {
-		text-wrap: balance;
-	}
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+body, html {
+    @apply min-h-screen flex items-center justify-center w-screen;
 }

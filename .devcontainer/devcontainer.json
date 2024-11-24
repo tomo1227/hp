@@ -36,7 +36,8 @@
         "oderwat.indent-rainbow",
         "ms-vscode.live-server",
         "usernamehw.errorlens",
-        "formulahendry.code-runner"
+        "formulahendry.code-runner",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   }
