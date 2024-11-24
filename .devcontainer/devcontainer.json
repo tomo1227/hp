@@ -7,7 +7,8 @@
   "postCreateCommand": "sh .devcontainer/scripts/post_create.sh",
   "postStartCommand": "sh .devcontainer/scripts/post_start.sh ${containerWorkspaceFolder}",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/aws-cli": {}
   },
   "customizations": {
     "vscode": {
@@ -17,16 +18,13 @@
         "formulahendry.auto-rename-tag",
         "MariusAlchimavicius.json-to-ts",
         "styled-components.vscode-styled-components",
-        // yaml, jsonc, json, toml
+        "biomejs.biome",
+        // yaml, jsonc, json
         "redhat.vscode-yaml",
         "esbenp.prettier-vscode",
-        "tamasfe.even-better-toml",
         // Git関連
-        "GitHub.vscode-pull-request-github",
-        "github.vscode-github-actions",
         "mhutchie.git-graph",
         "eamodio.gitlens",
-        "seatonjiang.gitmoji-vscode",
         // markdown
         "yzhang.markdown-all-in-one",
         "DavidAnson.vscode-markdownlint",
