@@ -61,3 +61,8 @@ devbox.lock
 
 # related_posts gen
 doc_for_read/
+
+# amplify
+.amplify
+amplify_outputs*
+amplifyconfiguration*
