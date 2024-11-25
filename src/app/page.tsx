@@ -1,17 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Rock_Salt } from "next/font/google";
+
+const rockSaltFont = Rock_Salt({
+    weight: "400",
+    subsets: ["latin"],
+});
 
 export default function Page() {
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <div className="full-width justify-center flex">
+        <div className="flex items-center justify-items-center min-h-screen">
+            <main className="flex flex-col justify-center items-center pb-10">
+                <h2 className={`${rockSaltFont.className} pb-3 text-xl`}>
+                    Tomoki Ota
+                </h2>
+                <div className="justify-center flex">
                     <Link href="/ja/home">
                         <Image
                             src="/img/top-page.jpg"
                             alt="top-page-jpg"
-                            width={250}
-                            height={250}
+                            width={300}
+                            height={300}
                         />
                     </Link>
                 </div>
