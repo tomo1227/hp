@@ -1,17 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const imageSize: number = 350;
+
 export default function Page() {
     return (
-        <div className="flex flex-row justify-center items-center gap-20 mt-20">
+        <div className="flex flex-row justify-center items-center gap-20 mt-20 max-md:flex-col">
             <div>
                 <div className="full-width justify-center flex">
                     <Link href="/ja/travel">
                         <Image
                             src="/img/travel.jpg"
                             alt="travel-jpg"
-                            width={150}
-                            height={150}
+                            width={imageSize}
+                            height={imageSize}
                         />
                     </Link>
                 </div>
@@ -25,8 +27,8 @@ export default function Page() {
                         <Image
                             src="/img/photography.jpg"
                             alt="photography-jpg"
-                            width={150}
-                            height={150}
+                            width={imageSize}
+                            height={imageSize}
                         />
                     </Link>
                 </div>
