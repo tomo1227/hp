@@ -11,7 +11,7 @@ export default function Page() {
     return (
         <div className="flex items-center justify-items-center min-h-screen">
             <main className="flex flex-col justify-center items-center pb-10">
-                <h2 className={`${rockSaltFont.className} pb-3 text-xl`}>
+                <h2 className={`${rockSaltFont.className} pb-4 text-4xl`}>
                     Tomoki Ota
                 </h2>
                 <div className="justify-center flex">
