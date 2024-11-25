@@ -1,5 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Zen_Antique_Soft } from "next/font/google";
+
+const zenAntiqueSoft = Zen_Antique_Soft({
+    weight: "400",
+    subsets: ["latin"],
+});
 
 const imageSize: number = 350;
 
@@ -17,7 +23,9 @@ export default function Page() {
                         />
                     </Link>
                 </div>
-                <h2 className="full-width justify-center flex text-2xl font-bold pt-5">
+                <h2
+                    className={`${zenAntiqueSoft.className} full-width justify-center flex text-2xl font-bold pt-5`}
+                >
                     トラベル
                 </h2>
             </div>
@@ -32,7 +40,9 @@ export default function Page() {
                         />
                     </Link>
                 </div>
-                <h2 className="full-width justify-center flex text-2xl font-bold pt-5">
+                <h2
+                    className={`${zenAntiqueSoft.className} full-width justify-center flex text-2xl font-bold pt-5`}
+                >
                     写真
                 </h2>
             </div>
