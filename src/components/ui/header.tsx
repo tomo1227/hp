@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { Rock_Salt } from "next/font/google";
+
+const rockSaltFont = Rock_Salt({
+    weight: "400",
+    subsets: ["latin"],
+});
 
 export default function Header() {
     const pathname = usePathname();
@@ -21,7 +27,9 @@ export default function Header() {
             }
         >
             <Link href="/" className="flex items-center">
-                <h2 className="font-semibold text-center text-2xl px-3">
+                <h2
+                    className={`${rockSaltFont.className} font-semibold text-center text-xl px-3`}
+                >
                     Tomoki Ota
                 </h2>
             </Link>

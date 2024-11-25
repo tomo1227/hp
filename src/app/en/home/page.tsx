@@ -1,5 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Rock_Salt } from "next/font/google";
+
+const rockSaltFont = Rock_Salt({
+    weight: "400",
+    subsets: ["latin"],
+});
 
 export default function Page() {
     return (
@@ -15,7 +21,9 @@ export default function Page() {
                         />
                     </Link>
                 </div>
-                <h2 className="full-width justify-center flex text-2xl font-bold pt-5">
+                <h2
+                    className={`${rockSaltFont.className} full-width justify-center flex text-lg font-bold pt-5`}
+                >
                     Travel
                 </h2>
             </div>
@@ -30,7 +38,9 @@ export default function Page() {
                         />
                     </Link>
                 </div>
-                <h2 className="full-width justify-center flex text-2xl font-bold pt-5">
+                <h2
+                    className={`${rockSaltFont.className} full-width justify-center flex text-lg font-bold pt-5`}
+                >
                     Photography
                 </h2>
             </div>
