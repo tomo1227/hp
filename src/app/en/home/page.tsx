@@ -7,17 +7,19 @@ const rockSaltFont = Rock_Salt({
     subsets: ["latin"],
 });
 
+const imageSize: number = 350;
+
 export default function Page() {
     return (
-        <div className="flex flex-row justify-center items-center gap-20 mt-20">
-            <div>
-                <div className="full-width justify-center flex">
+        <div className="flex md:flex-row justify-center items-center md:gap-20 pt-20 max-md:flex-col">
+            <div className="max-md:h-screen">
+                <div className="flex justify-center">
                     <Link href="/en/travel">
                         <Image
                             src="/img/travel.jpg"
                             alt="travel-jpg"
-                            width={150}
-                            height={150}
+                            width={imageSize}
+                            height={imageSize}
                         />
                     </Link>
                 </div>
@@ -27,14 +29,14 @@ export default function Page() {
                     Travel
                 </h2>
             </div>
-            <div>
-                <div className="full-width justify-center flex">
-                    <Link href="/en/travel">
+            <div className="max-md:h-screen">
+                <div className="flex justify-center">
+                    <Link href="/en/photography">
                         <Image
                             src="/img/photography.jpg"
                             alt="photography-jpg"
-                            width={150}
-                            height={150}
+                            width={imageSize}
+                            height={imageSize}
                         />
                     </Link>
                 </div>
