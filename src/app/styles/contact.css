@@ -1,0 +1,73 @@
+.contact-wrapper {
+  @apply flex flex-col items-center min-h-[80vh] w-full h-4/5;
+}
+
+.contact-contents {
+  @apply flex flex-col items-center justify-center rounded-xl w-4/5 h-auto max-w-md mx-auto mt-4 bg-slate-600 p-5 shadow-md;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact-contents {
+    @apply bg-white;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-contents {
+    @apply flex-col w-full h-4/5;
+  }
+}
+
+.contact-form {
+  @apply text-xl text-white font-bold mb-4;
+}
+
+.contact-title-label {
+  @apply block text-sm font-medium text-white;
+}
+
+.contact-name-label {
+  @apply block text-sm font-medium text-white;
+}
+
+.contact-email-label {
+  @apply block text-sm font-medium text-white;
+}
+
+.contact-message-label {
+  @apply block text-sm font-medium text-white;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact-title-label,
+  .contact-form,
+  .contact-name-label,
+  .contact-email-label,
+  .contact-message-label {
+    @apply text-black;
+  }
+}
+
+.contact-email {
+  @apply text-black p-2 mt-1 w-full rounded-md h-4/5;
+  caret-color: lightcoral;
+  border: 1px solid #a3a3a3;
+}
+
+.contact-name {
+  @apply text-black p-2 mt-1 w-full rounded-md h-4/5;
+  caret-color: lightcoral;
+  border: 1px solid #a3a3a3;
+}
+
+.contact-title {
+  @apply text-black p-2 mt-1 w-full rounded-md h-4/5;
+  caret-color: lightcoral;
+  border: 1px solid #a3a3a3;
+}
+
+.contact-message {
+  @apply text-black p-2 mt-1 w-full rounded-md;
+  caret-color: lightcoral;
+  border: 1px solid #a3a3a3;
+}

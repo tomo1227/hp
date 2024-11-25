@@ -35,10 +35,17 @@ export default function Header() {
             </Link>
             <div className="flex justify-center">
                 <div className="flex gap-1 items-center text-sm font-medium pr-5">
+                    <Link
+                        href={isJapanese ? "/ja/contact" : "/en/contact"}
+                        className="hover:text-blue-500 cursor-pointer hover:underline"
+                    >
+                        Contact
+                    </Link>
+                </div>
+                <div className="flex gap-1 items-center text-sm font-medium pr-5">
                     <button
                         type="button"
                         onClick={() => toggleLanguage("ja")}
-                        // disabled={isJapanese}
                         className={`${
                             isJapanese
                                 ? "text-red-500" // isJapaneseがtrueのとき赤色
@@ -50,7 +57,6 @@ export default function Header() {
                     <span className="text-gray-500 dark:text-gray-400">/</span>
                     <button
                         type="button"
-                        // disabled={!isJapanese}
                         onClick={() => toggleLanguage("en")}
                         className={`${
                             !isJapanese
