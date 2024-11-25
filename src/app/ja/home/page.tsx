@@ -11,9 +11,9 @@ const imageSize: number = 350;
 
 export default function Page() {
     return (
-        <div className="flex flex-row justify-center items-center gap-20 mt-20 max-md:flex-col">
-            <div>
-                <div className="full-width justify-center flex">
+        <div className="flex md:flex-row justify-center items-center md:gap-20 mt-20 max-md:flex-col">
+            <div className="max-md:h-screen">
+                <div className="flex justify-center">
                     <Link href="/ja/travel">
                         <Image
                             src="/img/travel.jpg"
@@ -24,14 +24,14 @@ export default function Page() {
                     </Link>
                 </div>
                 <h2
-                    className={`${zenAntiqueSoft.className} full-width justify-center flex text-2xl font-bold pt-5`}
+                    className={`${zenAntiqueSoft.className} justify-center flex text-2xl font-bold pt-5`}
                 >
                     トラベル
                 </h2>
             </div>
-            <div>
-                <div className="full-width justify-center flex">
-                    <Link href="/ja/travel">
+            <div className="max-md:h-screen">
+                <div className="flex justify-center">
+                    <Link href="/ja/photography">
                         <Image
                             src="/img/photography.jpg"
                             alt="photography-jpg"
@@ -41,7 +41,7 @@ export default function Page() {
                     </Link>
                 </div>
                 <h2
-                    className={`${zenAntiqueSoft.className} full-width justify-center flex text-2xl font-bold pt-5`}
+                    className={`${zenAntiqueSoft.className} justify-center flex text-2xl font-bold pt-5`}
                 >
                     写真
                 </h2>
