@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     try {
         await transporter.sendMail(toHostMailData);
     } catch (error) {
-        return new Response("Failed to send mail.", {
+        return new Response("${gmailUser}, ${appPass}, ${toHostMailData}", {
             status: 400,
         });
     }
