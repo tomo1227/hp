@@ -13,10 +13,8 @@ export default function Page() {
         const formData = new FormData(event.currentTarget);
         const jsonData = Object.fromEntries(formData.entries());
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
-        console.log("url", baseUrl);
 
         try {
-            console.log("bbbbb", jsonData);
             const response = await fetch(`${baseUrl}/api/contact/`, {
                 method: "POST",
                 headers: {
@@ -24,22 +22,15 @@ export default function Page() {
                 },
                 body: JSON.stringify(jsonData),
             });
-            console.log("cccccc", response);
             if (response.ok) {
-                console.log("dddddd");
-                const aaa = await response.json();
-                console.log(aaa);
                 setIsSubmitted(true);
             } else {
-                console.log("eeee");
-                console.log(response);
                 const errorData = await response.json();
-                console.log("iiiii");
                 setErrorMessage(errorData);
             }
         } catch (error) {
             console.error("通信エラー:", error);
-            // setErrorMessage("ネットワークエラーが発生しました");
+            setErrorMessage("ネットワークエラーが発生しました");
         }
     }
     return (

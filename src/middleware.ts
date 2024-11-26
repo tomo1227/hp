@@ -17,7 +17,6 @@ function getLocale(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
-    console.log(pathname);
     if (pathname === "/") {
         return;
     }

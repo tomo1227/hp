@@ -3,10 +3,8 @@ import type { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
     const request = await req.json();
-    const gmailUser = process.env.NEXT_PUBLIC_GMAIL_USER;
-    const appPass = process.env.NEXT_PUBLIC_GMAIL_APP_PASS;
-    console.log(`gmailUser${gmailUser}`);
-    console.log(`appPass${appPass}`);
+    const gmailUser = process.env.GMAIL_USER;
+    const appPass = process.env.GMAIL_APP_PASS;
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -33,14 +31,11 @@ export async function POST(req: NextRequest) {
     try {
         await transporter.sendMail(toHostMailData);
     } catch (error) {
-        // return new Response(
-        //     `${gmailUser}, ${appPass}, ${error}, ${toHostMailData}`,
-        //     {
-        //         status: 400,
-        //     },
-        // );
+        return new Response("Failed to send mail.", {
+            status: 400,
+        });
     }
-    return new Response(`${gmailUser}, ${appPass}, ${toHostMailData}`, {
+    return new Response("Success!", {
         status: 200,
     });
 }
