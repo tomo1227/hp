@@ -3,8 +3,8 @@ import type { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
     const request = await req.json();
-    const gmailUser = process.env.GMAIL_USER;
-    const appPass = process.env.GMAIL_APP_PASS;
+    const gmailUser = process.env.NEXT_PUBLIC_GMAIL_USER;
+    const appPass = process.env.NEXT_PUBLIC_GMAIL_APP_PASS;
     console.log(`gmailUser${gmailUser}`);
     console.log(`appPass${appPass}`);
 
