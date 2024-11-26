@@ -17,7 +17,7 @@ export default function Page() {
                 <div className="justify-center flex">
                     <Link href="/ja/home">
                         <Image
-                            src="/img/top-page.jpg"
+                            src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269-2.jpg"
                             alt="top-page-jpg"
                             width={300}
                             height={300}
