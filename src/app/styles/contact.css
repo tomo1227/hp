@@ -3,7 +3,7 @@
 }
 
 .contact-contents {
-  @apply flex flex-col items-center justify-center rounded-xl w-4/5 h-auto max-w-md mx-auto mt-4 bg-slate-600 p-5 shadow-md;
+  @apply flex flex-col items-center justify-center rounded-xl w-4/5 h-full max-w-md mx-auto mt-4 bg-slate-600 p-5 shadow-md max-sm:p-0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,7 +19,7 @@
 }
 
 .contact-form {
-  @apply text-xl text-white font-bold mb-4;
+  @apply text-xl text-white font-bold mb-4 max-sm:text-xl max-sm:mb-6;
 }
 
 .contact-title-label {
@@ -49,25 +49,29 @@
 }
 
 .contact-email {
-  @apply text-black p-2 mt-1 w-full rounded-md h-4/5;
+  @apply text-black p-2 mt-1 w-full rounded-md h-4/5 max-sm:p-1 max-sm:m-0 max-sm:w-2/3;
   caret-color: lightcoral;
   border: 1px solid #a3a3a3;
 }
 
 .contact-name {
-  @apply text-black p-2 mt-1 w-full rounded-md h-4/5;
+  @apply text-black p-2 mt-1 w-full rounded-md h-4/5 max-sm:p-1 max-sm:m-0 max-sm:w-2/3;
   caret-color: lightcoral;
   border: 1px solid #a3a3a3;
 }
 
 .contact-title {
-  @apply text-black p-2 mt-1 w-full rounded-md h-4/5;
+  @apply text-black p-2 mt-1 w-full rounded-md h-4/5 max-sm:p-1 max-sm:m-0 max-sm:w-2/3;
   caret-color: lightcoral;
   border: 1px solid #a3a3a3;
 }
 
 .contact-message {
-  @apply text-black p-2 mt-1 w-full rounded-md;
+  @apply text-black p-2 mt-1 w-full rounded-md max-sm:p-1 max-sm:m-0 max-sm:w-2/3;
   caret-color: lightcoral;
   border: 1px solid #a3a3a3;
+}
+
+.contact-form-element {
+  @apply flex flex-col mb-4 max-sm:flex-row max-sm:mb-1 max-sm:w-full max-sm:gap-2 max-sm:justify-between
 }
