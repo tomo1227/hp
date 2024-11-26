@@ -31,7 +31,8 @@ export default function Page() {
                 console.log("eeee");
                 console.log(response);
                 const errorData = await response.json();
-                setErrorMessage(response.json || "エラーが発生しました");
+                console.log("iiiii");
+                setErrorMessage(errorData);
             }
         } catch (error) {
             console.error("通信エラー:", error);

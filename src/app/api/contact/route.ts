@@ -31,17 +31,19 @@ export async function POST(req: NextRequest) {
         `,
     };
     try {
-        console.log(toHostMailData);
         await transporter.sendMail(toHostMailData);
     } catch (error) {
-        return new Response(
-            `${gmailUser}, ${appPass}, ${error}, ${toHostMailData}`,
-            {
-                status: 400,
-            },
-        );
+        // return new Response(
+        //     `${gmailUser}, ${appPass}, ${error}, ${toHostMailData}`,
+        //     {
+        //         status: 400,
+        //     },
+        // );
     }
-    return new Response("Success!", {
-        status: 200,
-    });
+    return new Response(
+        "`${gmailUser}, ${appPass}, ${error}, ${toHostMailData}`",
+        {
+            status: 200,
+        },
+    );
 }
