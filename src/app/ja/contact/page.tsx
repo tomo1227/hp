@@ -26,6 +26,8 @@ export default function Page() {
             console.log("cccccc", response);
             if (response.ok) {
                 console.log("dddddd");
+                const aaa = await response.json();
+                console.log(aaa);
                 setIsSubmitted(true);
             } else {
                 console.log("eeee");

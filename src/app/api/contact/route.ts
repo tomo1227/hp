@@ -40,10 +40,7 @@ export async function POST(req: NextRequest) {
         //     },
         // );
     }
-    return new Response(
-        "`${gmailUser}, ${appPass}, ${error}, ${toHostMailData}`",
-        {
-            status: 200,
-        },
-    );
+    return new Response(`${gmailUser}, ${appPass}, ${toHostMailData}`, {
+        status: 200,
+    });
 }
