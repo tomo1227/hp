@@ -30,14 +30,14 @@ export async function POST(req: NextRequest) {
         <p>${request.message}</p>
         `,
     };
-    try {
-        console.log(toHostMailData);
-        await transporter.sendMail(toHostMailData);
-    } catch (error) {
-        return new Response("Failed to send mail ", {
-            status: 400,
-        });
-    }
+    // try {
+    //     console.log(toHostMailData);
+    //     await transporter.sendMail(toHostMailData);
+    // } catch (error) {
+    //     return new Response("Failed to send mail ", {
+    //         status: 400,
+    //     });
+    // }
     return new Response("Success!", {
         status: 200,
     });
