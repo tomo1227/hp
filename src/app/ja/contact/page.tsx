@@ -13,9 +13,9 @@ export default function Page() {
         const formData = new FormData(event.currentTarget);
         const jsonData = Object.fromEntries(formData.entries());
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
-        console.log(`aaaaaa${baseUrl}`);
 
         try {
+            console.log("bbbbb", jsonData);
             const response = await fetch(`${baseUrl}/api/contact/`, {
                 method: "POST",
                 headers: {
@@ -23,18 +23,19 @@ export default function Page() {
                 },
                 body: JSON.stringify(jsonData),
             });
-
+            console.log("cccccc", response);
             if (response.ok) {
-                console.log(response);
+                console.log("dddddd");
                 setIsSubmitted(true);
             } else {
+                console.log("eeee");
                 console.log(response);
                 const errorData = await response.json();
-                setErrorMessage(errorData.message || "エラーが発生しました");
+                setErrorMessage(response.json || "エラーが発生しました");
             }
         } catch (error) {
             console.error("通信エラー:", error);
-            setErrorMessage("ネットワークエラーが発生しました");
+            // setErrorMessage("ネットワークエラーが発生しました");
         }
     }
     return (
