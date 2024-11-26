@@ -5,6 +5,8 @@ export async function POST(req: NextRequest) {
     const request = await req.json();
     const gmailUser = process.env.GMAIL_USER;
     const appPass = process.env.GMAIL_APP_PASS;
+    console.log(`gmailUser${gmailUser}`);
+    console.log(`appPass${appPass}`);
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -29,6 +31,7 @@ export async function POST(req: NextRequest) {
         `,
     };
     try {
+        console.log(toHostMailData);
         await transporter.sendMail(toHostMailData);
     } catch (error) {
         return new Response("Failed to send mail ", {
