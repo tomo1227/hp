@@ -47,7 +47,7 @@ export default function Page() {
             <div className="contact-contents">
                 <h1 className="contact-form">お問い合わせフォーム</h1>
                 <form className="w-4/5" onSubmit={handleSubmit}>
-                    <div className="mb-4">
+                    <div className="contact-form-element">
                         <label className="contact-title-label" htmlFor="name">
                             タイトル
                         </label>
@@ -58,7 +58,7 @@ export default function Page() {
                             className="contact-title"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div className="contact-form-element">
                         <label className="contact-name-label" htmlFor="name">
                             お名前
                         </label>
@@ -69,7 +69,7 @@ export default function Page() {
                             className="contact-name"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div className="contact-form-element">
                         <label className="contact-email-label" htmlFor="email">
                             メールアドレス
                         </label>
@@ -80,7 +80,7 @@ export default function Page() {
                             className="contact-email"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div className="contact-form-element">
                         <label
                             htmlFor="content"
                             className="contact-message-label"

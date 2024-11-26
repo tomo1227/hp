@@ -28,7 +28,7 @@ export default function Header() {
         >
             <Link href="/" className="flex items-center">
                 <h2
-                    className={`${rockSaltFont.className} font-semibold text-center text-xl px-3`}
+                    className={`${rockSaltFont.className} font-semibold text-center text-xl px-3 max-md:text-sm`}
                 >
                     Tomoki Ota
                 </h2>
