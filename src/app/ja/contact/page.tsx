@@ -25,8 +25,10 @@ export default function Page() {
             });
 
             if (response.ok) {
+                console.log(response);
                 setIsSubmitted(true);
             } else {
+                console.log(response);
                 const errorData = await response.json();
                 setErrorMessage(errorData.message || "エラーが発生しました");
             }
