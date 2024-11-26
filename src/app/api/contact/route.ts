@@ -22,16 +22,15 @@ export async function POST(req: NextRequest) {
         html: `
         <p>【名前】</p>
         <p>${request.name}</p>
-        <p>【メッセージ内容】</p>
-        <p>${request.message}</p>
         <p>【メールアドレス】</p>
         <p>${request.email}</p>
+        <p>【メッセージ内容】</p>
+        <p>${request.message}</p>
         `,
     };
     try {
         await transporter.sendMail(toHostMailData);
     } catch (error) {
-        console.error(error);
         return new Response("Failed to send mail ", {
             status: 400,
         });
