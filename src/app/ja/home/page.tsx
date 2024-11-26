@@ -8,7 +8,6 @@ const zenAntiqueSoft = Zen_Antique_Soft({
 });
 
 const imageSize: number = 350;
-console.log(process.env.FOO);
 export default function Page() {
     return (
         <div className="flex md:flex-row justify-center items-center md:gap-20 mt-20 max-md:flex-col">
