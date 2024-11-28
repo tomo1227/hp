@@ -19,7 +19,7 @@ export default function Page() {
                         alt="travel-jpg"
                         width={imageSize}
                         height={imageSize}
-                        className="aspect-square object-cover object-[center_30%]"
+                        className="aspect-square object-cover object-[center_30%] w-full h-auto"
                     />
                 </Link>
             ))}

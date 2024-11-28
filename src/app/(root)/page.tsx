@@ -21,6 +21,8 @@ export default function Page() {
                             alt="top-page-jpg"
                             width={300}
                             height={300}
+                            className="w-full h-auto"
+                            priority
                         />
                     </Link>
                 </div>
