@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Zen_Antique_Soft } from "next/font/google";
+import { rgbDataURL } from "../../../lib/blurImage";
 
 const zenAntiqueSoft = Zen_Antique_Soft({
     weight: "400",
@@ -16,13 +17,13 @@ export default function Page() {
                     <Link href="/ja/travel">
                         <Image
                             src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6040.jpg"
+                            placeholder="blur"
+                            blurDataURL={rgbDataURL(192, 192, 192)}
                             alt="travel-jpg"
                             width={imageSize}
                             height={imageSize}
                             className="w-full h-auto"
                             priority
-                            placeholder="blur"
-                            blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
                         />
                     </Link>
                 </div>

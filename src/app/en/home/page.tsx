@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Rock_Salt } from "next/font/google";
+import { rgbDataURL } from "../../../lib/blurImage";
 
 const rockSaltFont = Rock_Salt({
     weight: "400",
@@ -17,6 +18,8 @@ export default function Page() {
                     <Link href="/en/travel">
                         <Image
                             src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6040.jpg"
+                            placeholder="blur"
+                            blurDataURL={rgbDataURL(192, 192, 192)}
                             alt="travel-jpg"
                             width={imageSize}
                             height={imageSize}
@@ -36,6 +39,8 @@ export default function Page() {
                     <Link href="/en/photography">
                         <Image
                             src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A0852.jpg"
+                            placeholder="blur"
+                            blurDataURL={rgbDataURL(192, 192, 192)}
                             alt="photography-jpg"
                             width={imageSize}
                             height={imageSize}
