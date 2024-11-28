@@ -16,11 +16,13 @@ export default async function PhotoPage({
         <div className="flex flex-col justify-center items-center">
             <Image
                 src={`/img/photography/img${id}.jpg`}
-                alt="travel-jpg"
+                alt={`photo${id}`}
                 width={500}
                 height={500}
                 className="w-full h-auto"
                 priority
+                placeholder="blur"
+                blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
             />
         </div>
     );

@@ -23,6 +23,8 @@ export default function Page() {
                             height={300}
                             className="w-full h-auto"
                             priority
+                            placeholder="blur"
+                            blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
                         />
                     </Link>
                 </div>
