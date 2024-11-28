@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { rgbDataURL } from "../../../../../lib/blurImage";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -22,7 +23,7 @@ export default async function PhotoPage({
                 className="w-full h-auto"
                 priority
                 placeholder="blur"
-                blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
+                blurDataURL={rgbDataURL(100, 0, 100)}
             />
         </div>
     );

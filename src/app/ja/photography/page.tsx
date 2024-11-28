@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { rgbDataURL } from "../../../lib/blurImage";
 
 export default function Page() {
-    const photos = Array.from({ length: 6 }, (_, i) => i + 1);
+    const photos = Array.from({ length: 9 }, (_, i) => i + 1);
     const imageSize = 200;
 
     return (
-        <section className="cards-container">
+        <section className="cards-container" style={{ position: "relative" }}>
             {photos.map((id) => (
                 <Link
-                    className="card"
+                    className="card square"
                     key={id}
                     href={`/ja/photography/photos/${id}`}
                     passHref
@@ -19,9 +20,9 @@ export default function Page() {
                         alt={`grid-img${id}`}
                         width={imageSize}
                         height={imageSize}
-                        className="aspect-square object-cover object-[center_30%] w-full h-auto"
+                        className="aspect-square object-cover object-[center_30%] w-full h-full"
                         placeholder="blur"
-                        blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
+                        blurDataURL={rgbDataURL(192, 192, 192)}
                     />
                 </Link>
             ))}

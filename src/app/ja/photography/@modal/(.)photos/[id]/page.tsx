@@ -1,3 +1,4 @@
+import { rgbDataURL } from "../../../../../../lib/blurImage";
 import { Modal } from "./modal";
 import Image from "next/image";
 
@@ -18,7 +19,7 @@ export default async function PhotoModal({
                     className="w-full h-auto"
                     priority
                     placeholder="blur"
-                    blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
+                    blurDataURL={rgbDataURL(192, 192, 192)}
                 />
             </div>
         </Modal>

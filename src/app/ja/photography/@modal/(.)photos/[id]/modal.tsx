@@ -21,12 +21,12 @@ export function Modal({ children }: { children: React.ReactNode }) {
     return createPortal(
         <div className="modal-backdrop">
             <dialog ref={dialogRef} className="modal" onClose={onDismiss}>
-                {children}
                 <button
                     type="button"
                     onClick={onDismiss}
                     className="close-button"
                 />
+                {children}
             </dialog>
         </div>,
         // biome-ignore lint/style/noNonNullAssertion: <explanation>
