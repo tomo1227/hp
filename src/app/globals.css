@@ -1,5 +1,6 @@
 @import "./styles/home.css";
 @import "./styles/contact.css";
+@import "./styles/modal.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
