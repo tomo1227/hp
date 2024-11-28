@@ -16,10 +16,12 @@ export default function Page() {
                 >
                     <Image
                         src={`/img/photography/img${id}.jpg`}
-                        alt="travel-jpg"
+                        alt={`grid-img${id}`}
                         width={imageSize}
                         height={imageSize}
                         className="aspect-square object-cover object-[center_30%] w-full h-auto"
+                        placeholder="blur"
+                        blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mP8W8+AARiHsiAApFUO4yajeNAAAAAASUVORK5CYII="
                     />
                 </Link>
             ))}
