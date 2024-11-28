@@ -15,6 +15,8 @@ export default async function PhotoModal({
                     alt="travel-jpg"
                     width={500}
                     height={500}
+                    className="w-full h-auto"
+                    priority
                 />
             </div>
         </Modal>

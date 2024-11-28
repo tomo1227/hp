@@ -19,6 +19,8 @@ export default function Page() {
                             alt="travel-jpg"
                             width={imageSize}
                             height={imageSize}
+                            className="w-full h-auto"
+                            priority
                         />
                     </Link>
                 </div>
@@ -36,6 +38,8 @@ export default function Page() {
                             alt="photography-jpg"
                             width={imageSize}
                             height={imageSize}
+                            className="w-full h-auto"
+                            priority
                         />
                     </Link>
                 </div>
