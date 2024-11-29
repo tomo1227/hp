@@ -13,7 +13,6 @@ export default function Page() {
                     className="card square"
                     key={id}
                     href={`/ja/photography/photos/${id}`}
-                    passHref
                 >
                     <Image
                         src={`/img/photography/img${id}.jpg`}
