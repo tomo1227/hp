@@ -12,7 +12,7 @@ export default async function PhotoModal({
         <Modal>
             <div className="flex flex-col justify-center items-center">
                 <Image
-                    src={`/img/photography/img${photoId}.jpg`}
+                    src={`https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/gallery/img${photoId}.jpg`}
                     alt={`modal-img${photoId}`}
                     width={500}
                     height={500}

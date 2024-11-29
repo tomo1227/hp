@@ -16,9 +16,9 @@ export default function Page() {
                     Tomoki Ota
                 </h2>
                 <div className="justify-center flex">
-                    <Link href="/ja/home">
+                    <Link href="/ja/home" passHref>
                         <Image
-                            src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269-2.jpg"
+                            src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269.jpg"
                             placeholder="blur"
                             blurDataURL={rgbDataURL(192, 192, 192)}
                             alt="top-page-jpg"

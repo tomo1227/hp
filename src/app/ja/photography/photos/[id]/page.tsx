@@ -16,7 +16,7 @@ export default async function PhotoPage({
     return (
         <div className="flex flex-col justify-center items-center">
             <Image
-                src={`/img/photography/img${id}.jpg`}
+                src={`https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/gallery/img${id}.jpg`}
                 alt={`photo${id}`}
                 width={500}
                 height={500}

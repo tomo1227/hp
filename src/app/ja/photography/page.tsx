@@ -13,10 +13,9 @@ export default function Page() {
                     className="card square"
                     key={id}
                     href={`/ja/photography/photos/${id}`}
-                    passHref
                 >
                     <Image
-                        src={`/img/photography/img${id}.jpg`}
+                        src={`https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/gallery/img${id}.jpg`}
                         alt={`grid-img${id}`}
                         width={imageSize}
                         height={imageSize}
