@@ -1,7 +1,13 @@
+import createMDX from "@next/mdx";
+import rehypeSlug from "rehype-slug";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
     images: {
-        domains: ["tomokiota-photos.s3.ap-northeast-1.amazonaws.com"],
         remotePatterns: [
             {
                 protocol: "https",
@@ -14,11 +20,17 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "tomokiota-photos.s3.ap-northeast-1.amazonaws.com",
                 port: "",
-                pathname: "*",
-                search: "",
+                pathname: "/travel/**",
             },
         ],
     },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+    options: {
+        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+        rehypePlugins: [rehypeSlug],
+    },
+});
+
+export default withMDX(nextConfig);

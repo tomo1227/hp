@@ -1,6 +1,7 @@
 @import "./styles/home.css";
 @import "./styles/contact.css";
 @import "./styles/modal.css";
+@import "./styles/markdown.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,6 +30,7 @@ body {
     }
 }
 
-body, html {
+body,
+html {
     @apply min-h-screen flex items-center justify-center w-screen;
 }

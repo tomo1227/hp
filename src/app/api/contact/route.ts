@@ -1,5 +1,5 @@
-import nodemailer from "nodemailer";
 import type { NextRequest } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
     const request = await req.json();

@@ -1,6 +1,6 @@
+import { Rock_Salt } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { Rock_Salt } from "next/font/google";
 import { rgbDataURL } from "../../lib/blurImage";
 
 const rockSaltFont = Rock_Salt({

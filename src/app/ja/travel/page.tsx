@@ -1,16 +1,23 @@
-import { Rock_Salt } from "next/font/google";
+import Link from "next/link";
+import { Fragment } from "react";
+import { getFilteredPosts } from "../../../lib/blogFilter";
+import { formattedDate } from "../../../lib/date";
 
-const rockSaltFont = Rock_Salt({
-    weight: "400",
-    subsets: ["latin"],
-});
-
-export default function Page() {
+export default async function Page() {
+    const posts = await getFilteredPosts("desc", "ja", "travel");
     return (
-        <div
-            className={`${rockSaltFont.className} flex flex-row justify-center items-center`}
+        <article
+            className="markdown flex flex-col justify-center items-center"
+            style={{ position: "relative" }}
         >
-            <h1>作成中</h1>
-        </div>
+            {posts.map((post) => (
+                <Fragment key={post.slug}>
+                    <h1>{post.data.title}</h1>
+                    <Link href={`/ja/blogs/${post.slug}`}>
+                        {formattedDate(post.data.date)}
+                    </Link>
+                </Fragment>
+            ))}
+        </article>
     );
 }

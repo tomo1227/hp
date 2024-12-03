@@ -1,8 +1,8 @@
 "use client";
 
+import { Rock_Salt } from "next/font/google";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Rock_Salt } from "next/font/google";
 
 const rockSaltFont = Rock_Salt({
     weight: "400",
@@ -34,7 +34,15 @@ export default function Header() {
                 </h2>
             </Link>
             <div className="flex justify-center">
-                <div className="flex gap-1 items-center text-sm font-medium pr-5">
+                <div className="flex gap-1 items-center text-sm font-medium pr-5 max-md:pr-2">
+                    <Link
+                        href={isJapanese ? "/ja/blogs" : "/en/blogs"}
+                        className="hover:text-blue-500 cursor-pointer hover:underline"
+                    >
+                        Blog
+                    </Link>
+                </div>
+                <div className="flex gap-1 items-center text-sm font-medium pr-5 max-md:pr-2">
                     <Link
                         href={isJapanese ? "/ja/contact" : "/en/contact"}
                         className="hover:text-blue-500 cursor-pointer hover:underline"

@@ -1,7 +1,23 @@
-export default function Page() {
+import Link from "next/link";
+import { Fragment } from "react";
+import { getFilteredPosts } from "../../../lib/blogFilter";
+import { formattedDate } from "../../../lib/date";
+
+export default async function Page() {
+    const posts = await getFilteredPosts("desc", "en", "travel");
     return (
-        <div className="flex flex-row justify-center items-center">
-            <h1>WIP</h1>
-        </div>
+        <article
+            className="markdown flex flex-col justify-center items-center"
+            style={{ position: "relative" }}
+        >
+            {posts.map((post) => (
+                <Fragment key={post.slug}>
+                    <h1>{post.data.title}</h1>
+                    <Link href={`/en/blogs/${post.slug}`}>
+                        {formattedDate(post.data.date)}
+                    </Link>
+                </Fragment>
+            ))}
+        </article>
     );
 }
