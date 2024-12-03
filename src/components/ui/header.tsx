@@ -1,8 +1,8 @@
 "use client";
 
+import { Rock_Salt } from "next/font/google";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Rock_Salt } from "next/font/google";
 
 const rockSaltFont = Rock_Salt({
     weight: "400",

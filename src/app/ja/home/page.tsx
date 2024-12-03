@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { Zen_Antique_Soft } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 import { rgbDataURL } from "../../../lib/blurImage";
 
 const zenAntiqueSoft = Zen_Antique_Soft({

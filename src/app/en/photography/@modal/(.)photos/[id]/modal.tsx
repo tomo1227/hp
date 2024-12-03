@@ -1,7 +1,7 @@
 "use client";
 
-import { type ElementRef, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { type ElementRef, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 export function Modal({ children }: { children: React.ReactNode }) {

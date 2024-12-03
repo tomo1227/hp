@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { rgbDataURL } from "../../../../../../lib/blurImage";
 import { Modal } from "./modal";
-import Image from "next/image";
 
 export default async function PhotoModal({
     params,

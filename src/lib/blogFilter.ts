@@ -1,5 +1,5 @@
-import path, { join } from "node:path";
 import fs from "node:fs";
+import path, { join } from "node:path";
 import matter from "gray-matter";
 import type Category from "../types/category";
 import type Locale from "../types/locale";

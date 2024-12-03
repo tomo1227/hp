@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { formattedDate } from "../../../../lib/date";
 import { getFilteredPosts, getPostBySlug } from "../../../../lib/blogFilter";
+import { formattedDate } from "../../../../lib/date";
 
 export async function generateStaticParams() {
     const posts = await getFilteredPosts("desc", "ja");
