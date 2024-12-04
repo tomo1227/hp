@@ -14,11 +14,16 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://tomokiota.com"),
     title: "tomokiota.com",
     description:
         "The Official Website of Tomoki Ota, Traveler and Photographer.",
     twitter: {
         card: "summary_large_image",
+    },
+    appleWebApp: {
+        title: "tomokiota",
+        statusBarStyle: "default",
     },
 };
 export default function RootLayout({
