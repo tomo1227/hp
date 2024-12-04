@@ -1,6 +1,7 @@
 {
   "name": "tomokiota",
-  "short_name": "T.O.",
+  "short_name": "tomokiota",
+  "description": "tomokiota.com",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
