@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import localFont from "next/font/local";
 import "../globals.css";
 
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
     },
-    appleWebApp: {
-        title: "tomokiota",
-        statusBarStyle: "default",
+    creator: "Tomoki Ota",
+    other: {
+        "apple-mobile-web-app-title": "tomokiota",
     },
 };
 export default function RootLayout({
