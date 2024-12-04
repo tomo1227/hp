@@ -1,11 +1,12 @@
-import { Rock_Salt } from "next/font/google";
+import localFont from "next/font/local";
 import Image from "next/image";
 import Link from "next/link";
 import { rgbDataURL } from "../../../lib/blurImage";
 
-const rockSaltFont = Rock_Salt({
+const rockSaltFont = localFont({
+    display: "swap",
+    src: "../../fonts/RockSalt-Regular.woff",
     weight: "400",
-    subsets: ["latin"],
 });
 
 const imageSize: number = 350;

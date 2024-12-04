@@ -1,12 +1,13 @@
 "use client";
 
-import { Rock_Salt } from "next/font/google";
+import localFont from "next/font/local";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-const rockSaltFont = Rock_Salt({
+const rockSaltFont = localFont({
+    display: "swap",
+    src: "../../app/fonts/RockSalt-Regular.woff",
     weight: "400",
-    subsets: ["latin"],
 });
 
 export default function Header() {

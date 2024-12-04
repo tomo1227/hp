@@ -1,11 +1,11 @@
-import { Zen_Antique_Soft } from "next/font/google";
+import localFont from "next/font/local";
 import Image from "next/image";
 import Link from "next/link";
 import { rgbDataURL } from "../../../lib/blurImage";
 
-const zenAntiqueSoft = Zen_Antique_Soft({
+const zenAntiqueSoft = localFont({
     weight: "400",
-    subsets: ["latin"],
+    src: "../../fonts/ZenAntiqueSoft-Regular.woff",
 });
 
 const imageSize: number = 350;
