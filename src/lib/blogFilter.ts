@@ -76,11 +76,8 @@ export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
   const fullPath = path.join(postDir(locale), `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
-  const Component = require(`@/_posts/${locale}/${slug}.mdx`).default;
-
   return {
     frontmatter: data as Frontmatter,
-    Component,
   };
 };
 
