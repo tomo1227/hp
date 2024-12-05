@@ -29,13 +29,21 @@
     "source.fixAll.markdownlint": "explicit",
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit",
-    "quickfix.biome": "explicit"
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
   "files.associations": {
     "*.css": "tailwindcss"
   },
   "stylelint.validate": ["css"],
   "css.validate": false,
+  "[css]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.insertFinalNewline": true
+  },
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "[javascript][typescript][typescriptreact][javascriptreact]": {
     "editor.defaultFormatter": "biomejs.biome",
@@ -134,100 +142,7 @@
       "iconColor": "#f11e1e"
     }
   },
-  "gitmoji.onlyUseCustomEmoji": true, // カスタマイズした絵文字のみ表示する
-  "gitmoji.addCustomEmoji": [
-    // 絵文字のカスタマイズ
-    {
-      "emoji": "🐛",
-      "code": ":bug:",
-      "description": "バグ修正 (fix)"
-    },
-    {
-      "emoji": "👍",
-      "code": ":+1:",
-      "description": "機能改善 (fix/feat)"
-    },
-    {
-      "emoji": "✨",
-      "code": ":sparkles:",
-      "description": "部分的な機能追加 (feat)"
-    },
-    {
-      "emoji": "🎉",
-      "code": ":tada:",
-      "description": "盛大に祝うべき大きな機能追加 (feat)"
-    },
-    {
-      "emoji": "🚀",
-      "code": ":rocket:",
-      "description": "パフォーマンス改善 (feat)"
-    },
-    {
-      "emoji": "🔒",
-      "code": ":lock:",
-      "description": "新機能の公開範囲の制限 (feat)"
-    },
-    {
-      "emoji": "👮",
-      "code": ":cop:",
-      "description": "セキュリティ関連の改善 (feat)"
-    },
-    {
-      "emoji": "📚",
-      "code": ":books:",
-      "description": "ドキュメント修正 (docs)"
-    },
-    {
-      "emoji": "👕",
-      "code": ":shirt:",
-      "description": "Lintエラーの修正やコードスタイルの修正 (style)"
-    },
-    {
-      "emoji": "♻️",
-      "code": ":recycle:",
-      "description": "リファクタリング (refactor)"
-    },
-    {
-      "emoji": "🚿",
-      "code": ":shower:",
-      "description": "不要な機能・使われなくなった機能の削除 (refactor)"
-    },
-    {
-      "emoji": "📦",
-      "code": ":package:",
-      "description": "新規パッケージやライブラリの追加"
-    },
-    {
-      "emoji": "💚",
-      "code": ":green_heart:",
-      "description": "テストやCIの修正・改善 (test)"
-    },
-    {
-      "emoji": "👷",
-      "code": ":construction_worker:",
-      "description": "ビルドシステムや外部依存関係の変更"
-    },
-    {
-      "emoji": "🔧",
-      "code": ":wrench:",
-      "description": "依存パッケージなどのアップデート (chore)"
-    },
-    {
-      "emoji": "🌐",
-      "code": ":globe_with_meridians:",
-      "description": "i18n (国際化) 関連の変更"
-    },
-    {
-      "emoji": "👓",
-      "code": ":eyeglasses:",
-      "description": "関連の変更"
-    },
-    {
-      "emoji": "📈",
-      "code": ":chart_with_upwards_trend:",
-      "description": "メトリクスやログの追加/改善"
-    }
-  ],
   "cSpell.ignorePaths": [".vscode", ".devcontainer/devcontainer.json"],
-  "errorLens.excludeBySource": ["cSpell"]
+  "errorLens.excludeBySource": ["cSpell"],
+  "tailwindcss-intellisense.trace.server": "messages"
 }

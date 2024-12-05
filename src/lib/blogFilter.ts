@@ -5,7 +5,7 @@ import type Category from "../types/category";
 import type Locale from "../types/locale";
 
 const postDir = (locale: Locale = "ja") => {
-    return join(process.cwd(), "src/_posts/", locale);
+  return join(process.cwd(), "src/_posts/", locale);
 };
 
 // export const getAllPosts = async () => {
@@ -30,56 +30,56 @@ const postDir = (locale: Locale = "ja") => {
 type dateOrder = "desc" | "asc";
 
 export const getFilteredPosts = async (
-    dateOrder: dateOrder = "desc",
-    locale: Locale = "ja",
-    category?: Category,
-    tag?: string,
-    country?: string,
+  dateOrder: dateOrder = "desc",
+  locale: Locale = "ja",
+  category?: Category,
+  tag?: string,
+  country?: string,
 ) => {
-    const pathList = fs.readdirSync(postDir(locale));
-    const contentsPromise = pathList.map(async (p) => {
-        const fullPath = path.join(postDir(locale), p);
-        const filePath = fs.readFileSync(fullPath, "utf8");
-        const { data, content } = matter(filePath);
-        const slug = p.split(/\.mdx/)[0];
+  const pathList = fs.readdirSync(postDir(locale));
+  const contentsPromise = pathList.map(async (p) => {
+    const fullPath = path.join(postDir(locale), p);
+    const filePath = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(filePath);
+    const slug = p.split(/\.mdx/)[0];
 
-        return {
-            data,
-            slug,
-            content,
-        };
-    });
+    return {
+      data,
+      slug,
+      content,
+    };
+  });
 
-    const contents = await Promise.all(contentsPromise);
+  const contents = await Promise.all(contentsPromise);
 
-    const filteredContents = contents.filter(({ data }) => {
-        const matchesTag = tag ? data.tags?.includes(tag) : true;
-        const matchesCategory = category ? data.category === category : true;
-        const matchesCountry = country ? data["country?"] === country : true;
-        return matchesTag && matchesCategory && matchesCountry;
-    });
+  const filteredContents = contents.filter(({ data }) => {
+    const matchesTag = tag ? data.tags?.includes(tag) : true;
+    const matchesCategory = category ? data.category === category : true;
+    const matchesCountry = country ? data["country?"] === country : true;
+    return matchesTag && matchesCategory && matchesCountry;
+  });
 
-    const sortedContents = filteredContents.sort((a, b) => {
-        const dateA = new Date(a.data.date);
-        const dateB = new Date(b.data.date);
+  const sortedContents = filteredContents.sort((a, b) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
 
-        return dateOrder === "asc"
-            ? dateA.getTime() - dateB.getTime()
-            : dateB.getTime() - dateA.getTime();
-    });
+    return dateOrder === "asc"
+      ? dateA.getTime() - dateB.getTime()
+      : dateB.getTime() - dateA.getTime();
+  });
 
-    return sortedContents;
+  return sortedContents;
 };
 
 export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
-    const fullPath = path.join(postDir(locale), `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
+  const fullPath = path.join(postDir(locale), `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
 
-    return {
-        data,
-        content,
-    };
+  return {
+    data,
+    content,
+  };
 };
 
 // export const getPostsByPage = (page: number, pageSize = 10) => {

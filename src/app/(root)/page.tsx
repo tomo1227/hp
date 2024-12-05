@@ -1,35 +1,36 @@
-import { Rock_Salt } from "next/font/google";
+import localFont from "next/font/local";
 import Image from "next/image";
 import Link from "next/link";
 import { rgbDataURL } from "../../lib/blurImage";
 
-const rockSaltFont = Rock_Salt({
-    weight: "400",
-    subsets: ["latin"],
+const rockSaltFont = localFont({
+  display: "swap",
+  src: "../fonts/RockSalt-Regular.woff",
+  weight: "400",
 });
 
 export default function Page() {
-    return (
-        <div className="flex items-center justify-items-center min-h-screen">
-            <main className="flex flex-col justify-center items-center pb-10">
-                <h2 className={`${rockSaltFont.className} pb-4 text-4xl`}>
-                    Tomoki Ota
-                </h2>
-                <div className="justify-center flex">
-                    <Link href="/ja/home" passHref>
-                        <Image
-                            src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269.jpg"
-                            placeholder="blur"
-                            blurDataURL={rgbDataURL(192, 192, 192)}
-                            alt="top-page-jpg"
-                            width={300}
-                            height={300}
-                            className="w-full h-auto"
-                            priority
-                        />
-                    </Link>
-                </div>
-            </main>
+  return (
+    <div className="flex items-center justify-items-center min-h-screen">
+      <main className="flex flex-col justify-center items-center pb-10">
+        <h2 className={`${rockSaltFont.className} pb-4 text-4xl`}>
+          Tomoki Ota
+        </h2>
+        <div className="justify-center flex">
+          <Link href="/ja/home" passHref>
+            <Image
+              src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269.jpg"
+              placeholder="blur"
+              blurDataURL={rgbDataURL(192, 192, 192)}
+              alt="top-page-jpg"
+              width={300}
+              height={300}
+              className="w-full h-auto"
+              priority
+            />
+          </Link>
         </div>
-    );
+      </main>
+    </div>
+  );
 }
