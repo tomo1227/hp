@@ -12,7 +12,7 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "indentWidth": 4
+    "indentWidth": 2
   },
   "organizeImports": {
     "enabled": true
@@ -26,6 +26,20 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "double"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": true
+    },
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": false
     }
   }
 }
