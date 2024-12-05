@@ -1,6 +1,6 @@
+import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
+import { formattedDateEn } from "@/lib/date";
 import Link from "next/link";
-import { getFilteredPosts, getPostBySlug } from "../../../../lib/blogFilter";
-import { formattedDateEn } from "../../../../lib/date";
 
 export async function generateStaticParams() {
   const posts = await getFilteredPosts("desc", "en");
@@ -16,7 +16,7 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "en");
-  const Component = require(`../../../../_posts/en/${slug}.mdx`).default;
+  const Component = require(`@_posts/en/${slug}.mdx`).default;
   return (
     <div>
       <div className={"flex flex-col mb-10 items-center"}>
