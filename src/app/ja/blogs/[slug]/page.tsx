@@ -50,14 +50,6 @@ export default async function Page({
         className="markdown flex flex-col justify-center items-center"
         style={{ position: "relative" }}
       >
-        {/* <h1>frontmatter.title</h1>
-      <h1
-        class={`text-center leading-tight text-3xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap $titleLen > 20 ? "md:w-[90%]" : ""`}
-      >
-        {splitedTitle.map((word, index) => (
-          <span key={index}>{word}</span>
-        ))}
-      </h1> */}
         <Component />
       </article>
     </div>

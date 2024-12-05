@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { getFilteredPosts } from "../../../lib/blogFilter";
-import { formattedDate } from "../../../lib/date";
+import { formattedDateEn } from "../../../lib/date";
 
 export default async function Page() {
   const posts = await getFilteredPosts("desc", "en");
@@ -14,7 +14,7 @@ export default async function Page() {
         <Fragment key={post.slug}>
           <h1>{post.data.title}</h1>
           <Link href={`/en/blogs/${post.slug}`}>
-            {formattedDate(post.data.date)}
+            {formattedDateEn(post.data.date)}
           </Link>
         </Fragment>
       ))}
