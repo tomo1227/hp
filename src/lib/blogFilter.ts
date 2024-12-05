@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path, { join } from "node:path";
 import matter from "gray-matter";
 import type Category from "../types/category";
+import type { Frontmatter } from "../types/frontmatter";
 import type Locale from "../types/locale";
 
 const postDir = (locale: Locale = "ja") => {
@@ -74,11 +75,12 @@ export const getFilteredPosts = async (
 export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
   const fullPath = path.join(postDir(locale), `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const { data } = matter(fileContents);
+  const Component = require(`@/_posts/${locale}/${slug}.mdx`).default;
 
   return {
-    data,
-    content,
+    frontmatter: data as Frontmatter,
+    Component,
   };
 };
 
