@@ -18,7 +18,8 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const { Component, frontmatter } = await getPostBySlug(slug, "ja");
+  const { frontmatter } = await getPostBySlug(slug, "ja");
+  const Component = require(`../../../../_posts/ja/${slug}.mdx`).default;
   const splitedTitle = parser.parse(frontmatter.title);
   return (
     <div>
