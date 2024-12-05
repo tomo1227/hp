@@ -33,7 +33,9 @@
     "source.organizeImports.biome": "explicit"
   },
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "tailwindcss",
+    "*.mdx": "markdown",
+    "*.mjs": "javascript"
   },
   "stylelint.validate": ["css"],
   "css.validate": false,
