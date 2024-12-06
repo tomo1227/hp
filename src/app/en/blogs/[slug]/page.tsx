@@ -16,7 +16,7 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "en");
-  const Component = require(`@_posts/en/${slug}.mdx`).default;
+  const Component = require(`@/_posts/en/${slug}.mdx`).default;
   return (
     <div>
       <div className={"flex flex-col mb-10 items-center"}>
