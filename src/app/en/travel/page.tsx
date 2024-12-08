@@ -4,7 +4,11 @@ import { getFilteredPosts } from "../../../lib/blogFilter";
 import { formattedDate } from "../../../lib/date";
 
 export default async function Page() {
-  const posts = await getFilteredPosts("desc", "en", "travel");
+  const posts = await getFilteredPosts({
+    dateOrder: "desc",
+    locale: "en",
+    category: "travel",
+  });
   return (
     <article
       className="markdown flex flex-col justify-center items-center"
@@ -12,9 +16,9 @@ export default async function Page() {
     >
       {posts.map((post) => (
         <Fragment key={post.slug}>
-          <h1>{post.data.title}</h1>
+          <h1>{post.frontmatter.title}</h1>
           <Link href={`/en/blogs/${post.slug}`}>
-            {formattedDate(post.data.date)}
+            {formattedDate(post.frontmatter.date)}
           </Link>
         </Fragment>
       ))}

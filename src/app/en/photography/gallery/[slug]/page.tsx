@@ -4,7 +4,7 @@ import { getFilteredPosts, getPostBySlug } from "../../../../../lib/blogFilter";
 export async function generateStaticParams() {
   const posts = await getFilteredPosts({
     dateOrder: "desc",
-    locale: "ja",
+    locale: "en",
     category: "photography",
     articleType: "gallery",
   });
@@ -19,8 +19,8 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const { frontmatter } = await getPostBySlug(slug, "ja");
-  const Component = require(`@/_posts/ja/${slug}.mdx`).default;
+  const { frontmatter } = await getPostBySlug(slug, "en");
+  const Component = require(`@/_posts/en/${slug}.mdx`).default;
   return (
     <article
       className="markdown flex flex-col justify-center items-center"

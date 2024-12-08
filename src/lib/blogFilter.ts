@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path, { join } from "node:path";
+import type ArticleType from "@/types/articleType";
 import matter from "gray-matter";
 import type Category from "../types/category";
 import type { Frontmatter } from "../types/frontmatter";
@@ -30,13 +31,23 @@ const postDir = (locale: Locale = "ja") => {
 
 type dateOrder = "desc" | "asc";
 
-export const getFilteredPosts = async (
-  dateOrder: dateOrder = "desc",
-  locale: Locale = "ja",
-  category?: Category,
-  tag?: string,
-  country?: string,
-) => {
+type PostFilterOptions = {
+  dateOrder: dateOrder;
+  locale: Locale;
+  category?: Category;
+  tag?: string;
+  country?: string;
+  articleType?: ArticleType;
+};
+
+export const getFilteredPosts = async ({
+  dateOrder = "desc",
+  locale = "ja",
+  category,
+  tag,
+  country,
+  articleType,
+}: PostFilterOptions) => {
   const pathList = fs.readdirSync(postDir(locale));
   const contentsPromise = pathList.map(async (p) => {
     const fullPath = path.join(postDir(locale), p);
@@ -45,7 +56,7 @@ export const getFilteredPosts = async (
     const slug = p.split(/\.mdx/)[0];
 
     return {
-      data,
+      frontmatter: data as Frontmatter,
       slug,
       content,
     };
@@ -53,16 +64,21 @@ export const getFilteredPosts = async (
 
   const contents = await Promise.all(contentsPromise);
 
-  const filteredContents = contents.filter(({ data }) => {
-    const matchesTag = tag ? data.tags?.includes(tag) : true;
-    const matchesCategory = category ? data.category === category : true;
-    const matchesCountry = country ? data["country?"] === country : true;
-    return matchesTag && matchesCategory && matchesCountry;
+  const filteredContents = contents.filter(({ frontmatter }) => {
+    const matchesTag = tag ? frontmatter.tags?.includes(tag) : true;
+    const matchesCategory = category ? frontmatter.category === category : true;
+    const matchesCountry = country ? frontmatter.country === country : true;
+    const matchesArticleType = articleType
+      ? frontmatter.articleType === articleType
+      : true;
+    return (
+      matchesTag && matchesCategory && matchesCountry && matchesArticleType
+    );
   });
 
   const sortedContents = filteredContents.sort((a, b) => {
-    const dateA = new Date(a.data.date);
-    const dateB = new Date(b.data.date);
+    const dateA = new Date(a.frontmatter.date);
+    const dateB = new Date(b.frontmatter.date);
 
     return dateOrder === "asc"
       ? dateA.getTime() - dateB.getTime()

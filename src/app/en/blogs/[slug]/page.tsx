@@ -3,7 +3,7 @@ import { formattedDateEn } from "@/lib/date";
 import Link from "next/link";
 
 export async function generateStaticParams() {
-  const posts = await getFilteredPosts("desc", "en");
+  const posts = await getFilteredPosts({ dateOrder: "desc", locale: "en" });
   return posts.map((post) => ({
     slug: post.slug,
   }));

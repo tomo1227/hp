@@ -2,6 +2,8 @@
 @import "./styles/contact.css";
 @import "./styles/modal.css";
 @import "./styles/markdown.css";
+@import "./styles/photography.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

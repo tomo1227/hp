@@ -1,4 +1,4 @@
-export default function jaLayout({
+export default function Layout({
   children,
   modal,
 }: {
