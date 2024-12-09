@@ -6,7 +6,10 @@ import { formattedDate } from "../../../../lib/date";
 const parser = new Parser(jaModel);
 
 export async function generateStaticParams() {
-  const posts = await getFilteredPosts("desc", "ja");
+  const posts = await getFilteredPosts({
+    dateOrder: "desc",
+    locale: "ja",
+  });
   return posts.map((post) => ({
     slug: post.slug,
   }));

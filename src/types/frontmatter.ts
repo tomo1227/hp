@@ -1,9 +1,14 @@
+import type ArticleType from "@/types/articleType";
+import type Category from "@/types/category";
+
 export type Frontmatter = {
   title: string;
   country?: string;
-  category: string;
+  category: Category;
   date: string;
   description: string;
   tags: string[];
-  ogpImage: string;
+  ogpImage?: URL;
+  galleryImage?: URL;
+  articleType: ArticleType;
 };

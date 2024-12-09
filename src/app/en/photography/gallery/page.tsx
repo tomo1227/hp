@@ -6,7 +6,7 @@ import { formattedDate } from "../../../../lib/date";
 export default async function Page() {
   const posts = await getFilteredPosts({
     dateOrder: "desc",
-    locale: "ja",
+    locale: "en",
   });
   return (
     <article
@@ -16,7 +16,7 @@ export default async function Page() {
       {posts.map((post) => (
         <Fragment key={post.slug}>
           <h1>{post.frontmatter.title}</h1>
-          <Link href={`/ja/photography/gallery/${post.slug}`}>
+          <Link href={`/en/photography/gallery/${post.slug}`}>
             {formattedDate(post.frontmatter.date)}
           </Link>
         </Fragment>
