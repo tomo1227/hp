@@ -32,7 +32,11 @@ body {
     }
 }
 
-body,
+
 html {
-    @apply min-h-screen flex items-center justify-center w-screen;
+    @apply min-h-full w-full h-full m-0 p-0;
+}
+
+body{
+    @apply flex flex-col items-center min-h-full;
 }

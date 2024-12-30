@@ -40,8 +40,8 @@ export default function enLayout({
         <NextTopLoader />
         <div id="body-container">
           <Header />
-          <div id="main-contents" className="flex flex-row">
-            <main className="w-screen px-6 mt-6 flex-grow">{children}</main>
+          <div id="main-contents">
+            <main>{children}</main>
           </div>
         </div>
       </body>
