@@ -1,8 +1,15 @@
 import Link, { type LinkProps } from "next/link";
 
-export const BlogLink: React.FC<
-  LinkProps & { openNewTab?: boolean; children: React.ReactNode }
-> = ({ openNewTab, children, ...props }) => {
+interface BlogLinkProps extends LinkProps {
+  openNewTab?: boolean;
+  children: React.ReactNode;
+}
+
+export const BlogLink: React.FC<BlogLinkProps> = ({
+  openNewTab = false,
+  children,
+  ...props
+}) => {
   return (
     <Link
       {...props}
