@@ -24,7 +24,7 @@ prune:
 
 .PHONY: delete
 delete:
-	docker-compose down --rmi all --volumes --remove-orphans
+	docker compose down --rmi all --volumes --remove-orphans
 
 .PHONY: log
 log:
