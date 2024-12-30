@@ -23,6 +23,7 @@
     "next": "14.2.18",
     "nextjs-toploader": "^3.7.15",
     "nodemailer": "^6.9.16",
+    "npm": "^11.0.0",
     "react": "^18",
     "react-dom": "^18",
     "rehype-sanitize": "^6.0.0",

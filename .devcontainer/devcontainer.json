@@ -7,7 +7,9 @@
   "postCreateCommand": "sh .devcontainer/scripts/post_create.sh",
   "postStartCommand": "sh .devcontainer/scripts/post_start.sh ${containerWorkspaceFolder}",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
     "ghcr.io/devcontainers/features/aws-cli": {}
   },
   "customizations": {
@@ -25,6 +27,7 @@
         // Git関連
         "mhutchie.git-graph",
         "eamodio.gitlens",
+        "github.copilot",
         // markdown
         "yzhang.markdown-all-in-one",
         "DavidAnson.vscode-markdownlint",
