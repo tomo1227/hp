@@ -89,7 +89,14 @@
     }
   },
   "yaml.format.enable": true,
-  "cSpell.words": ["Codecov", "devcontainer", "devcontainers", "dockercompose"],
+  "cSpell.words": [
+    "Codecov",
+    "devcontainer",
+    "devcontainers",
+    "dockercompose",
+    "Tomoki",
+    "tomomon"
+  ],
   "todo-tree.general.tags": [
     "HACK",
     "FIXME",

@@ -9,11 +9,11 @@ export default async function Page() {
     locale: "ja",
   });
   return (
-    <div id="article-lists">
+    <div className="article-lists">
       {posts.map((post) => (
         <Fragment key={post.slug}>
           <Link href={`/ja/blogs/${post.slug}`}>
-            <h1 className="article-lists-title">{post.frontmatter.title}</h1>
+            <h2 className="article-lists-title">{post.frontmatter.title}</h2>
             <div className="article-lists-date">
               {formattedDate(post.frontmatter.date)}
             </div>

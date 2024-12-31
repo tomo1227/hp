@@ -1,4 +1,4 @@
-#article-lists {
+.article-lists {
     @apply break-words box-border tracking-wide flex flex-col justify-center items-center;
 }
 
@@ -17,6 +17,7 @@
     @apply text-gray-400 text-sm text-center;
 }
 
-#article-lists a:hover .article-lists-title {
+.article-lists a:hover .article-lists-title {
     @apply underline text-indigo-500;
 }
+
