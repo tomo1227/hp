@@ -1,4 +1,4 @@
-@import "./styles/home.css";
+@import "./styles/blogs.css";
 @import "./styles/contact.css";
 @import "./styles/modal.css";
 @import "./styles/markdown.css";
@@ -39,4 +39,16 @@ html {
 
 body{
     @apply flex flex-col items-center min-h-full;
+}
+
+#body-container {
+    @apply flex flex-col items-center h-full w-full;
+}
+
+#main-contents {
+    @apply flex flex-row w-full h-full;
+}
+
+main {
+    @apply w-full px-6 mt-6 flex-grow;
 }

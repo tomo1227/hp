@@ -9,18 +9,17 @@ export default async function Page() {
     locale: "ja",
   });
   return (
-    <article
-      className="markdown flex flex-col justify-center items-center"
-      style={{ position: "relative" }}
-    >
+    <div id="article-lists">
       {posts.map((post) => (
         <Fragment key={post.slug}>
-          <h1>{post.frontmatter.title}</h1>
           <Link href={`/ja/blogs/${post.slug}`}>
-            {formattedDate(post.frontmatter.date)}
+            <h1 className="article-lists-title">{post.frontmatter.title}</h1>
+            <div className="article-lists-date">
+              {formattedDate(post.frontmatter.date)}
+            </div>
           </Link>
         </Fragment>
       ))}
-    </article>
+    </div>
   );
 }

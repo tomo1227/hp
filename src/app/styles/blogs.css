@@ -1,0 +1,22 @@
+#article-lists {
+    @apply break-words box-border tracking-wide flex flex-col justify-center items-center;
+}
+
+.article-lists-title {
+    @apply text-zinc-700 text-lg font-bold pt-4 pb-2 text-center;
+    transition: text-decoration 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .article-lists-title {
+        @apply text-gray-100;
+    }
+}
+
+.article-lists-date {
+    @apply text-gray-400 text-sm text-center;
+}
+
+#article-lists a:hover .article-lists-title {
+    @apply underline text-indigo-500;
+}
