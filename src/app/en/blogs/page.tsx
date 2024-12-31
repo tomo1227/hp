@@ -1,23 +1,25 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { getFilteredPosts } from "../../../lib/blogFilter";
-import { formattedDateEn } from "../../../lib/date";
+import { formattedDate } from "../../../lib/date";
 
 export default async function Page() {
-  const posts = await getFilteredPosts({ dateOrder: "desc", locale: "en" });
+  const posts = await getFilteredPosts({
+    dateOrder: "desc",
+    locale: "en",
+  });
   return (
-    <article
-      className="markdown flex flex-col justify-center items-center"
-      style={{ position: "relative" }}
-    >
+    <div id="article-lists">
       {posts.map((post) => (
         <Fragment key={post.slug}>
-          <h1>{post.frontmatter.title}</h1>
           <Link href={`/en/blogs/${post.slug}`}>
-            {formattedDateEn(post.frontmatter.date)}
+            <h1 className="article-lists-title">{post.frontmatter.title}</h1>
+            <div className="article-lists-date">
+              {formattedDate(post.frontmatter.date)}
+            </div>
           </Link>
         </Fragment>
       ))}
-    </article>
+    </div>
   );
 }
