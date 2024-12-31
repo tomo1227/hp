@@ -32,13 +32,21 @@ const postDir = (locale: Locale = "ja") => {
 type dateOrder = "desc" | "asc";
 
 type PostFilterOptions = {
-  dateOrder: dateOrder;
-  locale: Locale;
+  dateOrder?: dateOrder;
+  locale?: Locale;
   category?: Category;
   tag?: string;
   country?: string;
   articleType?: ArticleType;
 };
+
+type TagFilterOptions = {
+  dateOrder?: dateOrder;
+  locale?: Locale;
+  category?: Category;
+  country?: string;
+  articleType?: ArticleType;
+}
 
 export const getFilteredPosts = async ({
   dateOrder = "desc",
@@ -47,7 +55,7 @@ export const getFilteredPosts = async ({
   tag,
   country,
   articleType,
-}: PostFilterOptions) => {
+}: PostFilterOptions = {}) => {
   const pathList = fs.readdirSync(postDir(locale));
   const contentsPromise = pathList.map(async (p) => {
     const fullPath = path.join(postDir(locale), p);
@@ -61,7 +69,6 @@ export const getFilteredPosts = async ({
       content,
     };
   });
-
   const contents = await Promise.all(contentsPromise);
 
   const filteredContents = contents.filter(({ frontmatter }) => {
@@ -96,6 +103,27 @@ export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
     frontmatter: data as Frontmatter,
   };
 };
+
+export const getTags = async({
+    dateOrder = "desc",
+    locale = "ja",
+    category,
+    country,
+    articleType,
+  }: TagFilterOptions = {}) => {
+  const posts = await getFilteredPosts({
+    dateOrder: dateOrder,
+    locale: locale,
+    category:category,
+    country:country,
+    articleType:articleType,
+  });
+  const tags = posts.flatMap((post) => post.frontmatter.tags || []);
+  // 最後にアルファベット順に並べている
+  const uniqueTags = [...new Set(tags.filter(tag => tag))].sort((a, b) => a.localeCompare(b));
+
+  return uniqueTags;
+}
 
 // export const getPostsByPage = (page: number, pageSize = 10) => {
 //     const posts = getPosts();

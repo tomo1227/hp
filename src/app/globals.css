@@ -3,6 +3,7 @@
 @import "./styles/modal.css";
 @import "./styles/markdown.css";
 @import "./styles/photography.css";
+@import "./styles/tags.css";
 
 @tailwind base;
 @tailwind components;
