@@ -7,6 +7,9 @@ import { Fragment } from "react";
 export const metadata: Metadata = {
   title: "Blog in tomokiota.com",
   description: "Tomoki Otaの旅行やカメラについてのブログ。",
+  alternates: {
+    canonical: "https://tomokiota.com/ja/blogs",
+  },
 };
 
 export default async function Page() {
