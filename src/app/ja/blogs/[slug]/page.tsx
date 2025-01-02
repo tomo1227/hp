@@ -1,7 +1,8 @@
+import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
+import { jaTranslate } from "@/lib/tagTranslator";
 import { Parser, jaModel } from "budoux";
 import Link from "next/link";
-import { getFilteredPosts, getPostBySlug } from "../../../../lib/blogFilter";
-import { formattedDate } from "../../../../lib/date";
 
 const parser = new Parser(jaModel);
 
@@ -39,7 +40,7 @@ export default async function Page({
                 href={`/tags/${tag}`}
                 className="relative inline-block h-7 leading-7 px-3 bg-sky-500 rounded-full text-white text-xs no-underline transition duration-200 hover:bg-gray-700"
               >
-                {tag}
+                {jaTranslate(tag)}
               </Link>
             </li>
           ))}
