@@ -35,6 +35,9 @@ export async function generateMetadata(
     openGraph: {
       images: frontmatter.ogpImage ? `${frontmatter.ogpImage}` : previousImages,
     },
+    alternates: {
+      canonical: "https://tomokiota.com/ja/blogs/${slug}",
+    },
   };
 }
 

@@ -25,7 +25,11 @@ export const metadata: Metadata = {
   other: {
     "apple-mobile-web-app-title": "tomokiota",
   },
+  alternates: {
+    canonical: "https://tomokiota.com/",
+  },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,9 +41,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextTopLoader />
-        <div id="body-container">
-        {children}
-        </div>
+        <div id="body-container">{children}</div>
       </body>
     </html>
   );
