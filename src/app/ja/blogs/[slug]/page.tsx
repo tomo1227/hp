@@ -1,7 +1,9 @@
+import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
+import { jaTranslate } from "@/lib/tagTranslator";
 import { Parser, jaModel } from "budoux";
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import { getFilteredPosts, getPostBySlug } from "../../../../lib/blogFilter";
-import { formattedDate } from "../../../../lib/date";
 
 const parser = new Parser(jaModel);
 
@@ -13,6 +15,27 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: Promise<{ slug: string }>;
+  },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const slug = (await params).slug;
+  const { frontmatter } = await getPostBySlug(slug, "ja");
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: frontmatter.title || (await parent).title,
+    description: frontmatter.description || (await parent).description,
+    openGraph: {
+      images: frontmatter.ogpImage ? `${frontmatter.ogpImage}` : previousImages,
+    },
+  };
 }
 
 export default async function Page({
@@ -39,7 +62,7 @@ export default async function Page({
                 href={`/tags/${tag}`}
                 className="relative inline-block h-7 leading-7 px-3 bg-sky-500 rounded-full text-white text-xs no-underline transition duration-200 hover:bg-gray-700"
               >
-                {tag}
+                {jaTranslate(tag)}
               </Link>
             </li>
           ))}

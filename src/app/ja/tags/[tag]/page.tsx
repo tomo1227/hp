@@ -1,6 +1,7 @@
+import { getFilteredPosts, getTags } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
+import { jaTranslate } from "@/lib/tagTranslator";
 import Link from "next/link";
-import { getTags, getFilteredPosts } from "../../../../lib/blogFilter";
-import { formattedDate } from "../../../../lib/date";
 import { Fragment } from "react";
 
 export async function generateStaticParams() {
@@ -19,11 +20,11 @@ export default async function Page({
   const posts = await getFilteredPosts({
     dateOrder: "desc",
     locale: "ja",
-    tag: tag
+    tag: tag,
   });
   return (
     <div className="article-lists__wrapper">
-      <h1>{tag}</h1>
+      <h1>{jaTranslate(tag)}</h1>
       <div className="article-lists">
         {posts.map((post) => (
           <Fragment key={post.slug}>
