@@ -1,7 +1,13 @@
+import { getFilteredPosts } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
-import { getFilteredPosts } from "../../../lib/blogFilter";
-import { formattedDate } from "../../../lib/date";
+
+export const metadata: Metadata = {
+  title: "Blog in tomokiota.com",
+  description: "This is a blog about travel and camera by Tomoki Ota.",
+};
 
 export default async function Page() {
   const posts = await getFilteredPosts({
