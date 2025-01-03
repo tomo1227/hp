@@ -60,7 +60,7 @@ export default async function Page({
           {frontmatter.tags.map((tag) => (
             <li key={tag} className="inline-block">
               <Link
-                href={`/tags/${tag}`}
+                href={`/en/tags/${tag}`}
                 className="relative inline-block h-7 leading-7 px-3 bg-sky-500 rounded-full text-white text-xs no-underline transition duration-200 hover:bg-gray-700"
               >
                 {tag}
