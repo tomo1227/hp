@@ -16,7 +16,7 @@ export default async function Page({
 }: {
   params: Promise<{ tag: string }>;
 }) {
-  const tag = (await params).tag;
+  const tag = decodeURIComponent((await params).tag);
   const posts = await getFilteredPosts({
     dateOrder: "desc",
     locale: "ja",
