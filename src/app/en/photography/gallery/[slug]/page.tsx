@@ -24,13 +24,21 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "en");
-  const previousImages = (await parent).openGraph?.images || [];
+  const previousOgpImages = (await parent).openGraph?.images || [];
+  const previousTwitterImages = (await parent).twitter?.images || [];
 
   return {
     title: frontmatter.title || (await parent).title,
     description: frontmatter.description || (await parent).description,
     openGraph: {
-      images: frontmatter.ogpImage ? `${frontmatter.ogpImage}` : previousImages,
+      images: frontmatter.ogpImage
+        ? `${frontmatter.ogpImage}`
+        : previousOgpImages,
+    },
+    twitter: {
+      images: frontmatter.ogpImage
+        ? `${frontmatter.ogpImage}`
+        : previousTwitterImages,
     },
   };
 }
