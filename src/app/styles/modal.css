@@ -41,13 +41,16 @@
     width: 100%;
     padding: 1em 0 0 0;
   }
+  .modal .markdown{
+    @apply px-4
+  }
 }
-@media (max-width: 350px) {
+/* @media (max-width: 350px) {
   .modal {
     width: 100%;
     padding: 1em 0 0 0;
   }
-}
+} */
 .close-button {
   position: absolute;
   top: 10px;
