@@ -52,8 +52,8 @@ export default async function Page({
   const Component = require(`@/_posts/en/${slug}.mdx`).default;
   return (
     <div>
-      <div className={"flex flex-col mb-10 items-center"}>
-        <h1 className="text-center leading-tight text-3xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap">
+      <div className={"flex flex-col mb-10 items-center max-md:mb-3"}>
+        <h1 className="text-center leading-tight text-3xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap max-md:text-2xl">
           {frontmatter.title}
         </h1>
         <ul className="flex flex-wrap gap-2 m-0 p-0 list-none">
