@@ -5,3 +5,46 @@
 #happy-new-year-2025-image {
     @apply object-right;
 }
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 1100px) {
+    .cards-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 950px) {
+    .cards-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 700px) {
+    .cards-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 200px; */
+    background-color: #eee;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    font-weight: 500;
+    /* max-width: 200px; */
+  }
+  
+  @media (max-width: 600px) {
+    .cards-container {
+      gap: 5px;
+    }
+  }
+  
