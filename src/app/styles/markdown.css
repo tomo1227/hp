@@ -29,7 +29,7 @@
 }
 
 .markdown p {
-  @apply text-base leading-7 my-4;
+  @apply text-base leading-7 my-4 max-md:text-sm max-md:leading-4;
 }
 
 .markdown blockquote > p {
