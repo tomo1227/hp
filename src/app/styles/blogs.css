@@ -1,23 +1,51 @@
 .article-lists {
-    @apply break-words box-border tracking-wide flex flex-col justify-center items-center;
+  @apply break-words box-border tracking-wide flex flex-col justify-center items-center;
 }
 
 .article-lists-title {
-    @apply text-zinc-700 text-lg font-bold pt-4 pb-2 text-center;
-    transition: text-decoration 0.3s ease;
+  @apply text-zinc-700 text-lg font-bold pt-4 pb-2 text-center;
+  transition: text-decoration 0.3s ease;
 }
 
 @media (prefers-color-scheme: dark) {
-    .article-lists-title {
-        @apply text-gray-100;
-    }
+  .article-lists-title {
+    @apply text-gray-100;
+  }
 }
 
 .article-lists-date {
-    @apply text-gray-400 text-sm text-center;
+  @apply text-gray-400 text-sm text-center;
 }
 
 .article-lists a:hover .article-lists-title {
-    @apply underline text-indigo-500;
+  @apply underline text-indigo-500;
 }
 
+/* blog記事 */
+#blog-info {
+  @apply flex flex-col mb-10 items-center max-md:mb-3;
+}
+
+#blog-title {
+  @apply text-center leading-tight text-3xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap max-md:text-2xl;
+}
+
+#blog-tag-lists {
+  @apply flex flex-wrap gap-2 m-0 p-0 list-none;
+}
+
+#blog-tag {
+  @apply inline-block;
+}
+
+#blog-tag-link {
+  @apply relative inline-block h-7 leading-7 px-3 bg-sky-500 rounded-full text-white text-xs no-underline transition duration-200 hover:bg-gray-700;
+}
+
+#blog-date-wrapper {
+  @apply text-gray-500 dark:text-gray-400 text-sm max-md:text-xs pt-2;
+}
+
+#blog-content {
+  @apply flex flex-col justify-center items-center relative;
+}
