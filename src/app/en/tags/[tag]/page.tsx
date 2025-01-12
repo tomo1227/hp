@@ -22,7 +22,7 @@ export default async function Page({
     tag: tag,
   });
   return (
-    <div className="article-lists__wrapper">
+    <div className="article-lists-wrapper">
       <h1>{tag}</h1>
       <div className="article-lists">
         {posts.map((post) => (

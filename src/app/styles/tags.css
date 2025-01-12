@@ -1,39 +1,38 @@
-.article-lists__wrapper{
-    @apply flex flex-col justify-center items-center text-5xl;
+.article-lists-wrapper{
+  @apply flex flex-col justify-center items-center text-5xl;
 }
 
-.article-lists__wrapper h1{
-    @apply mt-3 mb-5;
+.article-lists-wrapper h1{
+  @apply mt-3 mb-5;
 }
-
 
 /* 以下は/tags/ */
 #tag-lists-wrapper{
-    @apply flex flex-col items-center;
+  @apply flex flex-col items-center;
 }
 
 #tag-lists-title{
-    @apply text-5xl mb-14 mt-6;
+  @apply text-5xl mb-14 mt-6;
 }
 
 #tag-lists-contents{
-    @apply w-3/4;
+  @apply w-3/4;
 }
 
 #tag-lists{
-    @apply flex flex-wrap gap-2 m-0 p-0 list-none;
+  @apply flex flex-wrap gap-2 m-0 p-0 list-none;
 }
 
 #tag-lists li{
-    @apply inline-block;
+  @apply inline-block;
 }
 
 .tag-list-item{
-    @apply px-3 py-1 border border-gray-300 rounded-lg text-sky-600 hover:bg-blue-300 transition
+  @apply px-3 py-1 border border-gray-300 rounded-lg text-sky-600 hover:bg-blue-300 transition
 }
 
 @media (prefers-color-scheme: dark) {
-    .tag-list-item{
-        @apply border-gray-400 text-cyan-300 hover:bg-blue-800
-    }
+  .tag-list-item{
+    @apply border-gray-400 text-cyan-300 hover:bg-blue-800
+  }
 }

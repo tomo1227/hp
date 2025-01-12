@@ -39,10 +39,11 @@ export default function Page() {
         <h1 className="contact-form">お問い合わせフォーム</h1>
         <form className="w-4/5" onSubmit={handleSubmit}>
           <div className="contact-form-element">
-            <label className="contact-title-label" htmlFor="name">
+            <label className="contact-title-label" htmlFor="title">
               タイトル
             </label>
             <input
+              id="title"
               type="text"
               name="title"
               required
@@ -53,13 +54,21 @@ export default function Page() {
             <label className="contact-name-label" htmlFor="name">
               お名前
             </label>
-            <input type="text" name="name" required className="contact-name" />
+            <input
+              id="name"
+              type="text"
+              name="name"
+              required
+              className="contact-name"
+            />
           </div>
           <div className="contact-form-element">
             <label className="contact-email-label" htmlFor="email">
-              メールアドレス
+              <span>メール</span>
+              <span>アドレス</span>
             </label>
             <input
+              id="email"
               type="email"
               name="email"
               required
@@ -67,10 +76,12 @@ export default function Page() {
             />
           </div>
           <div className="contact-form-element">
-            <label htmlFor="content" className="contact-message-label">
-              お問い合わせ内容
+            <label htmlFor="message" className="contact-message-label">
+              <span>お問い合わせ</span>
+              <span>内容</span>
             </label>
             <textarea
+              id="message"
               name="message"
               rows={6}
               required
