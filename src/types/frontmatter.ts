@@ -1,4 +1,3 @@
-import type ArticleType from "@/types/articleType";
 import type Category from "@/types/category";
 
 export type Frontmatter = {
@@ -10,5 +9,4 @@ export type Frontmatter = {
   tags: string[];
   ogpImage?: URL;
   galleryImage?: URL;
-  articleType: ArticleType;
 };
