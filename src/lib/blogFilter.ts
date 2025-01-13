@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path, { join } from "node:path";
-import type ArticleType from "@/types/articleType";
 import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
@@ -37,7 +36,6 @@ type PostFilterOptions = {
   category?: Category;
   tag?: string;
   country?: string;
-  articleType?: ArticleType;
 };
 
 type TagFilterOptions = {
@@ -45,7 +43,6 @@ type TagFilterOptions = {
   locale?: Locale;
   category?: Category;
   country?: string;
-  articleType?: ArticleType;
 };
 
 export const getFilteredPosts = async ({
@@ -54,7 +51,6 @@ export const getFilteredPosts = async ({
   category,
   tag,
   country,
-  articleType,
 }: PostFilterOptions = {}) => {
   const pathList = fs.readdirSync(postDir(locale));
   const contentsPromise = pathList.map(async (p) => {
@@ -75,11 +71,9 @@ export const getFilteredPosts = async ({
     const matchesTag = tag ? frontmatter.tags?.includes(tag) : true;
     const matchesCategory = category ? frontmatter.category === category : true;
     const matchesCountry = country ? frontmatter.country === country : true;
-    const matchesArticleType = articleType
-      ? frontmatter.articleType === articleType
-      : true;
+
     return (
-      matchesTag && matchesCategory && matchesCountry && matchesArticleType
+      matchesTag && matchesCategory && matchesCountry
     );
   });
 
@@ -109,14 +103,12 @@ export const getTags = async ({
   locale = "ja",
   category,
   country,
-  articleType,
 }: TagFilterOptions = {}) => {
   const posts = await getFilteredPosts({
     dateOrder: dateOrder,
     locale: locale,
     category: category,
     country: country,
-    articleType: articleType,
   });
   const tags = posts.flatMap((post) => post.frontmatter.tags || []);
   // 最後にアルファベット順に並べている
