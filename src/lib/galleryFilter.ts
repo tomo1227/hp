@@ -6,13 +6,13 @@ import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
 import matter from "gray-matter";
 
-const postDir = (locale: Locale = "ja") => {
+const galleryDir = (locale: Locale = "ja") => {
   return join(process.cwd(), "src/_galleries/", locale);
 };
 
 type dateOrder = "desc" | "asc";
 
-type PostFilterOptions = {
+type GalleryFilterOption = {
   dateOrder?: dateOrder;
   locale?: Locale;
   category?: Category;
@@ -36,10 +36,10 @@ export const getFilteredPosts = async ({
   tag,
   country,
   articleType,
-}: PostFilterOptions = {}) => {
-  const pathList = fs.readdirSync(postDir(locale));
+}: GalleryFilterOption = {}) => {
+  const pathList = fs.readdirSync(galleryDir(locale));
   const contentsPromise = pathList.map(async (p) => {
-    const fullPath = path.join(postDir(locale), p);
+    const fullPath = path.join(galleryDir(locale), p);
     const filePath = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(filePath);
     const slug = p.split(/\.mdx/)[0];
@@ -77,7 +77,7 @@ export const getFilteredPosts = async ({
 };
 
 export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
-  const fullPath = path.join(postDir(locale), `${slug}.mdx`);
+  const fullPath = path.join(galleryDir(locale), `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
   return {
