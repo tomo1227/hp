@@ -6,32 +6,13 @@ import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
 import matter from "gray-matter";
 
-const postDir = (locale: Locale = "ja") => {
-  return join(process.cwd(), "src/_posts/", locale);
+const galleryDir = (locale: Locale = "ja") => {
+  return join(process.cwd(), "src/_galleries/", locale);
 };
-
-// export const getAllPosts = async () => {
-//     const pathList = fs.readdirSync(postDir);
-//     const contentsPromise = pathList.map(async (p) => {
-//         const fullPath = path.join(postDir, p);
-//         const fileContents = fs.readFileSync(fullPath, "utf8");
-//         const { data, content } = matter(fileContents);
-//         const slug = p.split(/\.mdx/)[0];
-
-//         return {
-//             data,
-//             slug,
-//             content,
-//         };
-//     });
-//     const contents = await Promise.all(contentsPromise);
-
-//     return contents;
-// };
 
 type dateOrder = "desc" | "asc";
 
-type PostFilterOptions = {
+type GalleryFilterOption = {
   dateOrder?: dateOrder;
   locale?: Locale;
   category?: Category;
@@ -55,10 +36,10 @@ export const getFilteredPosts = async ({
   tag,
   country,
   articleType,
-}: PostFilterOptions = {}) => {
-  const pathList = fs.readdirSync(postDir(locale));
+}: GalleryFilterOption = {}) => {
+  const pathList = fs.readdirSync(galleryDir(locale));
   const contentsPromise = pathList.map(async (p) => {
-    const fullPath = path.join(postDir(locale), p);
+    const fullPath = path.join(galleryDir(locale), p);
     const filePath = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(filePath);
     const slug = p.split(/\.mdx/)[0];
@@ -96,7 +77,7 @@ export const getFilteredPosts = async ({
 };
 
 export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
-  const fullPath = path.join(postDir(locale), `${slug}.mdx`);
+  const fullPath = path.join(galleryDir(locale), `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
   return {
@@ -126,52 +107,3 @@ export const getTags = async ({
 
   return uniqueTags;
 };
-
-// export const getPostsByPage = (page: number, pageSize = 10) => {
-//     const posts = getPosts();
-//     const startIndex = (page - 1) * pageSize;
-//     const endIndex = page * pageSize;
-
-//     return posts.slice(startIndex, endIndex);
-// };
-
-// export const getTotalPages = (pageSize = 10) => {
-//     const posts = getPosts();
-//     const maxPage = Math.ceil(posts.length / pageSize);
-
-//     return maxPage;
-// };
-
-// export const getTags = () => {
-//     const posts = getPosts();
-//     const tags = posts.flatMap((post) => post.frontmatter.tags || []);
-//     const uniqueTags = [...new Set(tags)];
-
-//     return uniqueTags;
-// };
-
-// export const getPostByEntryName = (entryName: string) => {
-//     const posts = getPosts();
-//     const post = posts.find((post) => post.entryName === entryName);
-//     return post;
-// };
-
-// export const getLatestPostsWithoutTargetPost = (postEntryName: string) => {
-//     const posts = getPosts();
-//     const latestPosts = posts.filter(
-//         (post) => post.entryName !== postEntryName,
-//     );
-//     return latestPosts.slice(0, 3);
-// };
-
-// export const getPostsFilteredByTag = (tag: string) => {
-//     const allPosts = getPosts();
-//     return allPosts.filter((post) => post.frontmatter.tags.includes(tag));
-// };
-
-// export const getTotalPagesFilteredByTag = (pageSize = 10, tag: string) => {
-//     const posts = getPostsFilteredByTag(tag);
-//     const maxPage = Math.ceil(posts.length / pageSize);
-
-//     return maxPage;
-// };

@@ -1,7 +1,7 @@
+import { formattedDate } from "@/lib/date";
+import { getFilteredPosts } from "@/lib/galleryFilter";
 import Link from "next/link";
 import { Fragment } from "react";
-import { getFilteredPosts } from "../../../../lib/blogFilter";
-import { formattedDate } from "../../../../lib/date";
 
 export default async function Page() {
   const posts = await getFilteredPosts({

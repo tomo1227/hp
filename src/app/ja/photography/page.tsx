@@ -1,5 +1,5 @@
-import { getFilteredPosts } from "@/lib/blogFilter";
 import { rgbDataURL } from "@/lib/blurImage";
+import { getFilteredPosts } from "@/lib/galleryFilter";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +8,6 @@ export default async function Page() {
     dateOrder: "desc",
     locale: "ja",
     category: "photography",
-    articleType: "gallery",
   });
   const portraitImageSize = 500; // 縦長
   const landscapeImageSize = 800; // 横長
