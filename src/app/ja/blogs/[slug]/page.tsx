@@ -57,37 +57,29 @@ export default async function Page({
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "ja");
   const Component = require(`@/_posts/ja/${slug}.mdx`).default;
-  const splitedTitle = parser.parse(frontmatter.title);
+  const splittedTitle = parser.parse(frontmatter.title);
   return (
-    <div>
-      <div className={"flex flex-col mb-10 items-center max-md:mb-3"}>
-        <h1 className="text-center leading-tight text-3xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap max-md:text-2xl">
-          {splitedTitle.map((word) => (
+    <div id="blog-wrapper">
+      <div id="blog-info">
+        <h1 id="blog-title">
+          {splittedTitle.map((word) => (
             <span key={word}>{word}</span>
           ))}
         </h1>
-        <ul className="flex flex-wrap gap-2 m-0 p-0 list-none">
+        <ul id="blog-tag-lists">
           {frontmatter.tags.map((tag) => (
-            <li key={tag} className="inline-block">
-              <Link
-                href={`/tags/${tag}`}
-                className="relative inline-block h-7 leading-7 px-3 bg-sky-500 rounded-full text-white text-xs no-underline transition duration-200 hover:bg-gray-700"
-              >
+            <li id="blog-tag" key={tag}>
+              <Link id="blog-tag-link" href={`/ja/tags/${tag}`}>
                 {jaTranslate(tag)}
               </Link>
             </li>
           ))}
         </ul>
-        <div className="text-gray-500 dark:text-gray-400 text-sm max-md:text-xs pt-2">
-          <time className="text-gray-600 dark:text-gray-300 text-base mr-1 italic">
-            {formattedDate(frontmatter.date)}
-          </time>
+        <div id="blog-date-wrapper">
+          <time id="blog-date">{formattedDate(frontmatter.date)}</time>
         </div>
       </div>
-      <article
-        className="markdown flex flex-col justify-center items-center"
-        style={{ position: "relative" }}
-      >
+      <article id="blog-content" className="markdown">
         <Component />
       </article>
     </div>
