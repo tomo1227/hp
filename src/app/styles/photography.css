@@ -8,11 +8,9 @@
 }
 
 .cards-container {
-  display: grid;
+  @apply relative grid justify-center items-center;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
-  justify-content: center;
-  align-items: center;
 }
 @media (max-width: 1100px) {
   .cards-container {

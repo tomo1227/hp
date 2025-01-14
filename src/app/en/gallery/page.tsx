@@ -6,19 +6,18 @@ import Link from "next/link";
 export default async function Page() {
   const posts = await getFilteredPosts({
     dateOrder: "desc",
-    locale: "ja",
-    category: "photography",
+    locale: "en",
   });
   const portraitImageSize = 500; // 縦長
   const landscapeImageSize = 800; // 横長
 
   return (
-    <section className="cards-container" style={{ position: "relative" }}>
+    <section className="cards-container">
       {posts.map((post) => (
         <Link
           className="card"
           key={post.slug}
-          href={`/ja/photography/gallery/${post.slug}`}
+          href={`/en/gallery/${post.slug}`}
         >
           <Image
             src={`${post.frontmatter.galleryImage}`}

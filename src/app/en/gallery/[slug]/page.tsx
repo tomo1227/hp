@@ -5,7 +5,6 @@ export async function generateStaticParams() {
   const posts = await getFilteredPosts({
     dateOrder: "desc",
     locale: "en",
-    category: "photography",
   });
   return posts.map((post) => ({
     slug: post.slug,
@@ -39,7 +38,7 @@ export async function generateMetadata(
         : previousTwitterImages,
     },
     alternates: {
-      canonical: "https://tomokiota.com/en/photography/gallery/${slug}",
+      canonical: "https://tomokiota.com/en/gallery/${slug}",
     },
   };
 }
