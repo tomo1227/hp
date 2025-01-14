@@ -5,7 +5,6 @@ export async function generateStaticParams() {
   const posts = await getFilteredPosts({
     dateOrder: "desc",
     locale: "en",
-    category: "photography",
   });
   return posts.map((post) => ({
     slug: post.slug,

@@ -7,7 +7,6 @@ export default async function Page() {
   const posts = await getFilteredPosts({
     dateOrder: "desc",
     locale: "ja",
-    category: "photography",
   });
   const portraitImageSize = 500; // 縦長
   const landscapeImageSize = 800; // 横長
