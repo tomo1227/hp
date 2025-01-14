@@ -17,7 +17,7 @@ export default function Page() {
           Tomoki Ota
         </h2>
         <div className="justify-center flex">
-          <Link href="/ja/photography" passHref>
+          <Link href="/ja/gallery" passHref>
             <Image
               src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269.jpg"
               placeholder="blur"
