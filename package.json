@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "biome lint --write ./src",
     "format": "biome format ./src --write",
-    "check": "biome check ./src"
+    "check": "biome check ./src",
+    "bi": "node ./src/cmd/generateBlogImages.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.10",
