@@ -13,7 +13,7 @@ export default async function Page() {
   const landscapeImageSize = 800; // 横長
 
   return (
-    <section className="cards-container" style={{ position: "relative" }}>
+    <section className="cards-container">
       {posts.map((post) => (
         <Link
           className="card"
