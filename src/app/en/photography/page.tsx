@@ -17,7 +17,7 @@ export default async function Page() {
         <Link
           className="card"
           key={post.slug}
-          href={`/en/photography/gallery/${post.slug}`}
+          href={`/en/gallery/${post.slug}`}
         >
           <Image
             src={`${post.frontmatter.galleryImage}`}
