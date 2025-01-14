@@ -21,13 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://tomokiota.com/ja/photography",
+      url: "https://tomokiota.com/ja/gallery",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.5,
     },
     {
-      url: "https://tomokiota.com/en/photography",
+      url: "https://tomokiota.com/en/gallery",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.5,
