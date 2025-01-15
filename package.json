@@ -9,7 +9,9 @@
     "lint": "biome lint --write ./src",
     "format": "biome format ./src --write",
     "check": "biome check ./src",
-    "bi": "node ./src/cmd/generateBlogImages.mjs"
+    "bi": "node ./src/cmd/generateBlogImages.mjs",
+    "post": "node ./src/cmd/post.mjs",
+    "gallery": "node ./src/cmd/gallery.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.10",
@@ -40,6 +42,7 @@
     "@types/negotiator": "^0.6.3",
     "@types/node": "^22",
     "@types/nodemailer": "^6.4.17",
+    "@types/prompts": "^2.4.9",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "aws-cdk": "^2.174.0",
@@ -47,6 +50,7 @@
     "constructs": "^10.4.2",
     "esbuild": "^0.24.2",
     "postcss": "^8",
+    "prompts": "^2.4.2",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
