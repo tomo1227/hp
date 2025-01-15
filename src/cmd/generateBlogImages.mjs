@@ -1,8 +1,8 @@
 import { writeFileSync } from "node:fs";
 
 const baseURL =
-  "https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/2024/yellowknife/";
-const imageCount = 94;
+  "https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/2020/los-angeles/";
+const imageCount = 11;
 
 let output = "";
 for (let i = 1; i <= imageCount; i++) {
@@ -10,6 +10,6 @@ for (let i = 1; i <= imageCount; i++) {
   output += tag;
 }
 
-writeFileSync("./output.jsx", output, "utf8");
+writeFileSync("./output.txt", output, "utf8");
 
 console.log("ブログ画像タグが生成されました！");
