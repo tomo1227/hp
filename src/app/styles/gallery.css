@@ -11,6 +11,10 @@
   @apply object-left;
 }
 
+#saint-martin-image {
+  @apply object-left;
+}
+
 .cards-container {
   @apply relative grid justify-center items-center;
   grid-template-columns: repeat(5, 1fr);
