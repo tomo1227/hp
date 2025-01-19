@@ -22,6 +22,9 @@
 }
 
 /* blog記事 */
+#blog-wrapper {
+  @apply mx-6;
+}
 #blog-info {
   @apply flex flex-col mb-10 items-center max-md:mb-3;
 }

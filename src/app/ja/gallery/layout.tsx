@@ -6,8 +6,8 @@ export default function Layout({
   modal: React.ReactNode;
 }) {
   return (
-    <div>
-      <div>{children}</div>
+    <div id="gallery-layout">
+      <div id="gallery-contents">{children}</div>
       <div>{modal}</div>
       <div id="modal-root" />
     </div>
