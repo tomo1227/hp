@@ -1,4 +1,5 @@
 import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
+import { Parser, jaModel } from "budoux";
 import type { Metadata, ResolvingMetadata } from "next";
 
 export async function generateStaticParams() {
@@ -10,6 +11,8 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
+
+const parser = new Parser(jaModel);
 
 export async function generateMetadata(
   {
@@ -50,12 +53,21 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const Component = require(`@/_galleries/ja/${slug}.mdx`).default;
+  const { frontmatter } = await getPostBySlug(slug, "ja");
+  const splittedTitle = parser.parse(frontmatter.title);
   return (
-    <article
-      className="markdown flex flex-col justify-center items-center"
-      style={{ position: "relative" }}
-    >
-      <Component />
-    </article>
+    <div id="gallery">
+      <h1 id="gallery-title">
+        {splittedTitle.map((word) => (
+          <span key={word}>{word}</span>
+        ))}
+      </h1>
+      <article
+        className="markdown flex flex-col justify-center items-center"
+        style={{ position: "relative" }}
+      >
+        <Component />
+      </article>
+    </div>
   );
 }
