@@ -50,12 +50,17 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const Component = require(`@/_galleries/en/${slug}.mdx`).default;
+  const { frontmatter } = await getPostBySlug(slug, "en");
+
   return (
-    <article
-      className="markdown flex flex-col justify-center items-center"
-      style={{ position: "relative" }}
-    >
-      <Component />
-    </article>
+    <div id="gallery">
+      <h1 id="gallery-title">{frontmatter.title}</h1>
+      <article
+        className="markdown flex flex-col justify-center items-center"
+        style={{ position: "relative" }}
+      >
+        <Component />
+      </article>
+    </div>
   );
 }
