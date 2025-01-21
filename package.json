@@ -19,7 +19,7 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "15.1.4",
     "@types/mdx": "^2.0.13",
-    "aws-amplify": "^6.12.0",
+    "aws-amplify": "^6.12.1",
     "budoux": "^0.6.3",
     "gray-matter": "^4.0.3",
     "negotiator": "^1.0.0",
