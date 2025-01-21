@@ -11,7 +11,7 @@
     "check": "biome check ./src",
     "bi": "node ./src/cmd/generateBlogImages.mjs",
     "post": "node ./src/cmd/post.mjs",
-    "gallery": "node ./src/cmd/gallery.mjs"
+    "gal": "node ./src/cmd/gallery.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.10",
