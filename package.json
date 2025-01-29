@@ -36,7 +36,7 @@
     "remark-mdx-frontmatter": "^5.0.0"
   },
   "devDependencies": {
-    "@aws-amplify/backend": "^1.11.0",
+    "@aws-amplify/backend": "^1.14.0",
     "@aws-amplify/backend-cli": "^1.4.7",
     "@biomejs/biome": "1.9.4",
     "@types/negotiator": "^0.6.3",
