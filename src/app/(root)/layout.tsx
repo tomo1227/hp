@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tomokiota.com/",
   },
+  verification: { google: "Nq9jZdnliPaRUzvK_XVDRCPfXGhXpUriTTdLAQ-0LnE" },
 };
 
 export default function RootLayout({
