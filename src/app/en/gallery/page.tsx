@@ -25,10 +25,11 @@ export default async function Page() {
             width={800}
             height={800}
             id={`${post.slug}-image`}
-            className="aspect-square object-cover object-[center_30%] w-full h-auto"
+            className="aspect-square object-cover object-center w-full h-auto"
             placeholder="blur"
             blurDataURL={rgbDataURL(192, 192, 192)}
           />
+          <div className="card-title">{post.frontmatter.title}</div>
         </Link>
       ))}
     </section>
