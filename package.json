@@ -17,7 +17,7 @@
     "@formatjs/intl-localematcher": "^0.5.10",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "15.1.4",
+    "@next/mdx": "15.1.6",
     "@types/mdx": "^2.0.13",
     "aws-amplify": "^6.12.1",
     "budoux": "^0.6.3",
