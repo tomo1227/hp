@@ -39,6 +39,7 @@
     "@aws-amplify/backend": "^1.14.0",
     "@aws-amplify/backend-cli": "^1.4.8",
     "@biomejs/biome": "1.9.4",
+    "@tailwindcss/postcss": "^4.0.12",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^22",
     "@types/nodemailer": "^6.4.17",
