@@ -5,9 +5,9 @@
 @import "./styles/gallery.css";
 @import "./styles/tags.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.ts';
 
 :root {
     --background: #ffffff;
@@ -51,5 +51,5 @@ body{
 }
 
 main {
-    @apply w-full mt-6 flex-grow;
+    @apply w-full mt-6 grow;
 }

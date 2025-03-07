@@ -91,7 +91,7 @@ export default function Page() {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-8 py-2 rounded text-white bg-blue-600 hover:bg-blue-700"
+              className="px-8 py-2 rounded-sm text-white bg-blue-600 hover:bg-blue-700"
             >
               送信
             </button>
@@ -103,7 +103,7 @@ export default function Page() {
           )}
 
           {errorMessage && (
-            <div className="m-1 p-3 text-red-800 bg-red-100 rounded max-md:text-sm">
+            <div className="m-1 p-3 text-red-800 bg-red-100 rounded-sm max-md:text-sm">
               {errorMessage}
             </div>
           )}
