@@ -49,7 +49,7 @@
 }
 
 .markdown h1 {
-  @apply leading-tight text-4xl mb-0 mt-6 pb-2 font-bold text-center text-gradient;
+  @apply leading-tight text-4xl mb-0 mt-6 pb-2 font-bold text-center;
 }
 
 html:not(.dark) .markdown h2 {
@@ -96,7 +96,7 @@ html.dark .markdown h3 {
 }
 
 .markdown kbd {
-  @apply text-xs inline-block rounded border px-1 py-5 align-middle font-normal font-mono shadow;
+  @apply text-xs inline-block rounded-sm border px-1 py-5 align-middle font-normal font-mono shadow-sm;
 }
 
 .markdown table {
@@ -113,7 +113,7 @@ html.dark .markdown h3 {
 
 /* Override pygments style background color. */
 .markdown .highlight pre {
-  @apply bg-gray-100 !important;
+  @apply bg-gray-100!;
 }
 
 html.dark .markdown .accordion-header {
@@ -172,7 +172,7 @@ html.dark .markdown .note svg path {
 
 /* テーブル */
 .markdown table {
-  @apply w-full border-collapse overflow-hidden rounded-sm;
+  @apply w-full border-collapse overflow-hidden rounded-xs;
 }
 
 .markdown th {
