@@ -14,7 +14,7 @@
     "gal": "node ./src/cmd/gallery.mjs"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.6.0",
+    "@formatjs/intl-localematcher": "^0.6.1",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "15.2.4",
