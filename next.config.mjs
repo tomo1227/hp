@@ -26,6 +26,12 @@ const nextConfig = {
         protocol: "https",
         hostname: "tomokiota-photos.s3.ap-northeast-1.amazonaws.com",
         port: "",
+        pathname: "/2025/**",
+      },
+      {
+        protocol: "https",
+        hostname: "tomokiota-photos.s3.ap-northeast-1.amazonaws.com",
+        port: "",
         pathname: "/2024/**",
       },
       {
