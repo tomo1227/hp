@@ -1,6 +1,6 @@
 import Image, { type ImageProps } from "next/image";
-import React from 'react'
-import Zoom from 'react-medium-image-zoom'
+import React from "react";
+import Zoom from "react-medium-image-zoom";
 
 export const BlogImage = async (props: ImageProps) => {
   const {
