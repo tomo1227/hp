@@ -9,17 +9,17 @@ const rockSaltFont = localFont({
 });
 
 export default async function Page() {
-  const tags = await getTags({locale: "en"});
+  const tags = await getTags({ locale: "en" });
   return (
     <div id="tag-lists-wrapper">
-      <h1 id="tag-lists-title" className={`${rockSaltFont.className}`}>All Tags</h1>
+      <h1 id="tag-lists-title" className={`${rockSaltFont.className}`}>
+        All Tags
+      </h1>
       <div id="tag-lists-contents">
         <ul id="tag-lists">
           {tags.map((tag) => (
             <li key={tag}>
-              <Link className="tag-list-item"
-                href={`/en/tags/${tag}`}
-              >
+              <Link className="tag-list-item" href={`/en/tags/${tag}`}>
                 {tag}
               </Link>
             </li>
@@ -29,4 +29,3 @@ export default async function Page() {
     </div>
   );
 }
-

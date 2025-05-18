@@ -52,9 +52,7 @@ export const getFilteredPosts = async ({
     const matchesTag = tag ? frontmatter.tags?.includes(tag) : true;
     const matchesCategory = category ? frontmatter.category === category : true;
     const matchesCountry = country ? frontmatter.country === country : true;
-    return (
-      matchesTag && matchesCategory && matchesCountry
-    );
+    return matchesTag && matchesCategory && matchesCountry;
   });
 
   const sortedContents = filteredContents.sort((a, b) => {

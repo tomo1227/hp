@@ -72,9 +72,7 @@ export const getFilteredPosts = async ({
     const matchesCategory = category ? frontmatter.category === category : true;
     const matchesCountry = country ? frontmatter.country === country : true;
 
-    return (
-      matchesTag && matchesCategory && matchesCountry
-    );
+    return matchesTag && matchesCategory && matchesCountry;
   });
 
   const sortedContents = filteredContents.sort((a, b) => {
