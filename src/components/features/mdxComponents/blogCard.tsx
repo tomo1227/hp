@@ -48,6 +48,7 @@ export const BlogCard = async (props: Props) => {
             <div className="flex gap-2 items-center">
               {ogp.favicon && (
                 <img
+                  className="!w-3"
                   src={ogp.favicon}
                   width={16}
                   height={16}
@@ -62,7 +63,7 @@ export const BlogCard = async (props: Props) => {
               <img
                 src={ogp.image}
                 className={
-                  "h-full w-fit rounded-r-lg max-w-[32vw] object-cover"
+                  "h-full !w-fit rounded-r-lg !max-w-[32vw] object-cover"
                 }
                 alt={`ogp of ${ogp.image}`}
               />

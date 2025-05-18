@@ -52,3 +52,9 @@
 #blog-content {
   @apply flex flex-col justify-center items-center relative;
 }
+
+#blog-content img,
+#blog-content a,
+#blog-content p {
+  @apply w-3/4 max-md:w-full;
+}
