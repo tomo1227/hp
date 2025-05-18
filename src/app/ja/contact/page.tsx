@@ -12,7 +12,7 @@ export default function Page() {
 
     const formData = new FormData(event.currentTarget);
     const jsonData = Object.fromEntries(formData.entries());
-    const baseUrl = process.env.w || "";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 
     try {
       const response = await fetch(`${baseUrl}/api/contact/`, {
