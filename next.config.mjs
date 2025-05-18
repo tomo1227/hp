@@ -48,6 +48,15 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { webpack }) => {
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /canvas/,
+        contextRegExp: /commonjs$/,
+      }),
+    );
+    return config;
+  },
 };
 
 const withMDX = createMDX({
