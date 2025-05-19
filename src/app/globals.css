@@ -1,7 +1,8 @@
 @import "./styles/blogs.css";
+@import "./styles/calendar.css";
 @import "./styles/contact.css";
-@import "./styles/markdown.css";
 @import "./styles/gallery.css";
+@import "./styles/markdown.css";
 @import "./styles/tags.css";
 @import "./styles/zoom.css";
 
