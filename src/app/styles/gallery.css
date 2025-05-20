@@ -90,3 +90,6 @@
   @apply text-center leading-tight text-2xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap max-md:text-2xl text-gray-300 dark:text-gray-600;
 }
 
+#gallery-layout{
+  @apply -mt-4 max-sm:-mt-5;
+}
