@@ -20,6 +20,10 @@
     "*.mdx": "markdown",
     "*.mjs": "javascript"
   },
+  "tailwindCSS.experimental.configFile": "src/app/globals.css",
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
   "stylelint.validate": ["css"],
   "css.validate": false,
   "[css]": {

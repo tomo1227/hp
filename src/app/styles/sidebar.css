@@ -1,0 +1,40 @@
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop-sidebar {
+    display: none;
+}
+
+.mobile-sidebar {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .desktop-sidebar {
+    display: block;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.mobile-sidebar {
+    display: none;
+}
+
+.desktop-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.desktop-sidebar ul li {
+    margin: 10px 0;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.desktop-sidebar ul li:hover {
+    background-color: #444;
+}

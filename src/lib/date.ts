@@ -14,3 +14,13 @@ export const formattedDateEn = (date: string) => {
 
   return `${month}/${day}/${year}`;
 };
+
+export const formattedDateWithHyphen = (date: string) => {
+  return new Date(date)
+    .toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\//g, "-");
+};

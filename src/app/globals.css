@@ -1,7 +1,8 @@
 @import "./styles/blogs.css";
+@import "./styles/calendar.css";
 @import "./styles/contact.css";
-@import "./styles/markdown.css";
 @import "./styles/gallery.css";
+@import "./styles/markdown.css";
 @import "./styles/tags.css";
 @import "./styles/zoom.css";
 
@@ -39,7 +40,7 @@ html {
 }
 
 body{
-    @apply flex flex-col items-center min-h-full;
+    @apply flex flex-col items-center min-h-full h-full;
 }
 
 #body-container {
@@ -47,9 +48,9 @@ body{
 }
 
 #main-contents {
-    @apply flex flex-row w-full h-full;
+    @apply flex flex-row w-full flex-1 overflow-auto;
 }
 
 main {
-    @apply w-full mt-6 grow;
+    @apply w-full pt-6 grow h-full;
 }
