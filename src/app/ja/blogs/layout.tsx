@@ -8,7 +8,7 @@ export default function Layout({
 }) {
   return (
     <div id="blog-layout">
-      <SidebarLeft />
+      <SidebarLeft locale="ja" />
       <div id="main-blog-contents">{children}</div>
       <SidebarRight />
     </div>

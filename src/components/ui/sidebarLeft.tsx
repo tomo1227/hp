@@ -1,32 +1,26 @@
 import Link from "next/link";
 
-const SidebarLeft = () => {
+type SidebarLeftProps = {
+  locale: "ja" | "en";
+};
+
+const SidebarLeft = ({ locale }: SidebarLeftProps) => {
   return (
     <div className="sidebar-container">
       <div className="desktop-sidebar">
         <ul className="sidebar-list">
           <li>
-            <Link href="/ja/calendar" passHref>
-              カレンダー
+            <Link href={`/${locale}/calendar`} passHref>
+              {locale === "ja" ? "カレンダー" : "Calendar"}
             </Link>
           </li>
           <li>
-            <Link href="/ja/gallery" passHref>
-              ギャラリー
+            <Link href={`/${locale}/gallery`} passHref>
+              {locale === "ja" ? "ギャラリー" : "Gallery"}
             </Link>
           </li>
         </ul>
       </div>
-
-      {/* スマートフォン用カルーセル */}
-      {/* <div className="mobile-sidebar">
-        <Carousel showArrows={true} showThumbs={false} infiniteLoop>
-          <div>ホーム</div>
-          <div>サービス</div>
-          <div>お問い合わせ</div>
-          <div>プロフィール</div>
-        </Carousel>
-      </div> */}
     </div>
   );
 };
