@@ -23,9 +23,5 @@ export default async function Page() {
     url: `/ja/gallery/${post.slug}`,
   }));
 
-  return (
-    <div>
-      <Calendar locale="ja" events={events} />
-    </div>
-  );
+  return <Calendar locale="ja" events={events} />;
 }

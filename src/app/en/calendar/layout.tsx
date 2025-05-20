@@ -3,5 +3,5 @@ export default function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return <div id="calendar-contents">{children}</div>;
 }
