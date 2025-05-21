@@ -1,0 +1,57 @@
+#calendar-contents {
+  @apply w-full h-full p-3;
+}
+
+#calendar-contents > div {
+  @apply w-full h-full;
+}
+.fc-daygrid-event {
+  @apply text-sm border-x-indigo-500 max-sm:!text-xs;
+}
+
+.fc-media-screen {
+  @apply !h-11/12;
+}
+
+.fc-toolbar-title {
+  @apply max-md:!text-lg;
+}
+.fc .fc-scrollgrid {
+  @apply text-sm max-md:text-xs;
+}
+.fc-theme-standard th {
+  @apply max-md:h-[80px];
+}
+.fc-theme-standard td, .fc-theme-standard th {
+  height: auto;
+}
+.fc .fc-daygrid-day.fc-day-week {
+  background: none;
+}
+
+.fc-daygrid-day-frame{
+  @apply max-md:!h-16;
+}
+
+.fc .fc-button {
+  @apply max-sm:p-1 max-sm:text-sm;
+}
+
+.fc .fc-daygrid-day-frame {
+  height: 100%;
+}
+/* 日付を枠の中心に */
+.fc .fc-daygrid-day-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: screen;
+}
+.fc .fc-bg-event {
+  opacity: 1;
+}
+
+.fc .fc-bg-event .fc-event-title {
+  display: none !important;
+}

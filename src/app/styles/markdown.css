@@ -38,7 +38,7 @@
 
 .markdown h2,
 .markdown h3{
-  @apply w-3/4 max-md:w-full
+  @apply w-full;
 }
 @layer utilities {
   .text-gradient {
