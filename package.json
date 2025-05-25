@@ -30,7 +30,7 @@
     "negotiator": "^1.0.0",
     "next": "15.3.2",
     "nextjs-toploader": "^3.8.16",
-    "nodemailer": "^6.10.1",
+    "nodemailer": "^7.0.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-medium-image-zoom": "^5.2.14",
