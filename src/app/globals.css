@@ -5,6 +5,7 @@
 @import "./styles/markdown.css";
 @import "./styles/tags.css";
 @import "./styles/zoom.css";
+@import "./styles/sidebar.css";
 
 @import 'tailwindcss';
 
