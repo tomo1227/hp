@@ -1,0 +1,79 @@
+.download-contents {
+  @apply bg-zinc-200 flex flex-col;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  border-radius: 0 0 10px 10px;
+}
+
+.download-buttons {
+  @apply flex justify-around max-md:flex-col;
+}
+
+.download-contents .download-text {
+  font-size: 16px;
+  font-weight: bold;
+  @apply text-center text-zinc-700 max-md:text-xs;
+}
+
+.download-contents button {
+  @apply rounded-sm max-md:rounded-none;
+  padding: 8px 16px;
+  /* font-size: 1px; */
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  @apply text-sm max-md:text-xs w-11/12 max-md:w-full;
+}
+
+.dlImgBtn {
+  @apply w-full items-center flex;
+}
+
+.download-contents button:hover {
+  background-color: #0056b3;
+}
+
+.download-contents button:focus {
+  outline: none;
+}
+
+.download-contents .btn-compressed {
+  background-color: #28a745;
+}
+
+.download-contents .btn-compressed:hover {
+  background-color: #218838;
+}
+
+.private-cards-container {
+  @apply relative grid justify-center items-center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 1100px) {
+  .private-cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 950px) {
+  .private-cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .private-cards-container {
+    gap: 5px;
+  }
+  #gallery-contents{
+    @apply mx-0;
+  }
+  .card-title {
+    @apply text-sm;
+  }
+}

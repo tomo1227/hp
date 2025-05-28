@@ -6,6 +6,7 @@
 @import "./styles/tags.css";
 @import "./styles/zoom.css";
 @import "./styles/sidebar.css";
+@import "./styles/download.css";
 
 @import 'tailwindcss';
 
