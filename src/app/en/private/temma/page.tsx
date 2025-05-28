@@ -27,21 +27,23 @@ export default async function Page() {
     <div>
       <div className="mb-2">
         <span className="font-bold">
-          このページは非公開となります。リンクの共有はお控えください。
-          <br />
-          オリジナルか圧縮版を選択して、画像をダウンロードしてください。
-          <br />
-          オリジナル: 高画質, 圧縮版: 低画質
+          This page is private. Please refrain from sharing the link as it is
+          not publicly accessible. <br />
+          Please choose either the original or the compressed version to
+          download the image. <br />
+          Original: High quality, Compressed: Low quality
         </span>
       </div>
       <div className="download-contents !rounded-2xl mb-2">
-        <span className="download-text">全ての画像のダウンロード</span>
+        <span className="download-text">All Images Download</span>
         <div className="download-buttons">
           <S3FileDownloader filePath={`${s3_path}/original.zip`}>
-            <button className="btn-original w-5/12">オリジナル(約1GB)</button>
+            <button className="btn-original w-5/12">Original(約1GB)</button>
           </S3FileDownloader>
           <S3FileDownloader filePath={`${s3_path}/compressed.zip`}>
-            <button className="btn-compressed w-5/12">圧縮版(約75MB)</button>
+            <button className="btn-compressed w-5/12">
+              Compressed(約75MB)
+            </button>
           </S3FileDownloader>
         </div>
       </div>
@@ -60,13 +62,13 @@ export default async function Page() {
               />
             </Zoom>
             <div className="download-contents">
-              <span className="download-text">ダウンロード</span>
+              <span className="download-text">Download</span>
               <div className="download-buttons">
                 <S3ImageDownloader imagePath={image.originalPath}>
-                  <button className="btn-original">オリジナル</button>
+                  <button className="btn-original">Original</button>
                 </S3ImageDownloader>
                 <S3ImageDownloader imagePath={image.compressedPath}>
-                  <button className="btn-compressed">圧縮版</button>
+                  <button className="btn-compressed">Compressed</button>
                 </S3ImageDownloader>
               </div>
             </div>

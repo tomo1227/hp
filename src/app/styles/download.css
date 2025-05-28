@@ -7,7 +7,7 @@
 }
 
 .download-buttons {
-  @apply flex justify-around items-center max-md:flex-col;
+  @apply flex justify-around max-md:flex-col;
 }
 
 .download-contents .download-text {
@@ -17,18 +17,18 @@
 }
 
 .download-contents button {
+  @apply rounded-sm max-md:rounded-none;
   padding: 8px 16px;
   /* font-size: 1px; */
   color: #fff;
   background-color: #007bff;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   @apply text-sm max-md:text-xs w-11/12 max-md:w-full;
 }
 
-.download-contents a {
+.dlImgBtn {
   @apply w-full items-center flex;
 }
 
