@@ -21,7 +21,6 @@ export const S3FileDownloader: React.FC<S3FileDownloaderProps> = ({
 async function handleGetButton(filePath: string) {
   try {
     const arrayBuffer = await getZipFromS3({ filePath: filePath });
-    console.log(arrayBuffer);
 
     if (!(arrayBuffer instanceof ArrayBuffer)) {
       throw new Error("Invalid file data received.");

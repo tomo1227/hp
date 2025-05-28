@@ -22,9 +22,6 @@ export async function getImgFromS3(imagePath:string): Promise<string> {  // Base
 
     const body = response.Body;
 
-    // response.BodyがReadableStreamかBlobの場合を判定
-    console.log('response.Body type:', typeof body);
-
     // BodyがReadableStreamの場合
     if (body instanceof ReadableStream) {
       const reader = body.getReader();
