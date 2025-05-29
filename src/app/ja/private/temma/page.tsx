@@ -38,10 +38,14 @@ export default async function Page() {
         <span className="download-text">全ての画像のダウンロード</span>
         <div className="download-buttons">
           <S3FileDownloader filePath={`${s3_path}/original.zip`}>
-            <button className="btn-original w-5/12">オリジナル(約1GB)</button>
+            <button type="button" className="btn-original w-5/12">
+              オリジナル(約1GB)
+            </button>
           </S3FileDownloader>
           <S3FileDownloader filePath={`${s3_path}/compressed.zip`}>
-            <button className="btn-compressed w-5/12">圧縮版(約75MB)</button>
+            <button type="button" className="btn-compressed w-5/12">
+              圧縮版(約75MB)
+            </button>
           </S3FileDownloader>
         </div>
       </div>
@@ -63,10 +67,14 @@ export default async function Page() {
               <span className="download-text">ダウンロード</span>
               <div className="download-buttons">
                 <S3ImageDownloader imagePath={image.originalPath}>
-                  <button className="btn-original">オリジナル</button>
+                  <button type="button" className="btn-original">
+                    オリジナル
+                  </button>
                 </S3ImageDownloader>
                 <S3ImageDownloader imagePath={image.compressedPath}>
-                  <button className="btn-compressed">圧縮版</button>
+                  <button type="button" className="btn-compressed">
+                    圧縮版
+                  </button>
                 </S3ImageDownloader>
               </div>
             </div>
