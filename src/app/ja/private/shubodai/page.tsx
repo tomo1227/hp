@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const s3_path = "portrait/shubodai";
-  const base_url = `https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/${s3_path}`;
+  const base_url = `https://d9h1q21gc2t6n.cloudfront.net/${s3_path}`;
   const count = 5;
 
   const images = Array.from({ length: count }, (_, index) => ({
