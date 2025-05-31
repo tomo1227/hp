@@ -12,6 +12,7 @@ export const S3FileDownloader: React.FC<S3FileDownloaderProps> = ({
   children,
 }) => {
   return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <div className="dlImgBtn" onClick={() => handleGetButton(filePath)}>
       {children}
     </div>
@@ -30,9 +31,9 @@ async function handleGetButton(filePath: string) {
 
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
-    const fileName = filePath.split("/").pop();
+    const fileName = filePath.split("/").pop() || "download.zip";
     a.href = url;
-    a.download = fileName!;
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
