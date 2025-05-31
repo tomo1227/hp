@@ -19,7 +19,7 @@ export default function Page() {
         <div className="justify-center flex">
           <Link href="/ja/gallery" passHref>
             <Image
-              src="https://tomokiota-photos.s3.ap-northeast-1.amazonaws.com/travel/083A6269.jpg"
+              src="https://d9h1q21gc2t6n.cloudfront.net/travel/083A6269.jpg"
               placeholder="blur"
               blurDataURL={rgbDataURL(192, 192, 192)}
               alt="top-page-jpg"
