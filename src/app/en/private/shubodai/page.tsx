@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const s3_path = "portrait/temma";
+  const s3_path = "portrait/shubodai";
   const base_url = `https://d9h1q21gc2t6n.cloudfront.net/${s3_path}`;
-  const count = 65;
+  const count = 5;
 
   const images = Array.from({ length: count }, (_, index) => ({
-    id: `temma-${index + 1}`,
+    id: `shubodai-${index + 1}`,
     originalPath: `${s3_path}/original/img${index + 1}.jpg`,
     compressedPath: `${s3_path}/compressed/img${index + 1}.jpg`,
     compressedUrl: `${base_url}/compressed/img${index + 1}.jpg`,
@@ -38,17 +38,19 @@ export default async function Page() {
         <span className="download-text">All Images Download</span>
         <div className="download-buttons">
           <S3FileDownloader filePath={`${s3_path}/original.zip`}>
-            <button className="btn-original w-5/12">Original(約1GB)</button>
+            <button type="button" className="btn-original w-5/12">
+              Original(約72MB)
+            </button>
           </S3FileDownloader>
           <S3FileDownloader filePath={`${s3_path}/compressed.zip`}>
-            <button className="btn-compressed w-5/12">
-              Compressed(約75MB)
+            <button type="button" className="btn-compressed w-5/12">
+              Compressed(約4MB)
             </button>
           </S3FileDownloader>
         </div>
       </div>
       <section className="private-cards-container">
-        {images.map((image, index) => (
+        {images.map((image) => (
           <div key={image.id}>
             <Zoom>
               <Image
@@ -65,10 +67,14 @@ export default async function Page() {
               <span className="download-text">Download</span>
               <div className="download-buttons">
                 <S3ImageDownloader imagePath={image.originalPath}>
-                  <button className="btn-original">Original</button>
+                  <button type="button" className="btn-original">
+                    Original
+                  </button>
                 </S3ImageDownloader>
                 <S3ImageDownloader imagePath={image.compressedPath}>
-                  <button className="btn-compressed">Compressed</button>
+                  <button type="button" className="btn-compressed">
+                    Compressed
+                  </button>
                 </S3ImageDownloader>
               </div>
             </div>
