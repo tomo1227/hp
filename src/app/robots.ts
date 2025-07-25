@@ -10,8 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         "/en/gallery/*",
         "/ja/private/*",
         "/en/private/*",
-        "/ja/menu",
-        "/en/menu",
       ],
     },
     sitemap: "https://tomokiota.com/sitemap.xml",
