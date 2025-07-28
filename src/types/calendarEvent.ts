@@ -1,5 +1,7 @@
 export type CalendarEvent = {
   title: string;
-  date: string;
+  start: string;
+  end?: string;
   url?: string;
+  className?: string;
 };

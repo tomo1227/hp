@@ -55,3 +55,7 @@
 .fc .fc-bg-event .fc-event-title {
   display: none !important;
 }
+
+.itinerary-event {
+  @apply bg-orange-500;
+}
