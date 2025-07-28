@@ -53,7 +53,7 @@
     "@types/prompts": "^2.4.9",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.5",
-    "aws-cdk": "^2.1012.0",
+    "aws-cdk": "^2.1020.2",
     "aws-cdk-lib": "^2.191.0",
     "constructs": "^10.4.2",
     "esbuild": "^0.25.3",
