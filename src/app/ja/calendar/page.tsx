@@ -34,17 +34,16 @@ export default async function Page() {
     url: `/ja/gallery/${post.slug}`,
   }));
 
-  const itineraryEvents: CalendarEvent[] = itineraries.map((itinerary) => ({
-    title: itinerary.frontmatter.title,
-    start: formattedDateWithHyphen(itinerary.frontmatter.date),
-    end: formattedDateWithHyphen(
-      addDays(
-        itinerary.frontmatter.date,
-        itinerary.frontmatter.period ? itinerary.frontmatter.period : 0,
+  const itineraryEvents: CalendarEvent[] = itineraries.map(
+    (itinerary: { title: string; date: string; period: number }) => ({
+      title: itinerary.title,
+      start: formattedDateWithHyphen(itinerary.date),
+      end: formattedDateWithHyphen(
+        addDays(itinerary.date, itinerary.period ? itinerary.period : 0),
       ),
-    ),
-    className: "itinerary-event",
-  }));
+      className: "itinerary-event",
+    }),
+  );
 
   const events = [...postEvents, ...itineraryEvents];
 

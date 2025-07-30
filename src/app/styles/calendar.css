@@ -6,7 +6,7 @@
   @apply w-full h-full;
 }
 .fc-daygrid-event {
-  @apply text-sm border-x-indigo-500 max-sm:!text-xs;
+  @apply text-[12px] border-x-indigo-500 max-sm:!text-[8px];
 }
 
 .fc-media-screen {
@@ -56,6 +56,14 @@
   display: none !important;
 }
 
+.fc-event {
+  @apply max-md:!mx-0;
+}
+
+.fc-h-event{
+  @apply border-0;
+}
+
 .itinerary-event {
-  @apply bg-orange-500;
+  @apply bg-cyan-900;
 }
