@@ -16,7 +16,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.817.0",
     "@formatjs/intl-localematcher": "^0.6.1",
-    "@fullcalendar/core": "^6.1.17",
+    "@fullcalendar/core": "^6.1.19",
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
     "@mdx-js/loader": "^3.1.0",
