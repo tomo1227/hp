@@ -60,7 +60,7 @@
     "postcss": "^8",
     "prompts": "^2.4.2",
     "tailwindcss": "^4.1.4",
-    "tsx": "^4.19.4",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   },
   "optionalDependencies": {
