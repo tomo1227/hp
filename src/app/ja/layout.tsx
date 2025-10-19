@@ -40,11 +40,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function jaLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function jaLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body
