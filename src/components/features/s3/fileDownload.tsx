@@ -12,6 +12,8 @@ export const S3FileDownloader: React.FC<S3FileDownloaderProps> = ({
   children,
 }) => {
   return (
+    // TODO: Add proper a11y features
+    // biome-ignore lint/a11y/noStaticElementInteractions: <explanation>
     // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <div className="dlImgBtn" onClick={() => handleGetButton(filePath)}>
       {children}
