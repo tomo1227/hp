@@ -1,7 +1,7 @@
-import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
-import { formattedDateEn } from "@/lib/date";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
+import { formattedDateEn } from "@/lib/date";
 
 export async function generateStaticParams() {
   const posts = await getFilteredPosts({ dateOrder: "desc", locale: "en" });
@@ -49,7 +49,9 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "en");
-  const Component = require(`@/_posts/en/${slug}.mdx`).default;
+  const year = await new Date(frontmatter.date).getUTCFullYear();
+  const Component = require(`@/_posts/en/(${year})/${slug}.mdx`).default;
+
   return (
     <div id="blog-wrapper">
       <div id="blog-info">
