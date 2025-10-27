@@ -5,25 +5,6 @@ import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
 
-// export const getAllPosts = async () => {
-//     const pathList = fs.readdirSync(postDir);
-//     const contentsPromise = pathList.map(async (p) => {
-//         const fullPath = path.join(postDir, p);
-//         const fileContents = fs.readFileSync(fullPath, "utf8");
-//         const { data, content } = matter(fileContents);
-//         const slug = p.split(/\.mdx/)[0];
-
-//         return {
-//             data,
-//             slug,
-//             content,
-//         };
-//     });
-//     const contents = await Promise.all(contentsPromise);
-
-//     return contents;
-// };
-
 type dateOrder = "desc" | "asc";
 
 type PostFilterOptions = {
