@@ -15,7 +15,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint",
         "stylelint.vscode-stylelint",
         "formulahendry.auto-rename-tag",
         "MariusAlchimavicius.json-to-ts",
