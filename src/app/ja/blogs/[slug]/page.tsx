@@ -1,9 +1,9 @@
+import { jaModel, Parser } from "budoux";
+import type { Metadata, ResolvingMetadata } from "next";
+import Link from "next/link";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
 import { jaTranslate } from "@/lib/tagTranslator";
-import { Parser, jaModel } from "budoux";
-import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
 
 const parser = new Parser(jaModel);
 
@@ -56,7 +56,8 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "ja");
-  const Component = require(`@/_posts/ja/${slug}.mdx`).default;
+  const year = await new Date(frontmatter.date).getUTCFullYear();
+  const Component = require(`@/_posts/ja/(${year})/${slug}.mdx`).default;
   const splittedTitle = parser.parse(frontmatter.title);
   return (
     <div id="blog-wrapper">

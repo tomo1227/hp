@@ -1,32 +1,9 @@
 import fs from "node:fs";
 import path, { join } from "node:path";
+import matter from "gray-matter";
 import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
-import matter from "gray-matter";
-
-const postDir = (locale: Locale = "ja") => {
-  return join(process.cwd(), "src/_posts/", locale);
-};
-
-// export const getAllPosts = async () => {
-//     const pathList = fs.readdirSync(postDir);
-//     const contentsPromise = pathList.map(async (p) => {
-//         const fullPath = path.join(postDir, p);
-//         const fileContents = fs.readFileSync(fullPath, "utf8");
-//         const { data, content } = matter(fileContents);
-//         const slug = p.split(/\.mdx/)[0];
-
-//         return {
-//             data,
-//             slug,
-//             content,
-//         };
-//     });
-//     const contents = await Promise.all(contentsPromise);
-
-//     return contents;
-// };
 
 type dateOrder = "desc" | "asc";
 
@@ -45,19 +22,32 @@ type TagFilterOptions = {
   country?: string;
 };
 
-export const getFilteredPosts = async ({
-  dateOrder = "desc",
-  locale = "ja",
-  category,
-  tag,
-  country,
-}: PostFilterOptions = {}) => {
-  const pathList = fs.readdirSync(postDir(locale));
-  const contentsPromise = pathList.map(async (p) => {
-    const fullPath = path.join(postDir(locale), p);
-    const filePath = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(filePath);
-    const slug = p.split(/\.mdx/)[0];
+const postBaseDir = (locale: Locale = "ja") =>
+  join(process.cwd(), "src/_posts/", locale);
+
+function getAllPostsFiles(dir: string): string[] {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  return entries.flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      return getAllPostsFiles(fullPath);
+    }
+    if (entry.isFile() && entry.name.endsWith(".mdx")) {
+      return fullPath;
+    }
+    return [];
+  });
+}
+
+const getAllPosts = async ({ locale = "ja" }: PostFilterOptions = {}) => {
+  const baseDir = postBaseDir(locale);
+  const filePathList = getAllPostsFiles(baseDir);
+
+  const contentsPromise = filePathList.map(async (fullPath) => {
+    const file = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(file);
+    const slug = path.basename(fullPath, ".mdx");
 
     return {
       frontmatter: data as Frontmatter,
@@ -66,6 +56,17 @@ export const getFilteredPosts = async ({
     };
   });
   const contents = await Promise.all(contentsPromise);
+  return contents;
+};
+
+export const getFilteredPosts = async ({
+  dateOrder = "desc",
+  locale = "ja",
+  category,
+  tag,
+  country,
+}: PostFilterOptions = {}) => {
+  const contents = await getAllPosts({ locale });
 
   const filteredContents = contents.filter(({ frontmatter }) => {
     const matchesTag = tag ? frontmatter.tags?.includes(tag) : true;
@@ -76,24 +77,36 @@ export const getFilteredPosts = async ({
   });
 
   const sortedContents = filteredContents.sort((a, b) => {
-    const dateA = new Date(a.frontmatter.date);
-    const dateB = new Date(b.frontmatter.date);
+    const dateA = new Date(a.frontmatter.date).getTime();
+    const dateB = new Date(b.frontmatter.date).getTime();
 
-    return dateOrder === "asc"
-      ? dateA.getTime() - dateB.getTime()
-      : dateB.getTime() - dateA.getTime();
+    return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
   });
 
   return sortedContents;
 };
 
 export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
-  const fullPath = path.join(postDir(locale), `${slug}.mdx`);
+  const fullPath = searchPostMdxFile(slug, locale);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
   return {
     frontmatter: data as Frontmatter,
   };
+};
+
+const searchPostMdxFile = (slug: string, locale: Locale = "ja") => {
+  const baseDir = postBaseDir(locale);
+  const categories = fs.readdirSync(baseDir);
+
+  for (const category of categories) {
+    const filePath = path.join(baseDir, category, `${slug}.mdx`);
+    if (fs.existsSync(filePath)) {
+      return filePath;
+    }
+  }
+
+  throw new Error(`File not found: ${slug}.mdx in ${baseDir}`);
 };
 
 export const getTags = async ({

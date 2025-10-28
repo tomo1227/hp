@@ -1,5 +1,5 @@
-import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 import type { Metadata, ResolvingMetadata } from "next";
+import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
   const posts = await getFilteredPosts({
@@ -49,8 +49,9 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const Component = require(`@/_galleries/en/${slug}.mdx`).default;
   const { frontmatter } = await getPostBySlug(slug, "en");
+  const year = await new Date(frontmatter.date).getUTCFullYear();
+  const Component = require(`@/_galleries/en/(${year})/${slug}.mdx`).default;
 
   return (
     <div id="gallery">
