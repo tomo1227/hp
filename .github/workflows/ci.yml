@@ -4,17 +4,30 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize]
-    paths:
-      - "**.yml"
+    paths-ignore:
+      - "/.devcontainer/**"
+      - "/amplify/**"
+      - ".env"
+      - ".gitignore"
+      - "**.md"
   workflow_dispatch:
 permissions: write-all
 
 jobs:
-  go-test:
+  npm-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-  
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build

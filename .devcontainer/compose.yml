@@ -1,13 +1,18 @@
+name: HP
+
 services:
   devcontainer:
     hostname: ${DEVCONTAINTER_HOST_NAME}
     container_name: ${DEVCONTAINTER_CONTAINER_NAME}
     image: ${DEVCONTAINTER_IMAGE_NAME}
     build:
-      context: .
+      context: ../
       dockerfile: .devcontainer/Dockerfile
     volumes:
-      - .:/workspace:cached
+      - type: bind
+        source: ${LOCAL_WORKSPACE_FOLDER:-./../}
+        target: /workspace
+        consistency: cached
     ports:
       - ${HOST_IP}:${DEVCONTAINTER_HOST_PORT}:3000
     tty: true

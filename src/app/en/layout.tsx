@@ -39,11 +39,7 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-title": "tomokiota",
   },
 };
-export default function enLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function enLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body

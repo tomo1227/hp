@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:bullseye
+FROM mcr.microsoft.com/devcontainers/base:trixie
 RUN apt update && \
     apt install -y vim curl xdg-utils bash-completion
 ARG USERNAME=vscode
