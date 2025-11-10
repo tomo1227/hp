@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path, { join } from "node:path";
-import type { ItineraryType } from "@/types/itinerary";
 import type Locale from "@/types/locale";
 
 const itineraryDir = () => {
@@ -13,6 +12,7 @@ type ItineraryFilterOption = {
   dateOrder?: dateOrder;
   locale?: Locale;
   period?: number;
+  url?: URL;
 };
 
 export const getFilteredItineraries = async ({

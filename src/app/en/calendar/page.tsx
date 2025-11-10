@@ -1,9 +1,9 @@
+import type { Metadata } from "next";
 import Calendar from "@/components/ui/calendar";
 import { formattedDateWithHyphen } from "@/lib/date";
 import { getFilteredPosts } from "@/lib/galleryFilter";
 import { getFilteredItineraries } from "@/lib/itineraryFilter";
 import type { CalendarEvent } from "@/types/calendarEvent";
-import type { Metadata } from "next";
 
 const metadata: Metadata = {
   title: "Calendar in tomokiota.com",
@@ -34,13 +34,19 @@ export default async function Page() {
   }));
 
   const itineraryEvents: CalendarEvent[] = itineraries.map(
-    (itinerary: { en_title: string; date: string; period: number }) => ({
+    (itinerary: {
+      en_title: string;
+      date: string;
+      period: number;
+      url?: URL;
+    }) => ({
       title: itinerary.en_title,
       start: formattedDateWithHyphen(itinerary.date),
       end: formattedDateWithHyphen(
         addDays(itinerary.date, itinerary.period ? itinerary.period : 0),
       ),
       className: "itinerary-event",
+      ...(itinerary.url && { url: itinerary.url }),
     }),
   );
 

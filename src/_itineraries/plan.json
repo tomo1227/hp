@@ -221,9 +221,15 @@
     "date": "2025-11-08T01:44:46.231Z"
   },
   {
-    "title": "淡路島祭り花火大会",
+    "title": "淡路島まつり花火大会",
     "en_title": "Awaji Island Festival Fireworks",
     "date": "2025-11-09T01:44:46.231Z"
+  },
+  {
+    "title": "ありだがわ天空絵巻",
+    "en_title": "Aridagawa Sky Art Scroll",
+    "date": "2025-11-16T01:44:46.231Z",
+    "url": "https://www.wakayama-kanko.or.jp/events/detail_2962.html"
   },
   {
     "title": "万博夜空がアートになる日2025",
@@ -243,21 +249,37 @@
   {
     "title": "熱海海上花火大会",
     "en_title": "Atami Marine Fireworks Festival",
-    "date": "2025-11-24T01:44:46.231Z"
+    "date": "2025-11-24T01:44:46.231Z",
+    "url": "https://www.ataminews.gr.jp/event/8/"
+  },
+  {
+    "title": "千葉Xmas芸術花火2025",
+    "en_title": "Chiba Xmas Art Fireworks 2025",
+    "date": "2025-11-24T01:44:46.231Z",
+    "url": "https://chibaxmashanabi.com/"
+  },
+  {
+    "title": "第5回花火甲子園",
+    "en_title": "5th Fireworks Koshien",
+    "date": "2025-11-29T01:44:46.231Z",
+    "url": "https://hanabikoushien.com/"
   },
   {
     "title": "熱海海上花火大会",
     "en_title": "Atami Marine Fireworks Festival",
-    "date": "2025-12-07T01:44:46.231Z"
+    "date": "2025-12-07T01:44:46.231Z",
+    "url": "https://www.ataminews.gr.jp/event/8/"
   },
   {
     "title": "熱海海上花火大会",
     "en_title": "Atami Marine Fireworks Festival",
-    "date": "2025-12-19T01:44:46.231Z"
+    "date": "2025-12-19T01:44:46.231Z",
+    "url": "https://www.ataminews.gr.jp/event/8/"
   },
   {
     "title": "若草山焼き",
     "en_title": "Wakakusa Yamayaki",
-    "date": "2025-01-24T01:44:46.231Z"
+    "date": "2025-01-24T01:44:46.231Z",
+    "url": "https://www3.pref.nara.jp/park/item/3554.htm"
   }
 ]

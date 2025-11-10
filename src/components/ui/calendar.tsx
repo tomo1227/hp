@@ -1,10 +1,10 @@
 "use client";
 
-import type { CalendarEvent } from "@/types/calendarEvent";
 import jaLocale from "@fullcalendar/core/locales/ja";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import FullCalendar from "@fullcalendar/react";
 import type { JSX } from "react";
+import type { CalendarEvent } from "@/types/calendarEvent";
 
 type CalendarProps = {
   locale: "ja" | "en";
@@ -32,6 +32,12 @@ export default function Calendar({
       dayMaxEvents={true}
       weekends={true}
       events={events}
+      eventClick={(info) => {
+        if (info.event.url) {
+          window.open(info.event.url, "_blank");
+          info.jsEvent.preventDefault();
+        }
+      }}
     />
   );
 }
