@@ -11,6 +11,10 @@
   @apply object-left;
 }
 
+#blue-impulse-tsutenkaku-image {
+  @apply object-left;
+}
+
 #saint-martin-image {
   @apply object-left;
 }
