@@ -14,6 +14,7 @@
     "source.fixAll.stylelint": "explicit",
     "source.organizeImports.biome": "explicit"
   },
+  "biome.configurationPath": ".config/biome.json",
   "files.associations": {
     "*.css": "tailwindcss",
     "*.mdx": "markdown",
