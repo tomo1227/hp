@@ -23,6 +23,7 @@
         // yaml, jsonc, json
         "redhat.vscode-yaml",
         "esbenp.prettier-vscode",
+        "richie5um2.vscode-sort-json",
         // Git関連
         "mhutchie.git-graph",
         "eamodio.gitlens",

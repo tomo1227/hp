@@ -11,6 +11,10 @@
   @apply object-left;
 }
 
+#blue-impulse-tsutenkaku-image {
+  @apply object-left;
+}
+
 #saint-martin-image {
   @apply object-left;
 }
@@ -18,6 +22,7 @@
 #marseille-image {
   @apply object-right;
 }
+
 
 #gallery-contents{
   @apply mx-3;

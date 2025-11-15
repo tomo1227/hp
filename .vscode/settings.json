@@ -14,6 +14,7 @@
     "source.fixAll.stylelint": "explicit",
     "source.organizeImports.biome": "explicit"
   },
+  "biome.configurationPath": ".config/biome.json",
   "files.associations": {
     "*.css": "tailwindcss",
     "*.mdx": "markdown",
@@ -75,6 +76,11 @@
     }
   },
   "yaml.format.enable": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "必ず日本語でコミットメッセージを記述してください"
+    }
+  ],
   "cSpell.words": [
     "Codecov",
     "devcontainer",
