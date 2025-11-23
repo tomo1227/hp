@@ -4,7 +4,7 @@ import { rgbDataURL } from "@/lib/blurImage";
 import { getFilteredPosts } from "@/lib/galleryFilter";
 
 export default async function Page() {
-  const posts = await getFilteredPosts({
+  const galleries = await getFilteredPosts({
     dateOrder: "desc",
     locale: "ja",
   });
@@ -13,23 +13,23 @@ export default async function Page() {
 
   return (
     <section className="cards-container">
-      {posts.map((post) => (
+      {galleries.map((gallery) => (
         <Link
           className="card"
-          key={post.slug}
-          href={`/ja/gallery/${post.slug}`}
+          key={gallery.slug}
+          href={`/ja/gallery/${gallery.slug}`}
         >
           <Image
-            src={`${post.frontmatter.galleryImage}`}
-            alt={`${post.frontmatter.title}-img`}
+            src={`${gallery.frontmatter.galleryImage}`}
+            alt={`${gallery.frontmatter.title}-img`}
             width={800}
             height={800}
-            id={`${post.slug}-image`}
+            id={`${gallery.slug}-image`}
             className="aspect-square object-cover object-center w-full h-auto"
             placeholder="blur"
             blurDataURL={rgbDataURL(192, 192, 192)}
           />
-          <div className="card-title">{post.frontmatter.title}</div>
+          <div className="card-title">{gallery.frontmatter.title}</div>
         </Link>
       ))}
     </section>

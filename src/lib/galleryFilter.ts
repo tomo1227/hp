@@ -22,6 +22,13 @@ type TagFilterOptions = {
   country?: string;
 };
 
+type CountryFilterOptions = {
+  dateOrder?: dateOrder;
+  locale?: Locale;
+  category?: Category;
+  tag?: string;
+};
+
 const galleryBaseDir = (locale: Locale = "ja") =>
   join(process.cwd(), "src/_galleries/", locale);
 
@@ -126,4 +133,27 @@ export const getTags = async ({
   );
 
   return uniqueTags;
+};
+
+export const getCountries = async ({
+  dateOrder = "desc",
+  locale = "ja",
+  category,
+  tag,
+}: CountryFilterOptions = {}) => {
+  const posts = await getFilteredPosts({
+    dateOrder: dateOrder,
+    locale: locale,
+    category: category,
+    tag: tag,
+  });
+  const countries = posts.flatMap((post) =>
+    post.frontmatter.country ? [post.frontmatter.country] : [],
+  );
+  // 最後にアルファベット順に並べている
+  const uniqueCountries = [
+    ...new Set(countries.filter((country) => country)),
+  ].sort((a, b) => a.localeCompare(b));
+
+  return uniqueCountries;
 };

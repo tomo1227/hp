@@ -19,6 +19,11 @@ const SidebarLeft = ({ locale }: SidebarLeftProps) => {
               {locale === "ja" ? "ギャラリー" : "Gallery"}
             </Link>
           </li>
+          <li>
+            <Link href={`/${locale}/gallery/world`} passHref>
+              {locale === "ja" ? "世界地図" : "World Map"}
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
