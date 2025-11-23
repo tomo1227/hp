@@ -8,6 +8,7 @@
 @import "./styles/zoom.css";
 @import "./styles/sidebar.css";
 @import "./styles/download.css";
+@import "./styles/worldmap.css";
 
 @import 'tailwindcss';
 
@@ -16,12 +17,14 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
+    --inactive-country-color: #e5e7eb;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #151515;
         --foreground: #ededed;
+        --inactive-country-color: #bbd3f8;
     }
 }
 
