@@ -1,8 +1,8 @@
-import { getFilteredPosts, getTags } from "@/lib/blogFilter";
-import { formattedDate } from "@/lib/date";
-import { jaTranslate } from "@/lib/tagTranslator";
 import Link from "next/link";
 import { Fragment } from "react";
+import { getFilteredPosts, getTags } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
+import { jaTranslate } from "@/lib/translator";
 
 export async function generateStaticParams() {
   const tags = await getTags();

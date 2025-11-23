@@ -41,7 +41,7 @@ export async function generateMetadata(
         : previousTwitterImages,
     },
     alternates: {
-      canonical: "https://tomokiota.com/ja/gallery/${slug}",
+      canonical: `https://tomokiota.com/ja/gallery/${slug}`,
     },
   };
 }
