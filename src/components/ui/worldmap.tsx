@@ -1,16 +1,17 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { JSX } from "react";
+import { useEffect, useState, type JSX } from "react";
 import WorldMap from "react-svg-worldmap";
 import { jaTranslate } from "@/lib/translator";
+import type { CountryContext, Data } from "react-svg-worldmap";
 
 type WorldProps = {
   locale: "ja" | "en";
 };
 
 function WorldInner({ locale }: WorldProps): JSX.Element {
-  const data = [
+  const data: Data = [
     { country: "mx", value: 1 },
     { country: "br", value: 1 },
     { country: "ca", value: 1 },
@@ -27,12 +28,30 @@ function WorldInner({ locale }: WorldProps): JSX.Element {
     { country: "vn", value: 1 },
     { country: "nl", value: 1 },
   ];
+  const [mapSize, setMapSize] = useState(900);
+
+  useEffect(() => {
+    const updateSize = () => {
+      if (window.innerWidth < 910) {
+        setMapSize(window.innerWidth - 30);
+      } else {
+        setMapSize(900);
+      }
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
 
   return (
     <WorldMap
       data={data}
-      size={800}
+      size={mapSize}
       color="#3b82f6"
+      tooltipTextColor="var(--background)"
+      tooltipBgColor="#ef8f00"
       backgroundColor="transparent"
       borderColor="#cccccc"
       strokeOpacity={0.5}
@@ -58,7 +77,7 @@ function WorldInner({ locale }: WorldProps): JSX.Element {
   );
 }
 
-// NOTE:この部分だけ SSR 無効化
+// // NOTE:この部分だけ SSR 無効化
 const World = dynamic(() => Promise.resolve(WorldInner), {
   ssr: false,
 });

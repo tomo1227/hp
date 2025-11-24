@@ -17,7 +17,7 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --inactive-country-color: #e5e7eb;
+    --inactive-country-color: #4c6363;
 }
 
 @media (prefers-color-scheme: dark) {

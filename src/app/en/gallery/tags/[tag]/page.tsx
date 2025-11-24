@@ -22,8 +22,8 @@ export default async function Page({
     tag: tag,
   });
   return (
-    <div>
-      <h1 id="tag-lists-title">{tag}</h1>
+    <div id="tag-lists-wrapper">
+      <Link href={`/en/gallery/tags`}><h1 id="tag-lists-title">{tag}</h1></Link>
       <section className="cards-container">
         {galleries.map((gallery) => (
           <Link

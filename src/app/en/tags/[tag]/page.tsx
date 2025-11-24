@@ -23,7 +23,7 @@ export default async function Page({
   });
   return (
     <div className="article-lists-wrapper">
-      <h1>{tag}</h1>
+      <Link href={"/en/tags"}><h1 id="tag-lists-title">{tag}</h1></Link>
       <div className="article-lists">
         {posts.map((post) => (
           <Fragment key={post.slug}>
