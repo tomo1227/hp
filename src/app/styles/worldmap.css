@@ -1,26 +1,22 @@
-/* --- World Map Wrapper --- */
 .worldmap-container {
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  @apply px-3 py-0 max-md:px-1;
 }
 
-/* --- Path Styles for each country --- */
 .worldmap-container svg path {
   stroke: #1f2937;
   stroke-width: 0.5;
-  transition: all 0.2s ease;
+  /* transition: all 0.2s ease; */
   cursor: pointer;
 }
 
-/* --- Hover effect --- */
 .worldmap-container svg path:hover {
   filter: brightness(1.25);
   stroke-width: 0.8;
 }
 
-/* --- Tooltip (react-svg-worldmap default override) --- */
-.worldmap-tooltip {
+/* .worldmap-tooltip {
   background: rgba(0, 0, 0, 0.75) !important;
   color: #fff !important;
   padding: 6px 10px !important;
@@ -29,11 +25,5 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   pointer-events: none;
   transition: opacity 0.15s ease;
-}
+} */
 
-/* --- Responsive Optimization --- */
-@media (max-width: 640px) {
-  .worldmap-container {
-    padding: 1rem;
-  }
-}

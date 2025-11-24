@@ -12,7 +12,7 @@
 }
 
 #tag-lists-title{
-  @apply text-5xl mb-14 mt-6;
+  @apply text-5xl mb-14 mt-6 max-md:text-xl max-md:mb-7 max-md:mt-3;
 }
 
 #tag-lists-contents{
