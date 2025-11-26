@@ -1,6 +1,9 @@
-import { fetchOgp } from "@/lib/fetchOgp";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { fetchOgp } from "@/lib/fetchOgp";
+
+// export const dynamic = "force-dynamic";
+// export const revalidate = 0;
 
 export async function POST(request: NextRequest) {
   const { url } = await request.json();

@@ -13,6 +13,7 @@ export const BlogCard = async (props: Props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ url: props.url }),
+      cache: "no-store",
     });
 
     if (!response.ok) {
