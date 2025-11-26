@@ -1,5 +1,12 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.3.4/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -42,7 +49,10 @@
       "enabled": false
     },
     "linter": {
-      "enabled": false
+      "enabled": true
+    },
+    "parser": {
+      "tailwindDirectives": true
     }
   }
 }
