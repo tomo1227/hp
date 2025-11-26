@@ -21,3 +21,9 @@
   justify-content: center;
   @apply px-3 py-10 max-md:px-1;
 }
+
+@media (max-width: 480px) {
+    .japan-map-container {
+        @apply py-0;
+    }
+}
