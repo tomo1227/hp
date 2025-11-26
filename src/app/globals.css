@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 @import "./styles/menu.css";
 @import "./styles/blogs.css";
 @import "./styles/calendar.css";
@@ -9,8 +11,6 @@
 @import "./styles/sidebar.css";
 @import "./styles/download.css";
 @import "./styles/worldmap.css";
-
-@import 'tailwindcss';
 
 @config '../../tailwind.config.ts';
 
