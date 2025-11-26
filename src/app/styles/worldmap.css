@@ -16,14 +16,14 @@
   stroke-width: 0.8;
 }
 
-/* .worldmap-tooltip {
-  background: rgba(0, 0, 0, 0.75) !important;
-  color: #fff !important;
-  padding: 6px 10px !important;
-  border-radius: 6px !important;
-  font-size: 0.8rem !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  pointer-events: none;
-  transition: opacity 0.15s ease;
-} */
+.japan-map-container {
+  display: flex;
+  justify-content: center;
+  @apply px-3 py-10 max-md:px-1;
+}
 
+@media (max-width: 480px) {
+    .japan-map-container {
+        @apply py-0;
+    }
+}

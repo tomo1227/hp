@@ -1,13 +1,14 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState, type JSX } from "react";
+import { type JSX, useEffect, useState } from "react";
+import type { Data } from "react-svg-worldmap";
 import WorldMap from "react-svg-worldmap";
 import { jaTranslate } from "@/lib/translator";
-import type { CountryContext, Data } from "react-svg-worldmap";
+import type Locale from "@/types/locale";
 
 type WorldProps = {
-  locale: "ja" | "en";
+  locale: Locale;
 };
 
 function WorldInner({ locale }: WorldProps): JSX.Element {
@@ -43,7 +44,6 @@ function WorldInner({ locale }: WorldProps): JSX.Element {
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
 
   return (
     <WorldMap
