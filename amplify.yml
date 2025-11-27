@@ -1,18 +1,20 @@
 version: 1
-backend:
-  phases:
-    preBuild:
-      commands:
-        - npm ci --prefer-offline --no-audit
-    build:
-      commands:
-        - env | grep -e NEXT_PUBLIC_ >> .env.production
-        - npm run build
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm install -g pnpm
+            - pnpm install --frozen-lockfile --prefer-offline
+        build:
+          commands:
+            - env | grep -e NEXT_PUBLIC_ >> .env
+            - pnpm run build
 frontend:
   phases:
     build:
       commands:
-        - npm run build
+        - pnpm run build
   artifacts:
     baseDirectory: .next
     files:
@@ -20,4 +22,4 @@ frontend:
   cache:
     paths:
       - .next/cache/**/*
-      - .npm/**/*
+      - .pnpm-store/**/*

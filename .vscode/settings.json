@@ -20,6 +20,7 @@
     "*.mdx": "markdown",
     "*.mjs": "javascript"
   },
+  "npm.packageManager": "pnpm",
   "tailwindCSS.experimental.configFile": "src/app/globals.css",
   "editor.quickSuggestions": {
     "strings": "on"

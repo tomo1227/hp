@@ -1,15 +1,13 @@
 {
   "name": "${localWorkspaceFolderBasename}",
   "service": "devcontainer",
+  "remoteUser": "vscode",
   "workspaceFolder": "/workspace",
   "dockerComposeFile": ["./compose.yml"],
   "forwardPorts": [3000],
   "postCreateCommand": "sh .devcontainer/scripts/post_create.sh",
   "postStartCommand": "sh .devcontainer/scripts/post_start.sh ${containerWorkspaceFolder}",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "22"
-    },
     "ghcr.io/devcontainers/features/aws-cli": {}
   },
   "customizations": {

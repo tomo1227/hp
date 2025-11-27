@@ -70,3 +70,6 @@ amplify_outputs*
 amplifyconfiguration*
 
 output.txt
+
+# pnpm
+.pnpm-store/
