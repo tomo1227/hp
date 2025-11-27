@@ -8,7 +8,6 @@ import am5geodata_lang_JA from "@amcharts/amcharts5-geodata/lang/JA";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 // import { useRouter } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
-import { loadGeoData } from "@/lib/geoData";
 import type Locale from "@/types/locale";
 
 type WorldMapProps = {
@@ -114,7 +113,8 @@ export default function WorldMap({ locale }: WorldMapProps) {
       // クリック時の処理
       Promise.all([zoomPromise]).then(async () => {
         try {
-          const geodata = await loadGeoData(data.map);
+          const res = await fetch(`/json/geodata/${data.map}.json`);
+          const geodata = await res.json();
 
           countrySeries.setAll({
             geoJSON: geodata,
