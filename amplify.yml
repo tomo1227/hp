@@ -1,13 +1,15 @@
 version: 1
-backend:
-  phases:
-    preBuild:
-      commands:
-        - pnpm install --frozen-lockfile --prefer-offline
-    build:
-      commands:
-        - env | grep -e NEXT_PUBLIC_ >> .env.production
-        - pnpm run build
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm install -g pnpm
+            - pnpm install --frozen-lockfile --prefer-offline
+        build:
+          commands:
+            - env | grep -e NEXT_PUBLIC_ >> .env
+            - pnpm run build
 frontend:
   phases:
     build:
