@@ -27,3 +27,15 @@
         @apply py-0;
     }
 }
+
+.world-map-container {
+  display: flex;
+  justify-content: center;
+  @apply px-3 py-10 max-md:px-1;
+}
+
+@media (max-width: 480px) {
+    .world-map-container {
+        @apply py-0;
+    }
+}
