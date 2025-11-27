@@ -8,7 +8,7 @@ applications:
             - pnpm install --frozen-lockfile --prefer-offline
         build:
           commands:
-            - env | grep -e NEXT_PUBLIC_ >> .env
+            - env | grep -e NEXT_PUBLIC_ >> .env.production
             - pnpm run build
 frontend:
   phases:
