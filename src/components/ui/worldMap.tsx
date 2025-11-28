@@ -308,9 +308,9 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     );
     chart.set("zoomControl", zoomControl);
     chart.setAll({
-      zoomStep: 1.8,
+      zoomStep: 2,
       minZoomLevel: 1,
-      maxZoomLevel: 30,
+      maxZoomLevel: 50,
     });
 
     const homeButton = zoomControl.children.moveValue(
