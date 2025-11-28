@@ -15,6 +15,17 @@ type WorldMapProps = {
   locale: Locale;
   countries?: string[];
 };
+
+const japanPrefectures: string[] = [
+  "Hyogo",
+  "Ibaraki",
+  "Kyoto",
+  "Nagaoka",
+  "Niigata",
+  "Osaka",
+  "Shiga",
+];
+
 export default function WorldMap({ locale, countries }: WorldMapProps) {
   const chartDiv = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -101,7 +112,18 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     countrySeries.mapPolygons.template.setAll({
       tooltipText: "{name}",
       interactive: true,
-      fill: am5.color(0xaaaaaa),
+    });
+
+    countrySeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
+      const data = target.dataItem?.dataContext as {
+        id?: string;
+        name?: string;
+      };
+      const name = data?.name;
+      if (name && !japanPrefectures?.includes(name)) {
+        return am5.color("#0xaaaaaa");
+      }
+      return fill;
     });
 
     // tooltipText を翻訳するアダプター
