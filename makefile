@@ -1,4 +1,4 @@
-.PHONY: pnpm
+.PHONY: install
 install:
 	pnpm i
 
