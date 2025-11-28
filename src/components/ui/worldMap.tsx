@@ -293,7 +293,7 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     return () => {
       root.dispose();
     };
-  }, [router, locale, countries]);
+  }, [router, locale]);
 
   return <div ref={chartDiv} style={{ width: "100%", height: "600px" }} />;
 }
