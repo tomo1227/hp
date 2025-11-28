@@ -53,20 +53,25 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     worldSeries.mapPolygons.template.setAll({
       tooltipText: "",
       interactive: true,
-      templateField: "polygonSettings",
+      // templateField: "polygonSettings",
+      fill: am5.color(0xcccccc),
       tooltip: am5.Tooltip.new(root, {
         autoTextColor: false,
       }),
+      strokeWidth: 0.3,
     });
 
-    // worldSeries.mapPolygons.template.adapters.add("fill", (_, target) => {
-    //   const dataItem = target.dataItem;
-    //   const countryData = dataItem?.dataContext as CountryData;
-
-    //   if (!countryData.name || !countries?.includes(countryData.name)) {
-    //     return am5.Color.brighten(countryData.polygonSettings.fill, -0.3);
-    //   }
-    // });
+    worldSeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
+      const data = target.dataItem?.dataContext as {
+        id?: string;
+        name?: string;
+      };
+      const name = data?.name;
+      if (name && countries?.includes(name)) {
+        return am5.color("#66abfb");
+      }
+      return fill;
+    });
 
     worldSeries.mapPolygons.template.adapters.add(
       "tooltipText",
@@ -141,6 +146,7 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
 
       const data = dataItem.dataContext as CountryData;
 
+      if (!countries?.includes(data.name ?? "")) return;
       if (data.id !== "JP") {
         router.push(`/${locale}/gallery/world/${data.name}`);
         return;
@@ -293,7 +299,7 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     return () => {
       root.dispose();
     };
-  }, [router, locale]);
+  }, [router, locale, countries]);
 
   return <div ref={chartDiv} style={{ width: "100%", height: "600px" }} />;
 }
