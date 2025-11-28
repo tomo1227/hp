@@ -13,8 +13,9 @@ import type Locale from "@/types/locale";
 
 type WorldMapProps = {
   locale: Locale;
+  countries?: string[];
 };
-export default function WorldMap({ locale }: WorldMapProps) {
+export default function WorldMap({ locale, countries }: WorldMapProps) {
   const chartDiv = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const continents = {
@@ -46,16 +47,42 @@ export default function WorldMap({ locale }: WorldMapProps) {
     const worldSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
         geoJSON: am5geodata_worldLow,
-        geodataNames: locale === "ja" ? am5geodata_lang_JA : undefined,
       }),
     );
 
     worldSeries.mapPolygons.template.setAll({
-      tooltipText: "{name}",
+      tooltipText: "",
       interactive: true,
-      fill: am5.color(0xaaaaaa),
       templateField: "polygonSettings",
+      tooltip: am5.Tooltip.new(root, {
+        autoTextColor: false,
+      }),
     });
+
+    // worldSeries.mapPolygons.template.adapters.add("fill", (_, target) => {
+    //   const dataItem = target.dataItem;
+    //   const countryData = dataItem?.dataContext as CountryData;
+
+    //   if (!countryData.name || !countries?.includes(countryData.name)) {
+    //     return am5.Color.brighten(countryData.polygonSettings.fill, -0.3);
+    //   }
+    // });
+
+    worldSeries.mapPolygons.template.adapters.add(
+      "tooltipText",
+      (text, target) => {
+        const dataItem = target.dataItem;
+        if (!dataItem) return text;
+
+        const data = dataItem.dataContext as CountryData;
+
+        if (locale === "ja" && data.name) {
+          return am5geodata_lang_JA[data.id] ?? data.name;
+        }
+
+        return data.name;
+      },
+    );
 
     worldSeries.mapPolygons.template.states.create("hover", {
       fill: colors.getIndex(9),
@@ -95,6 +122,8 @@ export default function WorldMap({ locale }: WorldMapProps) {
     type CountryData = {
       id: string;
       map: string;
+      name?: string;
+      name_en?: string;
       polygonSettings: {
         fill: am5.Color;
       };
@@ -111,6 +140,12 @@ export default function WorldMap({ locale }: WorldMapProps) {
       if (!dataItem) return;
 
       const data = dataItem.dataContext as CountryData;
+
+      if (data.id !== "JP") {
+        router.push(`/${locale}/gallery/world/${data.name}`);
+        return;
+      }
+
       const zoomAnimation = worldSeries.zoomToDataItem(dataItem);
       currentDataItem = dataItem;
 
@@ -258,7 +293,7 @@ export default function WorldMap({ locale }: WorldMapProps) {
     return () => {
       root.dispose();
     };
-  }, [router, locale]);
+  }, [router, locale, countries]);
 
   return <div ref={chartDiv} style={{ width: "100%", height: "600px" }} />;
 }
