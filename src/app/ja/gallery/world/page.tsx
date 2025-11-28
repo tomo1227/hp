@@ -1,9 +1,9 @@
-import World from "@/components/ui/worldmap";
+import WorldMap from "@/components/ui/worldMap";
 
 export default async function Page() {
   return (
-    <div className="worldmap-container">
-      <World locale="ja" />
+    <div className="world-map-container">
+      <WorldMap locale="ja" />
     </div>
   );
 }
