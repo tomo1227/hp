@@ -22,6 +22,12 @@
   },
   "npm.packageManager": "pnpm",
   "tailwindCSS.experimental.configFile": "src/app/globals.css",
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/.pnpm-store/**": true
+  },
   "editor.quickSuggestions": {
     "strings": "on"
   },
