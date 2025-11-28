@@ -3,7 +3,6 @@
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5geodata_data_countries2 from "@amcharts/amcharts5-geodata/data/countries2";
 import am5geodata_lang_JA from "@amcharts/amcharts5-geodata/lang/JA";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import { useRouter } from "next/navigation";
@@ -29,15 +28,15 @@ const japanPrefectures: string[] = [
 export default function WorldMap({ locale, countries }: WorldMapProps) {
   const chartDiv = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const continents = {
-    AF: 0, // Africa(アフリカ)
-    AS: 1, // Asia(アジア)
-    AN: 2, // Antarctica(南極)
-    EU: 3, // Europe(ヨーロッパ)
-    NA: 5, // North America(北アメリカ)
-    OC: 6, // Oceania(オセアニア)
-    SA: 4, // South America(南アメリカ)
-  };
+  // const continents = {
+  //   AF: 0, // Africa(アフリカ)
+  //   AS: 1, // Asia(アジア)
+  //   AN: 2, // Antarctica(南極)
+  //   EU: 3, // Europe(ヨーロッパ)
+  //   NA: 5, // North America(北アメリカ)
+  //   OC: 6, // Oceania(オセアニア)
+  //   SA: 4, // South America(南アメリカ)
+  // };
 
   useLayoutEffect(() => {
     if (!chartDiv.current) return;
@@ -64,24 +63,10 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     worldSeries.mapPolygons.template.setAll({
       tooltipText: "",
       interactive: true,
-      // templateField: "polygonSettings",
-      fill: am5.color(0xcccccc),
+      templateField: "polygonSettings",
       tooltip: am5.Tooltip.new(root, {
         autoTextColor: false,
       }),
-      strokeWidth: 0.3,
-    });
-
-    worldSeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
-      const data = target.dataItem?.dataContext as {
-        id?: string;
-        name?: string;
-      };
-      const name = data?.name;
-      if (name && countries?.includes(name)) {
-        return am5.color("#66abfb");
-      }
-      return fill;
     });
 
     worldSeries.mapPolygons.template.adapters.add(
@@ -121,12 +106,11 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
       };
       const name = data?.name;
       if (name && !japanPrefectures?.includes(name)) {
-        return am5.color("#0xaaaaaa");
+        return am5.color("#0xcccccc");
       }
       return fill;
     });
 
-    // tooltipText を翻訳するアダプター
     countrySeries.mapPolygons.template.adapters.add(
       "tooltipText",
       (text, target) => {
@@ -141,6 +125,7 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         return locale === "ja" ? jaTranslate(name) : name;
       },
     );
+
     countrySeries.mapPolygons.template.states.create("hover", {
       fill: colors.getIndex(9),
     });
@@ -155,7 +140,6 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         fill: am5.Color;
       };
     };
-    const data: CountryData[] = [];
 
     let currentDataItem: am5.DataItem<am5map.IMapPolygonSeriesDataItem> | null =
       null;
@@ -186,10 +170,29 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         try {
           const res = await fetch(`/json/geodata/${data.map}.json`);
           const geodata = await res.json();
+          const countryData = {
+            type: "FeatureCollection" as const,
+            features: geodata.features.map(
+              (f: { id: string; properties?: { name?: string } }) => {
+                const name = f.properties?.name;
+                return {
+                  ...f,
+                  polygonSettings: {
+                    fill:
+                      name && japanPrefectures?.includes(name)
+                        ? am5.color(0x66abfb)
+                        : am5.color(0xcccccc),
+                    strokeWidth: 0.3,
+                  },
+                };
+              },
+            ),
+          };
 
           countrySeries.setAll({
-            geoJSON: geodata,
+            geoJSON: countryData,
             fill: data.polygonSettings.fill,
+            templateField: "polygonSettings",
           });
 
           countrySeries.show();
@@ -210,24 +213,34 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
       const data = dataItem.dataContext as { name?: string };
       if (!data?.name) return;
 
+      if (data.name && !japanPrefectures?.includes(data.name)) {
+        return;
+      }
       router.push(`/${locale}/gallery/tags/${data.name}`);
     });
 
-    for (const id in am5geodata_data_countries2) {
-      const country = am5geodata_data_countries2[id];
-      if (country.maps.length) {
-        data.push({
-          id,
-          map: country.maps[0],
-          polygonSettings: {
-            fill: colors.getIndex(
-              continents[country.continent_code as keyof typeof continents],
-            ),
-          },
-        });
-      }
-    }
-    worldSeries.data.setAll(data);
+    countrySeries.mapPolygons.template.states.create("hover", {
+      fill: colors.getIndex(9),
+    });
+
+    const worldData = am5geodata_worldLow.features.map((f) => {
+      const name = f.properties?.name;
+
+      return {
+        id: f.id,
+        name,
+        map: f.id === "JP" ? "japanLow" : "",
+        polygonSettings: {
+          fill: countries?.includes(name)
+            ? am5.color(0x66abfb) // ハイライト
+            : am5.color(0xcccccc), // 通常色
+          strokeWidth: 0.3,
+        },
+      };
+    });
+
+    worldSeries.data.setAll(worldData);
+
     // 戻るボタン
     const backContainer = chart.children.push(
       am5.Container.new(root, {
