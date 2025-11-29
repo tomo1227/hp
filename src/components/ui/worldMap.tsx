@@ -99,18 +99,6 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
       interactive: true,
     });
 
-    countrySeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
-      const data = target.dataItem?.dataContext as {
-        id?: string;
-        name?: string;
-      };
-      const name = data?.name;
-      if (name && !japanPrefectures?.includes(name)) {
-        return am5.color("#0xcccccc");
-      }
-      return fill;
-    });
-
     countrySeries.mapPolygons.template.adapters.add(
       "tooltipText",
       (text, target) => {
@@ -125,10 +113,6 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         return locale === "ja" ? jaTranslate(name) : name;
       },
     );
-
-    countrySeries.mapPolygons.template.states.create("hover", {
-      fill: colors.getIndex(9),
-    });
 
     // 世界地図データ設定
     type CountryData = {
@@ -170,31 +154,36 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         try {
           const res = await fetch(`/json/geodata/${data.map}.json`);
           const geodata = await res.json();
-          const countryData = {
-            type: "FeatureCollection" as const,
-            features: geodata.features.map(
-              (f: { id: string; properties?: { name?: string } }) => {
-                const name = f.properties?.name;
-                return {
-                  ...f,
-                  polygonSettings: {
-                    fill:
-                      name && japanPrefectures?.includes(name)
-                        ? am5.color(0x66abfb)
-                        : am5.color(0xcccccc),
-                    strokeWidth: 0.3,
-                  },
-                };
-              },
-            ),
-          };
+          const countryData = geodata.features.map(
+            (f: { id: string; properties?: { name?: string } }) => {
+              const name = f.properties?.name;
 
-          countrySeries.setAll({
-            geoJSON: countryData,
-            fill: data.polygonSettings.fill,
+              return {
+                id: f.id,
+                name,
+                polygonSettings: {
+                  fill:
+                    name && japanPrefectures?.includes(name)
+                      ? am5.color(0x66abfb)
+                      : am5.color(0xcccccc),
+                  strokeWidth: 0.3,
+                },
+              };
+            },
+          );
+
+          // templateField を有効化
+          countrySeries.mapPolygons.template.setAll({
             templateField: "polygonSettings",
           });
 
+          // ① GeoJSON をシリーズへセット
+          countrySeries.setAll({
+            geoJSON: geodata,
+          });
+
+          // ② polygonSettings を反映させるデータをセット
+          countrySeries.data.setAll(countryData);
           countrySeries.show();
           worldSeries.hide(100);
           backContainer.show();
@@ -232,8 +221,8 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         map: f.id === "JP" ? "japanLow" : "",
         polygonSettings: {
           fill: countries?.includes(name)
-            ? am5.color(0x66abfb) // ハイライト
-            : am5.color(0xcccccc), // 通常色
+            ? am5.color("#66abfb") // ハイライト
+            : am5.color("#cccccc"), // 通常色
           strokeWidth: 0.3,
         },
       };
