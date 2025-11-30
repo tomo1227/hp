@@ -14,13 +14,13 @@ build:
 lint:
 	pnpm run lint
 
+.PHONY: fix
+fix:
+	pnpm run fix
+
 .PHONY: format
 format:
-	pnpm run format
-
-.PHONY: check
-check:
-	pnpm run check
+	pnpm run fmt
 
 .PHONY: bi
 bi:
