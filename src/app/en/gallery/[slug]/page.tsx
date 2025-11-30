@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import Link from "next/link";
 import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
@@ -55,7 +56,9 @@ export default async function Page({
 
   return (
     <div id="gallery">
-      <h1 id="gallery-title">{frontmatter.title}</h1>
+      <Link href={`/ja/gallery/`}>
+        <h1 id="gallery-title">{frontmatter.title}</h1>
+      </Link>
       <article
         className="markdown flex flex-col justify-center items-center"
         style={{ position: "relative" }}

@@ -1,9 +1,9 @@
-import { S3FileDownloader } from "@/components/features/s3/fileDownload";
-import { S3ImageDownloader } from "@/components/features/s3/imageDownload";
-import { rgbDataURL } from "@/lib/blurImage";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
+import { S3FileDownloader } from "@/components/features/s3/fileDownload";
+import { S3ImageDownloader } from "@/components/features/s3/imageDownload";
+import { rgbDataURL } from "@/lib/blurImage";
 
 export const metadata: Metadata = {
   robots: {

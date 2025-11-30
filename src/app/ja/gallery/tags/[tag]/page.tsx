@@ -24,7 +24,7 @@ export default async function Page({
   });
   return (
     <div id="tag-lists-wrapper">
-      <Link href={`/ja/gallery/tags`}>
+      <Link href={`/ja/tags`}>
         <h1 id="tag-lists-title">{jaTranslate(tag)}</h1>
       </Link>
       <section className="cards-container">

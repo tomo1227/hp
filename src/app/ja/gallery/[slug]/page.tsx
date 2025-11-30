@@ -1,5 +1,6 @@
 import { jaModel, Parser } from "budoux";
 import type { Metadata, ResolvingMetadata } from "next";
+import Link from "next/link";
 import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
@@ -58,11 +59,13 @@ export default async function Page({
   const splittedTitle = parser.parse(frontmatter.title);
   return (
     <div id="gallery">
-      <h1 id="gallery-title">
-        {splittedTitle.map((word) => (
-          <span key={word}>{word}</span>
-        ))}
-      </h1>
+      <Link href={`/ja/gallery/`}>
+        <h1 id="gallery-title">
+          {splittedTitle.map((word) => (
+            <span key={word}>{word}</span>
+          ))}
+        </h1>
+      </Link>
       <article
         className="markdown flex flex-col justify-center items-center"
         style={{ position: "relative" }}

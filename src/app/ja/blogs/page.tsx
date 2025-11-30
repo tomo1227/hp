@@ -1,8 +1,8 @@
-import { getFilteredPosts } from "@/lib/blogFilter";
-import { formattedDate } from "@/lib/date";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
+import { getFilteredPosts } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
 
 export const metadata: Metadata = {
   title: "Blog in tomokiota.com",

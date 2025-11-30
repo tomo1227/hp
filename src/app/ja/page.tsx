@@ -1,7 +1,7 @@
-import { rgbDataURL } from "@/lib/blurImage";
-import { getFilteredPosts } from "@/lib/galleryFilter";
 import Image from "next/image";
 import Link from "next/link";
+import { rgbDataURL } from "@/lib/blurImage";
+import { getFilteredPosts } from "@/lib/galleryFilter";
 
 export default async function Page() {
   const posts = await getFilteredPosts({

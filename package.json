@@ -7,9 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint --write ./src --diagnostic-level=error",
+    "lint": "biome check --write ./src --diagnostic-level=error",
+    "fix": "biome check --write ./src",
     "format": "biome format ./src --write",
-    "check": "biome check ./src",
     "bi": "node ./src/cmd/generateBlogImages.mjs",
     "post": "node ./src/cmd/post.mjs",
     "gal": "node ./src/cmd/gallery.mjs"
