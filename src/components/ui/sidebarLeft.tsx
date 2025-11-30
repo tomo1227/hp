@@ -24,6 +24,11 @@ const SidebarLeft = ({ locale }: SidebarLeftProps) => {
               {locale === "ja" ? "世界地図" : "World Map"}
             </Link>
           </li>
+          <li>
+            <Link href={`/${locale}/tags`} passHref>
+              {locale === "ja" ? "タグ" : "Tags"}
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

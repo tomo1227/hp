@@ -6,7 +6,7 @@ export default async function Page() {
   const tags = await getTags();
   return (
     <div id="tag-lists-wrapper">
-      <h1 id="tag-lists-title">All Tags</h1>
+      <h1 id="tag-lists-title">タグ一覧</h1>
       <div id="tag-lists-contents">
         <ul id="tag-lists">
           {tags.map((tag) => (

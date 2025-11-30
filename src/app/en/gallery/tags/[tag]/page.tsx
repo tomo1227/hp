@@ -23,7 +23,7 @@ export default async function Page({
   });
   return (
     <div id="tag-lists-wrapper">
-      <Link href={`/en/gallery/tags`}>
+      <Link href={`/en/tags`}>
         <h1 id="tag-lists-title">{tag}</h1>
       </Link>
       <section className="cards-container">
