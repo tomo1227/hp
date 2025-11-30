@@ -7,6 +7,10 @@
   @apply object-right;
 }
 
+#cairo-image {
+  @apply object-right;
+}
+
 #calgary-image {
   @apply object-left;
 }
