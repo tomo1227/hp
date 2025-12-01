@@ -56,7 +56,7 @@ export default async function Page({
 
   return (
     <div id="gallery">
-      <Link href={`/ja/gallery/`}>
+      <Link href={`/en/gallery/`}>
         <h1 id="gallery-title">{frontmatter.title}</h1>
       </Link>
       <article
