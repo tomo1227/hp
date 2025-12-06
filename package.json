@@ -64,7 +64,7 @@
     "postcss": "^8",
     "prompts": "^2.4.2",
     "tailwindcss": "^4.1.16",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "optionalDependencies": {
