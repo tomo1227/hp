@@ -28,6 +28,7 @@ const japanPrefectures: string[] = [
   "Hokkaido",
   "Iwate",
   "Fukushima",
+  "Miyagi",
 ];
 
 export default function WorldMap({ locale, countries }: WorldMapProps) {
