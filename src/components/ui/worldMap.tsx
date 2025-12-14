@@ -25,6 +25,7 @@ const japanPrefectures: string[] = [
   "Shiga",
   "Mie",
   "Okinawa",
+  "Hokkaido",
 ];
 
 export default function WorldMap({ locale, countries }: WorldMapProps) {
