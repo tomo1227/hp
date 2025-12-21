@@ -28,16 +28,16 @@ importers:
         version: 6.1.19(@fullcalendar/core@6.1.19)
       '@fullcalendar/react':
         specifier: ^6.1.19
-        version: 6.1.19(@fullcalendar/core@6.1.19)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 6.1.19(@fullcalendar/core@6.1.19)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.1
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.1(@types/react@19.2.7)(react@19.2.0)
+        version: 3.1.1(@types/react@19.2.7)(react@19.2.3)
       '@next/mdx':
         specifier: 16.0.7
-        version: 16.0.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.0))
+        version: 16.0.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.3))
       '@types/jsdom':
         specifier: ^27.0.0
         version: 27.0.0
@@ -61,25 +61,25 @@ importers:
         version: 1.0.0
       next:
         specifier: ^15.5.5
-        version: 15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       nextjs-toploader:
         specifier: ^3.9.17
-        version: 3.9.17(next@15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.9.17(next@15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       nodemailer:
         specifier: ^7.0.10
         version: 7.0.11
       react:
-        specifier: ^19.2.0
-        version: 19.2.0
+        specifier: ^19.2.3
+        version: 19.2.3
       react-dom:
-        specifier: ^19.2.0
-        version: 19.2.0(react@19.2.0)
+        specifier: ^19.2.3
+        version: 19.2.3(react@19.2.3)
       react-medium-image-zoom:
         specifier: ^5.4.0
-        version: 5.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 5.4.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-svg-worldmap:
         specifier: ^2.0.0-alpha.16
-        version: 2.0.0-alpha.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 2.0.0-alpha.16(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       rehype-sanitize:
         specifier: ^6.0.0
         version: 6.0.0
@@ -104,7 +104,7 @@ importers:
         version: 1.19.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-cloudformation@3.956.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(zod@3.25.17)
       '@aws-amplify/backend-cli':
         specifier: ^1.8.0
-        version: 1.8.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(@types/node@24.10.1)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        version: 1.8.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(@types/node@24.10.1)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@biomejs/biome':
         specifier: 2.3.8
         version: 2.3.8
@@ -284,9 +284,6 @@ packages:
     peerDependencies:
       aws-cdk-lib: ^2.189.1
 
-  '@aws-amplify/backend-secret@1.4.1':
-    resolution: {integrity: sha512-SUPksqwIasryAQ2ZzwXpi1cEYePlYtKVHrzDK4fj9Xz3Engwi84K8osUcRcoLidTb5bsMyB47zA85zBT8WGlMg==}
-
   '@aws-amplify/backend-secret@1.4.2':
     resolution: {integrity: sha512-naHeGL+4kuiYZI33lgKsb+uq/fJQsiwpsSCoCil7ixQ1HD/ANwRD06d6jrxV30i6ews5Yl5p5Hkt+T5DLOaHGA==}
 
@@ -304,13 +301,6 @@ packages:
 
   '@aws-amplify/cli-core@2.2.2':
     resolution: {integrity: sha512-saBiHWIBP5qscrHozqgKmlDF7Nqo8tKG0i7ozcVSOcyYILY6Y+9z0vYf+uFkJFY/y8NpN92MuQXgoslf9XIR7A==}
-
-  '@aws-amplify/client-config@1.9.0':
-    resolution: {integrity: sha512-EHy2JVbXPAqcIAzDROPWgIHzBfKn2A9zEJB+cKyinWV7dbYxHqew3t451aL/B0gQGW1O6kPZ5SInh6HmNhYTyw==}
-    peerDependencies:
-      '@aws-sdk/client-amplify': ^3.750.0
-      '@aws-sdk/client-cloudformation': ^3.750.0
-      '@aws-sdk/client-s3': ^3.750.0
 
   '@aws-amplify/client-config@1.9.1':
     resolution: {integrity: sha512-+KiyWAletjFsYyytOAa+qvjkmFX+hgJ3TpqeTqRInz6PFZqymvZAd1OXXYvydg4CsYeUu9cXDwJ+lea1s2Vp6w==}
@@ -5783,10 +5773,10 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-dom@19.2.0:
-    resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
+  react-dom@19.2.3:
+    resolution: {integrity: sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==}
     peerDependencies:
-      react: ^19.2.0
+      react: ^19.2.3
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -5811,8 +5801,8 @@ packages:
       react: '>=16'
       react-dom: '>=16.0.0'
 
-  react@19.2.0:
-    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
+  react@19.2.3:
+    resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@2.3.8:
@@ -6857,15 +6847,15 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-cli@1.8.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(@types/node@24.10.1)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)':
+  '@aws-amplify/backend-cli@1.8.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(@types/node@24.10.1)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@aws-amplify/backend-deployer': 2.1.4(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(typescript@5.9.3)
       '@aws-amplify/backend-output-schemas': 1.7.1(zod@3.25.17)
-      '@aws-amplify/backend-secret': 1.4.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
+      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
       '@aws-amplify/cli-core': 2.2.2(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(@types/node@24.10.1)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-amplify/client-config': 1.9.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
+      '@aws-amplify/client-config': 1.9.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
       '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-amplify/form-generator': 1.2.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@aws-amplify/form-generator': 1.2.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@aws-amplify/model-generator': 1.2.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(zod@3.25.17)
       '@aws-amplify/platform-core': 1.10.2(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
       '@aws-amplify/plugin-types': 1.11.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
@@ -6986,20 +6976,6 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-secret@1.4.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)':
-    dependencies:
-      '@aws-amplify/platform-core': 1.10.3(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-amplify/plugin-types': 1.11.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-sdk/client-ssm': 3.940.0
-    transitivePeerDependencies:
-      - '@aws-cdk/cli-plugin-contract'
-      - '@aws-sdk/types'
-      - aws-cdk-lib
-      - aws-crt
-      - bare-abort-controller
-      - constructs
-      - react-native-b4a
-
   '@aws-amplify/backend-secret@1.4.2(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)':
     dependencies:
       '@aws-amplify/platform-core': 1.10.3(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
@@ -7080,28 +7056,6 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/client-config@1.9.0(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)':
-    dependencies:
-      '@aws-amplify/backend-output-schemas': 1.7.1(zod@3.25.17)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-amplify/model-generator': 1.2.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.10.3(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-amplify/plugin-types': 1.11.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)
-      '@aws-sdk/client-amplify': 3.940.0
-      '@aws-sdk/client-cloudformation': 3.940.0
-      '@aws-sdk/client-s3': 3.956.0
-      zod: 3.25.17
-    transitivePeerDependencies:
-      - '@aws-cdk/cli-plugin-contract'
-      - '@aws-sdk/types'
-      - aws-cdk-lib
-      - aws-crt
-      - bare-abort-controller
-      - constructs
-      - encoding
-      - react-native-b4a
-      - supports-color
-
   '@aws-amplify/client-config@1.9.1(@aws-cdk/cli-plugin-contract@2.181.1)(@aws-sdk/client-amplify@3.940.0)(@aws-sdk/client-cloudformation@3.940.0)(@aws-sdk/client-s3@3.956.0)(@aws-sdk/types@3.956.0)(aws-cdk-lib@2.232.1(constructs@10.4.4))(constructs@10.4.4)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.7.1(zod@3.25.17)
@@ -7146,13 +7100,13 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  '@aws-amplify/codegen-ui-react@2.20.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@aws-amplify/codegen-ui-react@2.20.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@aws-amplify/codegen-ui': 2.20.3
       '@typescript/vfs': 1.3.6
       pluralize: 8.0.0
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
       semver: 7.7.3
       typescript: 4.4.4
     optionalDependencies:
@@ -7242,15 +7196,15 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/form-generator@1.2.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@aws-amplify/form-generator@1.2.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@aws-amplify/appsync-modelgen-plugin': 2.15.2(graphql@15.10.1)
       '@aws-amplify/codegen-ui': 2.20.3
-      '@aws-amplify/codegen-ui-react': 2.20.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@aws-amplify/codegen-ui-react': 2.20.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@aws-amplify/graphql-directives': 2.7.1
       '@aws-amplify/graphql-docs-generator': 4.2.1
       '@aws-sdk/client-amplifyuibuilder': 3.940.0
-      '@aws-sdk/client-appsync': 3.940.0
+      '@aws-sdk/client-appsync': 3.956.0
       '@aws-sdk/client-s3': 3.956.0
       '@graphql-codegen/typescript': 4.1.6(graphql@15.10.1)
       graphql: 15.10.1
@@ -8543,7 +8497,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.621.0)
+      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.956.0)
       '@aws-sdk/client-sts': 3.621.0
       '@aws-sdk/core': 3.621.0
       '@aws-sdk/credential-provider-node': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.621.0)
@@ -8681,7 +8635,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.956.0)
+      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.621.0)
       '@aws-sdk/client-sts': 3.621.0
       '@aws-sdk/core': 3.621.0
       '@aws-sdk/credential-provider-node': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.621.0)
@@ -9394,7 +9348,7 @@ snapshots:
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-sdk/client-sts': 3.956.0
       '@aws-sdk/core': 3.621.0
-      '@aws-sdk/credential-provider-node': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.956.0)
+      '@aws-sdk/credential-provider-node': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.621.0)
       '@aws-sdk/middleware-host-header': 3.620.0
       '@aws-sdk/middleware-logger': 3.609.0
       '@aws-sdk/middleware-recursion-detection': 3.620.0
@@ -9995,24 +9949,6 @@ snapshots:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
 
-  '@aws-sdk/credential-provider-ini@3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.956.0)':
-    dependencies:
-      '@aws-sdk/client-sts': 3.956.0
-      '@aws-sdk/credential-provider-env': 3.620.1
-      '@aws-sdk/credential-provider-http': 3.621.0
-      '@aws-sdk/credential-provider-process': 3.620.1
-      '@aws-sdk/credential-provider-sso': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))
-      '@aws-sdk/credential-provider-web-identity': 3.621.0(@aws-sdk/client-sts@3.956.0)
-      '@aws-sdk/types': 3.609.0
-      '@smithy/credential-provider-imds': 3.2.8
-      '@smithy/property-provider': 3.1.11
-      '@smithy/shared-ini-file-loader': 3.1.12
-      '@smithy/types': 3.7.2
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
-      - aws-crt
-
   '@aws-sdk/credential-provider-ini@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0)':
     dependencies:
       '@aws-sdk/client-sts': 3.624.0
@@ -10103,25 +10039,6 @@ snapshots:
       '@aws-sdk/credential-provider-process': 3.620.1
       '@aws-sdk/credential-provider-sso': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))
       '@aws-sdk/credential-provider-web-identity': 3.621.0(@aws-sdk/client-sts@3.621.0)
-      '@aws-sdk/types': 3.609.0
-      '@smithy/credential-provider-imds': 3.2.8
-      '@smithy/property-provider': 3.1.11
-      '@smithy/shared-ini-file-loader': 3.1.12
-      '@smithy/types': 3.7.2
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - '@aws-sdk/client-sso-oidc'
-      - '@aws-sdk/client-sts'
-      - aws-crt
-
-  '@aws-sdk/credential-provider-node@3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.956.0)':
-    dependencies:
-      '@aws-sdk/credential-provider-env': 3.620.1
-      '@aws-sdk/credential-provider-http': 3.621.0
-      '@aws-sdk/credential-provider-ini': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.956.0)
-      '@aws-sdk/credential-provider-process': 3.620.1
-      '@aws-sdk/credential-provider-sso': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))
-      '@aws-sdk/credential-provider-web-identity': 3.621.0(@aws-sdk/client-sts@3.956.0)
       '@aws-sdk/types': 3.609.0
       '@smithy/credential-provider-imds': 3.2.8
       '@smithy/property-provider': 3.1.11
@@ -10275,14 +10192,6 @@ snapshots:
   '@aws-sdk/credential-provider-web-identity@3.621.0(@aws-sdk/client-sts@3.624.0)':
     dependencies:
       '@aws-sdk/client-sts': 3.624.0
-      '@aws-sdk/types': 3.609.0
-      '@smithy/property-provider': 3.1.11
-      '@smithy/types': 3.7.2
-      tslib: 2.8.1
-
-  '@aws-sdk/credential-provider-web-identity@3.621.0(@aws-sdk/client-sts@3.956.0)':
-    dependencies:
-      '@aws-sdk/client-sts': 3.956.0
       '@aws-sdk/types': 3.609.0
       '@smithy/property-provider': 3.1.11
       '@smithy/types': 3.7.2
@@ -11486,11 +11395,11 @@ snapshots:
     dependencies:
       '@fullcalendar/core': 6.1.19
 
-  '@fullcalendar/react@6.1.19(@fullcalendar/core@6.1.19)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@fullcalendar/react@6.1.19(@fullcalendar/core@6.1.19)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@fullcalendar/core': 6.1.19
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   '@graphql-codegen/core@2.6.8(graphql@15.10.1)':
     dependencies:
@@ -11956,20 +11865,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.0)':
+  '@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.3)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 19.2.7
-      react: 19.2.0
+      react: 19.2.3
 
   '@next/env@15.5.6': {}
 
-  '@next/mdx@16.0.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.0))':
+  '@next/mdx@16.0.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.3))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
       '@mdx-js/loader': 3.1.1
-      '@mdx-js/react': 3.1.1(@types/react@19.2.7)(react@19.2.0)
+      '@mdx-js/react': 3.1.1(@types/react@19.2.7)(react@19.2.3)
 
   '@next/swc-darwin-arm64@15.5.6':
     optional: true
@@ -15621,15 +15530,15 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  next@15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@next/env': 15.5.6
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001757
       postcss: 8.4.31
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.2.3)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.5.6
       '@next/swc-darwin-x64': 15.5.6
@@ -15645,13 +15554,13 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-toploader@3.9.17(next@15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  nextjs-toploader@3.9.17(next@15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      next: 15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.5.6(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       nprogress: 0.2.0
       prop-types: 15.8.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   no-case@3.0.4:
     dependencies:
@@ -15972,32 +15881,32 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-dom@19.2.0(react@19.2.0):
+  react-dom@19.2.3(react@19.2.3):
     dependencies:
-      react: 19.2.0
+      react: 19.2.3
       scheduler: 0.27.0
 
   react-is@16.13.1: {}
 
-  react-medium-image-zoom@5.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-medium-image-zoom@5.4.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
-  react-path-tooltip@1.0.25(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-path-tooltip@1.0.25(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
-  react-svg-worldmap@2.0.0-alpha.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-svg-worldmap@2.0.0-alpha.16(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       d3-geo: 2.0.2
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      react-path-tooltip: 1.0.25(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      react-path-tooltip: 1.0.25(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       tslib: 2.8.1
 
-  react@19.2.0: {}
+  react@19.2.3: {}
 
   readable-stream@2.3.8:
     dependencies:
@@ -16523,10 +16432,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.0):
+  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.3):
     dependencies:
       client-only: 0.0.1
-      react: 19.2.0
+      react: 19.2.3
     optionalDependencies:
       '@babel/core': 7.28.5
 
