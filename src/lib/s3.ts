@@ -9,9 +9,9 @@ const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_REGION,
   credentials: {
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    accessKeyId: process.env.NEXT_PUBLIC_IAM_ACCESS_KEY!,
+    accessKeyId: process.env.NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET!,
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    secretAccessKey: process.env.NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY!,
+    secretAccessKey: process.env.NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET!,
   },
 });
 
