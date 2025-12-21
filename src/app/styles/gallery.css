@@ -7,7 +7,15 @@
   @apply object-right;
 }
 
+#cairo-image {
+  @apply object-right;
+}
+
 #calgary-image {
+  @apply object-left;
+}
+
+#blue-impulse-tsutenkaku-image {
   @apply object-left;
 }
 
@@ -18,6 +26,7 @@
 #marseille-image {
   @apply object-right;
 }
+
 
 #gallery-contents{
   @apply mx-3;

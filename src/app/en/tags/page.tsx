@@ -1,31 +1,44 @@
-import { getTags } from "@/lib/blogFilter";
-import localFont from "next/font/local";
 import Link from "next/link";
-
-const rockSaltFont = localFont({
-  display: "swap",
-  src: "../../fonts/RockSalt-Regular.woff",
-  weight: "400",
-});
+import { getTags as getBlogTags } from "@/lib/blogFilter";
+import { getTags as getGalleryTags } from "@/lib/galleryFilter";
 
 export default async function Page() {
-  const tags = await getTags({ locale: "en" });
+  const blogTags = await getBlogTags({ locale: "en" });
+  const galleryTags = await getGalleryTags({ locale: "en" });
   return (
     <div id="tag-lists-wrapper">
-      <h1 id="tag-lists-title" className={`${rockSaltFont.className}`}>
-        All Tags
-      </h1>
-      <div id="tag-lists-contents">
-        <ul id="tag-lists">
-          {tags.map((tag) => (
-            <li key={tag}>
-              <Link className="tag-list-item" href={`/en/tags/${tag}`}>
-                {tag}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h1 id="tag-lists-title">All Tags</h1>
+      <details className="tag-category">
+        <summary className="tag-summary">Gallery</summary>
+        <div id="tag-lists-contents">
+          <ul id="tag-lists">
+            {galleryTags.map((tag) => (
+              <li key={tag}>
+                <Link
+                  className="tag-list-item"
+                  href={`/en/gallery/tags/${tag}`}
+                >
+                  {tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
+      <details className="tag-category">
+        <summary className="tag-summary">blog</summary>
+        <div id="tag-lists-contents">
+          <ul id="tag-lists">
+            {blogTags.map((tag) => (
+              <li key={tag}>
+                <Link className="tag-list-item" href={`/en/tags/${tag}`}>
+                  {tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
     </div>
   );
 }

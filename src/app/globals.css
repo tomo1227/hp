@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 @import "./styles/menu.css";
 @import "./styles/blogs.css";
 @import "./styles/calendar.css";
@@ -8,20 +10,21 @@
 @import "./styles/zoom.css";
 @import "./styles/sidebar.css";
 @import "./styles/download.css";
-
-@import 'tailwindcss';
+@import "./styles/worldmap.css";
 
 @config '../../tailwind.config.ts';
 
 :root {
     --background: #ffffff;
     --foreground: #171717;
+    --inactive-country-color: #4c6363;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #151515;
         --foreground: #ededed;
+        --inactive-country-color: #bbd3f8;
     }
 }
 

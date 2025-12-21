@@ -10,16 +10,24 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.markdownlint": "explicit",
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.biome": "explicit",
     "source.fixAll.stylelint": "explicit",
     "source.organizeImports.biome": "explicit"
   },
+  "biome.configurationPath": "./biome.json",
   "files.associations": {
     "*.css": "tailwindcss",
     "*.mdx": "markdown",
     "*.mjs": "javascript"
   },
+  "npm.packageManager": "pnpm",
   "tailwindCSS.experimental.configFile": "src/app/globals.css",
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/.pnpm-store/**": true
+  },
   "editor.quickSuggestions": {
     "strings": "on"
   },
@@ -75,6 +83,11 @@
     }
   },
   "yaml.format.enable": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "必ず日本語でコミットメッセージを記述してください"
+    }
+  ],
   "cSpell.words": [
     "Codecov",
     "devcontainer",

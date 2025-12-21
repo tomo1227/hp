@@ -1,14 +1,38 @@
-.PHONY: npm
+.PHONY: install
 install:
-	npm i
-
-.PHONY: ci
-ci:
-	npm ci
+	pnpm i
 
 .PHONY: run
 run:
-	npm run dev
+	pnpm run dev
+
+.PHONY: build
+build:
+	pnpm run build
+
+.PHONY: lint
+lint:
+	pnpm run lint
+
+.PHONY: fix
+fix:
+	pnpm run fix
+
+.PHONY: format
+format:
+	pnpm run fmt
+
+.PHONY: bi
+bi:
+	pnpm run bi
+
+.PHONY: post
+post:
+	pnpm run post
+
+.PHONY: gal
+gal:
+	pnpm run gal
 
 .PHONY: up
 up:

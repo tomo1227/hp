@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
-import { jaTranslate } from "@/lib/tagTranslator";
+import { jaTranslate } from "@/lib/translator";
 
 const parser = new Parser(jaModel);
 

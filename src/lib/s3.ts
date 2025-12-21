@@ -1,5 +1,9 @@
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { NoSuchKey, S3ServiceException } from "@aws-sdk/client-s3";
+import {
+  GetObjectCommand,
+  NoSuchKey,
+  S3Client,
+  S3ServiceException,
+} from "@aws-sdk/client-s3";
 
 const s3Client = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_REGION,

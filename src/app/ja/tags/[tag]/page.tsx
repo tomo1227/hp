@@ -1,8 +1,8 @@
-import { getFilteredPosts, getTags } from "@/lib/blogFilter";
-import { formattedDate } from "@/lib/date";
-import { jaTranslate } from "@/lib/tagTranslator";
 import Link from "next/link";
 import { Fragment } from "react";
+import { getFilteredPosts, getTags } from "@/lib/blogFilter";
+import { formattedDate } from "@/lib/date";
+import { jaTranslate } from "@/lib/translator";
 
 export async function generateStaticParams() {
   const tags = await getTags();
@@ -24,7 +24,9 @@ export default async function Page({
   });
   return (
     <div className="article-lists-wrapper">
-      <h1>{jaTranslate(tag)}</h1>
+      <Link href={"/ja/tags"}>
+        <h1 id="tag-lists-title">{jaTranslate(tag)}</h1>
+      </Link>
       <div className="article-lists">
         {posts.map((post) => (
           <Fragment key={post.slug}>

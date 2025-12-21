@@ -9,7 +9,7 @@ HPのブランチ
 
 ```sh
 cd projects
-npm run dev
+pnpm run dev
 ```
 
 ## PORTの割り当て
