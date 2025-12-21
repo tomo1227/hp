@@ -1,6 +1,15 @@
 import type { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(req: NextRequest) {
   const request = await req.json();
   const gmailUser = process.env.NEXT_PUBLIC_GMAIL_USER;
@@ -21,11 +30,11 @@ export async function POST(req: NextRequest) {
     text: `${request.message} Send from ${request.email}`,
     html: `
         <p>【名前】</p>
-        <p>${request.name}</p>
+        <p>${escapeHtml(String(request.name ?? ""))}</p>
         <p>【メールアドレス】</p>
-        <p>${request.email}</p>
+        <p>${escapeHtml(String(request.email ?? ""))}</p>
         <p>【メッセージ内容】</p>
-        <p>${request.message}</p>
+        <p>${escapeHtml(String(request.message ?? ""))}</p>
         `,
   };
   try {
