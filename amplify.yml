@@ -8,6 +8,10 @@ frontend:
     build:
       commands:
         - env | grep -e NEXT_PUBLIC_ >> .env.production
+        - echo "NEXT_PUBLIC_GMAIL_USER_SECRET=$NEXT_PUBLIC_GMAIL_USER_SECRET" >> .env.production
+        - echo "NEXT_PUBLIC_GMAIL_APP_PASS_SECRET=$NEXT_PUBLIC_GMAIL_APP_PASS_SECRET" >> .env.production
+        - echo "NEXT_PUBLIC_IAM_ACCESS_KEY__SECRET=$NEXT_PUBLIC_IAM_ACCESS_KEY__SECRET" >> .env.production
+        - echo "NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET=$NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET" >> .env.production
         - pnpm run build
   artifacts:
     baseDirectory: .next

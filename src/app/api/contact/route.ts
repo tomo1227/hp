@@ -3,8 +3,8 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   const request = await req.json();
-  const gmailUser = process.env.NEXT_PUBLIC_GMAIL_USER;
-  const appPass = process.env.NEXT_PUBLIC_GMAIL_APP_PASS;
+  const gmailUser = process.env.NEXT_PUBLIC_GMAIL_USER_SECRET;
+  const appPass = process.env.NEXT_PUBLIC_GMAIL_APP_PASS_SECRET;
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
