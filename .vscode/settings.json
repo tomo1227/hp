@@ -95,7 +95,8 @@
     "dockercompose",
     "harborland",
     "Tomoki",
-    "tomomon"
+    "tomomon",
+    "turbopack"
   ],
   "todo-tree.general.tags": [
     "HACK",
