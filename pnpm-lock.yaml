@@ -159,7 +159,7 @@ importers:
     optionalDependencies:
       '@tailwindcss/oxide-linux-x64-gnu':
         specifier: ^4
-        version: 4.1.17
+        version: 4.1.18
       lightningcss-linux-x64-gnu:
         specifier: ^1
         version: 1.30.2
@@ -3142,6 +3142,12 @@ packages:
 
   '@tailwindcss/oxide-linux-x64-gnu@4.1.17':
     resolution: {integrity: sha512-M3XZuORCGB7VPOEDH+nzpJ21XPvK5PyjlkSFkFziNHGLc5d6g3di2McAAblmaSUNl8IOmzYwLx9NsE7bplNkwQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@tailwindcss/oxide-linux-x64-gnu@4.1.18':
+    resolution: {integrity: sha512-v3gyT0ivkfBLoZGF9LyHmts0Isc8jHZyVcbzio6Wpzifg/+5ZJpDiRiUhDLkcr7f/r38SWNe7ucxmGW3j3Kb/g==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -12769,6 +12775,9 @@ snapshots:
     optional: true
 
   '@tailwindcss/oxide-linux-x64-gnu@4.1.17':
+    optional: true
+
+  '@tailwindcss/oxide-linux-x64-gnu@4.1.18':
     optional: true
 
   '@tailwindcss/oxide-linux-x64-musl@4.1.17':
