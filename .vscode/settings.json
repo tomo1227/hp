@@ -85,7 +85,7 @@
   "yaml.format.enable": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
-      "text": "必ず日本語でコミットメッセージを記述してください"
+      "text": "必ず日本語でコミットメッセージを簡潔に記述してください"
     }
   ],
   "cSpell.words": [
