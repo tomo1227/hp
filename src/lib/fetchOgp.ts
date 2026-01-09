@@ -1,4 +1,5 @@
 import { JSDOM } from "jsdom";
+import dns from "dns";
 
 type OgpKey = "title" | "description" | "image" | "url";
 type Ogp = {
@@ -10,7 +11,69 @@ type Ogp = {
   favicon?: string;
 };
 
+async function isUrlSafeForOgp(url: string): Promise<boolean> {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return false;
+  }
+
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+    return false;
+  }
+
+  // Mirror the API route restrictions: only allow standard HTTP/HTTPS ports.
+  if (parsed.port && parsed.port !== "80" && parsed.port !== "443") {
+    return false;
+  }
+
+  const hostname = parsed.hostname;
+  try {
+    const lookupResult = await dns.promises.lookup(hostname, { family: 0 });
+    const addr = lookupResult.address;
+
+    if (
+      addr === "127.0.0.1" ||
+      addr === "::1" ||
+      addr.startsWith("10.") ||
+      addr.startsWith("192.168.") ||
+      addr.startsWith("172.16.") ||
+      addr.startsWith("172.17.") ||
+      addr.startsWith("172.18.") ||
+      addr.startsWith("172.19.") ||
+      addr.startsWith("172.20.") ||
+      addr.startsWith("172.21.") ||
+      addr.startsWith("172.22.") ||
+      addr.startsWith("172.23.") ||
+      addr.startsWith("172.24.") ||
+      addr.startsWith("172.25.") ||
+      addr.startsWith("172.26.") ||
+      addr.startsWith("172.27.") ||
+      addr.startsWith("172.28.") ||
+      addr.startsWith("172.29.") ||
+      addr.startsWith("172.30.") ||
+      addr.startsWith("172.31.") ||
+      addr.startsWith("169.254.") || // link-local
+      addr.startsWith("0.") || // non-routable
+      addr.startsWith("127.") // loopback range
+    ) {
+      return false;
+    }
+  } catch {
+    return false;
+  }
+
+  return true;
+}
+
 export const fetchOgp = async (url: string): Promise<Ogp | null> => {
+  const isSafe = await isUrlSafeForOgp(url);
+  if (!isSafe) {
+    console.error(`Rejected unsafe URL for OGP fetch: ${url}`);
+    return null;
+  }
+
   const ogp: Ogp = {
     title: "",
     description: "",
