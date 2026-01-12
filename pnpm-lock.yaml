@@ -130,8 +130,8 @@ importers:
         specifier: ^19.2.2
         version: 19.2.3(@types/react@19.2.7)
       aws-cdk:
-        specifier: ^2.1100.1
-        version: 2.1100.1
+        specifier: ^2.1100.3
+        version: 2.1100.3
       aws-cdk-lib:
         specifier: ^2.233.0
         version: 2.233.0(constructs@10.4.4)
@@ -3545,8 +3545,8 @@ packages:
       - yaml
       - mime-types
 
-  aws-cdk@2.1100.1:
-    resolution: {integrity: sha512-q2poFrQh90TK6eqeI0zznA8r1JkDI63WVOSqC7gFGo6qjQjAnvFk/utxHoNRgAC0RL0CLd19uCcHh3jfX9NiSg==}
+  aws-cdk@2.1100.3:
+    resolution: {integrity: sha512-jeSamF+IwPJKhqMir7Cw+2IoeHsmNFc/SoDAlOS9BYM8Wrd0Q1jJd3GcJOFzsMcWv9mcBAP5o23amyKHu03dXA==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
 
@@ -4943,6 +4943,7 @@ packages:
 
   jpeg-exif@1.1.4:
     resolution: {integrity: sha512-a+bKEcCjtuW5WTdgeXFzswSrdqi0jk4XlEtZlx5A94wCoBpFjfFTbo/Tra5SpNCl/YFZPvcV1dJc+TAYeg6ROQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   js-cookie@3.0.5:
     resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
@@ -8312,7 +8313,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.958.0)
+      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.621.0)
       '@aws-sdk/client-sts': 3.621.0
       '@aws-sdk/core': 3.621.0
       '@aws-sdk/credential-provider-node': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.621.0)
@@ -8450,7 +8451,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.621.0)
+      '@aws-sdk/client-sso-oidc': 3.621.0(@aws-sdk/client-sts@3.958.0)
       '@aws-sdk/client-sts': 3.621.0
       '@aws-sdk/core': 3.621.0
       '@aws-sdk/credential-provider-node': 3.621.0(@aws-sdk/client-sso-oidc@3.621.0(@aws-sdk/client-sts@3.621.0))(@aws-sdk/client-sts@3.621.0)
@@ -13086,7 +13087,7 @@ snapshots:
       '@aws-cdk/cloud-assembly-schema': 48.20.0
       constructs: 10.4.4
 
-  aws-cdk@2.1100.1:
+  aws-cdk@2.1100.3:
     optionalDependencies:
       fsevents: 2.3.2
 
