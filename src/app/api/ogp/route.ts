@@ -1,7 +1,7 @@
+import dns from "dns";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { fetchOgp } from "@/lib/fetchOgp";
-import dns from "dns";
 
 // export const dynamic = "force-dynamic";
 // export const revalidate = 0;
@@ -72,7 +72,10 @@ export async function POST(request: NextRequest) {
 
   const safeUrl = await normalizeAndValidateUrl(url);
   if (!safeUrl) {
-    return NextResponse.json({ error: "Invalid or disallowed URL" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid or disallowed URL" },
+      { status: 400 },
+    );
   }
 
   try {
