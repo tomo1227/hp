@@ -417,10 +417,32 @@
     "url": "https://fujisanhanabi.com/fujimotorsportsforest/"
   },
   {
-    "title": "2026 Spring Travel",
-    "en_title": "2026 Spring Travel",
-    "date": "2026-04-16T01:44:46.231Z",
-    "period": 33
+    "title": "グアダラハラ",
+    "en_title": "Guadalajara",
+    "date": "2026-04-16T01:44:46.231Z"
+  },
+  {
+    "title": "グアナファト",
+    "en_title": "Guanajuato",
+    "date": "2026-04-17T01:44:46.231Z",
+    "period": 2
+  },
+  {
+    "title": "サンミゲルデアジェンデ",
+    "en_title": "San Miguel de Allende",
+    "date": "2026-04-19T01:44:46.231Z",
+    "period": 2
+  },
+  {
+    "title": "メキシコシティ",
+    "en_title": "Mexico City",
+    "date": "2026-04-21T01:44:46.231Z"
+  },
+  {
+    "title": "グアテマラ",
+    "en_title": "Guatemala",
+    "date": "2026-04-22T01:44:46.231Z",
+    "period": 5
   },
   {
     "title": "The 絶景花火「Mt.Fuji」2026〜日本の極み 古今無双〜",
@@ -435,10 +457,69 @@
     "url": "https://www.club-t.com/sp/special/japan/oomagari/"
   },
   {
+    "title": "クスコ",
+    "en_title": "Cusco",
+    "date": "2026-04-27T01:44:46.231Z"
+  },
+  {
+    "title": "マチュピチュ",
+    "en_title": "Machu Picchu",
+    "date": "2026-04-28T01:44:46.231Z",
+    "period": 2
+  },
+  {
+    "title": "クスコ",
+    "en_title": "Cusco",
+    "date": "2026-04-30T01:44:46.231Z",
+    "period": 6
+  },
+  {
+    "title": "ワラス(via リマ)",
+    "en_title": "Huaraz (via Lima)",
+    "date": "2026-05-04T01:44:46.231Z",
+    "period": 4
+  },
+  {
+    "title": "パラカス(via リマ)",
+    "en_title": "Paracas (via Lima)",
+    "date": "2026-05-08T01:44:46.231Z"
+  },
+  {
+    "title": "ワカチナ",
+    "en_title": "Huacachina",
+    "date": "2026-05-08T12:44:46.231Z"
+  },
+  {
+    "title": "リマ",
+    "en_title": "Lima",
+    "date": "2026-05-09T12:44:46.231Z"
+  },
+  {
     "title": "Symphonic Starmine 2026",
     "en_title": "Symphonic Starmine 2026",
     "date": "2026-05-09T01:44:46.231Z",
     "url": "https://biwakolaa.com/symphonic/"
+  },
+  {
+    "title": "ヒューストン",
+    "en_title": "Houston",
+    "date": "2026-05-10T12:44:46.231Z"
+  },
+  {
+    "title": "ラスベガス",
+    "en_title": "Las Vegas",
+    "date": "2026-05-11T12:44:46.231Z",
+    "period": 4
+  },
+  {
+    "title": "バンクーバー",
+    "en_title": "Vancouver",
+    "date": "2026-05-15T12:44:46.231Z"
+  },
+  {
+    "title": "香港",
+    "en_title": "Hong Kong",
+    "date": "2026-05-16T12:44:46.231Z"
   },
   {
     "title": "琵琶湖ナイトクルーズ花火",
