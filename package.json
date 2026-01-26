@@ -55,7 +55,7 @@
     "@types/node": "^25",
     "@types/nodemailer": "^7.0.3",
     "@types/prompts": "^2.4.9",
-    "@types/react": "^19.2.2",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.2",
     "aws-cdk": "^2.1100.3",
     "aws-cdk-lib": "^2.235.0",
