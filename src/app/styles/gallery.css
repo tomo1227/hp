@@ -27,6 +27,13 @@
   @apply object-right;
 }
 
+#nagaoka2025-day1-image {
+  @apply object-[center_20%];
+}
+
+#yodoyabashi-sky-terrace-image {
+  @apply object-top;
+}
 
 #gallery-contents{
   @apply mx-3;
