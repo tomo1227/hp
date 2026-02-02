@@ -15,7 +15,7 @@
     "gal": "node ./src/cmd/gallery.mjs"
   },
   "dependencies": {
-    "@amcharts/amcharts5": "^5.14.4",
+    "@amcharts/amcharts5": "^5.15.5",
     "@amcharts/amcharts5-geodata": "^5.1.5",
     "@aws-sdk/client-s3": "^3.975.0",
     "@formatjs/intl-localematcher": "^0.8.0",

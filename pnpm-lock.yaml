@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@amcharts/amcharts5':
-        specifier: ^5.14.4
-        version: 5.15.3
+        specifier: ^5.15.5
+        version: 5.15.5
       '@amcharts/amcharts5-geodata':
         specifier: ^5.1.5
         version: 5.1.5
@@ -176,8 +176,8 @@ packages:
   '@amcharts/amcharts5-geodata@5.1.5':
     resolution: {integrity: sha512-LiH726cCNHBSBc5fcT1fjHEq28zwfYD5F6B5KKZflvVTUu5oaRh/c77GDTZgU4MYEo0xspSWhmXFy39BR7mpXw==}
 
-  '@amcharts/amcharts5@5.15.3':
-    resolution: {integrity: sha512-3Ue7BWj/eMa9cD+Dbp99l4eL7eo+0R9sBQkKbv4xuZWt1l+H+X6UU7/8AfsUGSG+J7P/ZBybxrF6EW6opgQQJA==}
+  '@amcharts/amcharts5@5.15.5':
+    resolution: {integrity: sha512-SmcQpJLcLrag1RwDEy19ow7iLHlM4bDOqb1+kyI604OIZVplgBQT6577wgaaY8Rkv9/0xjwoTeeQzH7NMeR3lg==}
 
   '@ardatan/aggregate-error@0.0.6':
     resolution: {integrity: sha512-vyrkEHG1jrukmzTPtyWB4NLPauUw5bQeg4uhn8f+1SSynmrOcyvlb1GKQjjgoBzElLdfXCRYX8UnBlhklOHYRQ==}
@@ -6767,7 +6767,7 @@ snapshots:
     dependencies:
       '@types/geojson': 7946.0.16
 
-  '@amcharts/amcharts5@5.15.3':
+  '@amcharts/amcharts5@5.15.5':
     dependencies:
       '@types/d3': 7.4.3
       '@types/d3-chord': 3.0.6
