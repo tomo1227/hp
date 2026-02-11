@@ -22,6 +22,8 @@ const japanPrefectures: string[] = [
   "Nagaoka",
   "Niigata",
   "Osaka",
+  "Nara",
+  "Wakayama",
   "Shiga",
   "Mie",
   "Okinawa",

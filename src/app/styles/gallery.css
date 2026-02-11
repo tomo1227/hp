@@ -35,10 +35,21 @@
   @apply object-top;
 }
 
+#wakakusayamayaki-image {
+  @apply object-[center_5%];
+}
+
 #otomatsuri-image {
   @apply object-[70%];
 }
 
+#kinkakuji-snow-image {
+  @apply object-[center_20%];
+}
+
+#amanohashidate-snow-image {
+  @apply object-bottom;
+}
 
 #gallery-contents{
   @apply mx-3;
