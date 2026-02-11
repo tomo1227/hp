@@ -35,6 +35,11 @@
   @apply object-top;
 }
 
+#otomatsuri-image {
+  @apply object-[70%];
+}
+
+
 #gallery-contents{
   @apply mx-3;
 }

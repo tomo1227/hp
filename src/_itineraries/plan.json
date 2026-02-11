@@ -99,11 +99,6 @@
     "date": "2025-09-13T01:44:46.231Z"
   },
   {
-    "title": "ポートレート撮影",
-    "en_title": "Portrait",
-    "date": "2025-09-15T01:44:46.231Z"
-  },
-  {
     "title": "長浜・北びわ湖大花火大会 「長浜の陣」",
     "en_title": "Nagahama & North Biwako Fireworks Festival",
     "date": "2025-09-17T01:44:46.231Z",
@@ -295,23 +290,10 @@
     "url": "https://ja.kyoto.travel/event/single.php?event_id=7063"
   },
   {
-    "title": "お燈まつり",
-    "en_title": "Otō Festival",
-    "date": "2026-02-06T01:44:46.231Z",
-    "url": "https://www3.pref.nara.jp/park/item/3554.htm"
-  },
-  {
     "title": "びわ湖ワンダーナイト",
     "en_title": "Biwa Lake Wonder Night",
     "date": "2026-02-08T01:44:46.231Z",
     "url": "https://www.biwakokisen.co.jp/wonder-night/"
-  },
-  {
-    "title": "TREASURE TOUR [PULSE ON] IN JAPAN",
-    "en_title": "TREASURE TOUR [PULSE ON] IN JAPAN",
-    "date": "2026-02-10T01:44:46.231Z",
-    "url": "https://x.com/yg_treasure_jp/status/2014276854480306204?s=20",
-    "period": 2
   },
   {
     "title": "神戸港ウィークエンド花火",
@@ -384,6 +366,13 @@
     "en_title": "Todaiji Nigatsudo Shunie Omizutori",
     "date": "2026-03-12T01:44:46.231Z",
     "url": "https://www.ataminews.gr.jp/event/8/"
+  },
+  {
+    "title": "左義長まつり",
+    "en_title": "Sagicho-Matsuri",
+    "date": "2026-03-14T01:43:46.231Z",
+    "url": "https://www.sagicho.net/",
+    "period": 2
   },
   {
     "title": "琵琶湖ナイトクルーズ花火",
@@ -550,13 +539,6 @@
     "en_title": "Matsue Suigosai Lake Fireworks Festival",
     "date": "2026-08-01T01:44:46.231Z",
     "url": "https://suigosai.com/",
-    "period": 2
-  },
-  {
-    "title": "長岡花火",
-    "en_title": "Nagaoka Fireworks",
-    "date": "2026-08-02T01:44:46.231Z",
-    "url": "https://nagaokamatsuri.com/",
     "period": 2
   },
   {
