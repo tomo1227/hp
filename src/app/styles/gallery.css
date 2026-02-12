@@ -19,6 +19,14 @@
   @apply object-left;
 }
 
+#tanzanjinja-snow-image {
+  @apply object-[center_55%];
+}
+
+#kifunejinja-snow-image {
+  @apply object-[center_30%];
+}
+
 #saint-martin-image {
   @apply object-left;
 }
