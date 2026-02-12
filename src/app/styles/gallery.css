@@ -19,6 +19,14 @@
   @apply object-left;
 }
 
+#tanzanjinja-snow-image {
+  @apply object-[center_55%];
+}
+
+#kifunejinja-snow-image {
+  @apply object-[center_30%];
+}
+
 #saint-martin-image {
   @apply object-left;
 }
@@ -47,8 +55,16 @@
   @apply object-[center_20%];
 }
 
+#kanazawa-sta-image {
+  @apply scale-125;
+}
+
 #amanohashidate-snow-image {
   @apply object-bottom;
+}
+
+#toji-light-up-image {
+  @apply object-[center_20%];
 }
 
 #gallery-contents{
