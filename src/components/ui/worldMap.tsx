@@ -21,6 +21,7 @@ const japanPrefectures: string[] = [
   "Kyoto",
   "Nagaoka",
   "Gunma",
+  "Saitama",
   "Niigata",
   "Osaka",
   "Nara",
