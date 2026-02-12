@@ -51,6 +51,10 @@
   @apply object-bottom;
 }
 
+#toji-light-up-image {
+  @apply object-[center_20%];
+}
+
 #gallery-contents{
   @apply mx-3;
 }
