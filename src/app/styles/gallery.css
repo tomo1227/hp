@@ -47,6 +47,10 @@
   @apply object-[center_20%];
 }
 
+#kanazawa-sta-image {
+  @apply scale-125;
+}
+
 #amanohashidate-snow-image {
   @apply object-bottom;
 }
