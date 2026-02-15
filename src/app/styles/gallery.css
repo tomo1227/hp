@@ -71,6 +71,10 @@
   @apply object-[center_60%] scale-110;
 }
 
+#aritagawa-tenku-emaki-image {
+  @apply object-[center_10%];
+}
+
 #gallery-contents{
   @apply mx-3;
 }
