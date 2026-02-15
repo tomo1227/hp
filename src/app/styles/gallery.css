@@ -67,6 +67,10 @@
   @apply object-[center_20%];
 }
 
+#kobe-weekend-fireworks-image {
+  @apply object-[center_60%] scale-110;
+}
+
 #gallery-contents{
   @apply mx-3;
 }
