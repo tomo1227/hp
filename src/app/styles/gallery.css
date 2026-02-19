@@ -75,6 +75,10 @@
   @apply object-[center_10%];
 }
 
+#kushimoto-star-image {
+  @apply object-[40%] scale-110;
+}
+
 #gallery-contents{
   @apply mx-3;
 }
