@@ -17,6 +17,9 @@ importers:
       '@aws-sdk/client-s3':
         specifier: ^3.1004.0
         version: 3.1004.0
+      '@aws-sdk/s3-request-presigner':
+        specifier: ^3.1004.0
+        version: 3.1019.0
       '@formatjs/intl-localematcher':
         specifier: ^0.8.1
         version: 0.8.1
@@ -30,6 +33,9 @@ importers:
         specifier: ^6.1.19
         version: 6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@mdx-js/loader':
+        specifier: ^3.1.0
+        version: 3.1.1
+      '@mdx-js/mdx':
         specifier: ^3.1.0
         version: 3.1.1
       '@mdx-js/react':
@@ -101,10 +107,10 @@ importers:
     devDependencies:
       '@aws-amplify/backend':
         specifier: ^1.21.0
-        version: 1.21.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+        version: 1.21.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
       '@aws-amplify/backend-cli':
         specifier: ^1.8.2
-        version: 1.8.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+        version: 1.8.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       '@biomejs/biome':
         specifier: 2.4.9
         version: 2.4.9
@@ -942,6 +948,10 @@ packages:
     resolution: {integrity: sha512-GUIlegfcK2LO1J2Y98sCJy63rQSiLiDOgVw7HiHPRqfI2vb3XozTVqemwO0VSGXp54ngCnAQz0Lf0YPCBINNxA==}
     engines: {node: '>=20.0.0'}
 
+  '@aws-sdk/core@3.973.25':
+    resolution: {integrity: sha512-TNrx7eq6nKNOO62HWPqoBqPLXEkW6nLZQGwjL6lq1jZtigWYbK1NbCnT7mKDzbLMHZfuOECUt3n6CzxjUW9HWQ==}
+    engines: {node: '>=20.0.0'}
+
   '@aws-sdk/crc64-nvme@3.972.4':
     resolution: {integrity: sha512-HKZIZLbRyvzo/bXZU7Zmk6XqU+1C9DjI56xd02vwuDIxedxBEqP17t9ExhbP9QFeNq/a3l9GOcyirFXxmbDhmw==}
     engines: {node: '>=20.0.0'}
@@ -1140,6 +1150,10 @@ packages:
     resolution: {integrity: sha512-5E3XxaElrdyk6ZJ0TjH7Qm6ios4b/qQCiLr6oQ8NK7e4Kn6JBTJCaYioQCQ65BpZ1+l1mK5wTAac2+pEz0Smpw==}
     engines: {node: '>=20.0.0'}
 
+  '@aws-sdk/middleware-sdk-s3@3.972.26':
+    resolution: {integrity: sha512-5q7UGSTtt7/KF0Os8wj2VZtlLxeWJVb0e2eDrDJlWot2EIxUNKDDMPFq/FowUqrwZ40rO2bu6BypxaKNvQhI+g==}
+    engines: {node: '>=20.0.0'}
+
   '@aws-sdk/middleware-ssec@3.972.7':
     resolution: {integrity: sha512-G9clGVuAml7d8DYzY6DnRi7TIIDRvZ3YpqJPz/8wnWS5fYx/FNWNmkO6iJVlVkQg9BfeMzd+bVPtPJOvC4B+nQ==}
     engines: {node: '>=20.0.0'}
@@ -1176,6 +1190,14 @@ packages:
     resolution: {integrity: sha512-/Ev/6AI8bvt4HAAptzSjThGUMjcWaX3GX8oERkB0F0F9x2dLSBdgFDiyrRz3i0u0ZFZFQ1b28is4QhyqXTUsVA==}
     engines: {node: '>=20.0.0'}
 
+  '@aws-sdk/s3-request-presigner@3.1019.0':
+    resolution: {integrity: sha512-KFv5UaIORIF6MTmEc79MQTPQSnRZjUmOIaOzXn9g6ujtViQLIrNYJiaSmVw8LqK1ebcndS6L6s4bBdLd9AQVJA==}
+    engines: {node: '>=20.0.0'}
+
+  '@aws-sdk/signature-v4-multi-region@3.996.14':
+    resolution: {integrity: sha512-4nZSrBr1NO+48HCM/6BRU8mnRjuHZjcpziCvLXZk5QVftwWz5Mxqbhwdz4xf7WW88buaTB8uRO2MHklSX1m0vg==}
+    engines: {node: '>=20.0.0'}
+
   '@aws-sdk/signature-v4-multi-region@3.996.6':
     resolution: {integrity: sha512-NnsOQsVmJXy4+IdPFUjRCWPn9qNH1TzS/f7MiWgXeoHs903tJpAWQWQtoFvLccyPoBgomKP9L89RRr2YsT/L0g==}
     engines: {node: '>=20.0.0'}
@@ -1210,6 +1232,10 @@ packages:
     resolution: {integrity: sha512-hl7BGwDCWsjH8NkZfx+HgS7H2LyM2lTMAI7ba9c8O0KqdBLTdNJivsHpqjg9rNlAlPyREb6DeDRXUl0s8uFdmQ==}
     engines: {node: '>=20.0.0'}
 
+  '@aws-sdk/types@3.973.6':
+    resolution: {integrity: sha512-Atfcy4E++beKtwJHiDln2Nby8W/mam64opFPTiHEqgsthqeydFS1pY+OUlN1ouNOmf8ArPU/6cDS65anOP3KQw==}
+    engines: {node: '>=20.0.0'}
+
   '@aws-sdk/util-arn-parser@3.972.3':
     resolution: {integrity: sha512-HzSD8PMFrvgi2Kserxuff5VitNq2sgf3w9qxmskKDiDTThWfVteJxuCS9JXiPIPtmCrp+7N9asfIaVhBFORllA==}
     engines: {node: '>=20.0.0'}
@@ -1236,6 +1262,10 @@ packages:
 
   '@aws-sdk/util-format-url@3.972.7':
     resolution: {integrity: sha512-V+PbnWfUl93GuFwsOHsAq7hY/fnm9kElRqR8IexIJr5Rvif9e614X5sGSyz3mVSf1YAZ+VTy63W1/pGdA55zyA==}
+    engines: {node: '>=20.0.0'}
+
+  '@aws-sdk/util-format-url@3.972.8':
+    resolution: {integrity: sha512-J6DS9oocrgxM8xlUTTmQOuwRF6rnAGEujAN9SAzllcrQmwn5iJ58ogxy3SEhD0Q7JZvlA5jvIXBkpQRqEqlE9A==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/util-locate-window@3.965.5':
@@ -1284,6 +1314,10 @@ packages:
 
   '@aws-sdk/xml-builder@3.972.10':
     resolution: {integrity: sha512-OnejAIVD+CxzyAUrVic7lG+3QRltyja9LoNqCE/1YVs8ichoTbJlVSaZ9iSMcnHLyzrSNtvaOGjSDRP+d/ouFA==}
+    engines: {node: '>=20.0.0'}
+
+  '@aws-sdk/xml-builder@3.972.16':
+    resolution: {integrity: sha512-iu2pyvaqmeatIJLURLqx9D+4jKAdTH20ntzB6BFwjyN7V960r4jK32mx0Zf7YbtOYAbmbtQfDNuL60ONinyw7A==}
     engines: {node: '>=20.0.0'}
 
   '@aws/lambda-invoke-store@0.2.3':
@@ -2698,6 +2732,10 @@ packages:
     resolution: {integrity: sha512-Hj4WoYWMJnSpM6/kchsm4bUNTL9XiSyhvoMb2KIq4VJzyDt7JpGHUZHkVNPZVC7YE1tf8tPeVauxpFBKGW4/KQ==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/abort-controller@4.2.12':
+    resolution: {integrity: sha512-xolrFw6b+2iYGl6EcOL7IJY71vvyZ0DJ3mcKtpykqPe2uscwtzDZJa1uVQXyP7w9Dd+kGwYnPbMsJrGISKiY/Q==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/chunked-blob-reader-native@4.2.3':
     resolution: {integrity: sha512-jA5k5Udn7Y5717L86h4EIv06wIr3xn8GM1qHRi/Nf31annXcXHJjBKvgztnbn2TxH3xWrPBfgwHsOwZf0UmQWw==}
     engines: {node: '>=18.0.0'}
@@ -2717,6 +2755,10 @@ packages:
   '@smithy/core@2.5.7':
     resolution: {integrity: sha512-8olpW6mKCa0v+ibCjoCzgZHQx1SQmZuW/WkrdZo73wiTprTH6qhmskT60QLFdT9DRa5mXxjz89kQPZ7ZSsoqqg==}
     engines: {node: '>=16.0.0'}
+
+  '@smithy/core@3.23.12':
+    resolution: {integrity: sha512-o9VycsYNtgC+Dy3I0yrwCqv9CWicDnke0L7EVOrZtJpjb2t0EjaEofmMrYc0T1Kn3yk32zm6cspxF9u9Bj7e5w==}
+    engines: {node: '>=18.0.0'}
 
   '@smithy/core@3.23.9':
     resolution: {integrity: sha512-1Vcut4LEL9HZsdpI0vFiRYIsaoPwZLjAxnVQDUMQK8beMS+EYPLDQCXtbzfxmM5GzSgjfe2Q9M7WaXwIMQllyQ==}
@@ -2783,6 +2825,10 @@ packages:
     resolution: {integrity: sha512-U2Hcfl2s3XaYjikN9cT4mPu8ybDbImV3baXR0PkVlC0TTx808bRP3FaPGAzPtB8OByI+JqJ1kyS+7GEgae7+qQ==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/fetch-http-handler@5.3.15':
+    resolution: {integrity: sha512-T4jFU5N/yiIfrtrsb9uOQn7RdELdM/7HbyLNr6uO/mpkj1ctiVs7CihVr51w4LyQlXWDpXFn4BElf1WmQvZu/A==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/hash-blob-browser@4.2.12':
     resolution: {integrity: sha512-1wQE33DsxkM/waftAhCH9VtJbUGyt1PJ9YRDpOu+q9FUi73LLFUZ2fD8A61g2mT1UY9k7b99+V1xZ41Rz4SHRQ==}
     engines: {node: '>=18.0.0'}
@@ -2841,6 +2887,10 @@ packages:
     resolution: {integrity: sha512-UEFIejZy54T1EJn2aWJ45voB7RP2T+IRzUqocIdM6GFFa5ClZncakYJfcYnoXt3UsQrZZ9ZRauGm77l9UCbBLw==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/middleware-endpoint@4.4.27':
+    resolution: {integrity: sha512-T3TFfUgXQlpcg+UdzcAISdZpj4Z+XECZ/cefgA6wLBd6V4lRi0svN2hBouN/be9dXQ31X4sLWz3fAQDf+nt6BA==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/middleware-retry@3.0.34':
     resolution: {integrity: sha512-yVRr/AAtPZlUvwEkrq7S3x7Z8/xCd97m2hLDaqdz6ucP2RKHsBjEqaUA2ebNv2SsZoPEi+ZD0dZbOB1u37tGCA==}
     engines: {node: '>=16.0.0'}
@@ -2857,6 +2907,10 @@ packages:
     resolution: {integrity: sha512-W9g1bOLui7Xn5FABRVS0o3rXL0gfN37d/8I/W7i0N7oxjx9QecUmXEMSUMADTODwdtka9cN43t5BI2CodLJpng==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/middleware-serde@4.2.15':
+    resolution: {integrity: sha512-ExYhcltZSli0pgAKOpQQe1DLFBLryeZ22605y/YS+mQpdNWekum9Ujb/jMKfJKgjtz1AZldtwA/wCYuKJgjjlg==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/middleware-stack@3.0.11':
     resolution: {integrity: sha512-1HGo9a6/ikgOMrTrWL/WiN9N8GSVYpuRQO5kjstAq4CvV59bjqnh7TbdXGQ4vxLD3xlSjfBjq5t1SOELePsLnA==}
     engines: {node: '>=16.0.0'}
@@ -2865,12 +2919,20 @@ packages:
     resolution: {integrity: sha512-s+eenEPW6RgliDk2IhjD2hWOxIx1NKrOHxEwNUaUXxYBxIyCcDfNULZ2Mu15E3kwcJWBedTET/kEASPV1A1Akg==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/middleware-stack@4.2.12':
+    resolution: {integrity: sha512-kruC5gRHwsCOuyCd4ouQxYjgRAym2uDlCvQ5acuMtRrcdfg7mFBg6blaxcJ09STpt3ziEkis6bhg1uwrWU7txw==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/node-config-provider@3.1.12':
     resolution: {integrity: sha512-O9LVEu5J/u/FuNlZs+L7Ikn3lz7VB9hb0GtPT9MQeiBmtK8RSY3ULmsZgXhe6VAlgTw0YO+paQx4p8xdbs43vQ==}
     engines: {node: '>=16.0.0'}
 
   '@smithy/node-config-provider@4.3.11':
     resolution: {integrity: sha512-xD17eE7kaLgBBGf5CZQ58hh2YmwK1Z0O8YhffwB/De2jsL0U3JklmhVYJ9Uf37OtUDLF2gsW40Xwwag9U869Gg==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/node-config-provider@4.3.12':
+    resolution: {integrity: sha512-tr2oKX2xMcO+rBOjobSwVAkV05SIfUKz8iI53rzxEmgW3GOOPOv0UioSDk+J8OpRQnpnhsO3Af6IEBabQBVmiw==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/node-config-provider@4.3.8':
@@ -2885,12 +2947,20 @@ packages:
     resolution: {integrity: sha512-DamSqaU8nuk0xTJDrYnRzZndHwwRnyj/n/+RqGGCcBKB4qrQem0mSDiWdupaNWdwxzyMU91qxDmHOCazfhtO3A==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/node-http-handler@4.5.0':
+    resolution: {integrity: sha512-Rnq9vQWiR1+/I6NZZMNzJHV6pZYyEHt2ZnuV3MG8z2NNenC4i/8Kzttz7CjZiHSmsN5frhXhg17z3Zqjjhmz1A==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/property-provider@3.1.11':
     resolution: {integrity: sha512-I/+TMc4XTQ3QAjXfOcUWbSS073oOEAxgx4aZy8jHaf8JQnRkq2SZWw8+PfDtBvLUjcGMdxl+YwtzWe6i5uhL/A==}
     engines: {node: '>=16.0.0'}
 
   '@smithy/property-provider@4.2.11':
     resolution: {integrity: sha512-14T1V64o6/ndyrnl1ze1ZhyLzIeYNN47oF/QU6P5m82AEtyOkMJTb0gO1dPubYjyyKuPD6OSVMPDKe+zioOnCg==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/property-provider@4.2.12':
+    resolution: {integrity: sha512-jqve46eYU1v7pZ5BM+fmkbq3DerkSluPr5EhvOcHxygxzD05ByDRppRwRPPpFrsFo5yDtCYLKu+kreHKVrvc7A==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/property-provider@4.2.8':
@@ -2905,6 +2975,10 @@ packages:
     resolution: {integrity: sha512-hI+barOVDJBkNt4y0L2mu3Ugc0w7+BpJ2CZuLwXtSltGAAwCb3IvnalGlbDV/UCS6a9ZuT3+exd1WxNdLb5IlQ==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/protocol-http@5.3.12':
+    resolution: {integrity: sha512-fit0GZK9I1xoRlR4jXmbLhoN0OdEpa96ul8M65XdmXnxXkuMxM0Y8HDT0Fh0Xb4I85MBvBClOzgSrV1X2s1Hxw==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/querystring-builder@3.0.11':
     resolution: {integrity: sha512-u+5HV/9uJaeLj5XTb6+IEF/dokWWkEqJ0XiaRRogyREmKGUgZnNecLucADLdauWFKUNbQfulHFEZEdjwEBjXRg==}
     engines: {node: '>=16.0.0'}
@@ -2913,12 +2987,20 @@ packages:
     resolution: {integrity: sha512-7spdikrYiljpket6u0up2Ck2mxhy7dZ0+TDd+S53Dg2DHd6wg+YNJrTCHiLdgZmEXZKI7LJZcwL3721ZRDFiqA==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/querystring-builder@4.2.12':
+    resolution: {integrity: sha512-6wTZjGABQufekycfDGMEB84BgtdOE/rCVTov+EDXQ8NHKTUNIp/j27IliwP7tjIU9LR+sSzyGBOXjeEtVgzCHg==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/querystring-parser@3.0.11':
     resolution: {integrity: sha512-Je3kFvCsFMnso1ilPwA7GtlbPaTixa3WwC+K21kmMZHsBEOZYQaqxcMqeFFoU7/slFjKDIpiiPydvdJm8Q/MCw==}
     engines: {node: '>=16.0.0'}
 
   '@smithy/querystring-parser@4.2.11':
     resolution: {integrity: sha512-nE3IRNjDltvGcoThD2abTozI1dkSy8aX+a2N1Rs55en5UsdyyIXgGEmevUL3okZFoJC77JgRGe99xYohhsjivQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/querystring-parser@4.2.12':
+    resolution: {integrity: sha512-P2OdvrgiAKpkPNKlKUtWbNZKB1XjPxM086NeVhK+W+wI46pIKdWBe5QyXvhUm3MEcyS/rkLvY8rZzyUdmyDZBw==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/service-error-classification@3.0.11':
@@ -2941,6 +3023,10 @@ packages:
     resolution: {integrity: sha512-IB/M5I8G0EeXZTHsAxpx51tMQ5R719F3aq+fjEB6VtNcCHDc0ajFDIGDZw+FW9GxtEkgTduiPpjveJdA/CX7sw==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/shared-ini-file-loader@4.4.7':
+    resolution: {integrity: sha512-HrOKWsUb+otTeo1HxVWeEb99t5ER1XrBi/xka2Wv6NVmTbuCUC1dvlrksdvxFtODLBjsC+PHK+fuy2x/7Ynyiw==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/signature-v4@4.2.4':
     resolution: {integrity: sha512-5JWeMQYg81TgU4cG+OexAWdvDTs5JDdbEZx+Qr1iPbvo91QFGzjy0IkXAKaXUHqmKUJgSHK0ZxnCkgZpzkeNTA==}
     engines: {node: '>=16.0.0'}
@@ -2949,12 +3035,20 @@ packages:
     resolution: {integrity: sha512-V1L6N9aKOBAN4wEHLyqjLBnAz13mtILU0SeDrjOaIZEeN6IFa6DxwRt1NNpOdmSpQUfkBj0qeD3m6P77uzMhgQ==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/signature-v4@5.3.12':
+    resolution: {integrity: sha512-B/FBwO3MVOL00DaRSXfXfa/TRXRheagt/q5A2NM13u7q+sHS59EOVGQNfG7DkmVtdQm5m3vOosoKAXSqn/OEgw==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/smithy-client@3.7.0':
     resolution: {integrity: sha512-9wYrjAZFlqWhgVo3C4y/9kpc68jgiSsKUnsFPzr/MSiRL93+QRDafGTfhhKAb2wsr69Ru87WTiqSfQusSmWipA==}
     engines: {node: '>=16.0.0'}
 
   '@smithy/smithy-client@4.12.3':
     resolution: {integrity: sha512-7k4UxjSpHmPN2AxVhvIazRSzFQjWnud3sOsXcFStzagww17j1cFQYqTSiQ8xuYK3vKLR1Ni8FzuT3VlKr3xCNw==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/smithy-client@4.12.7':
+    resolution: {integrity: sha512-q3gqnwml60G44FECaEEsdQMplYhDMZYCtYhMCzadCnRnnHIobZJjegmdoUo6ieLQlPUzvrMdIJUpx6DoPmzANQ==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/types@2.12.0':
@@ -2969,11 +3063,19 @@ packages:
     resolution: {integrity: sha512-COuLsZILbbQsdrwKQpkkpyep7lCsByxwj7m0Mg5v66/ZTyenlfBc40/QFQ5chO0YN/PNEH1Bi3fGtfXPnYNeDw==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/types@4.13.1':
+    resolution: {integrity: sha512-787F3yzE2UiJIQ+wYW1CVg2odHjmaWLGksnKQHUrK/lYZSEcy1msuLVvxaR/sI2/aDe9U+TBuLsXnr3vod1g0g==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/url-parser@3.0.11':
     resolution: {integrity: sha512-TmlqXkSk8ZPhfc+SQutjmFr5FjC0av3GZP4B/10caK1SbRwe/v+Wzu/R6xEKxoNqL+8nY18s1byiy6HqPG37Aw==}
 
   '@smithy/url-parser@4.2.11':
     resolution: {integrity: sha512-oTAGGHo8ZYc5VZsBREzuf5lf2pAurJQsccMusVZ85wDkX66ojEc/XauiGjzCj50A61ObFTPe6d7Pyt6UBYaing==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/url-parser@4.2.12':
+    resolution: {integrity: sha512-wOPKPEpso+doCZGIlr+e1lVI6+9VAKfL4kZWFgzVgGWY2hZxshNKod4l2LXS3PRC9otH/JRSjtEHqQ/7eLciRA==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-base64@3.0.0':
@@ -3063,6 +3165,10 @@ packages:
     resolution: {integrity: sha512-r3dtF9F+TpSZUxpOVVtPfk09Rlo4lT6ORBqEvX3IBT6SkQAdDSVKR5GcfmZbtl7WKhKnmb3wbDTQ6ibR2XHClw==}
     engines: {node: '>=18.0.0'}
 
+  '@smithy/util-middleware@4.2.12':
+    resolution: {integrity: sha512-Er805uFUOvgc0l8nv0e0su0VFISoxhJ/AwOn3gL2NWNY2LUEldP5WtVcRYSQBcjg0y9NfG8JYrCJaYDpupBHJQ==}
+    engines: {node: '>=18.0.0'}
+
   '@smithy/util-retry@3.0.11':
     resolution: {integrity: sha512-hJUC6W7A3DQgaee3Hp9ZFcOxVDZzmBIRBPlUAk8/fSOEl7pE/aX7Dci0JycNOnm9Mfr0KV2XjIlUOcGWXQUdVQ==}
     engines: {node: '>=16.0.0'}
@@ -3077,6 +3183,10 @@ packages:
 
   '@smithy/util-stream@4.5.17':
     resolution: {integrity: sha512-793BYZ4h2JAQkNHcEnyFxDTcZbm9bVybD0UV/LEWmZ5bkTms7JqjfrLMi2Qy0E5WFcCzLwCAPgcvcvxoeALbAQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@smithy/util-stream@4.5.20':
+    resolution: {integrity: sha512-4yXLm5n/B5SRBR2p8cZ90Sbv4zL4NKsgxdzCzp/83cXw2KxLEumt5p+GAVyRNZgQOSrzXn9ARpO0lUe8XSlSDw==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-uri-escape@3.0.0':
@@ -4369,6 +4479,9 @@ packages:
   fast-xml-builder@1.0.0:
     resolution: {integrity: sha512-fpZuDogrAgnyt9oDDz+5DBz0zgPdPZz6D4IR7iESxRXElrlGTRkHJ9eEt+SACRJwT0FNFrt71DFQIUFBJfX/uQ==}
 
+  fast-xml-builder@1.1.4:
+    resolution: {integrity: sha512-f2jhpN4Eccy0/Uz9csxh3Nu6q4ErKxf0XIsasomfOihuSUa3/xw6w8dnOtCDgEItQFJG8KyXPzQXzcODDrrbOg==}
+
   fast-xml-parser@4.4.1:
     resolution: {integrity: sha512-xkjOecfnKGkSsOwtZ5Pz7Us/T6mrbPQrq0nh+aCO5V9nk5NLWmasAHumTKjiPJPWANe+kAZ84Jc8ooJkzZ88Sw==}
     hasBin: true
@@ -4379,6 +4492,10 @@ packages:
 
   fast-xml-parser@5.4.1:
     resolution: {integrity: sha512-BQ30U1mKkvXQXXkAGcuyUA/GA26oEB7NzOtsxCDtyu62sjGw5QraKFhx2Em3WQNjPw9PG6MQ9yuIIgkSDfGu5A==}
+    hasBin: true
+
+  fast-xml-parser@5.5.8:
+    resolution: {integrity: sha512-Z7Fh2nVQSb2d+poDViM063ix2ZGt9jmY1nWhPfHBOK2Hgnb/OW3P4Et3P/81SEej0J7QbWtJqxO05h8QYfK7LQ==}
     hasBin: true
 
   fastq@1.20.1:
@@ -5665,6 +5782,10 @@ packages:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
 
+  path-expression-matcher@1.2.0:
+    resolution: {integrity: sha512-DwmPWeFn+tq7TiyJ2CxezCAirXjFxvaiD03npak3cRjlP9+OjTmSy1EpIrEbh+l6JgUundniloMLDQ/6VTdhLQ==}
+    engines: {node: '>=14.0.0'}
+
   path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
@@ -6261,6 +6382,9 @@ packages:
 
   strnum@2.1.2:
     resolution: {integrity: sha512-l63NF9y/cLROq/yqKXSLtcMeeyOfnSQlfMSlzFt/K73oIaD8DGaQWd7Z34X9GPiKqP5rbSh84Hl4bOlLcjiSrQ==}
+
+  strnum@2.2.2:
+    resolution: {integrity: sha512-DnR90I+jtXNSTXWdwrEy9FakW7UX+qUZg28gj5fk2vxxl7uS/3bpI4fjFYVmdK9etptYBPNkpahuQnEwhwECqA==}
 
   style-to-js@1.1.21:
     resolution: {integrity: sha512-RjQetxJrrUJLQPHbLku6U/ocGtzyjbJMP9lCNK7Ag0CNh690nSH8woqWH9u16nMjYBAok+i7JO1NP2pOy8IsPQ==}
@@ -6887,12 +7011,12 @@ snapshots:
       - encoding
       - supports-color
 
-  '@aws-amplify/auth-construct@1.11.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/auth-construct@1.11.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-sdk/util-arn-parser': 3.972.3
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
@@ -6912,12 +7036,12 @@ snapshots:
       '@smithy/types': 3.7.2
       tslib: 2.8.1
 
-  '@aws-amplify/backend-auth@1.9.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/backend-auth@1.9.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
-      '@aws-amplify/auth-construct': 1.11.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/auth-construct': 1.11.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
     transitivePeerDependencies:
@@ -6929,20 +7053,20 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-cli@1.8.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)':
+  '@aws-amplify/backend-cli@1.8.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)':
     dependencies:
-      '@aws-amplify/backend-deployer': 2.1.5(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(typescript@5.9.3)
+      '@aws-amplify/backend-deployer': 2.1.5(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(typescript@5.9.3)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/cli-core': 2.2.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/client-config': 1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/cli-core': 2.2.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/client-config': 1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-amplify/form-generator': 1.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-amplify/sandbox': 2.1.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(typescript@5.9.3)
-      '@aws-amplify/schema-generator': 1.4.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/schema-generator': 1.4.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-sdk/client-amplify': 3.972.0
       '@aws-sdk/client-cloudformation': 3.972.0
       '@aws-sdk/client-s3': 3.1004.0
@@ -6950,7 +7074,7 @@ snapshots:
       '@aws-sdk/credential-provider-ini': 3.972.0
       '@aws-sdk/credential-providers': 3.972.0
       '@aws-sdk/region-config-resolver': 3.972.0
-      '@aws-sdk/types': 3.973.5
+      '@aws-sdk/types': 3.973.6
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/context-async-hooks': 2.5.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 2.5.0(@opentelemetry/api@1.9.0)
@@ -6983,14 +7107,14 @@ snapshots:
       - tedious
       - typescript
 
-  '@aws-amplify/backend-data@1.6.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/backend-data@1.6.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
       '@aws-amplify/data-construct': 1.17.0(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-amplify/data-schema-types': 1.2.1
       '@aws-amplify/graphql-generator': 0.5.3
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
       graphql: 15.10.1
@@ -7025,11 +7149,31 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/backend-function@1.17.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/backend-deployer@2.1.5(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(typescript@5.9.3)':
+    dependencies:
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-cdk/toolkit-lib': 1.6.1(@aws-cdk/cli-plugin-contract@2.182.0)
+      aws-cdk-lib: 2.244.0(constructs@10.5.1)
+      execa: 9.6.1
+      minimatch: 10.0.1
+      strip-ansi: 7.1.2
+      tsx: 4.19.4
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - '@aws-sdk/types'
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - constructs
+      - react-native-b4a
+
+  '@aws-amplify/backend-function@1.17.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-sdk/client-s3': 3.1004.0
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
@@ -7047,11 +7191,11 @@ snapshots:
     dependencies:
       zod: 3.25.17
 
-  '@aws-amplify/backend-output-storage@1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/backend-output-storage@1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7078,11 +7222,26 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/backend-storage@1.4.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/backend-secret@1.4.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-sdk/client-ssm': 3.1004.0
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - '@aws-sdk/types'
+      - aws-cdk-lib
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - constructs
+      - react-native-b4a
+
+  '@aws-amplify/backend-storage@1.4.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
     transitivePeerDependencies:
@@ -7094,19 +7253,19 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend@1.21.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
+  '@aws-amplify/backend@1.21.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)':
     dependencies:
-      '@aws-amplify/backend-auth': 1.9.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/backend-data': 1.6.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/backend-function': 1.17.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/backend-auth': 1.9.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/backend-data': 1.6.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/backend-function': 1.17.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/backend-storage': 1.4.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/client-config': 1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-output-storage': 1.3.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/backend-storage': 1.4.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/client-config': 1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-amplify/data-schema': 1.25.1
-      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-sdk/client-amplify': 3.1004.0
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
@@ -7147,13 +7306,37 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/client-config@1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+  '@aws-amplify/cli-core@2.2.3(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(@types/node@25.2.2)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-sdk/client-cloudformation': 3.972.0
+      '@inquirer/prompts': 7.10.1(@types/node@25.2.2)
+      '@opentelemetry/api': 1.9.0
+      execa: 9.6.1
+      kleur: 4.1.5
+      ora: 8.2.0
+      semver: 7.7.3
+      strip-ansi: 7.1.2
+      wrap-ansi: 9.0.2
+      zod: 3.25.17
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - '@aws-sdk/types'
+      - '@types/node'
+      - aws-cdk-lib
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - constructs
+      - react-native-b4a
+
+  '@aws-amplify/client-config@1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-sdk/client-amplify': 3.1004.0
       '@aws-sdk/client-cloudformation': 3.1004.0
       '@aws-sdk/client-s3': 3.1004.0
@@ -7177,6 +7360,29 @@ snapshots:
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
       '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-sdk/client-amplify': 3.972.0
+      '@aws-sdk/client-cloudformation': 3.972.0
+      '@aws-sdk/client-s3': 3.1004.0
+      zod: 3.25.17
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - '@aws-sdk/types'
+      - aws-cdk-lib
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - constructs
+      - encoding
+      - react-native-b4a
+      - supports-color
+
+  '@aws-amplify/client-config@1.10.0(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)(zod@3.25.17)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
       '@aws-sdk/client-amplify': 3.972.0
       '@aws-sdk/client-cloudformation': 3.972.0
       '@aws-sdk/client-s3': 3.1004.0
@@ -7272,6 +7478,25 @@ snapshots:
       - constructs
       - react-native-b4a
 
+  '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.1004.0)(@aws-sdk/client-cloudformation@3.1004.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-sdk/client-amplify': 3.1004.0
+      '@aws-sdk/client-cloudformation': 3.1004.0
+      '@aws-sdk/client-s3': 3.1004.0
+      '@aws-sdk/types': 3.973.6
+      zod: 3.25.17
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - aws-cdk-lib
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - constructs
+      - react-native-b4a
+
   '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
@@ -7281,6 +7506,25 @@ snapshots:
       '@aws-sdk/client-cloudformation': 3.972.0
       '@aws-sdk/client-s3': 3.1004.0
       '@aws-sdk/types': 3.973.5
+      zod: 3.25.17
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - aws-cdk-lib
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - constructs
+      - react-native-b4a
+
+  '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/client-amplify@3.972.0)(@aws-sdk/client-cloudformation@3.972.0)(@aws-sdk/client-s3@3.1004.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-sdk/client-amplify': 3.972.0
+      '@aws-sdk/client-cloudformation': 3.972.0
+      '@aws-sdk/client-s3': 3.1004.0
+      '@aws-sdk/types': 3.973.6
       zod: 3.25.17
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7497,10 +7741,46 @@ snapshots:
       - bare-buffer
       - react-native-b4a
 
+  '@aws-amplify/platform-core@1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-amplify/plugin-types': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-sdk/client-sts': 3.1004.0
+      '@opentelemetry/api': 1.9.0
+      '@opentelemetry/core': 2.6.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-trace-base': 2.6.0(@opentelemetry/api@1.9.0)
+      aws-cdk-lib: 2.244.0(constructs@10.5.1)
+      constructs: 10.5.1
+      is-ci: 4.1.0
+      lodash.mergewith: 4.6.2
+      lodash.snakecase: 4.1.1
+      semver: 7.7.4
+      uuid: 11.1.0
+      zod: 3.25.17
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - '@aws-sdk/types'
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - react-native-b4a
+
   '@aws-amplify/plugin-types@1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
     dependencies:
       '@aws-cdk/toolkit-lib': 1.6.1(@aws-cdk/cli-plugin-contract@2.182.0)
       '@aws-sdk/types': 3.973.5
+      aws-cdk-lib: 2.244.0(constructs@10.5.1)
+      constructs: 10.5.1
+    transitivePeerDependencies:
+      - '@aws-cdk/cli-plugin-contract'
+      - aws-crt
+      - bare-abort-controller
+      - bare-buffer
+      - react-native-b4a
+
+  '@aws-amplify/plugin-types@1.11.2(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+    dependencies:
+      '@aws-cdk/toolkit-lib': 1.6.1(@aws-cdk/cli-plugin-contract@2.182.0)
+      '@aws-sdk/types': 3.973.6
       aws-cdk-lib: 2.244.0(constructs@10.5.1)
       constructs: 10.5.1
     transitivePeerDependencies:
@@ -7546,10 +7826,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@aws-amplify/schema-generator@1.4.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
+  '@aws-amplify/schema-generator@1.4.1(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)':
     dependencies:
       '@aws-amplify/graphql-schema-generator': 0.11.12(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
-      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.5)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
+      '@aws-amplify/platform-core': 1.10.4(@aws-cdk/cli-plugin-contract@2.182.0)(@aws-sdk/types@3.973.6)(aws-cdk-lib@2.244.0(constructs@10.5.1))(constructs@10.5.1)
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
       - '@aws-sdk/types'
@@ -9614,6 +9894,22 @@ snapshots:
       '@smithy/util-utf8': 4.2.2
       tslib: 2.8.1
 
+  '@aws-sdk/core@3.973.25':
+    dependencies:
+      '@aws-sdk/types': 3.973.6
+      '@aws-sdk/xml-builder': 3.972.16
+      '@smithy/core': 3.23.12
+      '@smithy/node-config-provider': 4.3.12
+      '@smithy/property-provider': 4.2.12
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/signature-v4': 5.3.12
+      '@smithy/smithy-client': 4.12.7
+      '@smithy/types': 4.13.1
+      '@smithy/util-base64': 4.3.2
+      '@smithy/util-middleware': 4.2.12
+      '@smithy/util-utf8': 4.2.2
+      tslib: 2.8.1
+
   '@aws-sdk/crc64-nvme@3.972.4':
     dependencies:
       '@smithy/types': 4.13.0
@@ -9623,7 +9919,7 @@ snapshots:
     dependencies:
       '@aws-sdk/client-cognito-identity': 3.972.0
       '@aws-sdk/types': 3.972.0
-      '@smithy/property-provider': 4.2.8
+      '@smithy/property-provider': 4.2.11
       '@smithy/types': 4.13.0
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -9650,7 +9946,7 @@ snapshots:
     dependencies:
       '@aws-sdk/core': 3.972.0
       '@aws-sdk/types': 3.972.0
-      '@smithy/property-provider': 4.2.8
+      '@smithy/property-provider': 4.2.11
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
@@ -9680,7 +9976,7 @@ snapshots:
       '@aws-sdk/types': 3.972.0
       '@smithy/fetch-http-handler': 5.3.13
       '@smithy/node-http-handler': 4.4.14
-      '@smithy/property-provider': 4.2.8
+      '@smithy/property-provider': 4.2.11
       '@smithy/protocol-http': 5.3.11
       '@smithy/smithy-client': 4.12.3
       '@smithy/types': 4.13.0
@@ -9761,9 +10057,9 @@ snapshots:
       '@aws-sdk/core': 3.972.0
       '@aws-sdk/nested-clients': 3.972.0
       '@aws-sdk/types': 3.972.0
-      '@smithy/property-provider': 4.2.8
+      '@smithy/property-provider': 4.2.11
       '@smithy/protocol-http': 5.3.11
-      '@smithy/shared-ini-file-loader': 4.4.3
+      '@smithy/shared-ini-file-loader': 4.4.6
       '@smithy/types': 4.13.0
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -9812,7 +10108,7 @@ snapshots:
       '@aws-sdk/types': 3.972.0
       '@smithy/credential-provider-imds': 4.2.11
       '@smithy/property-provider': 4.2.11
-      '@smithy/shared-ini-file-loader': 4.4.3
+      '@smithy/shared-ini-file-loader': 4.4.6
       '@smithy/types': 4.13.0
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -9847,8 +10143,8 @@ snapshots:
     dependencies:
       '@aws-sdk/core': 3.972.0
       '@aws-sdk/types': 3.972.0
-      '@smithy/property-provider': 4.2.8
-      '@smithy/shared-ini-file-loader': 4.4.3
+      '@smithy/property-provider': 4.2.11
+      '@smithy/shared-ini-file-loader': 4.4.6
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
@@ -9880,8 +10176,8 @@ snapshots:
       '@aws-sdk/core': 3.972.0
       '@aws-sdk/token-providers': 3.972.0
       '@aws-sdk/types': 3.972.0
-      '@smithy/property-provider': 4.2.8
-      '@smithy/shared-ini-file-loader': 4.4.3
+      '@smithy/property-provider': 4.2.11
+      '@smithy/shared-ini-file-loader': 4.4.6
       '@smithy/types': 4.13.0
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -9913,8 +10209,8 @@ snapshots:
       '@aws-sdk/core': 3.972.0
       '@aws-sdk/nested-clients': 3.972.0
       '@aws-sdk/types': 3.972.0
-      '@smithy/property-provider': 4.2.8
-      '@smithy/shared-ini-file-loader': 4.4.3
+      '@smithy/property-provider': 4.2.11
+      '@smithy/shared-ini-file-loader': 4.4.6
       '@smithy/types': 4.13.0
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -10160,6 +10456,23 @@ snapshots:
       '@smithy/util-utf8': 4.2.2
       tslib: 2.8.1
 
+  '@aws-sdk/middleware-sdk-s3@3.972.26':
+    dependencies:
+      '@aws-sdk/core': 3.973.25
+      '@aws-sdk/types': 3.973.6
+      '@aws-sdk/util-arn-parser': 3.972.3
+      '@smithy/core': 3.23.12
+      '@smithy/node-config-provider': 4.3.12
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/signature-v4': 5.3.12
+      '@smithy/smithy-client': 4.12.7
+      '@smithy/types': 4.13.1
+      '@smithy/util-config-provider': 4.2.2
+      '@smithy/util-middleware': 4.2.12
+      '@smithy/util-stream': 4.5.20
+      '@smithy/util-utf8': 4.2.2
+      tslib: 2.8.1
+
   '@aws-sdk/middleware-ssec@3.972.7':
     dependencies:
       '@aws-sdk/types': 3.973.5
@@ -10306,6 +10619,26 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@aws-sdk/s3-request-presigner@3.1019.0':
+    dependencies:
+      '@aws-sdk/signature-v4-multi-region': 3.996.14
+      '@aws-sdk/types': 3.973.6
+      '@aws-sdk/util-format-url': 3.972.8
+      '@smithy/middleware-endpoint': 4.4.27
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/smithy-client': 4.12.7
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
+  '@aws-sdk/signature-v4-multi-region@3.996.14':
+    dependencies:
+      '@aws-sdk/middleware-sdk-s3': 3.972.26
+      '@aws-sdk/types': 3.973.6
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/signature-v4': 5.3.12
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@aws-sdk/signature-v4-multi-region@3.996.6':
     dependencies:
       '@aws-sdk/middleware-sdk-s3': 3.972.18
@@ -10368,6 +10701,11 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@aws-sdk/types@3.973.6':
+    dependencies:
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@aws-sdk/util-arn-parser@3.972.3':
     dependencies:
       tslib: 2.8.1
@@ -10415,6 +10753,13 @@ snapshots:
       '@aws-sdk/types': 3.973.5
       '@smithy/querystring-builder': 4.2.11
       '@smithy/types': 4.13.0
+      tslib: 2.8.1
+
+  '@aws-sdk/util-format-url@3.972.8':
+    dependencies:
+      '@aws-sdk/types': 3.973.6
+      '@smithy/querystring-builder': 4.2.12
+      '@smithy/types': 4.13.1
       tslib: 2.8.1
 
   '@aws-sdk/util-locate-window@3.965.5':
@@ -10475,6 +10820,12 @@ snapshots:
     dependencies:
       '@smithy/types': 4.13.0
       fast-xml-parser: 5.4.1
+      tslib: 2.8.1
+
+  '@aws-sdk/xml-builder@3.972.16':
+    dependencies:
+      '@smithy/types': 4.13.1
+      fast-xml-parser: 5.5.8
       tslib: 2.8.1
 
   '@aws/lambda-invoke-store@0.2.3': {}
@@ -11739,6 +12090,11 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@smithy/abort-controller@4.2.12':
+    dependencies:
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@smithy/chunked-blob-reader-native@4.2.3':
     dependencies:
       '@smithy/util-base64': 4.3.2
@@ -11776,6 +12132,19 @@ snapshots:
       '@smithy/util-utf8': 3.0.0
       tslib: 2.8.1
 
+  '@smithy/core@3.23.12':
+    dependencies:
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/types': 4.13.1
+      '@smithy/url-parser': 4.2.12
+      '@smithy/util-base64': 4.3.2
+      '@smithy/util-body-length-browser': 4.2.2
+      '@smithy/util-middleware': 4.2.12
+      '@smithy/util-stream': 4.5.20
+      '@smithy/util-utf8': 4.2.2
+      '@smithy/uuid': 1.1.2
+      tslib: 2.8.1
+
   '@smithy/core@3.23.9':
     dependencies:
       '@smithy/middleware-serde': 4.2.12
@@ -11808,7 +12177,7 @@ snapshots:
   '@smithy/credential-provider-imds@4.2.8':
     dependencies:
       '@smithy/node-config-provider': 4.3.11
-      '@smithy/property-provider': 4.2.8
+      '@smithy/property-provider': 4.2.11
       '@smithy/types': 4.13.0
       '@smithy/url-parser': 4.2.11
       tslib: 2.8.1
@@ -11894,6 +12263,14 @@ snapshots:
       '@smithy/protocol-http': 5.3.11
       '@smithy/querystring-builder': 4.2.11
       '@smithy/types': 4.13.0
+      '@smithy/util-base64': 4.3.2
+      tslib: 2.8.1
+
+  '@smithy/fetch-http-handler@5.3.15':
+    dependencies:
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/querystring-builder': 4.2.12
+      '@smithy/types': 4.13.1
       '@smithy/util-base64': 4.3.2
       tslib: 2.8.1
 
@@ -11992,6 +12369,17 @@ snapshots:
       '@smithy/util-middleware': 4.2.11
       tslib: 2.8.1
 
+  '@smithy/middleware-endpoint@4.4.27':
+    dependencies:
+      '@smithy/core': 3.23.12
+      '@smithy/middleware-serde': 4.2.15
+      '@smithy/node-config-provider': 4.3.12
+      '@smithy/shared-ini-file-loader': 4.4.7
+      '@smithy/types': 4.13.1
+      '@smithy/url-parser': 4.2.12
+      '@smithy/util-middleware': 4.2.12
+      tslib: 2.8.1
+
   '@smithy/middleware-retry@3.0.34':
     dependencies:
       '@smithy/node-config-provider': 3.1.12
@@ -12027,6 +12415,13 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@smithy/middleware-serde@4.2.15':
+    dependencies:
+      '@smithy/core': 3.23.12
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@smithy/middleware-stack@3.0.11':
     dependencies:
       '@smithy/types': 3.7.2
@@ -12035,6 +12430,11 @@ snapshots:
   '@smithy/middleware-stack@4.2.11':
     dependencies:
       '@smithy/types': 4.13.0
+      tslib: 2.8.1
+
+  '@smithy/middleware-stack@4.2.12':
+    dependencies:
+      '@smithy/types': 4.13.1
       tslib: 2.8.1
 
   '@smithy/node-config-provider@3.1.12':
@@ -12049,6 +12449,13 @@ snapshots:
       '@smithy/property-provider': 4.2.11
       '@smithy/shared-ini-file-loader': 4.4.6
       '@smithy/types': 4.13.0
+      tslib: 2.8.1
+
+  '@smithy/node-config-provider@4.3.12':
+    dependencies:
+      '@smithy/property-provider': 4.2.12
+      '@smithy/shared-ini-file-loader': 4.4.7
+      '@smithy/types': 4.13.1
       tslib: 2.8.1
 
   '@smithy/node-config-provider@4.3.8':
@@ -12074,6 +12481,14 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@smithy/node-http-handler@4.5.0':
+    dependencies:
+      '@smithy/abort-controller': 4.2.12
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/querystring-builder': 4.2.12
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@smithy/property-provider@3.1.11':
     dependencies:
       '@smithy/types': 3.7.2
@@ -12082,6 +12497,11 @@ snapshots:
   '@smithy/property-provider@4.2.11':
     dependencies:
       '@smithy/types': 4.13.0
+      tslib: 2.8.1
+
+  '@smithy/property-provider@4.2.12':
+    dependencies:
+      '@smithy/types': 4.13.1
       tslib: 2.8.1
 
   '@smithy/property-provider@4.2.8':
@@ -12099,6 +12519,11 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@smithy/protocol-http@5.3.12':
+    dependencies:
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@smithy/querystring-builder@3.0.11':
     dependencies:
       '@smithy/types': 3.7.2
@@ -12111,6 +12536,12 @@ snapshots:
       '@smithy/util-uri-escape': 4.2.2
       tslib: 2.8.1
 
+  '@smithy/querystring-builder@4.2.12':
+    dependencies:
+      '@smithy/types': 4.13.1
+      '@smithy/util-uri-escape': 4.2.2
+      tslib: 2.8.1
+
   '@smithy/querystring-parser@3.0.11':
     dependencies:
       '@smithy/types': 3.7.2
@@ -12119,6 +12550,11 @@ snapshots:
   '@smithy/querystring-parser@4.2.11':
     dependencies:
       '@smithy/types': 4.13.0
+      tslib: 2.8.1
+
+  '@smithy/querystring-parser@4.2.12':
+    dependencies:
+      '@smithy/types': 4.13.1
       tslib: 2.8.1
 
   '@smithy/service-error-classification@3.0.11':
@@ -12144,6 +12580,11 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@smithy/shared-ini-file-loader@4.4.7':
+    dependencies:
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@smithy/signature-v4@4.2.4':
     dependencies:
       '@smithy/is-array-buffer': 3.0.0
@@ -12162,6 +12603,17 @@ snapshots:
       '@smithy/types': 4.13.0
       '@smithy/util-hex-encoding': 4.2.2
       '@smithy/util-middleware': 4.2.11
+      '@smithy/util-uri-escape': 4.2.2
+      '@smithy/util-utf8': 4.2.2
+      tslib: 2.8.1
+
+  '@smithy/signature-v4@5.3.12':
+    dependencies:
+      '@smithy/is-array-buffer': 4.2.2
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/types': 4.13.1
+      '@smithy/util-hex-encoding': 4.2.2
+      '@smithy/util-middleware': 4.2.12
       '@smithy/util-uri-escape': 4.2.2
       '@smithy/util-utf8': 4.2.2
       tslib: 2.8.1
@@ -12186,6 +12638,16 @@ snapshots:
       '@smithy/util-stream': 4.5.17
       tslib: 2.8.1
 
+  '@smithy/smithy-client@4.12.7':
+    dependencies:
+      '@smithy/core': 3.23.12
+      '@smithy/middleware-endpoint': 4.4.27
+      '@smithy/middleware-stack': 4.2.12
+      '@smithy/protocol-http': 5.3.12
+      '@smithy/types': 4.13.1
+      '@smithy/util-stream': 4.5.20
+      tslib: 2.8.1
+
   '@smithy/types@2.12.0':
     dependencies:
       tslib: 2.8.1
@@ -12195,6 +12657,10 @@ snapshots:
       tslib: 2.8.1
 
   '@smithy/types@4.13.0':
+    dependencies:
+      tslib: 2.8.1
+
+  '@smithy/types@4.13.1':
     dependencies:
       tslib: 2.8.1
 
@@ -12208,6 +12674,12 @@ snapshots:
     dependencies:
       '@smithy/querystring-parser': 4.2.11
       '@smithy/types': 4.13.0
+      tslib: 2.8.1
+
+  '@smithy/url-parser@4.2.12':
+    dependencies:
+      '@smithy/querystring-parser': 4.2.12
+      '@smithy/types': 4.13.1
       tslib: 2.8.1
 
   '@smithy/util-base64@3.0.0':
@@ -12330,6 +12802,11 @@ snapshots:
       '@smithy/types': 4.13.0
       tslib: 2.8.1
 
+  '@smithy/util-middleware@4.2.12':
+    dependencies:
+      '@smithy/types': 4.13.1
+      tslib: 2.8.1
+
   '@smithy/util-retry@3.0.11':
     dependencies:
       '@smithy/service-error-classification': 3.0.11
@@ -12358,6 +12835,17 @@ snapshots:
       '@smithy/fetch-http-handler': 5.3.13
       '@smithy/node-http-handler': 4.4.14
       '@smithy/types': 4.13.0
+      '@smithy/util-base64': 4.3.2
+      '@smithy/util-buffer-from': 4.2.2
+      '@smithy/util-hex-encoding': 4.2.2
+      '@smithy/util-utf8': 4.2.2
+      tslib: 2.8.1
+
+  '@smithy/util-stream@4.5.20':
+    dependencies:
+      '@smithy/fetch-http-handler': 5.3.15
+      '@smithy/node-http-handler': 4.5.0
+      '@smithy/types': 4.13.1
       '@smithy/util-base64': 4.3.2
       '@smithy/util-buffer-from': 4.2.2
       '@smithy/util-hex-encoding': 4.2.2
@@ -13880,6 +14368,10 @@ snapshots:
 
   fast-xml-builder@1.0.0: {}
 
+  fast-xml-builder@1.1.4:
+    dependencies:
+      path-expression-matcher: 1.2.0
+
   fast-xml-parser@4.4.1:
     dependencies:
       strnum: 1.1.2
@@ -13892,6 +14384,12 @@ snapshots:
     dependencies:
       fast-xml-builder: 1.0.0
       strnum: 2.1.2
+
+  fast-xml-parser@5.5.8:
+    dependencies:
+      fast-xml-builder: 1.1.4
+      path-expression-matcher: 1.2.0
+      strnum: 2.2.2
 
   fastq@1.20.1:
     dependencies:
@@ -15477,6 +15975,8 @@ snapshots:
 
   path-exists@4.0.0: {}
 
+  path-expression-matcher@1.2.0: {}
+
   path-is-absolute@1.0.1: {}
 
   path-key@3.1.1: {}
@@ -16174,6 +16674,8 @@ snapshots:
   strnum@1.1.2: {}
 
   strnum@2.1.2: {}
+
+  strnum@2.2.2: {}
 
   style-to-js@1.1.21:
     dependencies:
