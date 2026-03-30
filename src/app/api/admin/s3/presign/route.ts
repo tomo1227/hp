@@ -55,9 +55,13 @@ export async function POST(request: Request) {
       ContentType: contentType,
     });
 
-    const uploadUrl = await getSignedUrl(getS3Client(), command, {
-      expiresIn: 60 * 5,
-    });
+    const uploadUrl = await getSignedUrl(
+      getS3Client() as unknown as S3Client,
+      command,
+      {
+        expiresIn: 60 * 5,
+      },
+    );
 
     return NextResponse.json({
       uploadUrl,
