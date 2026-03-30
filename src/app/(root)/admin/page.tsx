@@ -1,6 +1,7 @@
 "use client";
 
 import { evaluate } from "@mdx-js/mdx";
+import * as exifr from "exifr";
 import Image from "next/image";
 import type { ComponentType, ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -78,8 +79,11 @@ const copy = {
   bodyLabel: "本文 (MDX)",
   jsonLabel: "JSON",
   uploadLabel: "S3にアップロード",
-  uploadHint: "画像をアップロードしてMDXに挿入",
+  uploadHint: "複数画像を撮影日順にアップロードしてMDXに挿入",
   uploadButton: "アップロード",
+  uploadUrlsLabel: "アップロード済みURL",
+  copyUrlsButton: "URLをコピー",
+  copyUrlsSuccess: "コピーしました。",
   insertButton: "挿入",
   branchLabel: "ブランチ(任意)",
   baseLabel: "ベースブランチ",
@@ -217,9 +221,11 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<"content" | "upload" | "github">(
     "content",
   );
-  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploadFiles, setUploadFiles] = useState<File[]>([]);
   const [uploadKey, setUploadKey] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
+  const [uploadUrls, setUploadUrls] = useState("");
+  const [copyStatus, setCopyStatus] = useState("");
   const [prTitle, setPrTitle] = useState("");
   const [prBody, setPrBody] = useState("");
   const [branchName, setBranchName] = useState("");
@@ -560,38 +566,118 @@ export default function AdminPage() {
     }
   };
 
-  const handleUpload = async () => {
-    if (!uploadFile || !uploadKey) return;
-    setUploadStatus("");
+  const ensureTrailingSlash = (value: string) =>
+    value.endsWith("/") ? value : `${value}/`;
+
+  const getShotTimestamp = async (file: File) => {
     try {
-      const presign = await fetchJson<{ uploadUrl: string }>(
-        "/api/admin/s3/presign",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            key: uploadKey,
-            contentType: uploadFile.type || "application/octet-stream",
-          }),
-        },
+      const exif = await exifr.parse(file, {
+        pick: ["DateTimeOriginal", "CreateDate", "ModifyDate", "DateTime"],
+      });
+      const dateValue =
+        exif?.DateTimeOriginal ||
+        exif?.CreateDate ||
+        exif?.ModifyDate ||
+        exif?.DateTime;
+      if (dateValue instanceof Date) {
+        return dateValue.getTime();
+      }
+    } catch {
+      // Fall back to lastModified when EXIF parsing fails.
+    }
+    return file.lastModified;
+  };
+
+  const getFileExtension = (file: File) => {
+    const lower = file.name.toLowerCase();
+    if (lower.endsWith(".png")) return "png";
+    if (lower.endsWith(".heic")) return "heic";
+    if (lower.endsWith(".heif")) return "heif";
+    if (lower.endsWith(".jpeg")) return "jpg";
+    if (lower.endsWith(".jpg")) return "jpg";
+    return "jpg";
+  };
+
+  const getContentType = (file: File, extension: string) => {
+    if (file.type) return file.type;
+    if (extension === "png") return "image/png";
+    if (extension === "heic") return "image/heic";
+    if (extension === "heif") return "image/heif";
+    return "image/jpeg";
+  };
+
+  const handleUpload = async () => {
+    if (uploadFiles.length === 0 || !uploadKey) return;
+    setUploadStatus("");
+    setCopyStatus("");
+    try {
+      const basePath = ensureTrailingSlash(uploadKey);
+      const withTimes = await Promise.all(
+        uploadFiles.map(async (file) => ({
+          file,
+          time: await getShotTimestamp(file),
+        })),
+      );
+      const sorted = withTimes.sort(
+        (a, b) => a.time - b.time || a.file.name.localeCompare(b.file.name),
       );
 
-      const uploadResponse = await fetch(presign.uploadUrl, {
-        method: "PUT",
-        headers: { "Content-Type": uploadFile.type },
-        body: uploadFile,
-      });
+      const urls: string[] = [];
+      const snippets: string[] = [];
 
-      if (!uploadResponse.ok) {
-        throw new Error("Upload failed");
+      for (let index = 0; index < sorted.length; index += 1) {
+        const { file } = sorted[index];
+        const extension = getFileExtension(file);
+        const contentType = getContentType(file, extension);
+        const key = `${basePath}img${index + 1}.${extension}`;
+        setUploadStatus(
+          `Uploading ${index + 1}/${sorted.length}: ${file.name}`,
+        );
+
+        const presign = await fetchJson<{ uploadUrl: string }>(
+          "/api/admin/s3/presign",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              key,
+              contentType,
+            }),
+          },
+        );
+
+        const uploadResponse = await fetch(presign.uploadUrl, {
+          method: "PUT",
+          headers: { "Content-Type": contentType },
+          body: file,
+        });
+
+        if (!uploadResponse.ok) {
+          throw new Error("Upload failed");
+        }
+
+        const url = `${CLOUD_FRONT_BASE}/${key}`;
+        urls.push(url);
+        snippets.push(`<BlogImage src="${url}" />`);
       }
 
-      const url = `${CLOUD_FRONT_BASE}/${uploadKey}`;
-      const snippet = `<BlogImage src="${url}" />`;
-      setBody((prev) => `${prev}\n${snippet}\n`);
-      setUploadStatus(url);
+      const joinedUrls = urls.join("\n");
+      setBody((prev) => `${prev}\n${snippets.join("\n")}\n`);
+      setUploadUrls(joinedUrls);
+      setUploadStatus(joinedUrls);
     } catch (error) {
       setUploadStatus(String(error));
+    }
+  };
+
+  const handleCopyUploadUrls = async () => {
+    if (!uploadUrls) return;
+    setCopyStatus("");
+    try {
+      await navigator.clipboard.writeText(uploadUrls);
+      setCopyStatus(t.copyUrlsSuccess);
+    } catch (error) {
+      setCopyStatus(String(error));
     }
   };
 
@@ -952,21 +1038,34 @@ export default function AdminPage() {
                   type="text"
                   value={uploadKey}
                   onChange={(event) => setUploadKey(event.target.value)}
-                  placeholder="2026/japan/img01.jpg"
+                  placeholder="2026/japan/"
                 />
               </label>
               <label>
                 <span>File</span>
                 <input
                   type="file"
+                  multiple
                   onChange={(event) =>
-                    setUploadFile(event.target.files?.[0] ?? null)
+                    setUploadFiles(Array.from(event.target.files ?? []))
                   }
                 />
               </label>
               <button type="button" onClick={handleUpload}>
                 {t.uploadButton}
               </button>
+              {uploadUrls && (
+                <label>
+                  <span>{t.uploadUrlsLabel}</span>
+                  <textarea rows={6} value={uploadUrls} readOnly />
+                </label>
+              )}
+              {uploadUrls && (
+                <button type="button" onClick={handleCopyUploadUrls}>
+                  {t.copyUrlsButton}
+                </button>
+              )}
+              {copyStatus && <p className="admin-status">{copyStatus}</p>}
               {uploadStatus && <p className="admin-status">{uploadStatus}</p>}
             </div>
           </div>

@@ -6,9 +6,9 @@ import { isAdminRequest } from "@/lib/adminApi";
 export const runtime = "nodejs";
 
 const getS3Client = () => {
-  const region = process.env.AWS_REGION;
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+  const region = process.env.NEXT_PUBLIC_AWS_REGION;
+  const accessKeyId = process.env.NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET;
+  const secretAccessKey = process.env.NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET;
 
   if (!region || !accessKeyId || !secretAccessKey) {
     throw new Error("AWS credentials are required");
@@ -40,10 +40,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const bucket = process.env.S3_BUCKET_NAME;
+  const bucket = process.env.NEXT_PUBLIC_S3_BUCKET_NAME;
   if (!bucket) {
     return NextResponse.json(
-      { error: "S3_BUCKET_NAME is required" },
+      { error: "NEXT_PUBLIC_S3_BUCKET_NAME is required" },
       { status: 500 },
     );
   }
