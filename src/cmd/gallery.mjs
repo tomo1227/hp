@@ -54,6 +54,13 @@ const result = await prompts(
       name: "galleryImage",
       message: "gallery imageのurlを入力してください:",
     },
+    {
+      type: "text",
+      name: "year",
+      message: "年を入力してください:",
+      validate: (value) =>
+        /^\d{4}$/.test(value.trim()) ? true : "4桁の年を入力してください。",
+    },
   ],
   {
     onCancel: () => {
@@ -71,10 +78,13 @@ const date = new Date();
 const tags = result.tags.split(",").map((tag) => tag.trim());
 const ogpImage = result.ogpImage;
 const galleryImage = result.galleryImage || "";
+const year = result.year.trim();
 
-const filePath = `./src/_galleries/ja/${filename}.mdx`;
+const dirPath = `./src/_galleries/ja/(${year})`;
+const filePath = `${dirPath}/${filename}.mdx`;
 
 try {
+  await fs.mkdir(dirPath, { recursive: true });
   await fs.writeFile(filePath, "", "utf8");
 
   const frontMatter = `---
@@ -92,7 +102,7 @@ galleryImage: ${galleryImage}
 
   await fs.writeFile(filePath, frontMatter, "utf8");
 
-  console.log(`_galleries/ja/${filename}.mdx is created.`);
+  console.log(`_galleries/ja/(${year})/${filename}.mdx is created.`);
 } catch (err) {
   console.error("Error:", err);
 }

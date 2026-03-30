@@ -11,6 +11,7 @@
 @import "./styles/sidebar.css";
 @import "./styles/download.css";
 @import "./styles/worldmap.css";
+@import "./styles/admin.css";
 
 @config '../../tailwind.config.ts';
 
