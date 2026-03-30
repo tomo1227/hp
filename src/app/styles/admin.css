@@ -28,6 +28,11 @@
     background: rgba(20, 28, 42, 0.9);
   }
 
+  .admin-logout {
+    background: rgba(20, 28, 42, 0.9);
+    color: #eef2f8;
+  }
+
   .admin-tabs button {
     background: rgba(20, 28, 42, 0.75);
   }
@@ -67,6 +72,11 @@
   margin: 0 auto 24px;
 }
 
+.admin-header-copy {
+  display: grid;
+  gap: 6px;
+}
+
 .admin-header h1 {
   font-size: 32px;
   font-weight: 700;
@@ -79,21 +89,23 @@
   color: var(--admin-muted);
 }
 
-.admin-header-actions {
+.admin-header-sub {
   display: flex;
-  gap: 12px;
   align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.admin-header-actions select,
-.admin-header-actions button {
-  height: 40px;
-  padding: 0 14px;
+.admin-logout {
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
   border-radius: 999px;
-  border: 1px solid var(--admin-border);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  background: rgba(248, 113, 113, 0.12);
   font-weight: 600;
-  color: rgba(15, 15, 17, 0.9);
+  color: #b91c1c;
 }
 
 .admin-tabs {
