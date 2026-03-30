@@ -7,8 +7,8 @@ export const runtime = "nodejs";
 
 const getS3Client = () => {
   const region = process.env.NEXT_PUBLIC_AWS_REGION;
-  const accessKeyId = process.env.NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET;
-  const secretAccessKey = process.env.NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET;
+  const accessKeyId = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY;
 
   if (!region || !accessKeyId || !secretAccessKey) {
     throw new Error("AWS credentials are required");
