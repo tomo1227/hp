@@ -5,14 +5,9 @@ const SESSION_COOKIE_NAME = "admin_session";
 const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 14; // 14 days
 
 const getSessionSecret = () => {
-  const secret =
-    process.env.NEXT_PUBLIC_ADMIN_SESSION_SECRET ??
-    process.env.NEXT_PUBLIC_ADMIN_PASSWORD ??
-    "";
+  const secret = process.env.NEXT_PUBLIC_ADMIN_PASSWORD_SECRET ?? "";
   if (!secret) {
-    throw new Error(
-      "NEXT_PUBLIC_ADMIN_SESSION_SECRET or NEXT_PUBLIC_ADMIN_PASSWORD is required",
-    );
+    throw new Error("NEXT_PUBLIC_ADMIN_PASSWORD_SECRET is required");
   }
   return secret;
 };

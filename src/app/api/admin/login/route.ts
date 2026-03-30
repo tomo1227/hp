@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const { password } = (await request.json()) as { password?: string };
-  const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+  const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD_SECRET;
 
   if (!adminPassword || !password || password !== adminPassword) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

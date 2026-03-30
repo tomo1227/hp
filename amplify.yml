@@ -8,8 +8,8 @@ frontend:
     build:
       commands:
         - env | grep -e NEXT_PUBLIC_ >> .env.production
-        - echo "NEXT_PUBLIC_ADMIN_PASSWORD=$NEXT_PUBLIC_ADMIN_PASSWORD" >> .env.production
-        - echo "NEXT_PUBLIC_GITHUB_TOKEN=$NEXT_PUBLIC_GITHUB_TOKEN" >> .env.production
+        - echo "NEXT_PUBLIC_ADMIN_PASSWORD_SECRET=$NEXT_PUBLIC_ADMIN_PASSWORD_SECRET" >> .env.production
+        - echo "NEXT_PUBLIC_GITHUB_TOKEN_SECRET=$NEXT_PUBLIC_GITHUB_TOKEN_SECRET" >> .env.production
         - echo "NEXT_PUBLIC_GMAIL_USER_SECRET=$NEXT_PUBLIC_GMAIL_USER_SECRET" >> .env.production
         - echo "NEXT_PUBLIC_GMAIL_APP_PASS_SECRET=$NEXT_PUBLIC_GMAIL_APP_PASS_SECRET" >> .env.production
         - echo "NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET=$NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET" >> .env.production

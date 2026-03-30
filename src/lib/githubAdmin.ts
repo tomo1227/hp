@@ -8,11 +8,11 @@ type GitHubConfig = {
 export const getGitHubConfig = (): GitHubConfig => {
   const owner = process.env.GITHUB_OWNER ?? "tomo1227";
   const repo = process.env.GITHUB_REPO ?? "hp";
-  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN ?? "";
+  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN_SECRET ?? "";
   const baseBranch = process.env.GITHUB_BASE_BRANCH ?? "main";
 
   if (!token) {
-    throw new Error("NEXT_PUBLIC_GITHUB_TOKEN is required");
+    throw new Error("NEXT_PUBLIC_GITHUB_TOKEN_SECRET is required");
   }
 
   return { owner, repo, token, baseBranch };
