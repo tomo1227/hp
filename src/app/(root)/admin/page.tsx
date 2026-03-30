@@ -374,7 +374,7 @@ export default function AdminPage() {
   useEffect(() => {
     if (type === "itinerary") return;
     let cancelled = false;
-    const renderPreview = async () => {
+    const timeoutId = window.setTimeout(async () => {
       if (!body.trim()) {
         setPreviewComponent(null);
         setPreviewError("");
@@ -396,10 +396,10 @@ export default function AdminPage() {
           setPreviewError(String(error));
         }
       }
-    };
-    renderPreview();
+    }, 350);
     return () => {
       cancelled = true;
+      window.clearTimeout(timeoutId);
     };
   }, [body, mdxPreviewComponents, type]);
 
@@ -712,31 +712,35 @@ export default function AdminPage() {
   return (
     <div className="admin-shell">
       <header className="admin-header">
-        <div>
+        <div className="admin-header-copy">
           <h1>{t.title}</h1>
-          <p>GitHub PR + S3 uploader</p>
-        </div>
-        <div className="admin-header-actions">
-          <button type="button" onClick={handleLogout}>
-            {t.logout}
-          </button>
+          <div className="admin-header-sub">
+            <p>GitHub PR + S3 uploader</p>
+            <button
+              type="button"
+              className="admin-logout"
+              onClick={handleLogout}
+            >
+              {t.logout}
+            </button>
+          </div>
         </div>
       </header>
 
       <div className="admin-tabs">
         <button
           type="button"
-          className={activeTab === "content" ? "active" : ""}
-          onClick={() => setActiveTab("content")}
-        >
-          {t.contentTab}
-        </button>
-        <button
-          type="button"
           className={activeTab === "upload" ? "active" : ""}
           onClick={() => setActiveTab("upload")}
         >
           {t.uploadTab}
+        </button>
+        <button
+          type="button"
+          className={activeTab === "content" ? "active" : ""}
+          onClick={() => setActiveTab("content")}
+        >
+          {t.contentTab}
         </button>
         <button
           type="button"
