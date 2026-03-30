@@ -12,9 +12,7 @@ frontend:
         - echo "NEXT_PUBLIC_GITHUB_TOKEN_SECRET=$NEXT_PUBLIC_GITHUB_TOKEN_SECRET" >> .env.production
         - echo "NEXT_PUBLIC_GMAIL_USER_SECRET=$NEXT_PUBLIC_GMAIL_USER_SECRET" >> .env.production
         - echo "NEXT_PUBLIC_GMAIL_APP_PASS_SECRET=$NEXT_PUBLIC_GMAIL_APP_PASS_SECRET" >> .env.production
-        - NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET=$(aws ssm get-parameter --name "/amplify/shared/d180lv81jvja7l/NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET" --with-decryption --query "Parameter.Value" --output text 2>/dev/null || aws ssm get-parameter --name "/amplify/${AWS_APP_ID}/${AWS_BRANCH}/NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET" --with-decryption --query "Parameter.Value" --output text)
         - echo "NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET=$NEXT_PUBLIC_IAM_ACCESS_KEY_SECRET" >> .env.production
-        - NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET=$(aws ssm get-parameter --name "/amplify/shared/d180lv81jvja7l/NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET" --with-decryption --query "Parameter.Value" --output text 2>/dev/null || aws ssm get-parameter --name "/amplify/${AWS_APP_ID}/${AWS_BRANCH}/NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET" --with-decryption --query "Parameter.Value" --output text)
         - echo "NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET=$NEXT_PUBLIC_IAM_SECRET_ACCESS_KEY_SECRET" >> .env.production
         - pnpm run build
   artifacts:
