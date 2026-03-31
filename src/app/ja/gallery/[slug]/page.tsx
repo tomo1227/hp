@@ -1,6 +1,7 @@
 import { jaModel, Parser } from "budoux";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { GalleryFavoriteButton } from "@/components/features/galleryFavorites";
 import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
@@ -59,13 +60,24 @@ export default async function Page({
   const splittedTitle = parser.parse(frontmatter.title);
   return (
     <div id="gallery">
-      <Link href={`/ja/gallery/`}>
-        <h1 id="gallery-title">
-          {splittedTitle.map((word) => (
-            <span key={word}>{word}</span>
-          ))}
-        </h1>
-      </Link>
+      <div className="gallery-title-row">
+        <Link href={`/ja/gallery/`}>
+          <h1 id="gallery-title">
+            {splittedTitle.map((word) => (
+              <span key={word}>{word}</span>
+            ))}
+          </h1>
+        </Link>
+        <GalleryFavoriteButton
+          item={{
+            slug,
+            title: frontmatter.title,
+            date: frontmatter.date,
+            locale: "ja",
+          }}
+          locale="ja"
+        />
+      </div>
       <article
         className="markdown flex flex-col justify-center items-center"
         style={{ position: "relative" }}

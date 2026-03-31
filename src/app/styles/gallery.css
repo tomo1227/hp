@@ -86,7 +86,40 @@
 .cards-container {
   @apply relative grid justify-center items-center;
   grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.cards-container.is-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.cards-container.is-2 {
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+}
+
+.cards-container.is-3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.cards-container.is-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.cards-container.is-5 {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.cards-container.is-6 {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.cards-container.is-7 {
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
 }
 
 .card {
@@ -108,31 +141,93 @@
   @apply opacity-100;
 }
 
+.gallery-list {
+  @apply flex flex-col gap-3;
+}
+
+.gallery-list-header {
+  @apply flex justify-end items-center gap-3 flex-wrap;
+}
+
+.gallery-tabs {
+  @apply inline-flex gap-1 rounded-full bg-slate-100 dark:bg-slate-800 p-1;
+}
+
+.gallery-columns {
+  @apply inline-flex gap-1 rounded-full bg-slate-100 dark:bg-slate-800 p-1;
+}
+
+.gallery-column-button {
+  @apply text-xs font-semibold px-3 py-1.5 rounded-full transition-colors;
+  color: #475569;
+}
+
+.gallery-column-button.is-active {
+  @apply text-white;
+  background: #0ea5e9;
+}
+
+.gallery-column-button:hover {
+  @apply text-white;
+  background: rgba(14, 165, 233, 0.7);
+}
+
+
+.gallery-tab-button {
+  @apply text-xs font-semibold px-3 py-1.5 rounded-full transition-colors;
+  color: #475569;
+}
+
+.gallery-tab-button.is-active {
+  @apply text-white;
+  background: #fb923c;
+}
+
+.gallery-tab-button:hover {
+  @apply text-white;
+  background: rgba(251, 146, 60, 0.7);
+}
+
+.gallery-tag-filter {
+  @apply inline-flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-200;
+}
+
+.gallery-tag-select {
+  @apply text-xs font-semibold px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700;
+  color: #475569;
+}
+
+.gallery-empty {
+  @apply text-center text-sm;
+  color: #94a3b8;
+}
+
 @media (max-width: 1100px) {
-  .cards-container {
+  .cards-container:not([class*="is-"]) {
     grid-template-columns: repeat(4, 1fr);
   }
+
   .card-title {
     @apply text-sm;
   }
 }
 
 @media (max-width: 950px) {
-  .cards-container {
+  .cards-container:not([class*="is-"]) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* @media (max-width: 700px) {
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-} */
-
-
 @media (max-width: 600px) {
   .cards-container {
     gap: 5px;
+  }
+  .cards-container[class*="is-"]:not(.is-7)  {
+    gap: 5px;
+  }
+  .cards-container.is-7 {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
   }
   #gallery-contents{
     @apply mx-0;
@@ -146,8 +241,12 @@
   @apply mx-6;
 }
 
+.gallery-title-row {
+  @apply flex items-center justify-center gap-3 flex-wrap mt-6 pb-2;
+}
+
 #gallery-title {
-  @apply text-center leading-tight text-2xl mb-0 mt-6 pb-2 font-bold flex justify-center flex-wrap max-md:text-2xl text-gray-400 dark:text-gray-500;
+  @apply text-center leading-tight text-2xl mb-0 font-bold flex justify-center flex-wrap max-md:text-2xl text-gray-400 dark:text-gray-500;
 }
 
 #gallery-layout{

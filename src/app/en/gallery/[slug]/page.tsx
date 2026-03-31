@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { GalleryFavoriteButton } from "@/components/features/galleryFavorites";
 import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
@@ -56,9 +57,20 @@ export default async function Page({
 
   return (
     <div id="gallery">
-      <Link href={`/en/gallery/`}>
-        <h1 id="gallery-title">{frontmatter.title}</h1>
-      </Link>
+      <div className="gallery-title-row">
+        <Link href={`/en/gallery/`}>
+          <h1 id="gallery-title">{frontmatter.title}</h1>
+        </Link>
+        <GalleryFavoriteButton
+          item={{
+            slug,
+            title: frontmatter.title,
+            date: frontmatter.date,
+            locale: "en",
+          }}
+          locale="en"
+        />
+      </div>
       <article
         className="markdown flex flex-col justify-center items-center"
         style={{ position: "relative" }}
