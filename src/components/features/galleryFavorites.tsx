@@ -230,7 +230,9 @@ export const GalleryFavoritesTabs = ({
   }, []);
 
   useEffect(() => {
-    writeColumns(columns);
+    if (typeof columns === "number") {
+      writeColumns(columns);
+    }
   }, [columns]);
 
   const favoriteSet = useMemo(() => {
