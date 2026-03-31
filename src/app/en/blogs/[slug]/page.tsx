@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import BlogShareButtons from "@/components/features/blogShareButtons";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDateEn } from "@/lib/date";
 
@@ -51,6 +52,8 @@ export default async function Page({
   const { frontmatter } = await getPostBySlug(slug, "en");
   const year = await new Date(frontmatter.date).getUTCFullYear();
   const Component = require(`@/_posts/en/(${year})/${slug}.mdx`).default;
+  const canonicalUrl = `https://tomokiota.com/en/blogs/${slug}`;
+  const shareText = frontmatter.title || "tomokiota.com";
 
   return (
     <div id="blog-wrapper">
@@ -72,6 +75,12 @@ export default async function Page({
       <article id="blog-content" className="markdown">
         <Component />
       </article>
+      <div id="blog-footer">
+        <section id="blog-share">
+          <h2 className="blog-section-title">Share</h2>
+          <BlogShareButtons url={canonicalUrl} title={shareText} locale="en" />
+        </section>
+      </div>
     </div>
   );
 }

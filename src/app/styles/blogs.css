@@ -60,3 +60,38 @@
 #main-blog-contents {
   flex: 1;
 }
+
+#blog-footer {
+  @apply mt-10 pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col gap-6;
+}
+
+.blog-section-title {
+  @apply text-lg font-semibold text-slate-700 dark:text-slate-200 text-center;
+}
+
+#blog-share {
+  @apply flex flex-col items-center gap-3;
+}
+
+.blog-share-links {
+  @apply flex flex-wrap justify-center gap-3 mb-4;
+}
+
+.blog-share-link {
+  @apply px-4 py-2 rounded-full border border-blue-200 dark:border-slate-600 text-sm text-slate-700 dark:text-slate-200 no-underline transition;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.02));
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+  letter-spacing: 0.02em;
+}
+
+.blog-share-link:hover {
+  @apply text-blue-700 dark:text-blue-200;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(15, 23, 42, 0.12);
+}
+
+.blog-share-link:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.1);
+}
+

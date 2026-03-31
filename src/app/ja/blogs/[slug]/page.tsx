@@ -1,6 +1,7 @@
 import { jaModel, Parser } from "budoux";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import BlogShareButtons from "@/components/features/blogShareButtons";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
 import { jaTranslate } from "@/lib/translator";
@@ -59,6 +60,8 @@ export default async function Page({
   const year = await new Date(frontmatter.date).getUTCFullYear();
   const Component = require(`@/_posts/ja/(${year})/${slug}.mdx`).default;
   const splittedTitle = parser.parse(frontmatter.title);
+  const canonicalUrl = `https://tomokiota.com/ja/blogs/${slug}`;
+  const shareText = frontmatter.title || "tomokiota.com";
   return (
     <div id="blog-wrapper">
       <div id="blog-info">
@@ -83,6 +86,12 @@ export default async function Page({
       <article id="blog-content" className="markdown">
         <Component />
       </article>
+      <div id="blog-footer">
+        <section id="blog-share">
+          <h2 className="blog-section-title">シェア</h2>
+          <BlogShareButtons url={canonicalUrl} title={shareText} locale="ja" />
+        </section>
+      </div>
     </div>
   );
 }
