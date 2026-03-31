@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Fragment } from "react";
+import { BlogBookmarkList } from "@/components/features/blogBookmarks";
 import { getFilteredPosts, getTags } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
 import { jaTranslate } from "@/lib/translator";
@@ -22,23 +21,18 @@ export default async function Page({
     locale: "ja",
     tag: tag,
   });
+  const items = posts.map((post) => ({
+    slug: post.slug,
+    title: post.frontmatter.title,
+    date: post.frontmatter.date,
+    displayDate: formattedDate(post.frontmatter.date),
+    tags: post.frontmatter.tags,
+    locale: "ja" as const,
+  }));
   return (
-    <div className="article-lists-wrapper">
-      <Link href={"/ja/tags"}>
-        <h1 id="tag-lists-title">{jaTranslate(tag)}</h1>
-      </Link>
-      <div className="article-lists">
-        {posts.map((post) => (
-          <Fragment key={post.slug}>
-            <Link href={`/ja/blogs/${post.slug}`}>
-              <h2 className="article-lists-title">{post.frontmatter.title}</h2>
-              <div className="article-lists-date">
-                {formattedDate(post.frontmatter.date)}
-              </div>
-            </Link>
-          </Fragment>
-        ))}
-      </div>
+    <div className="blog-index">
+      <h1 className="blog-index-title">{jaTranslate(tag)}</h1>
+      <BlogBookmarkList items={items} locale="ja" />
     </div>
   );
 }
