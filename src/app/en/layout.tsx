@@ -27,50 +27,12 @@ export const viewport: Viewport = {
   ],
 };
 
-const siteTitle = "tomokiota.com";
-const siteDescription =
-  "The Official Website of Tomoki Ota, Traveler and Photographer.";
-const ogpImage = "/img/top-page.jpg";
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://tomokiota.com"),
-  title: {
-    default: siteTitle,
-    template: `%s | ${siteTitle}`,
-  },
-  description: siteDescription,
-  alternates: {
-    canonical: "https://tomokiota.com/en",
-    languages: {
-      ja: "https://tomokiota.com/ja",
-      en: "https://tomokiota.com/en",
-    },
-  },
-  openGraph: {
-    title: siteTitle,
-    description: siteDescription,
-    url: "https://tomokiota.com/en",
-    siteName: siteTitle,
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: ogpImage,
-        width: 1200,
-        height: 630,
-        alt: "Tomoki Ota travel photography",
-      },
-    ],
-  },
+  title: "tomokiota.com",
+  description: "The Official Website of Tomoki Ota, Traveler and Photographer.",
   twitter: {
     card: "summary_large_image",
-    title: siteTitle,
-    description: siteDescription,
-    images: [ogpImage],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
   creator: "Tomoki Ota",
   other: {
