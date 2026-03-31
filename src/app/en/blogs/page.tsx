@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Fragment } from "react";
+import { BlogBookmarkList } from "@/components/features/blogBookmarks";
 import { getFilteredPosts } from "@/lib/blogFilter";
-import { formattedDate } from "@/lib/date";
+import { formattedDateEn } from "@/lib/date";
 
 export const metadata: Metadata = {
   title: "Blog in tomokiota.com",
@@ -17,18 +16,18 @@ export default async function Page() {
     dateOrder: "desc",
     locale: "en",
   });
+  const items = posts.map((post) => ({
+    slug: post.slug,
+    title: post.frontmatter.title,
+    date: post.frontmatter.date,
+    displayDate: formattedDateEn(post.frontmatter.date),
+    tags: post.frontmatter.tags,
+    locale: "en" as const,
+  }));
   return (
-    <div className="article-lists">
-      {posts.map((post) => (
-        <Fragment key={post.slug}>
-          <Link href={`/en/blogs/${post.slug}`}>
-            <h2 className="article-lists-title">{post.frontmatter.title}</h2>
-            <div className="article-lists-date">
-              {formattedDate(post.frontmatter.date)}
-            </div>
-          </Link>
-        </Fragment>
-      ))}
+    <div className="blog-index">
+      <h1 className="blog-index-title">Blog</h1>
+      <BlogBookmarkList items={items} locale="en" />
     </div>
   );
 }

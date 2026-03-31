@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { BlogBookmarkButton } from "@/components/features/blogBookmarks";
 import BlogShareButtons from "@/components/features/blogShareButtons";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDateEn } from "@/lib/date";
@@ -68,8 +69,19 @@ export default async function Page({
             </li>
           ))}
         </ul>
-        <div id="blog-date-wrapper">
-          <time id="blog-date">{formattedDateEn(frontmatter.date)}</time>
+        <div className="blog-info-row">
+          <div id="blog-date-wrapper">
+            <time id="blog-date">{formattedDateEn(frontmatter.date)}</time>
+          </div>
+          <BlogBookmarkButton
+            item={{
+              slug,
+              title: frontmatter.title,
+              date: frontmatter.date,
+              locale: "en",
+            }}
+            locale="en"
+          />
         </div>
       </div>
       <article id="blog-content" className="markdown">

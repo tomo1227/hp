@@ -1,6 +1,7 @@
 import { jaModel, Parser } from "budoux";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { BlogBookmarkButton } from "@/components/features/blogBookmarks";
 import BlogShareButtons from "@/components/features/blogShareButtons";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
@@ -45,7 +46,7 @@ export async function generateMetadata(
         : previousTwitterImages,
     },
     alternates: {
-      canonical: "https://tomokiota.com/ja/blogs/${slug}",
+      canonical: `https://tomokiota.com/ja/blogs/${slug}`,
     },
   };
 }
@@ -79,8 +80,19 @@ export default async function Page({
             </li>
           ))}
         </ul>
-        <div id="blog-date-wrapper">
-          <time id="blog-date">{formattedDate(frontmatter.date)}</time>
+        <div className="blog-info-row">
+          <div id="blog-date-wrapper">
+            <time id="blog-date">{formattedDate(frontmatter.date)}</time>
+          </div>
+          <BlogBookmarkButton
+            item={{
+              slug,
+              title: frontmatter.title,
+              date: frontmatter.date,
+              locale: "ja",
+            }}
+            locale="ja"
+          />
         </div>
       </div>
       <article id="blog-content" className="markdown">
