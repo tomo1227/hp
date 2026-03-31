@@ -14,6 +14,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const zenAntique = localFont({
+  src: "../fonts/ZenAntiqueSoft-Regular.woff",
+  variable: "--font-zen-antique",
+  weight: "400",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -44,7 +49,7 @@ export default function jaLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${zenAntique.variable} antialiased`}
       >
         <NextTopLoader />
         <div id="body-container">

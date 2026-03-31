@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { Fragment } from "react";
+import { BlogBookmarkList } from "@/components/features/blogBookmarks";
 import { getFilteredPosts, getTags } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
 
 export async function generateStaticParams() {
-  const tags = await getTags({ locale: "en" });
+  const tags = await getTags();
   return tags.map((tag) => ({
     tag: tag,
   }));
@@ -21,23 +20,18 @@ export default async function Page({
     locale: "en",
     tag: tag,
   });
+  const items = posts.map((post) => ({
+    slug: post.slug,
+    title: post.frontmatter.title,
+    date: post.frontmatter.date,
+    displayDate: formattedDate(post.frontmatter.date),
+    tags: post.frontmatter.tags,
+    locale: "en" as const,
+  }));
   return (
-    <div className="article-lists-wrapper">
-      <Link href={"/en/tags"}>
-        <h1 id="tag-lists-title">{tag}</h1>
-      </Link>
-      <div className="article-lists">
-        {posts.map((post) => (
-          <Fragment key={post.slug}>
-            <Link href={`/en/blogs/${post.slug}`}>
-              <h2 className="article-lists-title">{post.frontmatter.title}</h2>
-              <div className="article-lists-date">
-                {formattedDate(post.frontmatter.date)}
-              </div>
-            </Link>
-          </Fragment>
-        ))}
-      </div>
+    <div className="blog-index">
+      <h1 className="blog-index-title">{tag}</h1>
+      <BlogBookmarkList items={items} locale="en" />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { jaModel, Parser } from "budoux";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { BlogBookmarkButton } from "@/components/features/blogBookmarks";
+import BlogShareButtons from "@/components/features/blogShareButtons";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
 import { jaTranslate } from "@/lib/translator";
@@ -44,7 +46,7 @@ export async function generateMetadata(
         : previousTwitterImages,
     },
     alternates: {
-      canonical: "https://tomokiota.com/ja/blogs/${slug}",
+      canonical: `https://tomokiota.com/ja/blogs/${slug}`,
     },
   };
 }
@@ -59,6 +61,8 @@ export default async function Page({
   const year = await new Date(frontmatter.date).getUTCFullYear();
   const Component = require(`@/_posts/ja/(${year})/${slug}.mdx`).default;
   const splittedTitle = parser.parse(frontmatter.title);
+  const canonicalUrl = `https://tomokiota.com/ja/blogs/${slug}`;
+  const shareText = frontmatter.title || "tomokiota.com";
   return (
     <div id="blog-wrapper">
       <div id="blog-info">
@@ -76,13 +80,30 @@ export default async function Page({
             </li>
           ))}
         </ul>
-        <div id="blog-date-wrapper">
-          <time id="blog-date">{formattedDate(frontmatter.date)}</time>
+        <div className="blog-info-row">
+          <div id="blog-date-wrapper">
+            <time id="blog-date">{formattedDate(frontmatter.date)}</time>
+          </div>
+          <BlogBookmarkButton
+            item={{
+              slug,
+              title: frontmatter.title,
+              date: frontmatter.date,
+              locale: "ja",
+            }}
+            locale="ja"
+          />
         </div>
       </div>
       <article id="blog-content" className="markdown">
         <Component />
       </article>
+      <div id="blog-footer">
+        <section id="blog-share">
+          <h2 className="blog-section-title">シェア</h2>
+          <BlogShareButtons url={canonicalUrl} title={shareText} locale="ja" />
+        </section>
+      </div>
     </div>
   );
 }
