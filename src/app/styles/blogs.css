@@ -226,7 +226,7 @@
 }
 
 .bookmark-button--icon {
-  @apply px-3 py-2 text-xs;
+  @apply px-3 text-xs;
 }
 
 .bookmark-button.is-active {
@@ -240,12 +240,13 @@
     background: var(--blog-accent-soft);
   }
 }
-.bookmark-button.is-active .bookmark-icon {
-  color: #facc15;
-}
 
 .bookmark-icon {
-  font-size: 0.95rem;
+  font-size: 1rem;
+}
+
+.bookmark-button.is-active .bookmark-icon {
+  color: #facc15;
 }
 
 /* blog記事 */
