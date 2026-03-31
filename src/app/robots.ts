@@ -5,12 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: [
-        "/ja/gallery/*",
-        "/en/gallery/*",
-        "/ja/private/*",
-        "/en/private/*",
-      ],
+      disallow: ["/ja/private/", "/en/private/", "/admin/", "/api/"],
     },
     sitemap: "https://tomokiota.com/sitemap.xml",
   };

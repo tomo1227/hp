@@ -27,24 +27,43 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "ja");
-  const previousOgpImages = (await parent).openGraph?.images || [];
-  const previousTwitterImages = (await parent).twitter?.images || [];
+  const parentMetadata = await parent;
+  const previousOgpImages = parentMetadata.openGraph?.images || [];
+  const previousTwitterImages = parentMetadata.twitter?.images || [];
+  const parentTitle = parentMetadata.title;
+  const title =
+    frontmatter.title ||
+    (typeof parentTitle === "string" ? parentTitle : parentTitle?.absolute) ||
+    undefined;
+  const description =
+    frontmatter.description || parentMetadata.description || undefined;
+  const ogpImage = frontmatter.ogpImage
+    ? frontmatter.ogpImage.toString()
+    : undefined;
 
   return {
-    title: frontmatter.title || (await parent).title,
-    description: frontmatter.description || (await parent).description,
+    title,
+    description,
     openGraph: {
-      images: frontmatter.ogpImage
-        ? `${frontmatter.ogpImage}`
-        : previousOgpImages,
+      title,
+      description,
+      url: `https://tomokiota.com/ja/blogs/${slug}`,
+      siteName: "tomokiota.com",
+      locale: "ja_JP",
+      type: "article",
+      images: ogpImage ? [ogpImage] : previousOgpImages,
     },
     twitter: {
-      images: frontmatter.ogpImage
-        ? `${frontmatter.ogpImage}`
-        : previousTwitterImages,
+      title,
+      description,
+      images: ogpImage ? [ogpImage] : previousTwitterImages,
     },
     alternates: {
-      canonical: "https://tomokiota.com/ja/blogs/${slug}",
+      canonical: `https://tomokiota.com/ja/blogs/${slug}`,
+      languages: {
+        ja: `https://tomokiota.com/ja/blogs/${slug}`,
+        en: `https://tomokiota.com/en/blogs/${slug}`,
+      },
     },
   };
 }
