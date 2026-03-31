@@ -1,37 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
-import { rgbDataURL } from "@/lib/blurImage";
-import { getFilteredPosts } from "@/lib/galleryFilter";
+import { GalleryFavoritesTabs } from "@/components/features/galleryFavorites";
+import { getFilteredPosts, getTags } from "@/lib/galleryFilter";
 
 export default async function Page() {
   const galleries = await getFilteredPosts({
     dateOrder: "desc",
     locale: "en",
   });
-  const portraitImageSize = 500; // 縦長
-  const landscapeImageSize = 800; // 横長
+  const tags = await getTags({ locale: "en" });
+  const items = galleries.map((gallery) => ({
+    slug: gallery.slug,
+    title: gallery.frontmatter.title,
+    image: `${gallery.frontmatter.galleryImage}`,
+    tags: gallery.frontmatter.tags ?? [],
+    locale: "en" as const,
+  }));
 
-  return (
-    <section className="cards-container">
-      {galleries.map((gallery) => (
-        <Link
-          className="card"
-          key={gallery.slug}
-          href={`/en/gallery/${gallery.slug}`}
-        >
-          <Image
-            src={`${gallery.frontmatter.galleryImage}`}
-            alt={`${gallery.frontmatter.title}-img`}
-            width={800}
-            height={800}
-            id={`${gallery.slug}-image`}
-            className="aspect-square object-cover object-center w-full h-auto"
-            placeholder="blur"
-            blurDataURL={rgbDataURL(192, 192, 192)}
-          />
-          <div className="card-title">{gallery.frontmatter.title}</div>
-        </Link>
-      ))}
-    </section>
-  );
+  return <GalleryFavoritesTabs items={items} locale="en" tags={tags} />;
 }
