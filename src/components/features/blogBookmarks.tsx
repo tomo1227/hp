@@ -128,19 +128,19 @@ export const BlogBookmarkButton = ({
   const label =
     locale === "ja"
       ? active
-        ? "保存済み"
-        : "保存"
+        ? "お気に入り済み"
+        : "お気に入り"
       : active
         ? "Saved"
         : "Save";
   const actionLabel =
     locale === "ja"
       ? active
-        ? "保存を解除"
-        : "保存に追加"
+        ? "お気に入りを解除"
+        : "お気に入りに追加"
       : active
-        ? "Remove bookmark"
-        : "Add bookmark";
+        ? "Remove favorites"
+        : "Add favorites";
 
   return (
     <button
@@ -183,10 +183,12 @@ export const BlogBookmarkList = ({ items, locale }: BlogBookmarkListProps) => {
   }, [filter, items, savedSet]);
 
   const emptyLabel =
-    locale === "ja" ? "保存した記事はまだありません。" : "No saved posts yet.";
+    locale === "ja"
+      ? "お気に入りした記事はまだありません。"
+      : "No favorite posts yet.";
 
   const allLabel = locale === "ja" ? "すべて" : "All";
-  const savedLabel = locale === "ja" ? "保存" : "Saved";
+  const savedLabel = locale === "ja" ? "お気に入り" : "Favorites";
 
   return (
     <div className="blog-list">
@@ -229,11 +231,11 @@ export const BlogBookmarkList = ({ items, locale }: BlogBookmarkListProps) => {
                   aria-label={
                     locale === "ja"
                       ? active
-                        ? "保存を解除"
-                        : "保存に追加"
+                        ? "お気に入りを解除"
+                        : "お気に入りに追加"
                       : active
-                        ? "Remove bookmark"
-                        : "Add bookmark"
+                        ? "Remove favorites"
+                        : "Add favorites"
                   }
                 >
                   <span className="bookmark-icon" aria-hidden="true">
