@@ -251,16 +251,13 @@
 /* blog記事 */
 #blog-wrapper {
   @apply mx-6;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
 }
 #blog-info {
-  @apply flex flex-col mb-10 items-start max-md:mb-3;
+  @apply flex flex-col mb-10 items-center max-md:mb-3;
 }
 
 #blog-title {
-  @apply text-left leading-tight text-4xl mb-0 mt-6 pb-2 font-semibold flex flex-wrap max-md:text-2xl;
+  @apply text-left leading-tight text-3xl mb-0 mt-6 pb-2 font-semibold flex flex-wrap max-md:text-2xl;
   color: var(--blog-ink);
 }
 
@@ -274,12 +271,18 @@
 
 #blog-tag-link {
   @apply relative inline-block h-7 leading-7 px-3 rounded-full text-xs no-underline transition duration-200;
-  background: var(--blog-accent);
+  background: #4093ff;
   color: #fffaf4;
 }
 
 #blog-tag-link:hover {
-  filter: brightness(0.9);
+  filter: brightness(1.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  #blog-tag-link {
+    background: #2d5fa0;
+  }
 }
 
 #blog-date-wrapper {

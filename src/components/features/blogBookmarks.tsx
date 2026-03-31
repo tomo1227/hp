@@ -125,14 +125,6 @@ export const BlogBookmarkButton = ({
 }: BlogBookmarkButtonProps) => {
   const { isBookmarked, toggleBookmark } = useBlogBookmarks();
   const active = isBookmarked(item);
-  const label =
-    locale === "ja"
-      ? active
-        ? "お気に入り済み"
-        : "お気に入り"
-      : active
-        ? "Saved"
-        : "Save";
   const actionLabel =
     locale === "ja"
       ? active
@@ -155,7 +147,6 @@ export const BlogBookmarkButton = ({
       <span className="bookmark-icon" aria-hidden="true">
         ★
       </span>
-      <span className="bookmark-label">{label}</span>
     </button>
   );
 };
