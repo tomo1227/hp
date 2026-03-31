@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    "",
+    "/",
     "/ja",
     "/en",
     "/ja/blogs",
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE_URL}${path}`,
     lastModified: new Date(),
     changeFrequency: "daily",
-    priority: path === "" ? 1.0 : 0.8,
+    priority: path === "/" ? 1.0 : 0.8,
   }));
 
   const blogRoutes: MetadataRoute.Sitemap = blogJa.map((post) => ({
