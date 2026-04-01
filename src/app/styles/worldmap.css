@@ -212,6 +212,14 @@
   @apply border-slate-200 bg-slate-50;
 }
 
+.world-country-main {
+  @apply flex items-center gap-2;
+}
+
+.world-country-flag {
+  @apply text-base;
+}
+
 .world-country-name {
   @apply text-sm font-medium text-slate-900;
 }
