@@ -1,18 +1,158 @@
 "use client";
-import { useState } from "react";
+
+import { useRouter } from "next/navigation";
+import Script from "next/script";
+import { useMemo, useState } from "react";
+
+declare global {
+  interface Window {
+    turnstile?: { reset: () => void };
+    turnstileCallback?: (token: string) => void;
+  }
+}
+
+type FormState = {
+  title: string;
+  name: string;
+  email: string;
+  category: string;
+  source: string;
+  message: string;
+};
+
+const MAX_TITLE_LENGTH = 80;
+const MAX_NAME_LENGTH = 60;
+const MIN_MESSAGE_LENGTH = 10;
+const MAX_MESSAGE_LENGTH = 1000;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const categories = [
+  { value: "general", label: "一般的なご相談・質問" },
+  { value: "work", label: "お仕事依頼" },
+  { value: "other", label: "その他" },
+];
+
+const sources = [
+  { value: "instagram", label: "Instagram" },
+  { value: "x", label: "X" },
+  { value: "thread", label: "Threads" },
+  { value: "search", label: "インターネット検索" },
+  { value: "other", label: "その他" },
+];
 
 export default function Page() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const router = useRouter();
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showPreview, setShowPreview] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [formState, setFormState] = useState<FormState>({
+    title: "",
+    name: "",
+    email: "",
+    category: "general",
+    source: "",
+    message: "",
+  });
+
+  const errors = useMemo(() => {
+    const next: Partial<Record<keyof FormState | "turnstile", string>> = {};
+    if (!formState.title.trim()) {
+      next.title = "件名を入力してください。";
+    } else if (formState.title.trim().length > MAX_TITLE_LENGTH) {
+      next.title = `件名は${MAX_TITLE_LENGTH}文字以内でお願いします。`;
+    }
+
+    if (!formState.name.trim()) {
+      next.name = "お名前を入力してください。";
+    } else if (formState.name.trim().length > MAX_NAME_LENGTH) {
+      next.name = `お名前は${MAX_NAME_LENGTH}文字以内でお願いします。`;
+    }
+
+    if (!formState.email.trim()) {
+      next.email = "メールアドレスを入力してください。";
+    } else if (!emailPattern.test(formState.email.trim())) {
+      next.email = "メールアドレスの形式が正しくありません。";
+    }
+
+    if (!formState.category) {
+      next.category = "カテゴリを選択してください。";
+    }
+
+    if (!formState.source) {
+      next.source = "どこから来たかを選択してください。";
+    }
+
+    if (!formState.message.trim()) {
+      next.message = "お問い合わせ内容を入力してください。";
+    } else if (formState.message.trim().length < MIN_MESSAGE_LENGTH) {
+      next.message = `${MIN_MESSAGE_LENGTH}文字以上で入力してください。`;
+    } else if (formState.message.trim().length > MAX_MESSAGE_LENGTH) {
+      next.message = `${MAX_MESSAGE_LENGTH}文字以内でお願いします。`;
+    }
+
+    if (!turnstileToken) {
+      next.turnstile = "スパム対策チェックを完了してください。";
+    }
+
+    if (!siteKey) {
+      next.turnstile = "スパム対策の設定が未完了です。";
+    }
+
+    return next;
+  }, [formState, turnstileToken, siteKey]);
+
+  const hasErrors = Object.keys(errors).length > 0;
+
+  function updateField<T extends keyof FormState>(
+    field: T,
+    value: FormState[T],
+  ) {
+    setFormState((prev) => ({ ...prev, [field]: value }));
+  }
+
+  function markTouched(field: keyof FormState) {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  }
+
+  function getError(field: keyof FormState | "turnstile") {
+    if (field === "turnstile") {
+      return touched.turnstile && errors.turnstile ? errors.turnstile : null;
+    }
+    return touched[field] && errors[field] ? errors[field] : null;
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsSubmitted(false);
     setErrorMessage(null);
+    setTouched({
+      title: true,
+      name: true,
+      email: true,
+      category: true,
+      source: true,
+      message: true,
+      turnstile: true,
+    });
 
-    const formData = new FormData(event.currentTarget);
-    const jsonData = Object.fromEntries(formData.entries());
+    if (hasErrors) {
+      setErrorMessage("入力内容をご確認ください。");
+      return;
+    }
+
+    setIsSubmitting(true);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+    const payload = {
+      title: formState.title.trim(),
+      name: formState.name.trim(),
+      email: formState.email.trim(),
+      category: formState.category,
+      source: formState.source,
+      message: formState.message.trim(),
+      turnstileToken,
+    };
 
     try {
       const response = await fetch(`${baseUrl}/api/contact/`, {
@@ -20,94 +160,271 @@ export default function Page() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(jsonData),
+        body: JSON.stringify(payload),
       });
       if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData);
+        router.push("/ja/contact/thanks");
+        return;
       }
+
+      const errorData = await response.json();
+      setErrorMessage(errorData.message || "送信に失敗しました。");
     } catch (error) {
       console.error("通信エラー:", error);
       setErrorMessage("ネットワークエラーが発生しました");
+    } finally {
+      setIsSubmitting(false);
+      setTurnstileToken("");
+      window.turnstile?.reset();
     }
   }
+
   return (
     <div className="contact-wrapper">
       <div className="contact-contents">
-        <h1 className="contact-form">お問い合わせフォーム</h1>
-        <form className="w-4/5" onSubmit={handleSubmit}>
-          <div className="contact-form-element">
-            <label className="contact-title-label" htmlFor="title">
-              タイトル
-            </label>
-            <input
-              id="title"
-              type="text"
-              name="title"
-              required
-              className="contact-title"
-            />
+        <div className="contact-header">
+          <h1 className="contact-form">お問い合わせフォーム</h1>
+        </div>
+
+        <form className="contact-form-body" onSubmit={handleSubmit}>
+          <div className="contact-grid">
+            <div className="contact-field">
+              <label className="contact-label" htmlFor="title">
+                件名
+              </label>
+              <input
+                id="title"
+                type="text"
+                name="title"
+                required
+                maxLength={MAX_TITLE_LENGTH}
+                value={formState.title}
+                onChange={(event) => updateField("title", event.target.value)}
+                onBlur={() => markTouched("title")}
+                className="contact-input"
+                autoComplete="off"
+                aria-invalid={Boolean(getError("title"))}
+              />
+              <p className="contact-helper">
+                {getError("title") ||
+                  `${formState.title.length}/${MAX_TITLE_LENGTH}`}
+              </p>
+            </div>
+
+            <div className="contact-field">
+              <label className="contact-label" htmlFor="name">
+                お名前
+              </label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                maxLength={MAX_NAME_LENGTH}
+                value={formState.name}
+                onChange={(event) => updateField("name", event.target.value)}
+                onBlur={() => markTouched("name")}
+                className="contact-input"
+                autoComplete="name"
+                aria-invalid={Boolean(getError("name"))}
+              />
+              <p className="contact-helper">{getError("name")}</p>
+            </div>
+
+            <div className="contact-field">
+              <label className="contact-label" htmlFor="email">
+                メールアドレス
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                value={formState.email}
+                onChange={(event) => updateField("email", event.target.value)}
+                onBlur={() => markTouched("email")}
+                className="contact-input"
+                autoComplete="email"
+                inputMode="email"
+                aria-invalid={Boolean(getError("email"))}
+              />
+              <p className="contact-helper">{getError("email")}</p>
+            </div>
+
+            <div className="contact-field">
+              <label className="contact-label" htmlFor="category">
+                カテゴリ
+              </label>
+              <select
+                id="category"
+                name="category"
+                value={formState.category}
+                onChange={(event) =>
+                  updateField("category", event.target.value)
+                }
+                onBlur={() => markTouched("category")}
+                className="contact-select"
+                aria-invalid={Boolean(getError("category"))}
+              >
+                {categories.map((category) => (
+                  <option key={category.value} value={category.value}>
+                    {category.label}
+                  </option>
+                ))}
+              </select>
+              <p className="contact-helper">{getError("category")}</p>
+            </div>
+
+            <div className="contact-field contact-field-full">
+              <label className="contact-label" htmlFor="message">
+                お問い合わせ内容
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                required
+                maxLength={MAX_MESSAGE_LENGTH}
+                value={formState.message}
+                onChange={(event) => updateField("message", event.target.value)}
+                onBlur={() => markTouched("message")}
+                className="contact-textarea"
+                aria-invalid={Boolean(getError("message"))}
+              />
+              <p className="contact-helper">
+                {getError("message") ||
+                  `${formState.message.length}/${MAX_MESSAGE_LENGTH} 文字`}
+              </p>
+            </div>
+
+            <div className="contact-field contact-field-full">
+              <fieldset className="contact-fieldset">
+                <legend className="contact-label">
+                  どこからこのHPを知ったか
+                </legend>
+                <div className="contact-radio-group">
+                  {sources.map((source) => (
+                    <label key={source.value} className="contact-radio-option">
+                      <input
+                        type="radio"
+                        name="source"
+                        value={source.value}
+                        checked={formState.source === source.value}
+                        onChange={(event) =>
+                          updateField("source", event.target.value)
+                        }
+                        onBlur={() => markTouched("source")}
+                        className="contact-radio-input"
+                        required
+                      />
+                      <span className="contact-radio-label">
+                        {source.label}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+                <p className="contact-helper">{getError("source")}</p>
+              </fieldset>
+            </div>
           </div>
-          <div className="contact-form-element">
-            <label className="contact-name-label" htmlFor="name">
-              お名前
+
+          <div className="contact-turnstile">
+            <label className="contact-label" htmlFor="cf-turnstile">
+              スパム対策
             </label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              required
-              className="contact-name"
-            />
+            {siteKey ? (
+              <>
+                <Script
+                  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                  async
+                  defer
+                  onLoad={() => {
+                    window.turnstileCallback = (token: string) => {
+                      setTurnstileToken(token);
+                    };
+                  }}
+                />
+                <div
+                  id="cf-turnstile"
+                  className="cf-turnstile"
+                  data-sitekey={siteKey}
+                  data-callback="turnstileCallback"
+                />
+              </>
+            ) : (
+              <div className="contact-turnstile-fallback">
+                Turnstileのサイトキーが未設定です。
+              </div>
+            )}
+            {getError("turnstile") && (
+              <p className="contact-helper contact-error-text">
+                {getError("turnstile")}
+              </p>
+            )}
           </div>
-          <div className="contact-form-element">
-            <label className="contact-email-label" htmlFor="email">
-              <span>メール</span>
-              <span>アドレス</span>
-            </label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              required
-              className="contact-email"
-            />
-          </div>
-          <div className="contact-form-element">
-            <label htmlFor="message" className="contact-message-label">
-              <span>お問い合わせ</span>
-              <span>内容</span>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              required
-              className="contact-message"
-            />
-          </div>
-          <div className="flex justify-center">
+
+          <div className="contact-actions">
+            <button
+              type="button"
+              className="contact-secondary"
+              onClick={() => setShowPreview((prev) => !prev)}
+            >
+              {showPreview ? "プレビューを閉じる" : "送信内容を確認"}
+            </button>
             <button
               type="submit"
-              className="px-8 py-2 rounded-sm text-white bg-blue-600 hover:bg-blue-700"
+              className="contact-submit"
+              disabled={isSubmitting || hasErrors}
             >
-              送信
+              {isSubmitting ? "送信中..." : "送信"}
             </button>
           </div>
-          {isSubmitted && (
-            <div className="mb-4 p-4 text-green-800 bg-green-100 rounded">
-              メールが送信されました！
-            </div>
-          )}
 
           {errorMessage && (
-            <div className="m-1 p-3 text-red-800 bg-red-100 rounded-sm max-md:text-sm">
+            <div className="contact-error-banner" role="status">
               {errorMessage}
             </div>
           )}
         </form>
+
+        {showPreview && (
+          <div className="contact-preview">
+            <p className="contact-preview-title">プレビュー</p>
+            <div className="contact-preview-card">
+              <div>
+                <span className="contact-preview-label">件名</span>
+                <p>{formState.title || "(未入力)"}</p>
+              </div>
+              <div>
+                <span className="contact-preview-label">差出人</span>
+                <p>
+                  {formState.name || "(未入力)"} ・
+                  {formState.email || "(未入力)"}
+                </p>
+              </div>
+              <div>
+                <span className="contact-preview-label">カテゴリ</span>
+                <p>
+                  {categories.find((item) => item.value === formState.category)
+                    ?.label || ""}
+                </p>
+              </div>
+              <div>
+                <span className="contact-preview-label">流入元</span>
+                <p>
+                  {sources.find((item) => item.value === formState.source)
+                    ?.label || "(未入力)"}
+                </p>
+              </div>
+              <div>
+                <span className="contact-preview-label">内容</span>
+                <p className="contact-preview-message">
+                  {formState.message || "(未入力)"}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
