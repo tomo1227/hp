@@ -51,3 +51,90 @@
   padding: 0 12px;
   text-decoration: none;
 }
+
+@media (max-width: 1024px) {
+  .sidebar-container {
+    padding: 0 1.25rem;
+  }
+
+  .desktop-sidebar {
+    width: 100%;
+    margin-top: 0;
+    padding: 0.75rem;
+    border-radius: 18px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .desktop-sidebar ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .desktop-sidebar ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desktop-sidebar ul li a {
+    background: rgba(15, 23, 42, 0.05);
+    color: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: none;
+    white-space: nowrap;
+  }
+
+  .desktop-sidebar ul li a::after {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(14, 116, 144, 0.8));
+  }
+
+  .desktop-sidebar ul li a:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
+  }
+}
+
+@media (max-width: 1024px) and (prefers-color-scheme: dark) {
+  .desktop-sidebar {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .desktop-sidebar ul li a {
+    background: rgba(148, 163, 184, 0.18);
+    color: #e2e8f0;
+    border-color: rgba(148, 163, 184, 0.35);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-container {
+    padding: 0;
+  }
+
+  .desktop-sidebar {
+    padding: 0.6rem;
+    border-radius: 16px;
+  }
+
+  .desktop-sidebar ul li a {
+    height: 36px;
+    padding: 0 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .desktop-sidebar ul li a {
+    height: 32px;
+    padding: 0 8px;
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+  }
+}
