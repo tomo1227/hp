@@ -13,32 +13,16 @@ import type Locale from "@/types/locale";
 type WorldMapProps = {
   locale: Locale;
   countries?: string[];
+  countryCounts?: Record<string, number>;
+  prefectureCounts?: Record<string, number>;
 };
 
-const japanPrefectures: string[] = [
-  "Hyogo",
-  "Ibaraki",
-  "Kyoto",
-  "Nagaoka",
-  "Gunma",
-  "Saitama",
-  "Tochigi",
-  "Niigata",
-  "Tokyo",
-  "Osaka",
-  "Nara",
-  "Wakayama",
-  "Shiga",
-  "Ishikawa",
-  "Mie",
-  "Okinawa",
-  "Hokkaido",
-  "Iwate",
-  "Fukushima",
-  "Miyagi",
-];
-
-export default function WorldMap({ locale, countries }: WorldMapProps) {
+export default function WorldMap({
+  locale,
+  countries,
+  countryCounts,
+  prefectureCounts,
+}: WorldMapProps) {
   const chartDiv = useRef<HTMLDivElement>(null);
   const router = useRouter();
   // const continents = {
@@ -89,12 +73,18 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         if (!dataItem) return text;
 
         const data = dataItem.dataContext as CountryData;
+        const rawName = data.name ?? "";
+        const displayName =
+          locale === "ja" && data.id
+            ? (am5geodata_lang_JA[data.id] ?? rawName)
+            : rawName;
+        const count = data.count ?? 0;
 
-        if (locale === "ja" && data.name) {
-          return am5geodata_lang_JA[data.id] ?? data.name;
-        }
+        if (!displayName) return text;
+        if (!count) return displayName;
 
-        return data.name;
+        const suffix = locale === "ja" ? "件" : "galleries";
+        return `${displayName}\n${count} ${suffix}`;
       },
     );
 
@@ -118,12 +108,19 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
         const dataItem = target.dataItem;
         if (!dataItem) return text;
 
-        const data = dataItem.dataContext as { name?: string } | undefined;
+        const data = dataItem.dataContext as
+          | { name?: string; count?: number }
+          | undefined;
         const name = data?.name ?? "";
+        const count = data?.count ?? 0;
 
         if (!name) return text;
 
-        return locale === "ja" ? jaTranslate(name) : name;
+        const displayName = locale === "ja" ? jaTranslate(name) : name;
+        if (!count) return displayName;
+
+        const suffix = locale === "ja" ? "件" : "posts";
+        return `${displayName}\n${count} ${suffix}`;
       },
     );
 
@@ -133,9 +130,26 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
       map: string;
       name?: string;
       name_en?: string;
+      count?: number;
       polygonSettings: {
         fill: am5.Color;
       };
+    };
+
+    const getCountryFill = (count: number | undefined) => {
+      if (!count) return am5.color("#d1d5db");
+      if (count >= 8) return am5.color("#1d4ed8");
+      if (count >= 4) return am5.color("#2563eb");
+      if (count >= 2) return am5.color("#60a5fa");
+      return am5.color("#93c5fd");
+    };
+
+    const getPrefectureFill = (count: number | undefined) => {
+      if (!count) return am5.color("#e5e7eb");
+      if (count >= 6) return am5.color("#1d4ed8");
+      if (count >= 4) return am5.color("#2563eb");
+      if (count >= 2) return am5.color("#60a5fa");
+      return am5.color("#93c5fd");
     };
 
     let currentDataItem: am5.DataItem<am5map.IMapPolygonSeriesDataItem> | null =
@@ -170,15 +184,14 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
           const countryData = geodata.features.map(
             (f: { id: string; properties?: { name?: string } }) => {
               const name = f.properties?.name;
+              const count = name ? (prefectureCounts?.[name] ?? 0) : 0;
 
               return {
                 id: f.id,
                 name,
+                count,
                 polygonSettings: {
-                  fill:
-                    name && japanPrefectures?.includes(name)
-                      ? am5.color(0x66abfb)
-                      : am5.color(0xcccccc),
+                  fill: getPrefectureFill(count),
                   strokeWidth: 0.3,
                 },
               };
@@ -212,12 +225,9 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
       const dataItem = polygon.dataItem;
       if (!dataItem) return;
 
-      const data = dataItem.dataContext as { name?: string };
+      const data = dataItem.dataContext as { name?: string; count?: number };
       if (!data?.name) return;
-
-      if (data.name && !japanPrefectures?.includes(data.name)) {
-        return;
-      }
+      if ((data.count ?? 0) <= 0) return;
       router.push(`/${locale}/gallery/tags/${data.name}`);
     });
 
@@ -228,14 +238,15 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     const worldData = am5geodata_worldLow.features.map((f) => {
       const name = f.properties?.name;
 
+      const count = name ? countryCounts?.[name] : 0;
+
       return {
         id: f.id,
         name,
         map: f.id === "JP" ? "japanLow" : "",
+        count,
         polygonSettings: {
-          fill: countries?.includes(name)
-            ? am5.color("#66abfb") // ハイライト
-            : am5.color("#cccccc"), // 通常色
+          fill: getCountryFill(count),
           strokeWidth: 0.3,
         },
       };
@@ -336,7 +347,7 @@ export default function WorldMap({ locale, countries }: WorldMapProps) {
     return () => {
       root.dispose();
     };
-  }, [router, locale, countries]);
+  }, [router, locale, countries, countryCounts, prefectureCounts]);
 
   return <div ref={chartDiv} style={{ width: "100%", height: "600px" }} />;
 }
