@@ -45,7 +45,6 @@ export default function Page() {
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [showPreview, setShowPreview] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [formState, setFormState] = useState<FormState>({
@@ -366,13 +365,6 @@ export default function Page() {
 
           <div className="contact-actions">
             <button
-              type="button"
-              className="contact-secondary"
-              onClick={() => setShowPreview((prev) => !prev)}
-            >
-              {showPreview ? "Hide preview" : "Preview"}
-            </button>
-            <button
               type="submit"
               className="contact-submit"
               disabled={isSubmitting || hasErrors}
@@ -387,45 +379,6 @@ export default function Page() {
             </div>
           )}
         </form>
-
-        {showPreview && (
-          <div className="contact-preview">
-            <p className="contact-preview-title">Preview</p>
-            <div className="contact-preview-card">
-              <div>
-                <span className="contact-preview-label">Subject</span>
-                <p>{formState.title || "(not set)"}</p>
-              </div>
-              <div>
-                <span className="contact-preview-label">From</span>
-                <p>
-                  {formState.name || "(not set)"} ·
-                  {formState.email || "(not set)"}
-                </p>
-              </div>
-              <div>
-                <span className="contact-preview-label">Category</span>
-                <p>
-                  {categories.find((item) => item.value === formState.category)
-                    ?.label || ""}
-                </p>
-              </div>
-              <div>
-                <span className="contact-preview-label">Source</span>
-                <p>
-                  {sources.find((item) => item.value === formState.source)
-                    ?.label || "(not set)"}
-                </p>
-              </div>
-              <div>
-                <span className="contact-preview-label">Message</span>
-                <p className="contact-preview-message">
-                  {formState.message || "(not set)"}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

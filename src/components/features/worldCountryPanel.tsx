@@ -24,7 +24,37 @@ type CountryItem = {
   name: string;
   label: string;
   count: number;
+  flag?: string;
 };
+
+const countryFlagMap: Record<string, string> = {
+  Japan: "🇯🇵",
+  "United States": "🇺🇸",
+  Canada: "🇨🇦",
+  Mexico: "🇲🇽",
+  Brazil: "🇧🇷",
+  Argentina: "🇦🇷",
+  Chile: "🇨🇱",
+  Colombia: "🇨🇴",
+  Peru: "🇵🇪",
+  Paraguay: "🇵🇾",
+  Uruguay: "🇺🇾",
+  France: "🇫🇷",
+  Spain: "🇪🇸",
+  Germany: "🇩🇪",
+  Netherlands: "🇳🇱",
+  Slovenia: "🇸🇮",
+  Croatia: "🇭🇷",
+  Egypt: "🇪🇬",
+  Vietnam: "🇻🇳",
+  Thailand: "🇹🇭",
+  Anguilla: "🇦🇮",
+  Anguila: "🇦🇮",
+  "Saint Martin": "🇲🇫",
+  "Sint Maarten": "🇸🇽",
+};
+
+const getCountryFlag = (name: string) => countryFlagMap[name] ?? "";
 
 export default function WorldCountryPanel({
   locale,
@@ -43,6 +73,7 @@ export default function WorldCountryPanel({
           name,
           label,
           count: countryCounts[name] ?? 0,
+          flag: getCountryFlag(name),
         } satisfies CountryItem;
       })
       .sort((a, b) => {
@@ -95,7 +126,14 @@ export default function WorldCountryPanel({
                 router.push(`/${locale}/gallery/world/${item.name}`)
               }
             >
-              <span className="world-country-name">{item.label}</span>
+              <span className="world-country-main">
+                {item.flag ? (
+                  <span className="world-country-flag" aria-hidden="true">
+                    {item.flag}
+                  </span>
+                ) : null}
+                <span className="world-country-name">{item.label}</span>
+              </span>
               <span className="world-country-count">
                 {item.count} {labels.countUnit}
               </span>

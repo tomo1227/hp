@@ -7,7 +7,7 @@ export default function Page() {
         <p className="contact-kicker">Thank you</p>
         <h1 className="contact-thanks-title">送信が完了しました</h1>
         <p className="contact-subtitle">
-          お問い合わせありがとうございます。1〜2営業日以内にご返信します。
+          お問い合わせありがとうございます。数日以内にご返信します。
         </p>
         <div className="contact-thanks-actions">
           <Link className="contact-link" href="/ja/contact">

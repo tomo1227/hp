@@ -45,7 +45,6 @@ export default function Page() {
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [showPreview, setShowPreview] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [formState, setFormState] = useState<FormState>({
@@ -365,13 +364,6 @@ export default function Page() {
 
           <div className="contact-actions">
             <button
-              type="button"
-              className="contact-secondary"
-              onClick={() => setShowPreview((prev) => !prev)}
-            >
-              {showPreview ? "プレビューを閉じる" : "送信内容を確認"}
-            </button>
-            <button
               type="submit"
               className="contact-submit"
               disabled={isSubmitting || hasErrors}
@@ -386,45 +378,6 @@ export default function Page() {
             </div>
           )}
         </form>
-
-        {showPreview && (
-          <div className="contact-preview">
-            <p className="contact-preview-title">プレビュー</p>
-            <div className="contact-preview-card">
-              <div>
-                <span className="contact-preview-label">件名</span>
-                <p>{formState.title || "(未入力)"}</p>
-              </div>
-              <div>
-                <span className="contact-preview-label">差出人</span>
-                <p>
-                  {formState.name || "(未入力)"} ・
-                  {formState.email || "(未入力)"}
-                </p>
-              </div>
-              <div>
-                <span className="contact-preview-label">カテゴリ</span>
-                <p>
-                  {categories.find((item) => item.value === formState.category)
-                    ?.label || ""}
-                </p>
-              </div>
-              <div>
-                <span className="contact-preview-label">流入元</span>
-                <p>
-                  {sources.find((item) => item.value === formState.source)
-                    ?.label || "(未入力)"}
-                </p>
-              </div>
-              <div>
-                <span className="contact-preview-label">内容</span>
-                <p className="contact-preview-message">
-                  {formState.message || "(未入力)"}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

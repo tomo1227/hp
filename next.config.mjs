@@ -3,7 +3,7 @@ import createMDX from "@next/mdx";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  allowedDevOrigins: ["tomokiota.com"],
+  allowedDevOrigins: ["tomokiota.com", "127.0.0.1"],
   images: {
     remotePatterns: [
       {
