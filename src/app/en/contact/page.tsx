@@ -330,7 +330,9 @@ export default function Page() {
           </div>
 
           <div className="contact-turnstile">
-            <label className="contact-label">Spam protection</label>
+            <label className="contact-label" htmlFor="cf-turnstile">
+              Spam protection
+            </label>
             {siteKey ? (
               <>
                 <Script
@@ -344,6 +346,7 @@ export default function Page() {
                   }}
                 />
                 <div
+                  id="cf-turnstile"
                   className="cf-turnstile"
                   data-sitekey={siteKey}
                   data-callback="turnstileCallback"

@@ -329,7 +329,9 @@ export default function Page() {
           </div>
 
           <div className="contact-turnstile">
-            <label className="contact-label">スパム対策</label>
+            <label className="contact-label" htmlFor="cf-turnstile">
+              スパム対策
+            </label>
             {siteKey ? (
               <>
                 <Script
@@ -343,6 +345,7 @@ export default function Page() {
                   }}
                 />
                 <div
+                  id="cf-turnstile"
                   className="cf-turnstile"
                   data-sitekey={siteKey}
                   data-callback="turnstileCallback"
