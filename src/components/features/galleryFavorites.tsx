@@ -224,6 +224,33 @@ export const GalleryFavoritesTabs = ({
   const [filter, setFilter] = useState<"all" | "favorites">("all");
   const [selectedTag, setSelectedTag] = useState("all");
   const [columns, setColumns] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  // ページング用
+  const DEFAULT_ITEMS_PER_PAGE_DESKTOP = 40;
+  const DEFAULT_ITEMS_PER_PAGE_MOBILE = 30;
+  const [page, setPage] = useState(1);
+
+  // デバイス幅でITEMS_PER_PAGEを調整
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    const media = window.matchMedia("(max-width: 750px)");
+    const handleChange = () => setIsMobile(media.matches);
+    handleChange();
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", handleChange);
+      return () => media.removeEventListener("change", handleChange);
+    }
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, []);
+  const baseItemsPerPage = isMobile
+    ? DEFAULT_ITEMS_PER_PAGE_MOBILE
+    : DEFAULT_ITEMS_PER_PAGE_DESKTOP;
+  const computedColumns = columns ?? DEFAULT_COLUMNS;
+  const ITEMS_PER_PAGE =
+    computedColumns * Math.ceil(baseItemsPerPage / computedColumns);
 
   useEffect(() => {
     setColumns(readColumns());
@@ -251,6 +278,54 @@ export const GalleryFavoritesTabs = ({
     return matchesFavorite && matchesTag;
   });
 
+  // ページング処理
+  const totalPages = Math.max(
+    1,
+    Math.ceil(visibleItems.length / ITEMS_PER_PAGE),
+  );
+  const pagedItems = visibleItems.slice(
+    (page - 1) * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE,
+  );
+  const paginationItems = useMemo(() => {
+    const boundaryCount = 1;
+    const siblingCount = isMobile ? 1 : 2;
+    const totalNumbers = boundaryCount * 2 + siblingCount * 2 + 3;
+    if (totalPages <= totalNumbers) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const startPage = Math.max(page - siblingCount, boundaryCount + 2);
+    const endPage = Math.min(
+      page + siblingCount,
+      totalPages - boundaryCount - 1,
+    );
+
+    const items: Array<number | "ellipsis"> = [];
+    for (let i = 1; i <= boundaryCount; i += 1) {
+      items.push(i);
+    }
+    if (startPage > boundaryCount + 2) {
+      items.push("ellipsis");
+    }
+    for (let i = startPage; i <= endPage; i += 1) {
+      items.push(i);
+    }
+    if (endPage < totalPages - boundaryCount - 1) {
+      items.push("ellipsis");
+    }
+    for (let i = totalPages - boundaryCount + 1; i <= totalPages; i += 1) {
+      items.push(i);
+    }
+    return items;
+  }, [isMobile, page, totalPages]);
+
+  // フィルタやタグが変わったらページを1に戻す
+  // biome-ignore lint/correctness/useExhaustiveDependencies: 削除したら動作しなくなる
+  useEffect(() => {
+    setPage(1);
+  }, [filter, selectedTag]);
+
   const allLabel = locale === "ja" ? "すべて" : "All";
   const favoritesLabel = "★";
   const emptyLabel =
@@ -258,6 +333,10 @@ export const GalleryFavoritesTabs = ({
       ? "条件に合うギャラリーがありません。"
       : "No galleries match your filters.";
   const allTagsLabel = locale === "ja" ? "タグで絞り込み" : "Filter by tag";
+  const pageLabel =
+    locale === "ja"
+      ? `ページ ${page} / ${totalPages}`
+      : `Page ${page} of ${totalPages}`;
 
   return (
     <div className="gallery-list">
@@ -265,18 +344,14 @@ export const GalleryFavoritesTabs = ({
         <div className="gallery-tabs">
           <button
             type="button"
-            className={`gallery-tab-button ${
-              filter === "all" ? "is-active" : ""
-            }`}
+            className={`gallery-tab-button ${filter === "all" ? "is-active" : ""}`}
             onClick={() => setFilter("all")}
           >
             {allLabel}
           </button>
           <button
             type="button"
-            className={`gallery-tab-button ${
-              filter === "favorites" ? "is-active" : ""
-            }`}
+            className={`gallery-tab-button ${filter === "favorites" ? "is-active" : ""}`}
             onClick={() => setFilter("favorites")}
           >
             {favoritesLabel}
@@ -329,29 +404,175 @@ export const GalleryFavoritesTabs = ({
       {visibleItems.length === 0 ? (
         <p className="gallery-empty">{emptyLabel}</p>
       ) : (
-        <section
-          className={`cards-container${columns ? ` is-${columns}` : ""}`}
-        >
-          {visibleItems.map((gallery) => (
-            <Link
-              className="card"
-              key={gallery.slug}
-              href={`/${gallery.locale}/gallery/${gallery.slug}`}
+        <>
+          <section
+            className={`cards-container${columns ? ` is-${columns}` : ""}`}
+          >
+            {pagedItems.map((gallery) => (
+              <Link
+                className="card"
+                key={gallery.slug}
+                href={`/${gallery.locale}/gallery/${gallery.slug}`}
+              >
+                <Image
+                  src={gallery.image}
+                  alt={`${gallery.title}-img`}
+                  width={800}
+                  height={800}
+                  id={`${gallery.slug}-image`}
+                  className="aspect-square object-cover object-center w-full h-auto"
+                  placeholder="blur"
+                  blurDataURL={rgbDataURL(192, 192, 192)}
+                />
+                <div className="card-title">{gallery.title}</div>
+              </Link>
+            ))}
+          </section>
+          {/* ページネーションUI（デザイン改善） */}
+          {totalPages > 1 && (
+            <nav
+              className="gallery-pagination"
+              aria-label="ページネーション"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "0.5rem",
+                margin: "2rem 0 1rem 0",
+              }}
             >
-              <Image
-                src={gallery.image}
-                alt={`${gallery.title}-img`}
-                width={800}
-                height={800}
-                id={`${gallery.slug}-image`}
-                className="aspect-square object-cover object-center w-full h-auto"
-                placeholder="blur"
-                blurDataURL={rgbDataURL(192, 192, 192)}
-              />
-              <div className="card-title">{gallery.title}</div>
-            </Link>
-          ))}
-        </section>
+              <button
+                type="button"
+                className="gallery-pagination-arrow"
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+                aria-label={locale === "ja" ? "前のページ" : "Previous page"}
+                style={{
+                  padding: "0.5em 1em",
+                  borderRadius: "999px",
+                  border: "1px solid #ccc",
+                  background: page === 1 ? "#f5f5f5" : "#fff",
+                  color: page === 1 ? "#aaa" : "#333",
+                  cursor: page === 1 ? "not-allowed" : "pointer",
+                  fontWeight: 600,
+                  fontSize: "1rem",
+                  transition: "background 0.2s, color 0.2s",
+                }}
+              >
+                ←
+              </button>
+              {isMobile ? (
+                <label
+                  className="gallery-pagination-compact"
+                  aria-label={pageLabel}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    fontWeight: 600,
+                    color: "#333",
+                  }}
+                >
+                  <select
+                    value={page}
+                    onChange={(event) => setPage(Number(event.target.value))}
+                    style={{
+                      padding: "0.35em 0.6em",
+                      borderRadius: "8px",
+                      border: "1px solid #ccc",
+                      background: "#fff",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (p) => (
+                        <option key={p} value={p}>
+                          {p}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {" "}
+                    / {totalPages}
+                  </span>
+                </label>
+              ) : (
+                paginationItems.map((p, index) => {
+                  const key =
+                    p === "ellipsis"
+                      ? `ellipsis-${index}-${paginationItems.length}`
+                      : `page-${p}`;
+
+                  return p === "ellipsis" ? (
+                    <span
+                      key={key}
+                      className="gallery-pagination-ellipsis"
+                      aria-hidden="true"
+                      style={{
+                        padding: "0 0.4em",
+                        color: "#888",
+                        fontWeight: 600,
+                      }}
+                    >
+                      ...
+                    </span>
+                  ) : (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`gallery-pagination-page${p === page ? " is-active" : ""}`}
+                      onClick={() => setPage(p)}
+                      aria-current={p === page ? "page" : undefined}
+                      style={{
+                        minWidth: "2.2em",
+                        padding: "0.5em 0.9em",
+                        margin: "0 0.1em",
+                        borderRadius: "8px",
+                        border:
+                          p === page ? "2px solid #0070f3" : "1px solid #ccc",
+                        background: p === page ? "#e6f0fa" : "#fff",
+                        color: p === page ? "#0070f3" : "#333",
+                        fontWeight: p === page ? 700 : 500,
+                        fontSize: "1rem",
+                        boxShadow:
+                          p === page
+                            ? "0 2px 8px rgba(0,112,243,0.08)"
+                            : "none",
+                        cursor: p === page ? "default" : "pointer",
+                        outline: "none",
+                        transition: "all 0.2s",
+                      }}
+                      disabled={p === page}
+                    >
+                      {p}
+                    </button>
+                  );
+                })
+              )}
+              <button
+                type="button"
+                className="gallery-pagination-arrow"
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+                aria-label={locale === "ja" ? "次のページ" : "Next page"}
+                style={{
+                  padding: "0.5em 1em",
+                  borderRadius: "999px",
+                  border: "1px solid #ccc",
+                  background: page === totalPages ? "#f5f5f5" : "#fff",
+                  color: page === totalPages ? "#aaa" : "#333",
+                  cursor: page === totalPages ? "not-allowed" : "pointer",
+                  fontWeight: 600,
+                  fontSize: "1rem",
+                  transition: "background 0.2s, color 0.2s",
+                }}
+              >
+                →
+              </button>
+            </nav>
+          )}
+        </>
       )}
     </div>
   );
