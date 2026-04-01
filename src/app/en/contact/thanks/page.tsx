@@ -6,9 +6,7 @@ export default function Page() {
       <div className="contact-contents contact-thanks">
         <p className="contact-kicker">Thank you</p>
         <h1 className="contact-thanks-title">Message received</h1>
-        <p className="contact-subtitle">
-          Thanks for reaching out. I will reply within 1-2 business days.
-        </p>
+        <p className="contact-subtitle">Thanks for reaching out.</p>
         <div className="contact-thanks-actions">
           <Link className="contact-link" href="/en/contact">
             Back to contact
