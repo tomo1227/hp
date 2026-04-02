@@ -4,35 +4,35 @@ install:
 
 .PHONY: run
 run:
-	pnpm run dev
+	pnpm dev
 
 .PHONY: build
 build:
-	pnpm run build
+	pnpm build
 
 .PHONY: lint
 lint:
-	pnpm run lint
+	pnpm lint
 
 .PHONY: fix
 fix:
-	pnpm run fix
+	pnpm fix
 
-.PHONY: format
-format:
-	pnpm run fmt
+.PHONY: fmt
+fmt:
+	pnpm format
 
 .PHONY: bi
 bi:
-	pnpm run bi
+	pnpm bi
 
 .PHONY: post
 post:
-	pnpm run post
+	pnpm post
 
 .PHONY: gal
 gal:
-	pnpm run gal
+	pnpm gal
 
 .PHONY: up
 up:
