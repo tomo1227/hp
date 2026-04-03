@@ -52,6 +52,7 @@ const countryFlagMap: Record<string, string> = {
   Anguila: "🇦🇮",
   "Saint Martin": "🇲🇫",
   "Sint Maarten": "🇸🇽",
+  India: "🇮🇳",
 };
 
 const getCountryFlag = (name: string) => countryFlagMap[name] ?? "";
