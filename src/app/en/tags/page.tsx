@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTags as getBlogTags } from "@/lib/blogFilter";
 import { getTags as getGalleryTags } from "@/lib/galleryFilter";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://tomokiota.com/en/tags",
+    languages: {
+      en: "https://tomokiota.com/en/tags",
+      ja: "https://tomokiota.com/ja/tags",
+    },
+  },
+};
 
 export default async function Page() {
   const blogTags = await getBlogTags({ locale: "en" });

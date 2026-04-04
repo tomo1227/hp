@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   description: "This is a blog about travel and camera by Tomoki Ota.",
   alternates: {
     canonical: "https://tomokiota.com/en/blogs",
+    languages: {
+      en: "https://tomokiota.com/en/blogs",
+      ja: "https://tomokiota.com/ja/blogs",
+    },
   },
 };
 

@@ -28,6 +28,8 @@ export async function generateMetadata(
   const { frontmatter } = await getPostBySlug(slug, "ja");
   const previousOgpImages = (await parent).openGraph?.images || [];
   const previousTwitterImages = (await parent).twitter?.images || [];
+  const canonicalUrl = `https://tomokiota.com/ja/gallery/${slug}`;
+  const alternateEnUrl = `https://tomokiota.com/en/gallery/${slug}`;
 
   return {
     title: frontmatter.title || (await parent).title,
@@ -43,7 +45,11 @@ export async function generateMetadata(
         : previousTwitterImages,
     },
     alternates: {
-      canonical: `https://tomokiota.com/ja/gallery/${slug}`,
+      canonical: canonicalUrl,
+      languages: {
+        ja: canonicalUrl,
+        en: alternateEnUrl,
+      },
     },
   };
 }
