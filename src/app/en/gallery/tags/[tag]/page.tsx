@@ -4,7 +4,7 @@ import { rgbDataURL } from "@/lib/blurImage";
 import { getFilteredPosts, getTags } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
-  const tags = await getTags();
+  const tags = await getTags({ locale: "en" });
   return tags.map((tag) => ({
     tag: tag,
   }));

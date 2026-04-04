@@ -10,6 +10,10 @@ const metadata: Metadata = {
   description: "This is a schedule calendar of photos Tomoki Ota took.",
   alternates: {
     canonical: "https://tomokiota.com/en/calendar",
+    languages: {
+      en: "https://tomokiota.com/en/calendar",
+      ja: "https://tomokiota.com/ja/calendar",
+    },
   },
 };
 

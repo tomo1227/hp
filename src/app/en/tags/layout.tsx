@@ -4,7 +4,7 @@ import SidebarRight from "@/components/ui/sidebarRight";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div id="blog-layout">
-      <SidebarLeft locale="ja" />
+      <SidebarLeft locale="en" />
       <div id="main-blog-contents">{children}</div>
       <SidebarRight />
     </div>

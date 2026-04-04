@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BlogBookmarkList } from "@/components/features/blogBookmarks";
 import { getFilteredPosts, getTags } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
@@ -8,6 +9,27 @@ export async function generateStaticParams() {
   return tags.map((tag) => ({
     tag: tag,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ tag: string }>;
+}): Promise<Metadata> {
+  const tag = decodeURIComponent((await params).tag);
+  const encodedTag = encodeURIComponent(tag);
+  const canonicalUrl = `https://tomokiota.com/ja/tags/${encodedTag}`;
+  const alternateEnUrl = `https://tomokiota.com/en/tags/${encodedTag}`;
+
+  return {
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        ja: canonicalUrl,
+        en: alternateEnUrl,
+      },
+    },
+  };
 }
 
 export default async function Page({

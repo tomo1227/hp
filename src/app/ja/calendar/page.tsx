@@ -9,7 +9,11 @@ const metadata: Metadata = {
   title: "Calendar in tomokiota.com",
   description: "Tomoki Otaが撮影した過去のスケジュールカレンダー。",
   alternates: {
-    canonical: "https://tomokiota.com/ja/blogs",
+    canonical: "https://tomokiota.com/ja/calendar",
+    languages: {
+      ja: "https://tomokiota.com/ja/calendar",
+      en: "https://tomokiota.com/en/calendar",
+    },
   },
 };
 
