@@ -3,7 +3,7 @@ import { getFilteredPosts, getTags } from "@/lib/blogFilter";
 import { formattedDate } from "@/lib/date";
 
 export async function generateStaticParams() {
-  const tags = await getTags();
+  const tags = await getTags({ locale: "en" });
   return tags.map((tag) => ({
     tag: tag,
   }));
