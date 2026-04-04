@@ -1,4 +1,5 @@
 import { JSDOM } from "jsdom";
+import dns from "dns";
 
 type OgpKey = "title" | "description" | "image" | "url";
 type Ogp = {
@@ -9,6 +10,62 @@ type Ogp = {
   imageAlt?: string;
   favicon?: string;
 };
+
+async function isSafeHttpUrl(urlStr: string): Promise<boolean> {
+  let parsed: URL;
+  try {
+    parsed = new URL(urlStr);
+  } catch {
+    return false;
+  }
+
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+    return false;
+  }
+
+  if (parsed.port && parsed.port !== "80" && parsed.port !== "443") {
+    return false;
+  }
+
+  const hostname = parsed.hostname;
+  try {
+    const lookupResult = await dns.promises.lookup(hostname, { family: 0 });
+    const addr = lookupResult.address;
+
+    // Basic checks against localhost and common private/reserved ranges.
+    if (
+      addr === "127.0.0.1" ||
+      addr === "::1" ||
+      addr.startsWith("10.") ||
+      addr.startsWith("192.168.") ||
+      addr.startsWith("172.16.") ||
+      addr.startsWith("172.17.") ||
+      addr.startsWith("172.18.") ||
+      addr.startsWith("172.19.") ||
+      addr.startsWith("172.20.") ||
+      addr.startsWith("172.21.") ||
+      addr.startsWith("172.22.") ||
+      addr.startsWith("172.23.") ||
+      addr.startsWith("172.24.") ||
+      addr.startsWith("172.25.") ||
+      addr.startsWith("172.26.") ||
+      addr.startsWith("172.27.") ||
+      addr.startsWith("172.28.") ||
+      addr.startsWith("172.29.") ||
+      addr.startsWith("172.30.") ||
+      addr.startsWith("172.31.") ||
+      addr.startsWith("169.254.") || // link-local
+      addr.startsWith("0.") || // non-routable
+      addr.startsWith("127.") // loopback range
+    ) {
+      return false;
+    }
+  } catch {
+    return false;
+  }
+
+  return true;
+}
 
 // Note: `url` must be a normalized and validated HTTP/HTTPS URL.
 // The API route (`src/app/api/ogp/route.ts`) is responsible for enforcing
@@ -22,8 +79,15 @@ export const fetchOgp = async (url: string): Promise<Ogp | null> => {
   };
 
   try {
-    const dom = await JSDOM.fromURL(url);
-    const host = new URL(url).host;
+    const safe = await isSafeHttpUrl(url);
+    if (!safe) {
+      console.error(`Rejected unsafe URL for OGP fetch: ${url}`);
+      return null;
+    }
+
+    const parsed = new URL(url);
+    const dom = await JSDOM.fromURL(parsed.toString());
+    const host = parsed.host;
     ogp.favicon = `https://www.google.com/s2/favicons?domain=${host}&sz=20`;
 
     const metas = dom.window.document.getElementsByTagName("meta");
