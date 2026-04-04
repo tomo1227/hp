@@ -42,6 +42,7 @@ const countryFlagMap: Record<string, string> = {
   France: "🇫🇷",
   Spain: "🇪🇸",
   Bolivia: "🇧🇴",
+  Ecuador: "🇪🇨",
   Israel: "🇮🇱",
   Jordan: "🇯🇴",
   Taiwan: "🇹🇼",
