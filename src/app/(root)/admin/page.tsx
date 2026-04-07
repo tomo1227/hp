@@ -27,6 +27,7 @@ type Frontmatter = {
   tags: string[];
   ogpImage?: string;
   galleryImage?: string;
+  paid?: "none" | "partial" | "full";
 };
 
 type FilePayload = {
@@ -47,6 +48,7 @@ const DEFAULT_FRONTMATTER: Frontmatter = {
   tags: [],
   ogpImage: "",
   galleryImage: "",
+  paid: "none",
 };
 
 const copy = {
@@ -76,6 +78,7 @@ const copy = {
   tagsLabel: "タグ (カンマ区切り)",
   ogpLabel: "OGP画像URL",
   galleryLabel: "ギャラリー画像URL",
+  paidLabel: "有料設定",
   bodyLabel: "本文 (MDX)",
   jsonLabel: "JSON",
   uploadLabel: "S3にアップロード",
@@ -136,6 +139,7 @@ const splitFrontmatter = (content: string) => {
     if (key === "description") meta.description = value;
     if (key === "ogpImage") meta.ogpImage = value;
     if (key === "galleryImage") meta.galleryImage = value;
+    if (key === "paid") meta.paid = value as Frontmatter["paid"];
   }
 
   return { meta, body };
@@ -177,6 +181,10 @@ const buildFrontmatter = (meta: Frontmatter, type: ContentType) => {
     if (meta.ogpImage) lines.push(`ogpImage: ${quote(meta.ogpImage)}`);
     if (meta.galleryImage)
       lines.push(`galleryImage: ${quote(meta.galleryImage)}`);
+  }
+
+  if (type === "post") {
+    lines.push(`paid: ${quote(meta.paid ?? "none")}`);
   }
 
   lines.push("---", "");
@@ -363,6 +371,12 @@ export default function AdminPage() {
           <div>{props.children}</div>
         </div>
       ),
+      Paid: (props: { children?: ReactNode }) => (
+        <div className="admin-preview-note">
+          <strong>Paid</strong>
+          <div>{props.children ?? "Locked content"}</div>
+        </div>
+      ),
     }),
     [],
   );
@@ -468,6 +482,10 @@ export default function AdminPage() {
     {
       label: "Note",
       value: '<Note title="Note">\n  Message here\n</Note>',
+    },
+    {
+      label: "Paid",
+      value: '<Paid locale="ja">\n  Subscriber content\n</Paid>',
     },
     {
       label: "Inline code",
@@ -939,6 +957,25 @@ export default function AdminPage() {
                       }
                     />
                   </label>
+
+                  {type === "post" && (
+                    <label>
+                      <span>{t.paidLabel}</span>
+                      <select
+                        value={frontmatter.paid ?? "none"}
+                        onChange={(event) =>
+                          setFrontmatter((prev) => ({
+                            ...prev,
+                            paid: event.target.value as Frontmatter["paid"],
+                          }))
+                        }
+                      >
+                        <option value="none">none</option>
+                        <option value="partial">partial</option>
+                        <option value="full">full</option>
+                      </select>
+                    </label>
+                  )}
 
                   <label>
                     <span>{t.tagsLabel}</span>

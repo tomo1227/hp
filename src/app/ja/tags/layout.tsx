@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div id="blog-layout">
       <SidebarLeft locale="ja" />
       <div id="main-blog-contents">{children}</div>
-      <SidebarRight />
+      <SidebarRight locale="ja" />
     </div>
   );
 }

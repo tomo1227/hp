@@ -6,7 +6,7 @@ type SidebarLeftProps = {
 
 const SidebarLeft = ({ locale }: SidebarLeftProps) => {
   return (
-    <div className="sidebar-container">
+    <div className="sidebar-container sidebar-left">
       <div className="desktop-sidebar">
         <ul className="sidebar-list">
           <li>

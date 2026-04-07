@@ -9,4 +9,5 @@ export type Frontmatter = {
   tags: string[];
   ogpImage?: URL;
   galleryImage?: URL;
+  paid?: "none" | "partial" | "full";
 };

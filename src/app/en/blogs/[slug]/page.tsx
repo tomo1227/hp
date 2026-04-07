@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { BlogBookmarkButton } from "@/components/features/blogBookmarks";
 import BlogShareButtons from "@/components/features/blogShareButtons";
+import { Paid } from "@/components/features/mdxComponents/paid";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
 import { formattedDateEn } from "@/lib/date";
 
@@ -61,6 +62,7 @@ export default async function Page({
   const Component = require(`@/_posts/en/(${year})/${slug}.mdx`).default;
   const canonicalUrl = `https://tomokiota.com/en/blogs/${slug}`;
   const shareText = frontmatter.title || "tomokiota.com";
+  const isFullPaid = frontmatter.paid === "full";
 
   return (
     <div id="blog-wrapper">
@@ -91,7 +93,16 @@ export default async function Page({
         </div>
       </div>
       <article id="blog-content" className="markdown">
-        <Component />
+        {isFullPaid ? (
+          <>
+            {frontmatter.description && (
+              <p className="paid-summary">{frontmatter.description}</p>
+            )}
+            <Paid locale="en" />
+          </>
+        ) : (
+          <Component />
+        )}
       </article>
       <div id="blog-footer">
         <section id="blog-share">
