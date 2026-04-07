@@ -34,7 +34,7 @@ export async function POST(request: Request) {
   const prefix = locale === "ja" ? "/ja" : "/en";
 
   const search = await stripe.customers.search({
-    query: `email:'${email.replace(/'/g, "\\'")}'`,
+    query: `email:'${email.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`,
     limit: 5,
   });
 
