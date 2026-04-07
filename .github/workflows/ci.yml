@@ -34,4 +34,7 @@ jobs:
       - name: Lint
         run: pnpm run lint
       - name: Build
+        env:
+          NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ vars.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
         run: pnpm run build
