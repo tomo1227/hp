@@ -36,7 +36,7 @@ export const getPortalCustomer = async (request: Request) => {
   }
 
   const search = await stripe.customers.search({
-    query: `email:'${email.replace(/'/g, "\\'")}'`,
+    query: `email:'${email.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`,
     limit: 5,
   });
 
