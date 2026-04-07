@@ -20,13 +20,11 @@ export default function JaSubscribePage() {
           <li>いつでも解約OK</li>
         </ul>
         <SubscribeGate locale="ja">
-          <SubscribeButton locale="ja" />
+          <SubscribeButton locale="ja" checkoutMode="inline" />
         </SubscribeGate>
-        <p className="subscribe-note">
-          月額課金。税込/税別は地域で変わります。
-        </p>
+        <p className="subscribe-note">月額課金。税込み価格。</p>
         <p className="subscribe-alt">
-          English? <a href="/en/subscribe">Go to English</a>
+          English? <a href="/en/membership">Go to English</a>
         </p>
       </div>
     </div>

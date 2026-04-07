@@ -1,8 +1,10 @@
 "use client";
 
 import { getCurrentUser } from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
 type Locale = "en" | "ja";
 
@@ -14,12 +16,12 @@ type SubscribeGateProps = {
 const copy = {
   en: {
     title: "Sign in required",
-    description: "Please sign in before starting a subscription.",
+    description: "Please sign in before starting a membership.",
     action: "Go to login",
   },
   ja: {
     title: "ログインが必要です",
-    description: "サブスク登録はログイン後に行えます。",
+    description: "メンバーシップ登録はログイン後に行えます。",
     action: "ログインへ",
   },
 };
@@ -33,19 +35,29 @@ export const SubscribeGate = ({
   const text = copy[locale] ?? copy.en;
   const prefix = locale === "ja" ? "/ja" : "/en";
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        await getCurrentUser();
-        setSignedIn(true);
-      } catch {
-        setSignedIn(false);
-      } finally {
-        setChecked(true);
-      }
-    };
-    load();
+  const refreshStatus = useCallback(async () => {
+    try {
+      await getCurrentUser();
+      setSignedIn(true);
+    } catch {
+      setSignedIn(false);
+    } finally {
+      setChecked(true);
+    }
   }, []);
+
+  useEffect(() => {
+    configureAmplifyClient();
+    refreshStatus();
+    const unsub = Hub.listen("auth", ({ payload }) => {
+      if (payload.event === "signedIn" || payload.event === "signedOut") {
+        refreshStatus();
+      }
+    });
+    return () => {
+      unsub();
+    };
+  }, [refreshStatus]);
 
   if (!checked) {
     return <div className="subscribe-gate-loading">...</div>;

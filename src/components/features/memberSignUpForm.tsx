@@ -1,82 +1,70 @@
 "use client";
 
-import { confirmSignUp, signIn, signUp } from "aws-amplify/auth";
+import { confirmSignUp, signUp } from "aws-amplify/auth";
 import Link from "next/link";
 import { useState } from "react";
+import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
 type Locale = "en" | "ja";
 
-type MemberAuthFormProps = {
+type MemberSignUpFormProps = {
   locale?: Locale;
-  onSignedIn?: () => void;
-  signUpHref?: string;
 };
 
-type Mode = "signin" | "signup" | "confirm";
+type Mode = "signup" | "confirm" | "done";
 
 const copy = {
   en: {
-    title: "Email sign in",
+    title: "Create account",
     email: "Email address",
     password: "Password",
+    passwordConfirm: "Confirm password",
     code: "Verification code",
-    signin: "Sign in",
     signup: "Create account",
     confirm: "Confirm",
-    switchToSignUp: "Create a new account",
-    switchToSignIn: "I already have an account",
     confirmHint: "Check your email for the confirmation code.",
+    done: "Your email is verified. You can sign in now.",
+    login: "Go to login",
+    passwordMismatch: "Passwords do not match.",
   },
   ja: {
-    title: "メールでログイン",
+    title: "新規登録",
     email: "メールアドレス",
     password: "パスワード",
+    passwordConfirm: "パスワード（確認）",
     code: "確認コード",
-    signin: "ログイン",
-    signup: "新規登録",
+    signup: "登録する",
     confirm: "確認する",
-    switchToSignUp: "新規アカウントを作成",
-    switchToSignIn: "すでにアカウントがあります",
     confirmHint: "メールに届いた確認コードを入力してください。",
+    done: "メール認証が完了しました。ログインしてください。",
+    login: "ログインへ",
+    passwordMismatch: "パスワードが一致しません。",
   },
 };
 
-export const MemberAuthForm = ({
-  locale = "en",
-  onSignedIn,
-  signUpHref,
-}: MemberAuthFormProps) => {
-  const [mode, setMode] = useState<Mode>("signin");
+export const MemberSignUpForm = ({ locale = "en" }: MemberSignUpFormProps) => {
+  const [mode, setMode] = useState<Mode>("signup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const text = copy[locale] ?? copy.en;
 
   const normalizedEmail = email.trim().toLowerCase();
-
-  const handleSignIn = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      await signIn({
-        username: normalizedEmail,
-        password,
-        options: { authFlowType: "USER_SRP_AUTH" },
-      });
-      onSignedIn?.();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : String(err));
-    } finally {
-      setLoading(false);
-    }
-  };
+  const prefix = locale === "ja" ? "/ja" : "/en";
 
   const handleSignUp = async () => {
     setLoading(true);
     setError("");
+    if (password !== confirmPassword) {
+      setError(text.passwordMismatch);
+      setLoading(false);
+      return;
+    }
     try {
+      configureAmplifyClient();
       await signUp({
         username: normalizedEmail,
         password,
@@ -94,11 +82,12 @@ export const MemberAuthForm = ({
     setLoading(true);
     setError("");
     try {
+      configureAmplifyClient();
       await confirmSignUp({
         username: normalizedEmail,
         confirmationCode: code,
       });
-      setMode("signin");
+      setMode("done");
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -109,11 +98,11 @@ export const MemberAuthForm = ({
   return (
     <div className="member-auth">
       <p className="portal-title">{text.title}</p>
-      <label className="portal-label" htmlFor={`member-email-${locale}`}>
+      <label className="portal-label" htmlFor={`signup-email-${locale}`}>
         {text.email}
       </label>
       <input
-        id={`member-email-${locale}`}
+        id={`signup-email-${locale}`}
         className="portal-input"
         type="email"
         value={email}
@@ -122,32 +111,42 @@ export const MemberAuthForm = ({
         autoComplete="email"
       />
 
-      {mode !== "confirm" && (
+      {mode === "signup" && (
         <>
-          <label className="portal-label" htmlFor={`member-pass-${locale}`}>
+          <label className="portal-label" htmlFor={`signup-pass-${locale}`}>
             {text.password}
           </label>
           <input
-            id={`member-pass-${locale}`}
+            id={`signup-pass-${locale}`}
             className="portal-input"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="********"
-            autoComplete={
-              mode === "signin" ? "current-password" : "new-password"
-            }
+            autoComplete="new-password"
+          />
+          <label className="portal-label" htmlFor={`signup-pass2-${locale}`}>
+            {text.passwordConfirm}
+          </label>
+          <input
+            id={`signup-pass2-${locale}`}
+            className="portal-input"
+            type="password"
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
+            placeholder="********"
+            autoComplete="new-password"
           />
         </>
       )}
 
       {mode === "confirm" && (
         <>
-          <label className="portal-label" htmlFor={`member-code-${locale}`}>
+          <label className="portal-label" htmlFor={`signup-code-${locale}`}>
             {text.code}
           </label>
           <input
-            id={`member-code-${locale}`}
+            id={`signup-code-${locale}`}
             className="portal-input"
             type="text"
             value={code}
@@ -160,12 +159,9 @@ export const MemberAuthForm = ({
         </>
       )}
 
+      {mode === "done" && <p className="portal-hint">{text.done}</p>}
+
       <div className="member-auth-actions">
-        {mode === "signin" && (
-          <button type="button" onClick={handleSignIn} disabled={loading}>
-            {loading ? "..." : text.signin}
-          </button>
-        )}
         {mode === "signup" && (
           <button type="button" onClick={handleSignUp} disabled={loading}>
             {loading ? "..." : text.signup}
@@ -178,28 +174,10 @@ export const MemberAuthForm = ({
         )}
       </div>
 
-      {mode === "signin" &&
-        (signUpHref ? (
-          <Link className="member-auth-link" href={signUpHref}>
-            {text.switchToSignUp}
-          </Link>
-        ) : (
-          <button
-            type="button"
-            className="member-auth-link"
-            onClick={() => setMode("signup")}
-          >
-            {text.switchToSignUp}
-          </button>
-        ))}
-      {mode !== "signin" && (
-        <button
-          type="button"
-          className="member-auth-link"
-          onClick={() => setMode("signin")}
-        >
-          {text.switchToSignIn}
-        </button>
+      {mode !== "done" && (
+        <Link className="member-auth-link" href={`${prefix}/login`}>
+          {text.login}
+        </Link>
       )}
 
       {error && <p className="subscribe-error">{error}</p>}

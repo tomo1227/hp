@@ -8,14 +8,6 @@ type Subscription = {
   created: number;
   id?: string;
   default_payment_method?: string | { id: string } | null;
-  status?: string;
-  cancel_at_period_end?: boolean;
-  current_period_end?: number;
-  items?: {
-    data?: {
-      price?: { unit_amount?: number | null; currency?: string | null } | null;
-    }[];
-  } | null;
 };
 
 type PaymentMethod = {
@@ -59,58 +51,20 @@ export async function POST(request: Request) {
   }
 
   const { customer } = customerResult;
-  const subscriptions = await stripe.subscriptions.list({
-    customer: customer.id,
-    status: "all",
-    limit: 10,
-  });
-  const subscription = pickSubscription(subscriptions.data);
-
-  const productIds = new Set<string>();
-  for (const sub of subscriptions.data) {
-    for (const item of sub.items?.data ?? []) {
-      const productId =
-        typeof item.price?.product === "string" ? item.price.product : null;
-      if (productId) {
-        productIds.add(productId);
-      }
-    }
-  }
-
-  const productEntries = await Promise.all(
-    Array.from(productIds).map(async (productId) => {
-      const product = await stripe.products.retrieve(productId);
-      return [productId, product.name ?? null] as const;
+  const [subscriptions, rawCustomer, methods] = await Promise.all([
+    stripe.subscriptions.list({
+      customer: customer.id,
+      status: "all",
+      limit: 10,
     }),
-  );
+    stripe.customers.retrieve(customer.id),
+    stripe.paymentMethods.list({
+      customer: customer.id,
+      type: "card",
+    }),
+  ]);
 
-  const productNameById = new Map(productEntries);
-
-  const mappedSubscriptions = subscriptions.data.map((sub: any) => ({
-    id: sub.id,
-    status: sub.status ?? null,
-    cancel_at_period_end: sub.cancel_at_period_end ?? null,
-    current_period_end: sub.current_period_end ?? null,
-    items: {
-      data: (sub.items?.data ?? []).map((item: any) => ({
-        price: item.price
-          ? {
-              unit_amount: item.price.unit_amount ?? null,
-              currency: item.price.currency ?? null,
-            }
-          : null,
-        priceId: item.price?.id ?? null,
-        nickname: item.price?.nickname ?? null,
-        productName:
-          typeof item.price?.product === "string"
-            ? (productNameById.get(item.price.product) ?? null)
-            : null,
-      })),
-    },
-  }));
-
-  let paymentMethod: PaymentMethod = null;
-  const rawCustomer = await stripe.customers.retrieve(customer.id);
+  const subscription = pickSubscription(subscriptions.data as Subscription[]);
   const invoiceDefault =
     typeof rawCustomer === "object" && "invoice_settings" in rawCustomer
       ? rawCustomer.invoice_settings?.default_payment_method
@@ -121,11 +75,6 @@ export async function POST(request: Request) {
       ? methodSource
       : methodSource.id
     : null;
-
-  const methods = await stripe.paymentMethods.list({
-    customer: customer.id,
-    type: "card",
-  });
 
   const mappedMethods = methods.data.map((method: any) => ({
     id: method.id,
@@ -150,17 +99,13 @@ export async function POST(request: Request) {
       : null,
   }));
 
-  if (defaultPaymentMethodId) {
-    paymentMethod =
-      mappedMethods.find((method: PaymentMethod) =>
+  const paymentMethod = defaultPaymentMethodId
+    ? (mappedMethods.find((method: PaymentMethod) =>
         method ? method.id === defaultPaymentMethodId : false,
-      ) ?? null;
-  }
+      ) ?? null)
+    : null;
 
   return NextResponse.json({
-    customer,
-    subscription,
-    subscriptions: mappedSubscriptions,
     paymentMethod,
     paymentMethods: mappedMethods,
     defaultPaymentMethodId,

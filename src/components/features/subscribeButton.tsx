@@ -2,6 +2,8 @@
 
 import { fetchAuthSession } from "aws-amplify/auth";
 import { useState } from "react";
+import { configureAmplifyClient } from "@/components/features/amplifyProvider";
+import { SubscribeEmbeddedCheckout } from "@/components/features/subscribeEmbeddedCheckout";
 
 type Locale = "en" | "ja";
 
@@ -10,6 +12,7 @@ type SubscribeButtonProps = {
   mode?: "full" | "portal-only";
   requireAuth?: boolean;
   manageHref?: string;
+  checkoutMode?: "redirect" | "inline";
 };
 
 const copy = {
@@ -18,8 +21,8 @@ const copy = {
     manage: "Manage subscription",
   },
   ja: {
-    checkout: "サブスクを開始",
-    manage: "サブスクを管理",
+    checkout: "メンバーシップに登録",
+    manage: "登録内容の管理",
   },
 };
 
@@ -28,16 +31,19 @@ export const SubscribeButton = ({
   mode = "full",
   requireAuth = true,
   manageHref,
+  checkoutMode = "redirect",
 }: SubscribeButtonProps) => {
   const [loading, setLoading] = useState(false);
   const [portalLoading, setPortalLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showCheckout, setShowCheckout] = useState(false);
   const text = copy[locale] ?? copy.en;
 
   const handleCheckout = async () => {
     setLoading(true);
     setError("");
     try {
+      configureAmplifyClient();
       if (requireAuth) {
         const session = await fetchAuthSession();
         const token = session.tokens?.idToken?.toString();
@@ -49,16 +55,11 @@ export const SubscribeButton = ({
           );
         }
       }
-      const response = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ locale }),
-      });
-      const data = (await response.json()) as { url?: string; error?: string };
-      if (!response.ok || !data.url) {
-        throw new Error(data.error || "Failed to start checkout");
+      if (checkoutMode === "inline") {
+        setShowCheckout(true);
+        return;
       }
-      window.location.href = data.url;
+      window.location.href = `/${locale}/membership/checkout`;
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -70,6 +71,7 @@ export const SubscribeButton = ({
     setPortalLoading(true);
     setError("");
     try {
+      configureAmplifyClient();
       const session = await fetchAuthSession();
       const token = session.tokens?.idToken?.toString();
       if (!token) {
@@ -88,13 +90,30 @@ export const SubscribeButton = ({
 
   return (
     <div className="subscribe-actions">
-      {mode === "full" && (
+      {mode === "full" && !showCheckout && (
         <button type="button" onClick={handleCheckout} disabled={loading}>
-          {loading ? "..." : text.checkout}
+          {loading ? (
+            <span className="subscribe-button-content">
+              <span className="subscribe-spinner" />
+              {locale === "ja" ? "準備中" : "Preparing"}
+            </span>
+          ) : (
+            text.checkout
+          )}
         </button>
       )}
+      {showCheckout && checkoutMode === "inline" && (
+        <SubscribeEmbeddedCheckout locale={locale} />
+      )}
       <button type="button" onClick={handlePortal} disabled={portalLoading}>
-        {portalLoading ? "..." : text.manage}
+        {portalLoading ? (
+          <span className="subscribe-button-content">
+            <span className="subscribe-spinner" />
+            {locale === "ja" ? "移動中" : "Opening"}
+          </span>
+        ) : (
+          text.manage
+        )}
       </button>
       {error && <p className="subscribe-error">{error}</p>}
     </div>

@@ -251,7 +251,6 @@
 }
 
 .subscribe-title {
-  font-family: "Playfair Display", "Bodoni Moda", "Times New Roman", serif;
   font-size: clamp(2rem, 3vw, 2.75rem);
   font-weight: 700;
   margin: 0.4rem 0 0.6rem;
@@ -310,10 +309,10 @@
 }
 
 .subscribe-actions button {
-  @apply px-6 py-3 rounded-full font-semibold transition;
+  @apply px-6 py-3 rounded-full font-semibold transition text-black dark:text-white;
   background: var(--blog-ink);
-  color: #ffffff;
   min-width: 220px;
+  max-width: 220px;
   border: 1px solid rgba(15, 23, 42, 0.12);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
@@ -333,17 +332,6 @@
   opacity: 0.6;
   cursor: not-allowed;
   box-shadow: none;
-}
-
-.subscribe-actions button:last-child {
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--blog-ink);
-  border: 1px solid var(--blog-stroke);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
-}
-
-.subscribe-actions button:last-child:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.95);
 }
 
 .subscribe-note {
@@ -368,6 +356,157 @@
 .subscribe-alt a {
   color: var(--blog-ink);
   text-decoration: underline;
+}
+
+.subscribe-embedded {
+  @apply flex flex-col gap-6;
+}
+
+.subscribe-loading {
+  @apply flex items-center gap-3 text-sm;
+  color: var(--blog-ink-soft);
+}
+
+.subscribe-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(148, 163, 184, 0.4);
+  border-top-color: var(--blog-ink);
+  border-radius: 999px;
+  animation: subscribe-spin 0.9s linear infinite;
+}
+
+.subscribe-button-content {
+  @apply inline-flex items-center gap-2;
+}
+
+@keyframes subscribe-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.subscribe-embedded-title {
+  @apply text-xs uppercase tracking-[0.3em] font-semibold;
+  color: var(--blog-ink-soft);
+}
+
+.subscribe-embedded-price {
+  @apply flex items-end gap-2 mt-2;
+  font-family: "Space Grotesk", "Avenir Next", "Helvetica Neue", sans-serif;
+  color: var(--blog-ink);
+}
+
+.subscribe-embedded-price span:first-child {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+}
+
+.subscribe-embedded-price span:last-child {
+  font-size: 0.95rem;
+  color: var(--blog-ink-soft);
+  margin-bottom: 0.25rem;
+}
+
+.subscribe-embedded-features {
+  @apply mt-4 grid gap-2;
+  list-style: none;
+  padding: 0;
+  color: var(--blog-ink);
+}
+
+.subscribe-embedded-features li::before {
+  content: "✔";
+  margin-right: 0.5rem;
+  color: #ff8c42;
+  font-weight: 700;
+}
+
+.subscribe-default-option {
+  @apply flex items-center gap-2 text-sm;
+  color: var(--blog-ink-soft);
+}
+
+.subscribe-default-option input {
+  accent-color: #ff8c42;
+}
+
+.subscribe-default-choice {
+  @apply flex flex-col gap-2 text-sm mb-4;
+  color: var(--blog-ink-soft);
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--blog-stroke);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 251, 255, 0.85));
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.subscribe-default-choice span {
+  letter-spacing: 0.01em;
+}
+
+.subscribe-default-choice label {
+  @apply flex items-center gap-3;
+}
+
+.subscribe-default-choice input {
+  accent-color: #ff8c42;
+}
+
+.subscribe-choice-title {
+  @apply text-xs uppercase tracking-[0.3em];
+  color: var(--blog-ink-soft);
+  margin: 0 0 0.2rem;
+}
+
+.subscribe-choice {
+  @apply w-full rounded-2xl px-4 py-3 transition;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid transparent;
+}
+
+.subscribe-choice:hover {
+  border-color: var(--blog-stroke);
+  transform: translateY(-1px);
+}
+
+.subscribe-choice-label {
+  @apply flex items-center justify-between gap-3 w-full;
+  color: var(--blog-ink);
+  font-weight: 600;
+}
+
+.subscribe-choice-badge {
+  @apply text-[0.65rem] uppercase tracking-[0.2em] px-3 py-1 rounded-full;
+  background: var(--blog-ink);
+  color: #ffffff;
+}
+
+.subscribe-choice-badge.is-outline {
+  background: transparent;
+  color: var(--blog-ink);
+  border: 1px solid var(--blog-stroke);
+}
+
+.subscribe-choice input:checked + .subscribe-choice-label {
+  color: var(--blog-ink);
+}
+
+.subscribe-choice input:checked + .subscribe-choice-label .subscribe-choice-badge {
+  filter: brightness(1.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .subscribe-default-choice {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(17, 24, 39, 0.85));
+  }
+  .subscribe-choice {
+    background: rgba(15, 23, 42, 0.55);
+  }
 }
 
 .subscribe-divider {
@@ -413,10 +552,11 @@
 }
 
 .member-auth-actions button {
-  @apply px-6 py-3 rounded-full font-semibold transition;
+  @apply px-6 py-3 rounded-full font-semibold transition text-black dark:text-white;
   background: var(--blog-ink);
-  color: #ffffff;
   min-width: 220px;
+  width: auto;
+  text-align: center;
   border: 1px solid rgba(15, 23, 42, 0.12);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
@@ -441,6 +581,10 @@
 .portal-hint {
   @apply text-xs;
   color: var(--blog-ink-soft);
+}
+
+.portal-card .member-login-actions {
+  margin-top: 1.25rem;
 }
 
 .member-auth-link {
@@ -518,43 +662,22 @@
   text-decoration: none;
 }
 
-.member-login-primary {
+.member-login-primary,
+.member-login-secondary,
+.member-login-logout {
+  @apply px-6 py-3 rounded-full font-semibold transition text-center text-black dark:text-white;
   background: var(--blog-ink);
-  color: #ffffff;
   border: 1px solid rgba(15, 23, 42, 0.12);
+  min-width: 220px;
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
 
-.member-login-primary:hover {
+.member-login-primary:hover,
+.member-login-secondary:hover,
+.member-login-logout:hover:not(:disabled) {
   filter: brightness(1.05);
   transform: translateY(-1px);
   box-shadow: 0 14px 26px rgba(15, 23, 42, 0.22);
-}
-
-.member-login-secondary {
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--blog-ink);
-  border: 1px solid var(--blog-stroke);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
-}
-
-.member-login-secondary:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-1px);
-}
-
-.member-login-logout {
-  @apply px-6 py-3 rounded-full font-semibold transition;
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--blog-ink);
-  border: 1px solid var(--blog-stroke);
-  min-width: 220px;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
-}
-
-.member-login-logout:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-1px);
 }
 
 .portal-shell {
@@ -596,7 +719,6 @@
 }
 
 .portal-title-text {
-  font-family: "Playfair Display", "Bodoni Moda", "Times New Roman", serif;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
   margin: 0.25rem 0 0;
@@ -806,7 +928,7 @@
 }
 
 .portal-card-form button {
-  @apply px-5 py-2 rounded-full font-semibold transition;
+  @apply px-6 py-3 rounded-full font-semibold transition;
   background: var(--blog-ink);
   color: #ffffff;
   width: fit-content;
@@ -815,6 +937,26 @@
 .portal-card-form button:hover {
   filter: brightness(1.08);
   transform: translateY(-1px);
+}
+
+.subscribe-embedded .portal-card-form button {
+  align-self: center;
+  background: linear-gradient(135deg, #ff8c42, #ff6b4a);
+  color: #1b1b1b;
+  box-shadow: 0 12px 24px rgba(255, 120, 60, 0.28);
+  border: 1px solid rgba(255, 140, 66, 0.35);
+}
+
+.subscribe-embedded .portal-card-form button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(255, 120, 60, 0.32);
+}
+
+@media (prefers-color-scheme: dark) {
+  .subscribe-embedded .portal-card-form button {
+    color: #111827;
+  }
 }
 
 .portal-save {
@@ -949,9 +1091,10 @@
 }
 
 .subscribe-gate-link {
-  @apply px-6 py-3 rounded-full font-semibold transition;
+  @apply px-6 py-3 rounded-full font-semibold transition text-black dark:text-white;
   background: var(--blog-ink);
-  color: #ffffff;
+  min-width: 220px;
+  text-align: center;
   text-decoration: none;
   border: 1px solid rgba(15, 23, 42, 0.12);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
@@ -982,12 +1125,15 @@
 .auth-grid {
   @apply w-full grid gap-3;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  justify-items: center;
 }
 
 .auth-grid button {
-  @apply px-4 py-3 rounded-full font-semibold transition;
+  @apply px-6 py-3 rounded-full font-semibold transition text-center;
   background: var(--blog-ink);
   color: #ffffff;
+  min-width: 220px;
+  width: auto;
   border: 1px solid rgba(15, 23, 42, 0.12);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
@@ -1085,12 +1231,29 @@
     box-shadow: 1 1px 1px rgba(75, 207, 255, 0.18);
   }
 
-  .subscribe-actions button:last-child,
+  .subscribe-actions button,
+  .subscribe-gate-link,
+  .member-auth-actions button,
+  .auth-grid button,
   .auth-grid button:nth-child(2n),
   .auth-signed-in button,
+  .member-login-primary,
   .member-login-secondary,
   .member-login-logout {
-    background: rgba(15, 23, 42, 0.35);
+    background: rgba(148, 163, 184, 0.18);
+    color: #f8fafc;
+    border-color: rgba(148, 163, 184, 0.38);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.36);
+  }
+
+  .subscribe-actions button:hover:not(:disabled),
+  .subscribe-gate-link:hover,
+  .member-auth-actions button:hover:not(:disabled),
+  .auth-grid button:hover:not(:disabled),
+  .member-login-primary:hover,
+  .member-login-secondary:hover,
+  .member-login-logout:hover:not(:disabled) {
+    background: rgba(148, 163, 184, 0.28);
   }
 }
 

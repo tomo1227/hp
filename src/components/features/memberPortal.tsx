@@ -8,7 +8,10 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { fetchAuthSession } from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
 type Locale = "en" | "ja";
 
@@ -90,16 +93,6 @@ type PortalBillingDetails = {
   address?: PortalAddress | null;
 };
 
-type PortalSummary = {
-  customer: PortalCustomer;
-  subscription: PortalSubscription;
-  subscriptions?: PortalSubscription[];
-  paymentMethod?: PortalPaymentMethod;
-  paymentMethods?: PortalPaymentMethod[];
-  defaultPaymentMethodId?: string | null;
-  invoices: PortalInvoice[];
-};
-
 const copy = {
   en: {
     title: "Membership portal",
@@ -117,9 +110,11 @@ const copy = {
     edit: "Edit",
     cardSaved: "Card on file",
     noCard: "No card on file",
+    year: "Year",
+    all: "All",
   },
   ja: {
-    title: "メンバーポータル",
+    title: "会員情報",
     billing: "請求先情報",
     payment: "支払い方法",
     invoices: "領収書一覧",
@@ -134,6 +129,8 @@ const copy = {
     edit: "編集",
     cardSaved: "登録済みのカード",
     noCard: "カード未登録",
+    year: "年",
+    all: "すべて",
   },
 };
 
@@ -212,11 +209,37 @@ const PortalPaymentForm = ({ locale }: { locale: Locale }) => {
 };
 
 export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
-  const [summary, setSummary] = useState<PortalSummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [token, setToken] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [customer, setCustomer] = useState<PortalCustomer | null>(null);
+  const [subscription, setSubscription] = useState<PortalSubscription | null>(
+    null,
+  );
+  const [subscriptions, setSubscriptions] = useState<PortalSubscription[]>([]);
+  const [paymentMethod, setPaymentMethod] =
+    useState<PortalPaymentMethod | null>(null);
+  const [paymentMethods, setPaymentMethods] = useState<PortalPaymentMethod[]>(
+    [],
+  );
+  const [defaultPaymentMethodId, setDefaultPaymentMethodId] = useState<
+    string | null
+  >(null);
+  const [customerLoading, setCustomerLoading] = useState(false);
+  const [subscriptionLoading, setSubscriptionLoading] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [customerError, setCustomerError] = useState("");
+  const [subscriptionError, setSubscriptionError] = useState("");
+  const [paymentError, setPaymentError] = useState("");
+  const [invoices, setInvoices] = useState<PortalInvoice[]>([]);
+  const [invoiceLoading, setInvoiceLoading] = useState(false);
+  const [invoiceError, setInvoiceError] = useState("");
+  const [invoiceAutoLoad, setInvoiceAutoLoad] = useState(false);
+  const now = new Date();
+  const [invoiceYear, setInvoiceYear] = useState<number | "all">(
+    now.getFullYear(),
+  );
   const [billingEdit, setBillingEdit] = useState(false);
   const [cardEdit, setCardEdit] = useState(false);
   const [billingMessage, setBillingMessage] = useState("");
@@ -225,22 +248,96 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   const [removeSaving, setRemoveSaving] = useState("");
   const text = copy[locale] ?? copy.en;
 
-  const fetchSummary = useCallback(async (idToken: string) => {
-    const response = await fetch("/api/stripe/portal/summary", {
+  const fetchCustomer = useCallback(async (idToken: string) => {
+    const response = await fetch("/api/stripe/portal/customer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${idToken}`,
       },
     });
-    const data = (await response.json()) as PortalSummary & { error?: string };
-    if (!response.ok) {
-      throw new Error(data.error || "Failed to load portal data");
+    const data = (await response.json()) as {
+      customer?: PortalCustomer;
+      error?: string;
+    };
+    if (!response.ok || !data.customer) {
+      throw new Error(data.error || "Failed to load customer");
     }
-    return data;
+    return data.customer;
   }, []);
 
+  const fetchSubscriptions = useCallback(async (idToken: string) => {
+    const response = await fetch("/api/stripe/portal/subscriptions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${idToken}`,
+      },
+    });
+    const data = (await response.json()) as {
+      subscription?: PortalSubscription | null;
+      subscriptions?: PortalSubscription[];
+      error?: string;
+    };
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to load subscriptions");
+    }
+    return {
+      subscription: data.subscription ?? null,
+      subscriptions: data.subscriptions ?? [],
+    };
+  }, []);
+
+  const fetchPaymentMethods = useCallback(async (idToken: string) => {
+    const response = await fetch("/api/stripe/portal/payment-methods", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${idToken}`,
+      },
+    });
+    const data = (await response.json()) as {
+      paymentMethod?: PortalPaymentMethod | null;
+      paymentMethods?: PortalPaymentMethod[];
+      defaultPaymentMethodId?: string | null;
+      error?: string;
+    };
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to load payment methods");
+    }
+    return {
+      paymentMethod: data.paymentMethod ?? null,
+      paymentMethods: data.paymentMethods ?? [],
+      defaultPaymentMethodId: data.defaultPaymentMethodId ?? null,
+    };
+  }, []);
+
+  const fetchInvoices = useCallback(
+    async (idToken: string, year: number | "all") => {
+      const response = await fetch("/api/stripe/portal/invoices", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({
+          year: year === "all" ? undefined : year,
+        }),
+      });
+      const data = (await response.json()) as {
+        invoices?: PortalInvoice[];
+        error?: string;
+      };
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to load invoices");
+      }
+      return data.invoices ?? [];
+    },
+    [],
+  );
+
   useEffect(() => {
+    configureAmplifyClient();
     const load = async () => {
       setLoading(true);
       setError("");
@@ -260,8 +357,6 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
           );
         }
         setToken(idToken);
-        const data = await fetchSummary(idToken);
-        setSummary(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : String(err));
       } finally {
@@ -269,7 +364,119 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       }
     };
     load();
-  }, [fetchSummary, locale]);
+    const unsub = Hub.listen("auth", ({ payload }) => {
+      if (
+        payload.event === "signedIn" ||
+        payload.event === "signedOut" ||
+        payload.event === "tokenRefresh"
+      ) {
+        load();
+      }
+    });
+    return () => {
+      unsub();
+    };
+  }, [locale]);
+
+  const loadCustomer = useCallback(async () => {
+    if (!token) return;
+    setCustomerLoading(true);
+    setCustomerError("");
+    try {
+      const data = await fetchCustomer(token);
+      setCustomer(data);
+    } catch (err) {
+      setCustomerError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setCustomerLoading(false);
+    }
+  }, [fetchCustomer, token]);
+
+  const loadSubscriptions = useCallback(async () => {
+    if (!token) return;
+    setSubscriptionLoading(true);
+    setSubscriptionError("");
+    try {
+      const data = await fetchSubscriptions(token);
+      setSubscription(data.subscription);
+      setSubscriptions(data.subscriptions);
+    } catch (err) {
+      setSubscriptionError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setSubscriptionLoading(false);
+    }
+  }, [fetchSubscriptions, token]);
+
+  const loadPaymentMethods = useCallback(async () => {
+    if (!token) return;
+    setPaymentLoading(true);
+    setPaymentError("");
+    try {
+      const data = await fetchPaymentMethods(token);
+      setPaymentMethod(data.paymentMethod);
+      setPaymentMethods(data.paymentMethods);
+      setDefaultPaymentMethodId(data.defaultPaymentMethodId);
+    } catch (err) {
+      setPaymentError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setPaymentLoading(false);
+    }
+  }, [fetchPaymentMethods, token]);
+
+  useEffect(() => {
+    if (!token) return;
+    let cancelled = false;
+    const delay = (ms: number) =>
+      new Promise<void>((resolve) => {
+        window.setTimeout(resolve, ms);
+      });
+
+    const run = async () => {
+      await delay(120);
+      if (cancelled) return;
+      await loadSubscriptions();
+      await delay(180);
+      if (cancelled) return;
+      await loadCustomer();
+      await delay(180);
+      if (cancelled) return;
+      await loadPaymentMethods();
+      await delay(180);
+      if (cancelled) return;
+      setInvoiceAutoLoad(true);
+    };
+    run();
+    return () => {
+      cancelled = true;
+    };
+  }, [loadCustomer, loadPaymentMethods, loadSubscriptions, token]);
+
+  const handleLoadInvoices = useCallback(
+    async (year: number | "all") => {
+      if (!token) return;
+      setInvoiceLoading(true);
+      setInvoiceError("");
+      try {
+        const data = await fetchInvoices(token, year);
+        setInvoices(data);
+      } catch (err) {
+        setInvoiceError(err instanceof Error ? err.message : String(err));
+      } finally {
+        setInvoiceLoading(false);
+      }
+    },
+    [fetchInvoices, token],
+  );
+
+  const yearOptions = Array.from(
+    { length: 6 },
+    (_, index) => now.getFullYear() - index,
+  );
+
+  useEffect(() => {
+    if (!invoiceAutoLoad || !token) return;
+    handleLoadInvoices(invoiceYear);
+  }, [handleLoadInvoices, invoiceAutoLoad, invoiceYear, token]);
 
   const handleSetupIntent = async () => {
     if (!token) return;
@@ -308,10 +515,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       setError(data.error || "Failed to cancel");
       return;
     }
-    if (summary) {
-      const data = await fetchSummary(token);
-      setSummary(data);
-    }
+    await loadSubscriptions();
   };
 
   const handleResume = async (
@@ -337,8 +541,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       window.location.href = data.url;
       return;
     }
-    const updated = await fetchSummary(token);
-    setSummary(updated);
+    await loadSubscriptions();
   };
 
   const [billingDraft, setBillingDraft] = useState({
@@ -353,11 +556,11 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   });
 
   useEffect(() => {
-    if (!summary?.customer) return;
-    const address = summary.customer.address ?? {};
+    if (!customer) return;
+    const address = customer.address ?? {};
     setBillingDraft({
-      name: summary.customer.name ?? "",
-      phone: summary.customer.phone ?? "",
+      name: customer.name ?? "",
+      phone: customer.phone ?? "",
       line1: address.line1 ?? "",
       line2: address.line2 ?? "",
       city: address.city ?? "",
@@ -365,7 +568,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       postal_code: address.postal_code ?? "",
       country: address.country ?? "",
     });
-  }, [summary]);
+  }, [customer]);
 
   const handleBillingUpdate = async () => {
     if (!token) return;
@@ -391,14 +594,20 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
         },
       }),
     });
-    const data = (await response.json()) as { error?: string };
+    const data = (await response.json()) as {
+      error?: string;
+      customer?: PortalCustomer;
+    };
     if (!response.ok) {
       setError(data.error || "Failed to update billing");
       setBillingSaving(false);
       return;
     }
-    const updated = await fetchSummary(token);
-    setSummary(updated);
+    if (data.customer) {
+      setCustomer(data.customer);
+    } else {
+      await loadCustomer();
+    }
     setBillingSaving(false);
     setBillingMessage(
       locale === "ja" ? "更新しました" : "Updated successfully",
@@ -424,8 +633,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       setDefaultSaving("");
       return;
     }
-    const updated = await fetchSummary(token);
-    setSummary(updated);
+    await loadPaymentMethods();
     setDefaultSaving("");
   };
 
@@ -450,8 +658,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       setRemoveSaving("");
       return;
     }
-    const updated = await fetchSummary(token);
-    setSummary(updated);
+    await loadPaymentMethods();
     setRemoveSaving("");
   };
 
@@ -610,23 +817,20 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
     );
   };
 
-  const subscription = summary?.subscription ?? null;
-  const subscriptions =
-    summary?.subscriptions && summary.subscriptions.length > 0
-      ? summary.subscriptions
+  const subscriptionItems =
+    subscriptions.length > 0
+      ? subscriptions
       : subscription
         ? [subscription]
         : [];
-  const paymentMethod = summary?.paymentMethod ?? null;
-  const paymentMethods = (summary?.paymentMethods ?? []).filter(
+  const validPaymentMethods = paymentMethods.filter(
     (method): method is Exclude<typeof method, null> => method !== null,
   );
-  const defaultId =
-    summary?.defaultPaymentMethodId ?? paymentMethod?.id ?? null;
+  const defaultId = defaultPaymentMethodId ?? paymentMethod?.id ?? null;
   const fallbackDefault =
     paymentMethod ??
-    paymentMethods.find((method) => method.id === defaultId) ??
-    paymentMethods[0] ??
+    validPaymentMethods.find((method) => method.id === defaultId) ??
+    validPaymentMethods[0] ??
     null;
   const defaultCard = fallbackDefault?.card ?? null;
   const defaultBilling = fallbackDefault?.billing_details ?? null;
@@ -644,7 +848,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       address.state,
       address.postal_code,
       address.country,
-    ].filter((value) => value && value.trim());
+    ].filter((value) => value?.trim());
     return parts.length ? parts.join(", ") : noAddressText;
   };
 
@@ -658,6 +862,40 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   }
 
   if (error) {
+    const isAuthError =
+      error === (locale === "ja" ? "ログインが必要です" : "Sign in required");
+    if (isAuthError) {
+      return (
+        <div className="portal-shell">
+          <div className="portal-card">
+            <header className="portal-header">
+              <div>
+                <p className="portal-kicker">Membership</p>
+                <h1 className="portal-title-text">
+                  {locale === "ja" ? "ログインが必要です" : "Sign in required"}
+                </h1>
+              </div>
+            </header>
+            <p className="portal-hint">
+              {locale === "ja"
+                ? "会員情報の表示にはログインが必要です。"
+                : "Please sign in to view your membership details."}
+            </p>
+            <div className="member-login-actions">
+              <Link
+                className="member-login-secondary"
+                href={`/${locale}/sign-up`}
+              >
+                {locale === "ja" ? "新規登録" : "Sign up"}
+              </Link>
+              <Link className="member-login-primary" href={`/${locale}/login`}>
+                {locale === "ja" ? "ログイン" : "Sign in"}
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return <p className="subscribe-error">{error}</p>;
   }
 
@@ -672,85 +910,130 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
         </header>
 
         <div className="portal-summary">
-          {subscriptions.length === 0 && (
+          {subscriptionError && (
+            <p className="subscribe-error">{subscriptionError}</p>
+          )}
+          {subscriptionLoading && (
+            <div className="portal-summary-card">
+              <p className="portal-label">{text.status}</p>
+              <p className="portal-value">...</p>
+            </div>
+          )}
+          {!subscriptionLoading && subscriptionItems.length === 0 && (
             <div className="portal-summary-card">
               <p className="portal-label">{text.status}</p>
               <p className="portal-value">-</p>
             </div>
           )}
-          {subscriptions.map((sub, index) => {
-            const statusValue = sub?.status ?? "-";
-            const isActive =
-              statusValue === "active" || statusValue === "trialing";
-            const actionLabel = isActive ? text.cancel : text.resume;
-            const items = sub?.items?.data ?? [];
-            const rows = items.length > 0 ? items : [null];
-            return (
-              <div
-                key={`${sub?.id ?? "sub"}-${index}`}
-                className="portal-summary-card portal-plan-card"
-              >
-                {rows.map((item, itemIndex) => {
-                  const planName =
-                    item?.productName ?? item?.nickname ?? item?.priceId ?? "-";
-                  return (
-                    <div
-                      key={`${sub?.id ?? "sub"}-${item?.priceId ?? itemIndex}`}
-                      className="portal-plan-row"
-                    >
-                      <div className="portal-plan-col">
-                        <p className="portal-label">{text.plan}</p>
-                        <p className="portal-value">{planName}</p>
-                      </div>
-                      <div className="portal-plan-col">
-                        <p className="portal-label">{text.status}</p>
-                        <p
-                          className={`portal-value ${
-                            isActive ? "status-good" : "status-bad"
-                          }`}
+          {!subscriptionLoading &&
+            subscriptionItems
+              .filter((sub) => {
+                const statusValue = sub?.status ?? "";
+                return statusValue === "active" || statusValue === "canceled";
+              })
+              .map((sub, index) => {
+                const statusValue = sub?.status ?? "-";
+                const isActive = statusValue === "active";
+                const isExpired = statusValue === "canceled";
+                const isCanceling = Boolean(
+                  isActive && sub?.cancel_at_period_end,
+                );
+                const actionLabel = isActive ? text.cancel : text.resume;
+                const items = sub?.items?.data ?? [];
+                const rows = items.length > 0 ? items : [null];
+                const cancelDate = formatDate(
+                  sub?.current_period_end ?? null,
+                  locale,
+                );
+                const statusText = isCanceling
+                  ? locale === "ja"
+                    ? `${statusValue}(${cancelDate}でキャンセル)`
+                    : `${statusValue} (cancels on ${cancelDate})`
+                  : statusValue;
+                return (
+                  <div
+                    key={
+                      sub?.id ??
+                      `sub-${sub?.items?.data?.[0]?.priceId ?? "unknown"}`
+                    }
+                    className="portal-summary-card portal-plan-card"
+                  >
+                    {rows.map((item, itemIndex) => {
+                      const planName =
+                        item?.productName ??
+                        item?.nickname ??
+                        item?.priceId ??
+                        "-";
+                      return (
+                        <div
+                          key={`${sub?.id ?? "sub"}-${item?.priceId ?? itemIndex}`}
+                          className="portal-plan-row"
                         >
-                          {statusValue}
-                        </p>
-                      </div>
-                      <div className="portal-plan-col">
-                        <p className="portal-label">{text.nextPayment}</p>
-                        <p className="portal-value">
-                          {formatDate(sub?.current_period_end ?? null, locale)}
-                        </p>
-                      </div>
-                      <div className="portal-plan-col">
-                        <p className="portal-label">{text.amount}</p>
-                        <p className="portal-value">
-                          {formatAmount(
-                            item?.price?.unit_amount ?? null,
-                            item?.price?.currency ?? null,
+                          <div className="portal-plan-col">
+                            <p className="portal-label">{text.plan}</p>
+                            <p className="portal-value">{planName}</p>
+                          </div>
+                          <div className="portal-plan-col">
+                            <p className="portal-label">{text.status}</p>
+                            <p
+                              className={`portal-value ${
+                                isActive ? "status-good" : "status-bad"
+                              }`}
+                            >
+                              {statusText}
+                            </p>
+                          </div>
+                          {!isCanceling && (
+                            <div className="portal-plan-col">
+                              <p className="portal-label">{text.nextPayment}</p>
+                              <p className="portal-value">
+                                {formatDate(
+                                  sub?.current_period_end ?? null,
+                                  locale,
+                                )}
+                              </p>
+                            </div>
                           )}
-                        </p>
-                      </div>
-                      <div className="portal-plan-action">
-                        <button
-                          type="button"
-                          className={`portal-default-btn${
-                            isActive ? " is-danger" : ""
-                          }`}
-                          onClick={() =>
-                            isActive
-                              ? handleCancel(sub?.id ?? null)
-                              : handleResume(
-                                  sub?.id ?? null,
-                                  item?.priceId ?? null,
-                                )
-                          }
-                        >
-                          {actionLabel}
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+                          <div className="portal-plan-col">
+                            <p className="portal-label">{text.amount}</p>
+                            <p className="portal-value">
+                              {formatAmount(
+                                item?.price?.unit_amount ?? null,
+                                item?.price?.currency ?? null,
+                              )}
+                            </p>
+                          </div>
+                          <div className="portal-plan-action">
+                            {isActive && (
+                              <button
+                                type="button"
+                                className="portal-default-btn is-danger"
+                                onClick={() => handleCancel(sub?.id ?? null)}
+                              >
+                                {actionLabel}
+                              </button>
+                            )}
+                            {isExpired && (
+                              <button
+                                type="button"
+                                className="portal-default-btn"
+                                onClick={() =>
+                                  handleResume(
+                                    sub?.id ?? null,
+                                    item?.priceId ?? null,
+                                  )
+                                }
+                              >
+                                {actionLabel}
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
         </div>
 
         <div className="portal-grid-layout">
@@ -765,8 +1048,12 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                 {text.edit}
               </button>
             </div>
+            {customerError && (
+              <p className="subscribe-error">{customerError}</p>
+            )}
             {!billingEdit ? (
               <div className="portal-readonly">
+                {customerLoading && <p className="portal-hint">...</p>}
                 <div className="portal-row">
                   <span>{locale === "ja" ? "氏名" : "Name"}</span>
                   <span>{billingDraft.name || "-"}</span>
@@ -955,9 +1242,12 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                 </button>
               </div>
             </div>
+            {paymentError && <p className="subscribe-error">{paymentError}</p>}
             {!cardEdit && (
               <div className="portal-card-summary">
-                {cardLine ? (
+                {paymentLoading ? (
+                  <p className="portal-hint">...</p>
+                ) : cardLine ? (
                   <div className="portal-card-details">
                     <div className="portal-row">
                       <span>{locale === "ja" ? "氏名" : "Name"}</span>
@@ -1007,9 +1297,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                         {locale === "ja" ? "メールアドレス" : "Email"}
                       </span>
                       <span>
-                        {defaultBilling?.email ||
-                          summary?.customer?.email ||
-                          "-"}
+                        {defaultBilling?.email || customer?.email || "-"}
                       </span>
                     </div>
                     <div className="portal-row">
@@ -1056,11 +1344,11 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
           </section>
         </div>
 
-        {paymentMethods.length > 1 && (
+        {validPaymentMethods.length > 1 && (
           <section className="portal-section">
             <h2>{locale === "ja" ? "その他のカード" : "Other cards"}</h2>
             <div className="portal-invoices">
-              {paymentMethods
+              {validPaymentMethods
                 .filter((method) => method.id !== defaultId)
                 .map((method) => (
                   <div key={method.id} className="portal-invoice">
@@ -1100,50 +1388,83 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
           </section>
         )}
 
-        <section className="portal-section">
-          <h2>{text.invoices}</h2>
-          <div className="portal-invoices">
-            {summary?.invoices?.length ? (
-              summary.invoices.map((invoice) => (
-                <div key={invoice.id} className="portal-invoice">
-                  <div>
-                    <p className="portal-label">
-                      #{invoice.number ?? invoice.id}
-                    </p>
-                    <p className="portal-value">
-                      {formatDate(invoice.created ?? null, locale)}
-                    </p>
+        {subscriptionItems.some(
+          (sub) => sub?.status === "active" || sub?.status === "canceled",
+        ) && (
+          <section className="portal-section">
+            <div className="portal-section-header">
+              <h2>{text.invoices}</h2>
+              <div className="portal-section-actions">
+                <select
+                  className="portal-input"
+                  aria-label={text.year}
+                  value={String(invoiceYear)}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    if (value === "all") {
+                      setInvoiceYear("all");
+                    } else {
+                      setInvoiceYear(Number(value));
+                    }
+                  }}
+                >
+                  <option value="all">{text.all}</option>
+                  {yearOptions.map((year) => (
+                    <option key={year} value={String(year)}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            {invoiceError && <p className="subscribe-error">{invoiceError}</p>}
+            <div className="portal-invoices">
+              {invoiceLoading ? (
+                <p className="portal-hint">...</p>
+              ) : invoices.length ? (
+                invoices.map((invoice) => (
+                  <div key={invoice.id} className="portal-invoice">
+                    <div>
+                      <p className="portal-label">
+                        #{invoice.number ?? invoice.id}
+                      </p>
+                      <p className="portal-value">
+                        {formatDate(invoice.created ?? null, locale)}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="portal-label">{text.amount}</p>
+                      <p className="portal-value">
+                        {formatAmount(
+                          invoice.amount_paid ?? invoice.amount_due ?? null,
+                          invoice.currency ?? null,
+                        )}
+                      </p>
+                    </div>
+                    {invoice.invoice_pdf || invoice.hosted_invoice_url ? (
+                      <a
+                        className="portal-link"
+                        href={
+                          invoice.invoice_pdf ??
+                          invoice.hosted_invoice_url ??
+                          ""
+                        }
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        PDF
+                      </a>
+                    ) : (
+                      <span className="portal-hint">-</span>
+                    )}
                   </div>
-                  <div>
-                    <p className="portal-label">{text.amount}</p>
-                    <p className="portal-value">
-                      {formatAmount(
-                        invoice.amount_paid ?? invoice.amount_due ?? null,
-                        invoice.currency ?? null,
-                      )}
-                    </p>
-                  </div>
-                  {invoice.invoice_pdf || invoice.hosted_invoice_url ? (
-                    <a
-                      className="portal-link"
-                      href={
-                        invoice.invoice_pdf ?? invoice.hosted_invoice_url ?? ""
-                      }
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      PDF
-                    </a>
-                  ) : (
-                    <span className="portal-hint">-</span>
-                  )}
-                </div>
-              ))
-            ) : (
-              <p className="portal-hint">-</p>
-            )}
-          </div>
-        </section>
+                ))
+              ) : (
+                <p className="portal-hint">-</p>
+              )}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

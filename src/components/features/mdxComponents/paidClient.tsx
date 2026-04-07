@@ -1,9 +1,11 @@
 "use client";
 
 import { fetchAuthSession } from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
 type Locale = "en" | "ja";
 
@@ -39,6 +41,7 @@ export const PaidClient = ({
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
+    configureAmplifyClient();
     let active = true;
     const timeoutId = window.setTimeout(() => {
       if (!active) return;
@@ -88,9 +91,15 @@ export const PaidClient = ({
       }
     };
     load();
+    const unsub = Hub.listen("auth", ({ payload }) => {
+      if (payload.event === "signedIn" || payload.event === "signedOut") {
+        load();
+      }
+    });
     return () => {
       active = false;
       window.clearTimeout(timeoutId);
+      unsub();
     };
   }, []);
 
@@ -121,7 +130,7 @@ export const PaidClient = ({
         <p className="paid-title">{title ?? text.title}</p>
         <p className="paid-description">{description ?? text.description}</p>
         <div className="paid-actions">
-          <Link className="paid-button" href={`${prefix}/subscribe`}>
+          <Link className="paid-button" href={`${prefix}/membership`}>
             {text.subscribe}
           </Link>
           <Link

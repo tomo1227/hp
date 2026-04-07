@@ -4,15 +4,15 @@ export default function JaLoginPage() {
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">
-        <p className="subscribe-kicker">Membership</p>
-        <h1 className="subscribe-title">メンバーシップにログイン</h1>
+        <h1 className="subscribe-title">ログイン</h1>
         <p className="subscribe-copy">
-          メールまたはSNSでログインして、メンバーポータルを開いてください。まだの方
-          はサブスク登録をお願いします。
+          {/* メールまたはSNSでログインしてください。 */}
+          メールでログインしてください。
+          まだ登録していない方は、新規登録（無料）ページからご利用いただけます。
         </p>
         <MemberLoginPanel locale="ja" />
         <p className="subscribe-alt">
-          プラン詳細を見る: <a href="/ja/subscribe">こちら</a>
+          プラン詳細を見る: <a href="/ja/membership">こちら</a>
         </p>
       </div>
     </div>

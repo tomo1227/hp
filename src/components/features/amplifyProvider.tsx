@@ -2,53 +2,38 @@
 
 import { Amplify } from "aws-amplify";
 
-const userPoolId = process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID ?? "";
-const userPoolClientId =
-  process.env.NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID ?? "";
-const identityPoolId = process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID ?? "";
-
 let configured = false;
 
-const getBaseUrl = () => {
-  if (typeof window !== "undefined") {
-    return window.location.origin;
-  }
-  return process.env.NEXT_PUBLIC_BASE_URL ?? "http://127.0.0.1:3000";
-};
-
-const configureAmplify = () => {
+export const configureAmplifyClient = () => {
   if (configured) return;
+  if (typeof window === "undefined") return;
 
-  const baseUrl = getBaseUrl();
+  const baseUrl = window.location.origin;
   const oauthDomain = process.env.NEXT_PUBLIC_AMPLIFY_OAUTH_DOMAIN ?? "";
+
+  const oauthConfig = oauthDomain
+    ? {
+        domain: oauthDomain,
+        scopes: ["openid", "email", "profile"],
+        redirectSignIn: [`${baseUrl}/auth/callback`],
+        redirectSignOut: [`${baseUrl}/`],
+        responseType: "code" as const,
+      }
+    : undefined;
+
+  const cognitoConfig = {
+    userPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID ?? "",
+    userPoolClientId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID ?? "",
+    loginWith: {
+      email: true as const,
+      oauth: oauthConfig,
+    },
+  };
+
   Amplify.configure(
     {
       Auth: {
-        Cognito: {
-          userPoolId,
-          userPoolClientId,
-          identityPoolId: identityPoolId || undefined,
-          loginWith: {
-            email: true,
-            oauth: oauthDomain
-              ? {
-                  domain: oauthDomain,
-                  scopes: ["openid", "email", "profile"],
-                  redirectSignIn: [
-                    `${baseUrl}/auth/callback`,
-                    "https://tomokiota.com/auth/callback",
-                    "http://127.0.0.1:3033/auth/callback",
-                  ],
-                  redirectSignOut: [
-                    `${baseUrl}/`,
-                    "https://tomokiota.com/",
-                    "http://127.0.0.1:3033/",
-                  ],
-                  responseType: "code",
-                }
-              : undefined,
-          },
-        },
+        Cognito: cognitoConfig,
       },
     },
     { ssr: true },
@@ -57,11 +42,33 @@ const configureAmplify = () => {
   configured = true;
 };
 
+// export const AmplifyProvider = ({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) => {
+//   useEffect(() => {
+//     configureAmplifyClient();
+
+//     // Google認証時のエラーやレスポンスを監視
+//     const handler = (event: MessageEvent) => {
+//       if (typeof event.data === "string" && event.data.includes("error")) {
+//         console.error("[OAuth Error]", event.data);
+//       } else {
+//         console.log("[OAuth Message]", event.data);
+//       }
+//     };
+//     window.addEventListener("message", handler);
+//     return () => window.removeEventListener("message", handler);
+//   }, []);
+
+//   return children;
+// };
 export const AmplifyProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  configureAmplify();
+  configureAmplifyClient();
   return children;
 };

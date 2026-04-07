@@ -1,7 +1,13 @@
 "use client";
 
-import { getCurrentUser, signInWithRedirect, signOut } from "aws-amplify/auth";
+import {
+  fetchAuthSession,
+  getCurrentUser,
+  signInWithRedirect,
+  signOut,
+} from "aws-amplify/auth";
 import { useEffect, useState } from "react";
+import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
 type Locale = "en" | "ja";
 
@@ -36,6 +42,8 @@ export const AuthButtons = ({ locale = "en" }: AuthButtonsProps) => {
   useEffect(() => {
     const load = async () => {
       try {
+        configureAmplifyClient();
+        await fetchAuthSession();
         const current = await getCurrentUser();
         setUser({ username: current.username });
       } catch {
@@ -48,10 +56,13 @@ export const AuthButtons = ({ locale = "en" }: AuthButtonsProps) => {
   const handleSignIn = async () => {
     setLoading(true);
     try {
+      configureAmplifyClient();
       await signInWithRedirect({
         provider: "Google",
         customState: locale,
       });
+    } catch (err) {
+      console.error("[Auth] signInWithRedirect error", err);
     } finally {
       setLoading(false);
     }

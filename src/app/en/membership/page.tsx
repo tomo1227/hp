@@ -21,9 +21,9 @@ export default function EnSubscribePage() {
           <li>Cancel anytime, no commitment</li>
         </ul>
         <SubscribeGate locale="en">
-          <SubscribeButton locale="en" />
+          <SubscribeButton locale="en" checkoutMode="inline" />
         </SubscribeGate>
-        <p className="subscribe-note">Billed monthly. Taxes may apply.</p>
+        <p className="subscribe-note">Billed monthly. Taxes included.</p>
         <p className="subscribe-alt">
           Japanese? <a href="/ja/subscribe">Go to 日本語</a>
         </p>

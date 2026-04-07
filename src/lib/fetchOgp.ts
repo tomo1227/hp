@@ -1,5 +1,5 @@
-import { JSDOM } from "jsdom";
 import dns from "dns";
+import { JSDOM } from "jsdom";
 
 type OgpKey = "title" | "description" | "image" | "url";
 type Ogp = {

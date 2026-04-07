@@ -3,6 +3,28 @@
   @apply justify-center w-1/5 max-lg:w-full;
 }
 
+@media (min-width: 1025px) {
+  .sidebar-left,
+  .sidebar-right {
+    flex: 0 0 240px;
+    width: 240px;
+  }
+
+  .desktop-sidebar ul {
+    width: 100%;
+  }
+
+  .desktop-sidebar ul li {
+    width: 100%;
+  }
+
+  .desktop-sidebar ul li a,
+  .desktop-sidebar ul li .sidebar-button,
+  .desktop-sidebar ul li .sidebar-link {
+    width: 100%;
+  }
+}
+
 .desktop-sidebar {
   @apply flex justify-center p-4 max-lg:p-2 mt-16 max-lg:mt-0 max-md:p-0;
 }

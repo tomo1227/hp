@@ -4,11 +4,10 @@ export default function EnLoginPage() {
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">
-        <p className="subscribe-kicker">Membership</p>
-        <h1 className="subscribe-title">Log in to your membership</h1>
+        <h1 className="subscribe-title">Sign-in</h1>
         <p className="subscribe-copy">
-          Sign in or create an account to open the member portal. New here?
-          Start a subscription to unlock member content.
+          Sign in to open the member portal. New here? Create your account on
+          the sign-up page to unlock member content.
         </p>
         <MemberLoginPanel locale="en" />
         <p className="subscribe-alt">

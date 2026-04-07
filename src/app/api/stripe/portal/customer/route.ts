@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
 import { getPortalCustomer } from "@/lib/stripePortal";
 
 export const runtime = "nodejs";
@@ -13,11 +12,5 @@ export async function POST(request: Request) {
     );
   }
 
-  const intent = await stripe.setupIntents.create({
-    customer: customerResult.customer.id,
-    usage: "off_session",
-    payment_method_types: ["card"],
-  });
-
-  return NextResponse.json({ clientSecret: intent.client_secret });
+  return NextResponse.json({ customer: customerResult.customer });
 }
