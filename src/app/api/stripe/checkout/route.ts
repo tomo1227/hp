@@ -36,12 +36,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Email not found" }, { status: 400 });
   }
 
-  const customerSearch = await stripe.customers.search({
-    query: `email:'${email.replace(/'/g, "\\'")}'`,
+  const customerList = await stripe.customers.list({
+    email,
     limit: 1,
   });
   const customer =
-    customerSearch.data[0] ??
+    customerList.data[0] ??
     (await stripe.customers.create({ email, metadata: { locale } }));
   const rawCustomer = await stripe.customers.retrieve(customer.id);
   const defaultPaymentMethodId =
