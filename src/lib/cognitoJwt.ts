@@ -1,7 +1,7 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 
 const userPoolId = process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID ?? "";
-const region = process.env.NEXT_PUBLIC_COGNITO_REGION ?? "";
+const region = process.env.NEXT_PUBLIC_AWS_REGION ?? "";
 
 type CognitoClaims = {
   email?: string;
