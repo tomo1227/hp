@@ -26,8 +26,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ active: false }, { status: 400 });
   }
 
+  const escapedEmail = email.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+
   const search = await stripe.customers.search({
-    query: `email:'${email.replace(/'/g, "\\'")}'`,
+    query: `email:'${escapedEmail}'`,
     limit: 5,
   });
 
