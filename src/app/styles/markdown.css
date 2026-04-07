@@ -168,6 +168,109 @@ html.dark .markdown .note svg path {
   padding-left: 5px;
 }
 
+.markdown .paid-summary {
+  @apply text-base leading-7 my-4 text-gray-600 dark:text-gray-300;
+}
+
+.markdown .paid-locked {
+  position: relative;
+  margin: 1.5rem auto;
+  border: 1px solid var(--blog-stroke);
+  border-radius: 20px;
+  background: var(--blog-paper);
+  overflow: hidden;
+  width: min(100%, 860px);
+}
+
+.markdown .paid-loading {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.markdown .paid-blur {
+  padding: 24px 28px 80px;
+  filter: blur(6px);
+}
+
+.markdown .paid-line {
+  height: 14px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d6dde8 0%, #eef2f7 100%);
+}
+
+.markdown .paid-line.short {
+  width: 60%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .markdown .paid-line {
+    background: linear-gradient(90deg, #1f2937 0%, #374151 100%);
+  }
+}
+
+.markdown .paid-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .markdown .paid-overlay {
+    background: rgba(15, 23, 42, 0.7);
+  }
+}
+
+.markdown .paid-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.markdown .paid-description {
+  margin: 0;
+  color: var(--blog-ink-soft);
+}
+
+.markdown .paid-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--blog-ink);
+  color: #ffffff;
+  text-decoration: none;
+  @apply dark:text-gray-600;
+}
+
+
+.markdown .paid-button:hover {
+  opacity: 0.85;
+}
+
+.markdown .paid-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.markdown .paid-button-secondary {
+  background: transparent;
+  color: var(--blog-ink);
+  border: 1px solid var(--blog-stroke);
+}
+
 /* テーブル */
 .markdown table {
   @apply w-full border-collapse overflow-hidden rounded-xs;

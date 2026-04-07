@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
 import Header from "@/components/ui/header";
 import "../globals.css";
+import { AmplifyProvider } from "@/components/features/amplifyProvider";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -51,13 +52,15 @@ export default function jaLayout({ children }: { children: React.ReactNode }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${zenAntique.variable} antialiased`}
       >
-        <NextTopLoader />
-        <div id="body-container">
-          <Header />
-          <div id="main-contents">
-            <main>{children}</main>
+        <AmplifyProvider>
+          <NextTopLoader />
+          <div id="body-container">
+            <Header />
+            <div id="main-contents">
+              <main>{children}</main>
+            </div>
           </div>
-        </div>
+        </AmplifyProvider>
       </body>
     </html>
   );
