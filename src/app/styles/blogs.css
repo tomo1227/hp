@@ -1404,3 +1404,11 @@
   box-shadow: 0 6px 12px rgba(15, 23, 42, 0.1);
 }
 
+
+.portal-summary-card .portal-loading-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  justify-content: flex-start;
+}

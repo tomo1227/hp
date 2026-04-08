@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SubscribeEmbeddedCheckout } from "@/components/features/subscribeEmbeddedCheckout";
 
-export default function JaSubscribeCheckoutPage() {
+export default function Page() {
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">

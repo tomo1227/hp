@@ -1,6 +1,6 @@
 import { MemberLoginPanel } from "@/components/features/memberLoginPanel";
 
-export default function JaLoginPage() {
+export default function Page() {
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">
