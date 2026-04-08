@@ -4,6 +4,7 @@ import Header from "../../components/ui/header";
 import "../globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { AmplifyProvider } from "@/components/features/amplifyProvider";
+import Footer from "@/components/ui/footer";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -58,6 +59,7 @@ export default function enLayout({ children }: { children: React.ReactNode }) {
             <div id="main-contents">
               <main>{children}</main>
             </div>
+            <Footer />
           </div>
         </AmplifyProvider>
       </body>

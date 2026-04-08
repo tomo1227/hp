@@ -43,21 +43,54 @@ body {
 
 
 html {
-    @apply min-h-full w-full h-full m-0 p-0;
+    @apply min-h-full w-full m-0 p-0;
 }
 
 body{
-    @apply flex flex-col items-center min-h-full h-full;
+    @apply flex flex-col items-center min-h-full;
 }
 
 #body-container {
-    @apply flex flex-col items-center h-full w-full;
+    @apply flex flex-col items-center min-h-full w-full;
 }
 
 #main-contents {
-    @apply flex flex-row w-full flex-1 overflow-auto;
+    @apply flex flex-row w-full;
 }
 
 main {
-    @apply w-full pt-6 grow h-full;
+    @apply w-full pt-6;
+}
+
+.site-footer {
+    width: 100%;
+    border-top: 1px solid rgba(23, 23, 23, 0.1);
+    padding: 20px 16px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+}
+
+@media (prefers-color-scheme: dark) {
+    .site-footer {
+        border-top: 1px solid rgba(237, 237, 237, 0.2);
+    }
+}
+
+.site-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.site-footer-links a {
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.site-footer-links a:hover {
+    color: #ff653f;
 }
