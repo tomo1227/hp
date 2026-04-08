@@ -43,7 +43,7 @@ export const SubscribeButton = ({
     setLoading(true);
     setError("");
     try {
-      configureAmplifyClient();
+      configureAmplifyClient({ locale });
       if (requireAuth) {
         const session = await fetchAuthSession();
         const token = session.tokens?.idToken?.toString();
@@ -71,7 +71,7 @@ export const SubscribeButton = ({
     setPortalLoading(true);
     setError("");
     try {
-      configureAmplifyClient();
+      configureAmplifyClient({ locale });
       const session = await fetchAuthSession();
       const token = session.tokens?.idToken?.toString();
       if (!token) {

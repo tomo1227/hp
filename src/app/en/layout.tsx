@@ -52,7 +52,7 @@ export default function enLayout({ children }: { children: React.ReactNode }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${zenAntique.variable} antialiased`}
       >
-        <AmplifyProvider>
+        <AmplifyProvider locale="en">
           <NextTopLoader />
           <div id="body-container">
             <Header />

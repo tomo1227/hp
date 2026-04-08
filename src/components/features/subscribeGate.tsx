@@ -47,7 +47,7 @@ export const SubscribeGate = ({
   }, []);
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     refreshStatus();
     const unsub = Hub.listen("auth", ({ payload }) => {
       if (payload.event === "signedIn" || payload.event === "signedOut") {

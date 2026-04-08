@@ -35,7 +35,7 @@ const SidebarMemberActions = ({ locale }: SidebarMemberActionsProps) => {
   }, []);
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     refreshUser();
     const unsub = Hub.listen("auth", ({ payload }) => {
       if (payload.event === "signedIn" || payload.event === "signedOut") {

@@ -337,7 +337,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   );
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     const load = async () => {
       setLoading(true);
       setError("");

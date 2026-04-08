@@ -53,7 +53,7 @@ export default function jaLayout({ children }: { children: React.ReactNode }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${zenAntique.variable} antialiased`}
       >
-        <AmplifyProvider>
+        <AmplifyProvider locale="ja">
           <NextTopLoader />
           <div id="body-container">
             <Header />
