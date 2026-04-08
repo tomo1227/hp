@@ -5,13 +5,34 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
-export default function AuthCallbackPage() {
+type Locale = "ja" | "en";
+
+const messages = {
+  en: {
+    signingIn: "Signing you in… You will be redirected automatically.",
+    failed: "Failed to sign in. Please try again.",
+    title: "Welcome",
+  },
+  ja: {
+    signingIn: "ログイン中… 自動で次のページに移動します。",
+    failed: "ログインに失敗しました。もう一度お試しください。",
+    title: "ようこそ",
+  },
+};
+
+export default function AuthCallbackPage({
+  locale = "ja",
+}: {
+  locale?: Locale;
+}) {
   const params = useSearchParams();
-  const [status, setStatus] = useState("Signing you in...");
+  const t = messages[locale];
+
+  const [status, setStatus] = useState(t.signingIn);
   const [detail, setDetail] = useState<string | null>(null);
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
 
     const finalize = async () => {
       try {
@@ -27,31 +48,30 @@ export default function AuthCallbackPage() {
           setDetail(
             `${error}${errorDescription ? `: ${errorDescription}` : ""}`,
           );
-          setStatus("Sign-in failed. Please try again.");
+          setStatus(t.failed);
           return;
         }
 
         await fetchAuthSession();
         await getCurrentUser();
 
-        const state = params.get("state") ?? "";
-        const nextLocale = state === "ja" ? "ja" : "en";
+        const nextLocale = locale === "ja" ? "ja/blogs" : "en/blogs";
 
         window.location.href = `/${nextLocale}`;
       } catch (e) {
         console.error("Auth error:", e);
-        setStatus("Sign-in failed. Please try again.");
+        setStatus(t.failed);
       }
     };
 
     finalize();
-  }, [params]);
+  }, [params, locale, t]);
 
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">
         <p className="subscribe-kicker">Membership</p>
-        <h1 className="subscribe-title">Auth callback</h1>
+        <h1 className="subscribe-title">{t.title}</h1>
         <p className="subscribe-copy">{status}</p>
         {detail && <p className="subscribe-copy">{detail}</p>}
       </div>

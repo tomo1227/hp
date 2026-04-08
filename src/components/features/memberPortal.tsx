@@ -337,7 +337,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   );
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     const load = async () => {
       setLoading(true);
       setError("");
@@ -915,26 +915,30 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
           )}
           {subscriptionLoading && (
             <div className="portal-summary-card">
-              <p className="portal-label">{text.status}</p>
-              <p className="portal-value">...</p>
+              <div
+                className="portal-loading portal-loading-inline"
+                aria-busy="true"
+              >
+                <span className="portal-spinner" aria-hidden="true" />
+              </div>
             </div>
           )}
-          {!subscriptionLoading && subscriptionItems.length === 0 && (
+          {!subscriptionLoading && subscriptionItems && (
             <div className="portal-summary-card">
-              <p className="portal-label">{text.status}</p>
-              <p className="portal-value">-</p>
+              <p className="portal-label">
+                {locale === "ja" ? "有料プラン未加入" : "No paid plan"}
+              </p>
             </div>
           )}
           {!subscriptionLoading &&
             subscriptionItems
               .filter((sub) => {
                 const statusValue = sub?.status ?? "";
-                return statusValue === "active" || statusValue === "canceled";
+                return statusValue === "active";
               })
               .map((sub, index) => {
                 const statusValue = sub?.status ?? "-";
                 const isActive = statusValue === "active";
-                const isExpired = statusValue === "canceled";
                 const isCanceling = Boolean(
                   isActive && sub?.cancel_at_period_end,
                 );
@@ -1009,20 +1013,6 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                                 type="button"
                                 className="portal-default-btn is-danger"
                                 onClick={() => handleCancel(sub?.id ?? null)}
-                              >
-                                {actionLabel}
-                              </button>
-                            )}
-                            {isExpired && (
-                              <button
-                                type="button"
-                                className="portal-default-btn"
-                                onClick={() =>
-                                  handleResume(
-                                    sub?.id ?? null,
-                                    item?.priceId ?? null,
-                                  )
-                                }
                               >
                                 {actionLabel}
                               </button>
@@ -1336,7 +1326,11 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
             {cardEdit && clientSecret && (
               <Elements
                 stripe={stripePromise}
-                options={{ clientSecret, appearance: { theme: "stripe" } }}
+                options={{
+                  clientSecret,
+                  appearance: { theme: "stripe" },
+                  locale: locale,
+                }}
               >
                 <PortalPaymentForm locale={locale} />
               </Elements>
@@ -1460,7 +1454,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                   </div>
                 ))
               ) : (
-                <p className="portal-hint">-</p>
+                <p className="portal-hint">該当する領収書はありません</p>
               )}
             </div>
           </section>

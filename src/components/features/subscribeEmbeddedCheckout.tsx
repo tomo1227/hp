@@ -159,7 +159,7 @@ export const SubscribeEmbeddedCheckout = ({
   }, []);
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     const load = async () => {
       setError("");
       try {

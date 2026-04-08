@@ -1,74 +1,61 @@
 "use client";
 
+import { useEffect } from "react";
+import "aws-amplify/auth/enable-oauth-listener";
 import { Amplify } from "aws-amplify";
 
 let configured = false;
 
-export const configureAmplifyClient = () => {
+type Locale = "ja" | "en";
+
+export const configureAmplifyClient = ({ locale }: { locale: Locale }) => {
   if (configured) return;
   if (typeof window === "undefined") return;
 
-  const baseUrl = window.location.origin;
-  const oauthDomain = process.env.NEXT_PUBLIC_AMPLIFY_OAUTH_DOMAIN ?? "";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || window.location.origin;
 
-  const oauthConfig = oauthDomain
-    ? {
-        domain: oauthDomain,
-        scopes: ["openid", "email", "profile"],
-        redirectSignIn: [`${baseUrl}/auth/callback`],
-        redirectSignOut: [`${baseUrl}/`],
-        responseType: "code" as const,
-      }
-    : undefined;
+  const oauthDomain = process.env.NEXT_PUBLIC_AMPLIFY_OAUTH_DOMAIN;
+
+  if (!oauthDomain) {
+    throw new Error("NEXT_PUBLIC_AMPLIFY_OAUTH_DOMAIN is not set");
+  }
+
+  const oauthConfig = {
+    domain: oauthDomain,
+    scopes: ["openid", "email", "profile"],
+    redirectSignIn: [`${baseUrl}/${locale}/auth/callback`],
+    redirectSignOut: [`${baseUrl}/${locale}/blogs`],
+    responseType: "code" as const,
+  };
 
   const cognitoConfig = {
-    userPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID ?? "",
-    userPoolClientId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID ?? "",
+    userPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || "",
+    userPoolClientId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID || "",
     loginWith: {
       email: true as const,
       oauth: oauthConfig,
     },
   };
 
-  Amplify.configure(
-    {
-      Auth: {
-        Cognito: cognitoConfig,
-      },
+  Amplify.configure({
+    Auth: {
+      Cognito: cognitoConfig,
     },
-    { ssr: true },
-  );
+  });
 
   configured = true;
 };
 
-// export const AmplifyProvider = ({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) => {
-//   useEffect(() => {
-//     configureAmplifyClient();
-
-//     // Google認証時のエラーやレスポンスを監視
-//     const handler = (event: MessageEvent) => {
-//       if (typeof event.data === "string" && event.data.includes("error")) {
-//         console.error("[OAuth Error]", event.data);
-//       } else {
-//         console.log("[OAuth Message]", event.data);
-//       }
-//     };
-//     window.addEventListener("message", handler);
-//     return () => window.removeEventListener("message", handler);
-//   }, []);
-
-//   return children;
-// };
 export const AmplifyProvider = ({
   children,
+  locale,
 }: {
   children: React.ReactNode;
+  locale: Locale;
 }) => {
-  configureAmplifyClient();
-  return children;
+  useEffect(() => {
+    configureAmplifyClient({ locale });
+  }, [locale]);
+
+  return <>{children}</>;
 };

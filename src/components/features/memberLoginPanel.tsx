@@ -4,7 +4,7 @@ import { getCurrentUser, signOut } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
 import { useCallback, useEffect, useState } from "react";
 import { configureAmplifyClient } from "@/components/features/amplifyProvider";
-// import { AuthButtons } from "@/components/features/authButtons";
+import { AuthButtons } from "@/components/features/authButtons";
 import { MemberAuthForm } from "@/components/features/memberAuthForm";
 
 type Locale = "en" | "ja";
@@ -19,14 +19,14 @@ const copy = {
     signedInAs: "Signed in as",
     portal: "Open member portal",
     signOut: "Sign out",
-    // or: "or",
+    or: "or",
   },
   ja: {
     signedInTitle: "ログイン済みです",
     signedInAs: "ログイン中",
     portal: "メンバーポータルを開く",
     signOut: "ログアウト",
-    // or: "または",
+    or: "または",
   },
 };
 
@@ -48,7 +48,7 @@ export const MemberLoginPanel = ({ locale = "en" }: MemberLoginPanelProps) => {
   }, []);
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     refreshUser();
     const unsub = Hub.listen("auth", ({ payload }) => {
       if (payload.event === "signedIn" || payload.event === "signedOut") {
@@ -58,7 +58,7 @@ export const MemberLoginPanel = ({ locale = "en" }: MemberLoginPanelProps) => {
     return () => {
       unsub();
     };
-  }, [refreshUser]);
+  }, [refreshUser, locale]);
 
   const handleSignOut = async () => {
     setLoading(true);
@@ -103,7 +103,7 @@ export const MemberLoginPanel = ({ locale = "en" }: MemberLoginPanelProps) => {
 
   return (
     <div className="member-login-guest">
-      {/* <AuthButtons locale={locale} /> */}
+      <AuthButtons locale={locale} />
       <div className="subscribe-divider">{/* <span>{text.or}</span> */}</div>
       <MemberAuthForm
         locale={locale}

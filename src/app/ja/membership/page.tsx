@@ -1,7 +1,7 @@
 import { SubscribeButton } from "@/components/features/subscribeButton";
 import { SubscribeGate } from "@/components/features/subscribeGate";
 
-export default function JaSubscribePage() {
+export default function Page() {
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">

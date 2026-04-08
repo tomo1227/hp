@@ -41,7 +41,7 @@ export const PaidClient = ({
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    configureAmplifyClient();
+    configureAmplifyClient({ locale });
     let active = true;
     const timeoutId = window.setTimeout(() => {
       if (!active) return;
@@ -101,7 +101,7 @@ export const PaidClient = ({
       window.clearTimeout(timeoutId);
       unsub();
     };
-  }, []);
+  }, [locale]);
 
   if (!checked) {
     return (

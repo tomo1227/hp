@@ -55,7 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AmplifyProvider>
+        <AmplifyProvider locale="ja">
           <NextTopLoader />
           <div id="body-container">
             {children}
