@@ -11,7 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { fetchAuthSession } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
 import type { FormEvent } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { configureAmplifyClient } from "@/components/features/amplifyProvider";
 
 type Locale = "en" | "ja";
@@ -121,6 +121,7 @@ const CheckoutForm = ({
 export const SubscribeEmbeddedCheckout = ({
   locale = "en",
 }: SubscribeEmbeddedCheckoutProps) => {
+  const hasLoadedRef = useRef(false);
   const [clientSecret, setClientSecret] = useState("");
   const [customerSessionSecret, setCustomerSessionSecret] = useState("");
   const [defaultPaymentMethodId, setDefaultPaymentMethodId] = useState<
@@ -205,7 +206,10 @@ export const SubscribeEmbeddedCheckout = ({
         setError(err instanceof Error ? err.message : String(err));
       }
     };
-    load();
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      load();
+    }
     const unsub = Hub.listen("auth", ({ payload }) => {
       if (payload.event === "signedIn" || payload.event === "signedOut") {
         load();
