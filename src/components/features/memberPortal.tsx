@@ -1336,7 +1336,11 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
             {cardEdit && clientSecret && (
               <Elements
                 stripe={stripePromise}
-                options={{ clientSecret, appearance: { theme: "stripe" } }}
+                options={{
+                  clientSecret,
+                  appearance: { theme: "stripe" },
+                  locale: locale,
+                }}
               >
                 <PortalPaymentForm locale={locale} />
               </Elements>
