@@ -45,7 +45,7 @@ const SidebarMemberActions = ({ locale }: SidebarMemberActionsProps) => {
     return () => {
       unsub();
     };
-  }, [refreshUser]);
+  }, [refreshUser, locale]);
 
   const handleSignOut = async () => {
     setLoading(true);

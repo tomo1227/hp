@@ -57,7 +57,7 @@ export const SubscribeGate = ({
     return () => {
       unsub();
     };
-  }, [refreshStatus]);
+  }, [refreshStatus, locale]);
 
   if (!checked) {
     return <div className="subscribe-gate-loading">...</div>;

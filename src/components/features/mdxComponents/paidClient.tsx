@@ -101,7 +101,7 @@ export const PaidClient = ({
       window.clearTimeout(timeoutId);
       unsub();
     };
-  }, []);
+  }, [locale]);
 
   if (!checked) {
     return (
