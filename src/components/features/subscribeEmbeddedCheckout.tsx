@@ -6,7 +6,10 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import type { PaymentIntentResult } from "@stripe/stripe-js";
+import type {
+  PaymentIntentResult,
+  StripePaymentElementChangeEvent,
+} from "@stripe/stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { fetchAuthSession } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
@@ -46,6 +49,7 @@ const CheckoutForm = ({
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [isLinkSelected, setIsLinkSelected] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -93,10 +97,18 @@ const CheckoutForm = ({
     setSubmitting(false);
   };
 
+  const handlePaymentElementChange = (
+    event: StripePaymentElementChangeEvent,
+  ) => {
+    setIsLinkSelected(event.value?.type === "link");
+  };
+
   return (
     <form onSubmit={handleSubmit} className="portal-card-form">
-      {selectedPaymentMethodId === "new" && <PaymentElement />}
       {selectedPaymentMethodId === "new" && (
+        <PaymentElement onChange={handlePaymentElementChange} />
+      )}
+      {selectedPaymentMethodId === "new" && !isLinkSelected && (
         <label className="subscribe-default-option">
           <input
             type="checkbox"
