@@ -923,13 +923,22 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
               </div>
             </div>
           )}
-          {!subscriptionLoading && subscriptionItems && (
+          {!subscriptionLoading && !subscriptionItems && (
             <div className="portal-summary-card">
               <p className="portal-label">
                 {locale === "ja" ? "有料プラン未加入" : "No paid plan"}
               </p>
             </div>
           )}
+          {!subscriptionLoading &&
+            subscriptionItems.filter((sub) => sub?.status === "active")
+              .length === 0 && (
+              <div className="portal-summary-card">
+                <p className="portal-label">
+                  {locale === "ja" ? "有料プラン未加入" : "No paid plan"}
+                </p>
+              </div>
+            )}
           {!subscriptionLoading &&
             subscriptionItems
               .filter((sub) => {
