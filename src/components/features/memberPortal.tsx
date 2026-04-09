@@ -260,6 +260,9 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       customer?: PortalCustomer;
       error?: string;
     };
+    if (response.status === 404 && data.error === "customer not found") {
+      throw new Error("customer not found");
+    }
     if (!response.ok || !data.customer) {
       throw new Error(data.error || "Failed to load customer");
     }
@@ -386,7 +389,11 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       const data = await fetchCustomer(token);
       setCustomer(data);
     } catch (err) {
-      setCustomerError(err instanceof Error ? err.message : String(err));
+      if (err instanceof Error && err.message === "customer not found") {
+        setCustomerError("customerNotFound"); // 独自のエラー値
+      } else {
+        setCustomerError(err instanceof Error ? err.message : String(err));
+      }
     } finally {
       setCustomerLoading(false);
     }
@@ -426,22 +433,14 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   useEffect(() => {
     if (!token) return;
     let cancelled = false;
-    const delay = (ms: number) =>
-      new Promise<void>((resolve) => {
-        window.setTimeout(resolve, ms);
-      });
 
     const run = async () => {
-      await delay(120);
-      if (cancelled) return;
-      await loadSubscriptions();
-      await delay(180);
       if (cancelled) return;
       await loadCustomer();
-      await delay(180);
+      if (cancelled) return;
+      await loadSubscriptions();
       if (cancelled) return;
       await loadPaymentMethods();
-      await delay(180);
       if (cancelled) return;
       setInvoiceAutoLoad(true);
     };
@@ -910,7 +909,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
         </header>
 
         <div className="portal-summary">
-          {subscriptionError && (
+          {customerError !== "customerNotFound" && subscriptionError && (
             <p className="subscribe-error">{subscriptionError}</p>
           )}
           {subscriptionLoading && (
@@ -923,13 +922,22 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
               </div>
             </div>
           )}
-          {!subscriptionLoading && subscriptionItems && (
+          {!subscriptionLoading && !subscriptionItems && (
             <div className="portal-summary-card">
               <p className="portal-label">
                 {locale === "ja" ? "有料プラン未加入" : "No paid plan"}
               </p>
             </div>
           )}
+          {!subscriptionLoading &&
+            subscriptionItems.filter((sub) => sub?.status === "active")
+              .length === 0 && (
+              <div className="portal-summary-card">
+                <p className="portal-label">
+                  {locale === "ja" ? "有料プラン未加入" : "No paid plan"}
+                </p>
+              </div>
+            )}
           {!subscriptionLoading &&
             subscriptionItems
               .filter((sub) => {
@@ -1026,318 +1034,331 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
               })}
         </div>
 
-        <div className="portal-grid-layout">
-          <section className="portal-section">
-            <div className="portal-section-header">
-              <h2>{text.billing}</h2>
-              <button
-                type="button"
-                className="portal-edit"
-                onClick={() => setBillingEdit((prev) => !prev)}
-              >
-                {text.edit}
-              </button>
-            </div>
-            {customerError && (
-              <p className="subscribe-error">{customerError}</p>
-            )}
-            {!billingEdit ? (
-              <div className="portal-readonly">
-                {customerLoading && <p className="portal-hint">...</p>}
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "氏名" : "Name"}</span>
-                  <span>{billingDraft.name || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "電話" : "Phone"}</span>
-                  <span>{billingDraft.phone || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "住所1" : "Address line 1"}</span>
-                  <span>{billingDraft.line1 || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "住所2" : "Address line 2"}</span>
-                  <span>{billingDraft.line2 || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "市" : "City"}</span>
-                  <span>{billingDraft.city || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "州" : "State"}</span>
-                  <span>{billingDraft.state || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "郵便番号" : "Postal code"}</span>
-                  <span>{billingDraft.postal_code || "-"}</span>
-                </div>
-                <div className="portal-row">
-                  <span>{locale === "ja" ? "国" : "Country"}</span>
-                  <span>{billingDraft.country || "-"}</span>
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="portal-grid">
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "氏名" : "Name"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={
-                        locale === "ja" ? "山田 太郎" : "Yamada Taro"
-                      }
-                      value={billingDraft.name}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          name: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "電話番号" : "Phone"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={
-                        locale === "ja" ? "080-1234-5678" : "080-1234-5678"
-                      }
-                      value={billingDraft.phone}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          phone: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "住所1" : "Address line 1"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={locale === "ja" ? "住所1" : "Address line 1"}
-                      value={billingDraft.line1}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          line1: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "住所2" : "Address line 2"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={locale === "ja" ? "住所2" : "Address line 2"}
-                      value={billingDraft.line2}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          line2: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "市" : "City"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={locale === "ja" ? "大阪市" : "Osaka"}
-                      value={billingDraft.city}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          city: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "都道府県" : "State"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={locale === "ja" ? "大阪府" : "Osaka"}
-                      value={billingDraft.state}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          state: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "郵便番号" : "Postal code"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={locale === "ja" ? "123-4567" : "123-4567"}
-                      value={billingDraft.postal_code}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          postal_code: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                  <label className="portal-field">
-                    <span>{locale === "ja" ? "国" : "Country"}</span>
-                    <input
-                      className="portal-input"
-                      placeholder={locale === "ja" ? "日本" : "Japan"}
-                      value={billingDraft.country}
-                      onChange={(event) =>
-                        setBillingDraft((prev) => ({
-                          ...prev,
-                          country: event.target.value,
-                        }))
-                      }
-                    />
-                  </label>
-                </div>
-                <div className="portal-actions-row">
-                  <button
-                    type="button"
-                    className="portal-save"
-                    onClick={handleBillingUpdate}
-                    disabled={billingSaving}
-                  >
-                    {billingSaving ? "..." : text.update}
-                  </button>
-                  {billingMessage && (
-                    <span className="portal-hint">{billingMessage}</span>
-                  )}
-                </div>
-              </>
-            )}
-          </section>
-
-          <section className="portal-section">
-            <div className="portal-section-header">
-              <h2>{text.payment}</h2>
-              <div className="portal-section-actions">
+        {customerError !== "customerNotFound" && (
+          <div className="portal-grid-layout">
+            <section className="portal-section">
+              <div className="portal-section-header">
+                <h2>{text.billing}</h2>
                 <button
                   type="button"
-                  className="portal-default-btn"
-                  onClick={() => {
-                    setCardEdit(true);
-                    if (!clientSecret) {
-                      handleSetupIntent();
-                    }
-                  }}
+                  className="portal-edit"
+                  onClick={() => setBillingEdit((prev) => !prev)}
                 >
-                  {locale === "ja" ? "カード追加" : "Add card"}
+                  {text.edit}
                 </button>
               </div>
-            </div>
-            {paymentError && <p className="subscribe-error">{paymentError}</p>}
-            {!cardEdit && (
-              <div className="portal-card-summary">
-                {paymentLoading ? (
-                  <p className="portal-hint">...</p>
-                ) : cardLine ? (
-                  <div className="portal-card-details">
-                    <div className="portal-row">
-                      <span>{locale === "ja" ? "氏名" : "Name"}</span>
-                      <span>{defaultBilling?.name || "-"}</span>
-                    </div>
-                    <div className="portal-row">
-                      <span>{locale === "ja" ? "タイプ" : "Type"}</span>
-                      <span className="portal-card-number">
-                        {renderBrandIcon(defaultCard?.brand)}
-                      </span>
-                    </div>
-                    <div className="portal-row">
-                      <span>
-                        {locale === "ja" ? "カード番号" : "Card number"}
-                      </span>
-                      <span className="portal-card-number">
-                        {` •••• ${defaultCard?.last4 ?? "-"}`}
-                      </span>
-                    </div>
-                    <div className="portal-row">
-                      <span>{locale === "ja" ? "有効期限" : "Expiry"}</span>
-                      <span>
-                        {defaultCard?.exp_month ?? "-"} /{" "}
-                        {defaultCard?.exp_year ?? "-"}
-                      </span>
-                    </div>
-                    <div className="portal-row">
-                      <span>
-                        {locale === "ja" ? "カード発行会社" : "Issuer"}
-                      </span>
-                      <span>{cardIssuer || "-"}</span>
-                    </div>
-                    <div className="portal-row">
-                      <span>
-                        {locale === "ja" ? "請求先住所" : "Billing address"}
-                      </span>
-                      <span>
-                        {formatAddress(defaultBilling?.address ?? null)}
-                      </span>
-                    </div>
-                    <div className="portal-row">
-                      <span>{locale === "ja" ? "電話番号" : "Phone"}</span>
-                      <span>{defaultBilling?.phone || "-"}</span>
-                    </div>
-                    <div className="portal-row">
-                      <span>
-                        {locale === "ja" ? "メールアドレス" : "Email"}
-                      </span>
-                      <span>
-                        {defaultBilling?.email || customer?.email || "-"}
-                      </span>
-                    </div>
-                    <div className="portal-row">
-                      <span>
-                        {locale === "ja" ? "カードの発行元" : "Card country"}
-                      </span>
-                      <span>{defaultCard?.country || "-"}</span>
-                    </div>
-                    <div className="portal-card-actions">
-                      <button
-                        type="button"
-                        className="portal-default-btn is-danger"
-                        onClick={() =>
-                          fallbackDefault?.id
-                            ? handleRemovePaymentMethod(fallbackDefault.id)
-                            : null
-                        }
-                        disabled={
-                          !fallbackDefault?.id ||
-                          removeSaving === fallbackDefault.id
-                        }
-                      >
-                        {removeSaving === fallbackDefault?.id
-                          ? "..."
-                          : locale === "ja"
-                            ? "削除"
-                            : "Remove"}
-                      </button>
-                    </div>
+              {customerError && (
+                <p className="subscribe-error">{customerError}</p>
+              )}
+              {!billingEdit ? (
+                <div className="portal-readonly">
+                  {customerLoading && <p className="portal-hint">...</p>}
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "氏名" : "Name"}</span>
+                    <span>{billingDraft.name || "-"}</span>
                   </div>
-                ) : (
-                  <span className="portal-hint">{text.noCard}</span>
-                )}
-              </div>
-            )}
-            {cardEdit && clientSecret && (
-              <Elements
-                stripe={stripePromise}
-                options={{
-                  clientSecret,
-                  appearance: { theme: "stripe" },
-                  locale: locale,
-                }}
-              >
-                <PortalPaymentForm locale={locale} />
-              </Elements>
-            )}
-          </section>
-        </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "電話" : "Phone"}</span>
+                    <span>{billingDraft.phone || "-"}</span>
+                  </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "住所1" : "Address line 1"}</span>
+                    <span>{billingDraft.line1 || "-"}</span>
+                  </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "住所2" : "Address line 2"}</span>
+                    <span>{billingDraft.line2 || "-"}</span>
+                  </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "市" : "City"}</span>
+                    <span>{billingDraft.city || "-"}</span>
+                  </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "州" : "State"}</span>
+                    <span>{billingDraft.state || "-"}</span>
+                  </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "郵便番号" : "Postal code"}</span>
+                    <span>{billingDraft.postal_code || "-"}</span>
+                  </div>
+                  <div className="portal-row">
+                    <span>{locale === "ja" ? "国" : "Country"}</span>
+                    <span>{billingDraft.country || "-"}</span>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="portal-grid">
+                    <label className="portal-field">
+                      <span>{locale === "ja" ? "氏名" : "Name"}</span>
+                      <input
+                        className="portal-input"
+                        placeholder={
+                          locale === "ja" ? "山田 太郎" : "Yamada Taro"
+                        }
+                        value={billingDraft.name}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            name: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>{locale === "ja" ? "電話番号" : "Phone"}</span>
+                      <input
+                        className="portal-input"
+                        placeholder={
+                          locale === "ja" ? "080-1234-5678" : "080-1234-5678"
+                        }
+                        value={billingDraft.phone}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            phone: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>
+                        {locale === "ja" ? "住所1" : "Address line 1"}
+                      </span>
+                      <input
+                        className="portal-input"
+                        placeholder={
+                          locale === "ja" ? "住所1" : "Address line 1"
+                        }
+                        value={billingDraft.line1}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            line1: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>
+                        {locale === "ja" ? "住所2" : "Address line 2"}
+                      </span>
+                      <input
+                        className="portal-input"
+                        placeholder={
+                          locale === "ja" ? "住所2" : "Address line 2"
+                        }
+                        value={billingDraft.line2}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            line2: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>{locale === "ja" ? "市" : "City"}</span>
+                      <input
+                        className="portal-input"
+                        placeholder={locale === "ja" ? "大阪市" : "Osaka"}
+                        value={billingDraft.city}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            city: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>{locale === "ja" ? "都道府県" : "State"}</span>
+                      <input
+                        className="portal-input"
+                        placeholder={locale === "ja" ? "大阪府" : "Osaka"}
+                        value={billingDraft.state}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            state: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>
+                        {locale === "ja" ? "郵便番号" : "Postal code"}
+                      </span>
+                      <input
+                        className="portal-input"
+                        placeholder={locale === "ja" ? "123-4567" : "123-4567"}
+                        value={billingDraft.postal_code}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            postal_code: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                    <label className="portal-field">
+                      <span>{locale === "ja" ? "国" : "Country"}</span>
+                      <input
+                        className="portal-input"
+                        placeholder={locale === "ja" ? "日本" : "Japan"}
+                        value={billingDraft.country}
+                        onChange={(event) =>
+                          setBillingDraft((prev) => ({
+                            ...prev,
+                            country: event.target.value,
+                          }))
+                        }
+                      />
+                    </label>
+                  </div>
+                  <div className="portal-actions-row">
+                    <button
+                      type="button"
+                      className="portal-save"
+                      onClick={handleBillingUpdate}
+                      disabled={billingSaving}
+                    >
+                      {billingSaving ? "..." : text.update}
+                    </button>
+                    {billingMessage && (
+                      <span className="portal-hint">{billingMessage}</span>
+                    )}
+                  </div>
+                </>
+              )}
+            </section>
 
+            <section className="portal-section">
+              <div className="portal-section-header">
+                <h2>{text.payment}</h2>
+                <div className="portal-section-actions">
+                  <button
+                    type="button"
+                    className="portal-default-btn"
+                    onClick={() => {
+                      setCardEdit(true);
+                      if (!clientSecret) {
+                        handleSetupIntent();
+                      }
+                    }}
+                  >
+                    {locale === "ja" ? "カード追加" : "Add card"}
+                  </button>
+                </div>
+              </div>
+              {paymentError && (
+                <p className="subscribe-error">{paymentError}</p>
+              )}
+              {!cardEdit && (
+                <div className="portal-card-summary">
+                  {paymentLoading ? (
+                    <p className="portal-hint">...</p>
+                  ) : cardLine ? (
+                    <div className="portal-card-details">
+                      <div className="portal-row">
+                        <span>{locale === "ja" ? "氏名" : "Name"}</span>
+                        <span>{defaultBilling?.name || "-"}</span>
+                      </div>
+                      <div className="portal-row">
+                        <span>{locale === "ja" ? "タイプ" : "Type"}</span>
+                        <span className="portal-card-number">
+                          {renderBrandIcon(defaultCard?.brand)}
+                        </span>
+                      </div>
+                      <div className="portal-row">
+                        <span>
+                          {locale === "ja" ? "カード番号" : "Card number"}
+                        </span>
+                        <span className="portal-card-number">
+                          {` •••• ${defaultCard?.last4 ?? "-"}`}
+                        </span>
+                      </div>
+                      <div className="portal-row">
+                        <span>{locale === "ja" ? "有効期限" : "Expiry"}</span>
+                        <span>
+                          {defaultCard?.exp_month ?? "-"} /{" "}
+                          {defaultCard?.exp_year ?? "-"}
+                        </span>
+                      </div>
+                      <div className="portal-row">
+                        <span>
+                          {locale === "ja" ? "カード発行会社" : "Issuer"}
+                        </span>
+                        <span>{cardIssuer || "-"}</span>
+                      </div>
+                      <div className="portal-row">
+                        <span>
+                          {locale === "ja" ? "請求先住所" : "Billing address"}
+                        </span>
+                        <span>
+                          {formatAddress(defaultBilling?.address ?? null)}
+                        </span>
+                      </div>
+                      <div className="portal-row">
+                        <span>{locale === "ja" ? "電話番号" : "Phone"}</span>
+                        <span>{defaultBilling?.phone || "-"}</span>
+                      </div>
+                      <div className="portal-row">
+                        <span>
+                          {locale === "ja" ? "メールアドレス" : "Email"}
+                        </span>
+                        <span>
+                          {defaultBilling?.email || customer?.email || "-"}
+                        </span>
+                      </div>
+                      <div className="portal-row">
+                        <span>
+                          {locale === "ja" ? "カードの発行元" : "Card country"}
+                        </span>
+                        <span>{defaultCard?.country || "-"}</span>
+                      </div>
+                      <div className="portal-card-actions">
+                        <button
+                          type="button"
+                          className="portal-default-btn is-danger"
+                          onClick={() =>
+                            fallbackDefault?.id
+                              ? handleRemovePaymentMethod(fallbackDefault.id)
+                              : null
+                          }
+                          disabled={
+                            !fallbackDefault?.id ||
+                            removeSaving === fallbackDefault.id
+                          }
+                        >
+                          {removeSaving === fallbackDefault?.id
+                            ? "..."
+                            : locale === "ja"
+                              ? "削除"
+                              : "Remove"}
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className="portal-hint">{text.noCard}</span>
+                  )}
+                </div>
+              )}
+              {cardEdit && clientSecret && (
+                <Elements
+                  stripe={stripePromise}
+                  options={{
+                    clientSecret,
+                    appearance: { theme: "stripe" },
+                    locale: locale,
+                  }}
+                >
+                  <PortalPaymentForm locale={locale} />
+                </Elements>
+              )}
+            </section>
+          </div>
+        )}
         {validPaymentMethods.length > 1 && (
           <section className="portal-section">
             <h2>{locale === "ja" ? "その他のカード" : "Other cards"}</h2>
