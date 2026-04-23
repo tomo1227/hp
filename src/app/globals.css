@@ -59,7 +59,7 @@ body{
 }
 
 main {
-    @apply w-full pt-6;
+    @apply w-full pt-6 pb-2;
 }
 
 .site-footer {

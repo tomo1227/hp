@@ -1,26 +1,27 @@
+/* カレンダーをheader/footerを除いた全画面にフィットさせる */
 #calendar-contents {
-  @apply w-full h-full p-3;
+  @apply w-full p-3;
+  height: calc(100vh - 64px - 80px - 40px); /* header, footer, main/footerのpadding合計 */
+  min-height: 300px;
 }
 
 #calendar-contents > div {
   @apply w-full h-full;
 }
 .fc-daygrid-event {
-  @apply text-[12px] border-x-indigo-500 max-sm:!text-[8px];
+  @apply text-[12px] border-x-indigo-500 max-sm:text-[8px]!;
 }
 
-.fc-media-screen {
-  @apply !h-11/12;
-}
+
 
 .fc-toolbar-title {
-  @apply max-md:!text-lg;
+  @apply max-md:text-lg!;
 }
 .fc .fc-scrollgrid {
   @apply text-sm max-md:text-xs;
 }
 .fc-theme-standard th {
-  @apply max-md:h-[80px];
+  @apply max-md:h-20;
 }
 .fc-theme-standard td, .fc-theme-standard th {
   height: auto;
@@ -30,7 +31,7 @@
 }
 
 .fc-daygrid-day-frame{
-  @apply max-md:!h-16;
+  @apply max-md:h-16!;
 }
 
 .fc .fc-button {
@@ -57,7 +58,7 @@
 }
 
 .fc-event {
-  @apply max-md:!mx-0;
+  @apply max-md:mx-0!;
 }
 
 .fc-h-event{
