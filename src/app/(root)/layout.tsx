@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "../globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { AmplifyProvider } from "@/components/features/amplifyProvider";
+import Footer from "@/components/ui/footer";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -54,9 +55,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AmplifyProvider>
+        <AmplifyProvider locale="ja">
           <NextTopLoader />
-          <div id="body-container">{children}</div>
+          <div id="body-container">
+            {children}
+            <Footer />
+          </div>
         </AmplifyProvider>
       </body>
     </html>

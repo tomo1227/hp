@@ -53,17 +53,10 @@ const externalProviders: ExternalProviderOptions = {
     },
   ],
   callbackUrls: [
-    "https://tomokiota.com/auth/callback",
-    "http://localhost:3033/auth/callback",
-    "http://localhost:3000/auth/callback",
-    "http://127.0.0.1:3033/auth/callback",
+    "https://tomokiota.com/ja/auth/callback",
+    "http://localhost:3033/ja/auth/callback",
   ],
-  logoutUrls: [
-    "https://tomokiota.com/",
-    "http://localhost:3000/",
-    "http://localhost:3033/",
-    "http://127.0.0.1:3033/",
-  ],
+  logoutUrls: ["https://tomokiota.com/", "http://localhost:3033/"],
   domainPrefix: process.env.AMPLIFY_COGNITO_DOMAIN_PREFIX ?? undefined,
 };
 

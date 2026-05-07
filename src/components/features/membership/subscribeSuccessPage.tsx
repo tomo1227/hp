@@ -8,7 +8,7 @@ type Locale = "ja" | "en";
 export default function SubscribeSuccessPage({ locale }: { locale: Locale }) {
   const params = useSearchParams();
   const [status, setStatus] = useState(
-    locale === "ja" ? "購読状況を確認中..." : "Checking subscription status...",
+    locale === "ja" ? "登録状況を確認中..." : "Checking subscription status...",
   );
   const [error, setError] = useState("");
 
@@ -40,14 +40,14 @@ export default function SubscribeSuccessPage({ locale }: { locale: Locale }) {
           throw new Error(
             data.error ||
               (locale === "ja"
-                ? "購読の確認に失敗しました"
+                ? "登録の確認に失敗しました"
                 : "Failed to confirm subscription"),
           );
         }
 
         setStatus(
           locale === "ja"
-            ? "サブスクが有効になりました。ありがとうございます！"
+            ? "有料コンテンツの閲覧が可能になりました。ありがとうございます！"
             : "Your subscription is now active. Thank you!",
         );
       } catch (err) {
@@ -66,14 +66,14 @@ export default function SubscribeSuccessPage({ locale }: { locale: Locale }) {
           {locale === "ja" ? "メンバーシップ" : "Membership"}
         </p>
         <h1 className="subscribe-title">
-          {locale === "ja" ? "購読ステータス" : "Subscription Status"}
+          {locale === "ja" ? "登録完了!" : "You've successfully registered!"}
         </h1>
 
         {status && <p className="subscribe-copy">{status}</p>}
         {error && <p className="subscribe-error">{error}</p>}
 
-        <Link className="subscribe-link" href={`/${locale}`}>
-          {locale === "ja" ? "ホームへ戻る" : "Back to Home"}
+        <Link className="subscribe-link" href={`/${locale}/blogs`}>
+          {locale === "ja" ? "ブログへ戻る" : "Back to Blog"}
         </Link>
 
         <p className="subscribe-alt">

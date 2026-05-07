@@ -42,7 +42,7 @@ export const AuthButtons = ({ locale = "en" }: AuthButtonsProps) => {
   useEffect(() => {
     const load = async () => {
       try {
-        configureAmplifyClient();
+        configureAmplifyClient({ locale });
         await fetchAuthSession();
         const current = await getCurrentUser();
         setUser({ username: current.username });
@@ -51,12 +51,12 @@ export const AuthButtons = ({ locale = "en" }: AuthButtonsProps) => {
       }
     };
     load();
-  }, []);
+  }, [locale]);
 
   const handleSignIn = async () => {
     setLoading(true);
     try {
-      configureAmplifyClient();
+      configureAmplifyClient({ locale });
       await signInWithRedirect({
         provider: "Google",
         customState: locale,
