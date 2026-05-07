@@ -1350,7 +1350,7 @@
 }
 
 #blog-layout {
-  @apply flex justify-around max-lg:flex-col flex-1 overflow-auto h-full max-lg:-mt-4;
+  @apply flex justify-around max-lg:flex-col flex-1 max-lg:-mt-4;
 }
 
 @media (max-width: 1024px) {
@@ -1371,7 +1371,6 @@
 
 #blog-footer {
   @apply mt-10 pt-6 flex flex-col gap-6;
-  border-top: 1px solid var(--blog-stroke);
 }
 
 .blog-section-title {
@@ -1405,3 +1404,11 @@
   box-shadow: 0 6px 12px rgba(15, 23, 42, 0.1);
 }
 
+
+.portal-summary-card .portal-loading-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  justify-content: flex-start;
+}

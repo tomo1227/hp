@@ -1,6 +1,6 @@
 import { MemberSignUpForm } from "@/components/features/memberSignUpForm";
 
-export default function JaSignUpPage() {
+export default function Page() {
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">

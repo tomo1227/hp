@@ -1,5 +1,5 @@
 import { MemberPortal } from "@/components/features/memberPortal";
 
-export default function EnMemberPortalPage() {
+export default function Page() {
   return <MemberPortal locale="en" />;
 }
