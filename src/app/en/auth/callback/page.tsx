@@ -4,7 +4,7 @@ import AuthCallbackPage from "@/components/features/auth/authCallbackPage";
 export default function Page() {
   return (
     <Suspense fallback={<Loading />}>
-      <AuthCallbackPage locale="ja" />
+      <AuthCallbackPage locale="en" />
     </Suspense>
   );
 }

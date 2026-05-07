@@ -64,7 +64,7 @@ export const MemberSignUpForm = ({ locale = "en" }: MemberSignUpFormProps) => {
       return;
     }
     try {
-      configureAmplifyClient();
+      configureAmplifyClient({ locale });
       await signUp({
         username: normalizedEmail,
         password,
@@ -82,7 +82,7 @@ export const MemberSignUpForm = ({ locale = "en" }: MemberSignUpFormProps) => {
     setLoading(true);
     setError("");
     try {
-      configureAmplifyClient();
+      configureAmplifyClient({ locale });
       await confirmSignUp({
         username: normalizedEmail,
         confirmationCode: code,
