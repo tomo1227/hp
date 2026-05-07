@@ -322,15 +322,9 @@
     "period": 2
   },
   {
-    "title": "JAPAN FIREWORKS EXPO 2026",
-    "en_title": "JAPAN FIREWORKS EXPO 2026",
-    "date": "2026-04-04T01:44:46.231Z",
-    "url": "https://e-hanabi.com/"
-  },
-  {
     "title": "富士山花火 VS スピードウェイ 2026",
     "en_title": "Mt. Fuji Fireworks VS Speedway 2026",
-    "date": "2026-04-14T01:44:46.231Z",
+    "date": "2026-04-11T01:44:46.231Z",
     "url": "https://fujisanhanabi.com/fujimotorsportsforest/"
   },
   {
@@ -457,10 +451,22 @@
     "url": "https://www.rinkuhanabi.jp/"
   },
   {
+    "title": "JAPAN FIREWORKS EXPO 2026",
+    "en_title": "JAPAN FIREWORKS EXPO 2026",
+    "date": "2026-06-07T01:44:46.231Z",
+    "url": "https://e-hanabi.com/"
+  },
+  {
+    "title": "きほく燈籠祭",
+    "en_title": "Kihoku Lantern Festival",
+    "date": "2026-07-25T01:44:46.231Z",
+    "url": "https://touroumaturi.com/"
+  },
+  {
     "title": "ぎおん柏崎まつり",
     "en_title": "Gion Kashiwazaki Festival",
     "date": "2026-07-26T01:44:46.231Z",
-    "url": "https://nagaokamatsuri.com/"
+    "url": "https://kashiwazaki-hanabi.jp/"
   },
   {
     "title": "松江水郷祭湖上花火大会",
@@ -468,6 +474,19 @@
     "date": "2026-08-01T01:44:46.231Z",
     "url": "https://suigosai.com/",
     "period": 2
+  },
+  {
+    "title": "長岡まつり 大花火大会",
+    "en_title": "Nagaoka Festival Grand Fireworks",
+    "date": "2026-08-02T01:44:46.231Z",
+    "url": "https://nagaokamatsuri.com/",
+    "period": 2
+  },
+  {
+    "title": "熊野大花火大会",
+    "en_title": "Kumano Fireworks",
+    "date": "2026-08-17T01:44:46.231Z",
+    "url": "https://www.kumano-kankou.info/kumano-fireworks/"
   },
   {
     "title": "満願の火まつり",
