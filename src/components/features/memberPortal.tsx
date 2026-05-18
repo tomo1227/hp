@@ -6,7 +6,7 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe, type Stripe } from "@stripe/stripe-js";
 import { fetchAuthSession } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
 import Link from "next/link";
@@ -137,7 +137,6 @@ const copy = {
 
 const stripePublishableKey =
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? "";
-const stripePromise = loadStripe(stripePublishableKey);
 
 const formatDate = (value: number | null, locale: Locale) => {
   if (!value) return "-";
@@ -213,6 +212,10 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [token, setToken] = useState("");
+  const [hasCustomer, setHasCustomer] = useState<boolean | null>(null);
+  const [stripePromise, setStripePromise] = useState<
+    Promise<Stripe | null> | null
+  >(null);
   const [clientSecret, setClientSecret] = useState("");
   const [customer, setCustomer] = useState<PortalCustomer | null>(null);
   const [subscription, setSubscription] = useState<PortalSubscription | null>(
@@ -389,15 +392,22 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
     try {
       const data = await fetchCustomer(token);
       setCustomer(data);
+      setHasCustomer(true);
+      return true;
     } catch (err) {
       if (err instanceof Error && err.message === "customer not found") {
+        setCustomer(null);
+        setHasCustomer(false);
         setCustomerError("customerNotFound"); // 独自のエラー値
+        return false;
       } else {
+        setHasCustomer(null);
         setCustomerError(err instanceof Error ? err.message : String(err));
       }
     } finally {
       setCustomerLoading(false);
     }
+    return false;
   }, [fetchCustomer, token]);
 
   const loadSubscriptions = useCallback(async () => {
@@ -437,8 +447,19 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
 
     const run = async () => {
       if (cancelled) return;
-      await loadCustomer();
+      const customerExists = await loadCustomer();
       if (cancelled) return;
+
+      if (!customerExists) {
+        setSubscription(null);
+        setSubscriptions([]);
+        setPaymentMethod(null);
+        setPaymentMethods([]);
+        setDefaultPaymentMethodId(null);
+        setInvoiceAutoLoad(false);
+        return;
+      }
+
       await loadSubscriptions();
       if (cancelled) return;
       await loadPaymentMethods();
@@ -450,6 +471,12 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
       cancelled = true;
     };
   }, [loadCustomer, loadPaymentMethods, loadSubscriptions, token]);
+
+  const ensureStripeLoaded = useCallback(() => {
+    if (!stripePromise) {
+      setStripePromise(loadStripe(stripePublishableKey));
+    }
+  }, [stripePromise]);
 
   const handleLoadInvoices = useCallback(
     async (year: number | "all") => {
@@ -513,32 +540,6 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
     if (!response.ok) {
       const data = (await response.json()) as { error?: string };
       setError(data.error || "Failed to cancel");
-      return;
-    }
-    await loadSubscriptions();
-  };
-
-  const handleResume = async (
-    subscriptionId?: string | null,
-    priceId?: string | null,
-  ) => {
-    if (!token) return;
-    setError("");
-    const response = await fetch("/api/stripe/portal/resume", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ locale, subscriptionId, priceId }),
-    });
-    const data = (await response.json()) as { url?: string; error?: string };
-    if (!response.ok) {
-      setError(data.error || "Failed to resume");
-      return;
-    }
-    if (data.url) {
-      window.location.href = data.url;
       return;
     }
     await loadSubscriptions();
@@ -945,7 +946,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                 const statusValue = sub?.status ?? "";
                 return statusValue === "active";
               })
-              .map((sub, index) => {
+              .map((sub) => {
                 const statusValue = sub?.status ?? "-";
                 const isActive = statusValue === "active";
                 const isCanceling = Boolean(
@@ -1034,7 +1035,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
               })}
         </div>
 
-        {customerError !== "customerNotFound" && (
+        {hasCustomer === true && (
           <div className="portal-grid-layout">
             <section className="portal-section">
               <div className="portal-section-header">
@@ -1242,6 +1243,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                     className="portal-default-btn"
                     onClick={() => {
                       setCardEdit(true);
+                      ensureStripeLoaded();
                       if (!clientSecret) {
                         handleSetupIntent();
                       }
@@ -1344,7 +1346,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                   )}
                 </div>
               )}
-              {cardEdit && clientSecret && (
+              {cardEdit && clientSecret && stripePromise && (
                 <Elements
                   stripe={stripePromise}
                   options={{
