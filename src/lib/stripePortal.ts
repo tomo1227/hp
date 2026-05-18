@@ -19,11 +19,13 @@ export type PortalCustomer = {
 export const getPortalCustomer = async (request: Request) => {
   const authHeader = request.headers.get("authorization") ?? "";
   const token = authHeader.replace(/^Bearer\s+/i, "").trim();
+
   if (!token) {
     return { error: "Unauthorized", status: 401 } as const;
   }
 
   let email = "";
+
   try {
     const payload = await verifyCognitoToken(token);
     email = payload.email ?? "";
@@ -35,16 +37,29 @@ export const getPortalCustomer = async (request: Request) => {
     return { error: "Email not found", status: 400 } as const;
   }
 
+  const escapedEmail = email.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+
   const search = await stripe.customers.search({
-    query: `email:'${email.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`,
-    limit: 5,
+    query: `email:'${escapedEmail}'`,
+    limit: 10,
   });
 
-  if (search.data.length === 0) {
+  // deleted customer を除外
+  const activeCustomer = search.data.find(
+    (customer) => !("deleted" in customer && customer.deleted),
+  );
+
+  if (!activeCustomer) {
     return { error: "customer not found", status: 404 } as const;
   }
 
-  const customer = search.data[0];
+  // 念のため retrieve でも確認
+  const customer = await stripe.customers.retrieve(activeCustomer.id);
+
+  if ("deleted" in customer && customer.deleted) {
+    return { error: "customer not found", status: 404 } as const;
+  }
+
   const result: PortalCustomer = {
     id: customer.id,
     email: customer.email ?? email,
