@@ -38,6 +38,7 @@ type PortalSubscription = {
   id?: string | null;
   status?: string | null;
   cancel_at_period_end?: boolean;
+  cancel_at?: number | null;
   current_period_end?: number | null;
   items?: {
     data?: {
@@ -953,10 +954,9 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                 const actionLabel = isActive ? text.cancel : text.resume;
                 const items = sub?.items?.data ?? [];
                 const rows = items.length > 0 ? items : [null];
-                const cancelDate = formatDate(
-                  sub?.current_period_end ?? null,
-                  locale,
-                );
+                const cancelDateValue =
+                  sub?.cancel_at ?? sub?.current_period_end ?? null;
+                const cancelDate = formatDate(cancelDateValue, locale);
                 const statusText = isCanceling
                   ? locale === "ja"
                     ? `${statusValue}(${cancelDate}でキャンセル)`
@@ -1016,7 +1016,7 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
                             </p>
                           </div>
                           <div className="portal-plan-action">
-                            {isActive && (
+                            {isActive && !isCanceling && (
                               <button
                                 type="button"
                                 className="portal-default-btn is-danger"

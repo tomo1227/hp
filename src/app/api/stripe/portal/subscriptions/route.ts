@@ -10,6 +10,7 @@ type Subscription = {
   default_payment_method?: string | { id: string } | null;
   status?: string;
   cancel_at_period_end?: boolean;
+  cancel_at?: number | null;
   current_period_end?: number;
   items?: {
     data?: {
@@ -67,6 +68,7 @@ export async function POST(request: Request) {
     id: sub.id,
     status: sub.status ?? null,
     cancel_at_period_end: sub.cancel_at_period_end ?? null,
+    cancel_at: sub.cancel_at ?? null,
     current_period_end: sub.current_period_end ?? null,
     items: {
       data: (sub.items?.data ?? []).map((item: any) => ({
