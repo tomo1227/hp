@@ -5,6 +5,132 @@ import { stripe } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 
+type InvoiceWithSecrets = Stripe.Invoice & {
+  payment_intent?: string | Stripe.PaymentIntent | null;
+  confirmation_secret?: {
+    client_secret?: string | null;
+  } | null;
+};
+
+const getDefaultPaymentMethodId = (
+  subscription: Stripe.Subscription,
+  customer: Stripe.Customer,
+) => {
+  const subscriptionDefault = subscription.default_payment_method;
+  if (subscriptionDefault) {
+    return typeof subscriptionDefault === "string"
+      ? subscriptionDefault
+      : subscriptionDefault.id;
+  }
+
+  const customerDefault = customer.invoice_settings?.default_payment_method;
+  if (!customerDefault) {
+    return null;
+  }
+
+  return typeof customerDefault === "string"
+    ? customerDefault
+    : customerDefault.id;
+};
+
+const findCustomerWithDefaultPaymentMethod = async (email: string) => {
+  const escapedEmail = email.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+
+  const search = await stripe.customers.search({
+    query: `email:'${escapedEmail}'`,
+    limit: 10,
+  });
+
+  for (const rawCustomer of search.data) {
+    if ("deleted" in rawCustomer && rawCustomer.deleted) {
+      continue;
+    }
+
+    const subscriptions = await stripe.subscriptions.list({
+      customer: rawCustomer.id,
+      status: "all",
+      limit: 10,
+    });
+
+    const latest = subscriptions.data.sort((a, b) => b.created - a.created)[0];
+    if (!latest) {
+      continue;
+    }
+
+    const fullCustomer = await stripe.customers.retrieve(rawCustomer.id);
+    if ("deleted" in fullCustomer && fullCustomer.deleted) {
+      continue;
+    }
+
+    const defaultPaymentMethodId = getDefaultPaymentMethodId(
+      latest,
+      fullCustomer,
+    );
+
+    if (defaultPaymentMethodId) {
+      return { customer: fullCustomer, hasDefaultPaymentMethod: true };
+    }
+  }
+
+  const fallback = search.data.find(
+    (customer) => !("deleted" in customer && customer.deleted),
+  );
+
+  if (!fallback) {
+    return null;
+  }
+
+  const fullFallback = await stripe.customers.retrieve(fallback.id);
+  if ("deleted" in fullFallback && fullFallback.deleted) {
+    return null;
+  }
+
+  return { customer: fullFallback, hasDefaultPaymentMethod: false };
+};
+
+const getMappedCardPaymentMethods = async (customerId: string) => {
+  const methods = await stripe.paymentMethods.list({
+    customer: customerId,
+    type: "card",
+  });
+
+  return methods.data.map((method) => ({
+    id: method.id,
+    card: method.card
+      ? {
+          brand: method.card.brand,
+          last4: method.card.last4,
+          exp_month: method.card.exp_month,
+          exp_year: method.card.exp_year,
+        }
+      : null,
+  }));
+};
+
+const getInvoiceClientSecret = (
+  latestInvoice: Stripe.Subscription["latest_invoice"],
+) => {
+  if (!latestInvoice || typeof latestInvoice === "string") {
+    return null;
+  }
+
+  const invoice = latestInvoice as InvoiceWithSecrets;
+
+  if (
+    invoice.payment_intent &&
+    typeof invoice.payment_intent !== "string" &&
+    invoice.payment_intent.client_secret
+  ) {
+    return invoice.payment_intent.client_secret;
+  }
+
+  if (invoice.confirmation_secret?.client_secret) {
+    return invoice.confirmation_secret.client_secret;
+  }
+
+  return null;
+};
+
 export async function POST(request: Request) {
   const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID;
 
@@ -45,43 +171,14 @@ export async function POST(request: Request) {
     /**
      * Customer
      */
-    const customerList = await stripe.customers.list({
-      email,
-      limit: 1,
-    });
+    const selected = await findCustomerWithDefaultPaymentMethod(email);
 
     const customer =
-      customerList.data[0] ??
+      selected?.customer ??
       (await stripe.customers.create({
         email,
         metadata: { locale },
       }));
-
-    /**
-     * Default payment method
-     */
-    const rawCustomer = await stripe.customers.retrieve(customer.id);
-
-    const defaultPaymentMethodId =
-      !("deleted" in rawCustomer) &&
-      rawCustomer.invoice_settings.default_payment_method
-        ? typeof rawCustomer.invoice_settings.default_payment_method ===
-          "string"
-          ? rawCustomer.invoice_settings.default_payment_method
-          : rawCustomer.invoice_settings.default_payment_method.id
-        : null;
-
-    const defaultPaymentMethodDetails = defaultPaymentMethodId
-      ? await stripe.paymentMethods.retrieve(defaultPaymentMethodId)
-      : null;
-
-    /**
-     * Customer payment methods
-     */
-    const paymentMethods = await stripe.paymentMethods.list({
-      customer: customer.id,
-      type: "card",
-    });
 
     /**
      * Existing incomplete subscription
@@ -94,61 +191,46 @@ export async function POST(request: Request) {
 
     const existingSub = existing.data[0] ?? null;
 
+    const subscriptionExpand: string[] = [
+      "latest_invoice.payment_intent",
+      "latest_invoice.confirmation_secret",
+    ];
+
     /**
      * Subscription
      */
-    const subscription = existingSub
+    let subscription = existingSub
       ? await stripe.subscriptions.retrieve(existingSub.id, {
-          expand: ["latest_invoice.payment_intent"],
+          expand: subscriptionExpand,
         })
       : await stripe.subscriptions.create({
           customer: customer.id,
           items: [{ price: priceId, quantity: 1 }],
-          ...(defaultPaymentMethodId
-            ? {
-                default_payment_method: defaultPaymentMethodId,
-              }
-            : {}),
           payment_behavior: "default_incomplete",
           payment_settings: {
             save_default_payment_method: "on_subscription",
           },
-          expand: ["latest_invoice.payment_intent"],
+          expand: subscriptionExpand,
         });
 
     /**
-     * Customer session
+     * Client secret
      */
-    const customerSession = await stripe.customerSessions.create({
-      customer: customer.id,
-      components: {
-        payment_element: {
-          enabled: true,
+    let clientSecret = getInvoiceClientSecret(subscription.latest_invoice);
+
+    if (!clientSecret && existingSub) {
+      subscription = await stripe.subscriptions.create({
+        customer: customer.id,
+        items: [{ price: priceId, quantity: 1 }],
+        payment_behavior: "default_incomplete",
+        payment_settings: {
+          save_default_payment_method: "on_subscription",
         },
-      },
-    });
+        expand: subscriptionExpand,
+      });
 
-    /**
-     * PaymentIntent client secret
-     */
-    const latestInvoice =
-      typeof subscription.latest_invoice === "string"
-        ? null
-        : subscription.latest_invoice;
-
-    const invoiceWithPaymentIntent = latestInvoice as
-      | (Stripe.Invoice & {
-          payment_intent?: string | Stripe.PaymentIntent | null;
-        })
-      | null;
-
-    const paymentIntent =
-      invoiceWithPaymentIntent?.payment_intent &&
-      typeof invoiceWithPaymentIntent.payment_intent !== "string"
-        ? invoiceWithPaymentIntent.payment_intent
-        : null;
-
-    const clientSecret = paymentIntent?.client_secret ?? null;
+      clientSecret = getInvoiceClientSecret(subscription.latest_invoice);
+    }
 
     if (!clientSecret) {
       return NextResponse.json(
@@ -157,37 +239,24 @@ export async function POST(request: Request) {
       );
     }
 
+    const customerForDefault =
+      "deleted" in customer && customer.deleted ? null : customer;
+    const defaultPaymentMethodId = customerForDefault
+      ? getDefaultPaymentMethodId(subscription, customerForDefault)
+      : null;
+
+    const paymentMethods = await getMappedCardPaymentMethods(customer.id);
+
     return NextResponse.json({
       clientSecret,
-      customerSessionClientSecret: customerSession.client_secret,
-
-      defaultPaymentMethod: defaultPaymentMethodDetails
-        ? {
-            id: defaultPaymentMethodDetails.id,
-            brand: defaultPaymentMethodDetails.card?.brand ?? null,
-            last4: defaultPaymentMethodDetails.card?.last4 ?? null,
-          }
-        : null,
-
+      hasDefaultPaymentMethod: Boolean(defaultPaymentMethodId),
       defaultPaymentMethodId,
-
-      paymentMethods: paymentMethods.data.map((method) => ({
-        id: method.id,
-        brand: method.card?.brand ?? null,
-        last4: method.card?.last4 ?? null,
-        exp_month: method.card?.exp_month ?? null,
-        exp_year: method.card?.exp_year ?? null,
-      })),
+      paymentMethods,
     });
   } catch (error) {
     const stripeError = error as Stripe.StripeRawError;
 
     if (stripeError.code === "customer_max_subscriptions") {
-      console.warn(
-        "Stripe test clock subscription limit reached:",
-        stripeError.message,
-      );
-
       return NextResponse.json(
         {
           error:

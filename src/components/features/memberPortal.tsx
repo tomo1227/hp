@@ -213,9 +213,8 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   const [error, setError] = useState("");
   const [token, setToken] = useState("");
   const [hasCustomer, setHasCustomer] = useState<boolean | null>(null);
-  const [stripePromise, setStripePromise] = useState<
-    Promise<Stripe | null> | null
-  >(null);
+  const [stripePromise, setStripePromise] =
+    useState<Promise<Stripe | null> | null>(null);
   const [clientSecret, setClientSecret] = useState("");
   const [customer, setCustomer] = useState<PortalCustomer | null>(null);
   const [subscription, setSubscription] = useState<PortalSubscription | null>(
@@ -473,6 +472,11 @@ export const MemberPortal = ({ locale = "en" }: MemberPortalProps) => {
   }, [loadCustomer, loadPaymentMethods, loadSubscriptions, token]);
 
   const ensureStripeLoaded = useCallback(() => {
+    if (!stripePublishableKey) {
+      setError("NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is required");
+      return;
+    }
+
     if (!stripePromise) {
       setStripePromise(loadStripe(stripePublishableKey));
     }
