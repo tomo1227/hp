@@ -1,7 +1,9 @@
 import { SubscribeButton } from "@/components/features/subscribeButton";
 import { SubscribeGate } from "@/components/features/subscribeGate";
+import { hasActiveSubscription } from "@/lib/subscription";
 
-export default function Page() {
+export default async function Page() {
+  const isActive = await hasActiveSubscription();
   return (
     <div className="subscribe-shell">
       <div className="subscribe-card">
@@ -20,7 +22,14 @@ export default function Page() {
           <li>いつでも解約OK</li>
         </ul>
         <SubscribeGate locale="ja">
-          <SubscribeButton locale="ja" checkoutMode="inline" />
+          {isActive && (
+            <p className="subscribe-note">メンバーシップに登録済みです。</p>
+          )}
+          <SubscribeButton
+            locale="ja"
+            checkoutMode="inline"
+            mode={isActive ? "portal-only" : "full"}
+          />
         </SubscribeGate>
         <p className="subscribe-note">月額課金。税込み価格。</p>
         <p className="subscribe-alt">

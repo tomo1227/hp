@@ -27,8 +27,8 @@
     "@mdx-js/mdx": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "16.1.6",
-    "@stripe/react-stripe-js": "^2.8.0",
-    "@stripe/stripe-js": "^4.4.0",
+    "@stripe/react-stripe-js": "^6.4.0",
+    "@stripe/stripe-js": "^9.6.0",
     "@types/jsdom": "^28.0.0",
     "@types/mdx": "^2.0.13",
     "aws-amplify": "^6.16.2",
@@ -51,7 +51,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
-    "stripe": "^16.2.0"
+    "stripe": "^22.1.1"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^1.21.0",
