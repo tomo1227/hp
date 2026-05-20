@@ -1,31 +1,73 @@
 import { writeFileSync } from "node:fs";
+import fs from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import readline from "node:readline";
+import { imageSizeFromFile } from "image-size/fromFile";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-rl.question("S3のディレクトリパスを入力してください(末尾/あり): ", (s3Path) => {
-  rl.question("画像の数を入力してください: ", (imageCount) => {
-    let output = "";
+async function downloadImage(url, filePath) {
+  const res = await fetch(url);
 
-    for (let i = 1; i <= Number.parseInt(imageCount, 10); i++) {
-      // 縦長画像判定（例: img2-vertical.jpg のような命名を想定）
-      const isVertical = false; // 必要に応じて変更
+  if (!res.ok) {
+    throw new Error(`画像取得失敗: ${url}`);
+  }
 
-      const width = isVertical ? 500 : 1000;
+  const arrayBuffer = await res.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
 
-      // 最初の5枚だけ priority を付与
-      const priority = i <= 5 ? " priority={true}" : "";
+  await fs.writeFile(filePath, buffer);
+}
 
-      const tag = `<BlogImage src="https://d9h1q21gc2t6n.cloudfront.net/${s3Path}img${i}.jpg" width={${width}}${priority} />\n`;
+rl.question(
+  "S3のディレクトリパスを入力してください(末尾/あり): ",
+  async (s3Path) => {
+    rl.question("画像の数を入力してください: ", async (imageCount) => {
+      let output = "";
 
-      output += tag;
-    }
+      for (let i = 1; i <= Number.parseInt(imageCount, 10); i++) {
+        const imageUrl = `https://d9h1q21gc2t6n.cloudfront.net/${s3Path}img${i}.jpg`;
 
-    writeFileSync("./output.txt", output, "utf8");
-    console.log("./output.txt が生成されました！");
-    rl.close();
-  });
-});
+        try {
+          // 一時保存
+          const tempPath = path.join(tmpdir(), `img${i}.jpg`);
+
+          await downloadImage(imageUrl, tempPath);
+
+          // サイズ取得
+          const dimensions = await imageSizeFromFile(tempPath);
+
+          if (!dimensions.width || !dimensions.height) {
+            console.warn(`img${i}.jpg のサイズ取得に失敗しました`);
+            continue;
+          }
+
+          // 縦長判定
+          const isVertical = dimensions.height > dimensions.width;
+
+          const width = isVertical ? 500 : 1000;
+
+          // 最初の5枚だけ priority
+          const priority = i <= 5 ? " priority={true}" : "";
+
+          const tag = `<BlogImage src="${imageUrl}" width={${width}}${priority} />\n`;
+
+          output += tag;
+
+          // temp削除
+          await fs.unlink(tempPath);
+        } catch (error) {
+          console.error(`img${i}.jpg の処理に失敗`, error);
+        }
+      }
+
+      writeFileSync("./output.txt", output, "utf8");
+      console.log("./output.txt が生成されました！");
+      rl.close();
+    });
+  },
+);
