@@ -19,7 +19,7 @@
     "@amcharts/amcharts5-geodata": "^5.1.5",
     "@aws-sdk/client-s3": "^3.1049.0",
     "@aws-sdk/s3-request-presigner": "^3.1004.0",
-    "@formatjs/intl-localematcher": "^0.8.1",
+    "@formatjs/intl-localematcher": "^0.8.8",
     "@fullcalendar/core": "^6.1.20",
     "@fullcalendar/daygrid": "^6.1.19",
     "@fullcalendar/react": "^6.1.19",
