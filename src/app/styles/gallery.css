@@ -79,6 +79,10 @@
   @apply object-[40%] scale-110;
 }
 
+#panama-city-image {
+  @apply object-[85%] scale-110;
+}
+
 #gallery-contents{
   @apply mx-3;
 }
