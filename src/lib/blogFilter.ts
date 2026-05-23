@@ -13,6 +13,8 @@ type PostFilterOptions = {
   category?: Category;
   tag?: string;
   country?: string;
+  timezone?: string;
+  city?: string;
 };
 
 type TagFilterOptions = {
@@ -20,6 +22,8 @@ type TagFilterOptions = {
   locale?: Locale;
   category?: Category;
   country?: string;
+  timezone?: string;
+  city?: string;
 };
 
 const postBaseDir = (locale: Locale = "ja") =>
@@ -65,6 +69,8 @@ export const getFilteredPosts = async ({
   category,
   tag,
   country,
+  timezone,
+  city,
 }: PostFilterOptions = {}) => {
   const contents = await getAllPosts({ locale });
 
@@ -72,8 +78,16 @@ export const getFilteredPosts = async ({
     const matchesTag = tag ? frontmatter.tags?.includes(tag) : true;
     const matchesCategory = category ? frontmatter.category === category : true;
     const matchesCountry = country ? frontmatter.country === country : true;
+    const matchesTimezone = timezone ? frontmatter.timezone === timezone : true;
+    const matchesCity = city ? frontmatter.city === city : true;
 
-    return matchesTag && matchesCategory && matchesCountry;
+    return (
+      matchesTag &&
+      matchesCategory &&
+      matchesCountry &&
+      matchesTimezone &&
+      matchesCity
+    );
   });
 
   const sortedContents = filteredContents.sort((a, b) => {
@@ -114,12 +128,16 @@ export const getTags = async ({
   locale = "ja",
   category,
   country,
+  timezone,
+  city,
 }: TagFilterOptions = {}) => {
   const posts = await getFilteredPosts({
     dateOrder: dateOrder,
     locale: locale,
     category: category,
     country: country,
+    timezone: timezone,
+    city: city,
   });
   const tags = posts.flatMap((post) => post.frontmatter.tags || []);
   // 最後にアルファベット順に並べている

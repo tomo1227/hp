@@ -1,9 +1,5 @@
-import { exec } from "node:child_process";
 import { promises as fs } from "node:fs";
-import { promisify } from "node:util";
 import prompts from "prompts";
-
-const execAsync = promisify(exec);
 
 const result = await prompts(
   [
@@ -39,6 +35,18 @@ const result = await prompts(
     },
     {
       type: "text",
+      name: "city",
+      message: "都市名を入力してください(任意):",
+    },
+    {
+      type: "text",
+      name: "timezone",
+      message: "timezoneを入力してください (例: Asia/Tokyo):",
+      validate: (value) =>
+        value.trim() ? true : "timezoneを入力してください。",
+    },
+    {
+      type: "text",
       name: "tags",
       message: "タグをカンマ区切りで入力してください:",
       validate: (value) =>
@@ -61,6 +69,8 @@ const title = result.title;
 const filename = result.filename;
 const description = result.description;
 const country = result.country;
+const city = result.city;
+const timezone = result.timezone;
 const category = result.category || "blog";
 const date = new Date();
 const tags = result.tags.split(",").map((tag) => tag.trim());
@@ -74,6 +84,8 @@ try {
   const frontMatter = `---
 title: ${title}
 ${country ? `country: ${country}` : ""}
+${city ? `city: ${city}` : ""}
+timezone: ${timezone}
 category: ${category}
 date: ${date.toISOString()}
 description: ${description}
