@@ -22,6 +22,7 @@ type Frontmatter = {
   title: string;
   timezone: string;
   country?: string;
+  region?: string;
   city?: string;
   category?: string;
   date: string;
@@ -45,6 +46,7 @@ const DEFAULT_FRONTMATTER: Frontmatter = {
   title: "",
   timezone: "Asia/Tokyo",
   country: "",
+  region: "",
   city: "",
   category: "photography",
   date: new Date().toISOString(),
@@ -77,6 +79,7 @@ const copy = {
   titleLabel: "タイトル",
   timezoneLabel: "Timezone",
   countryLabel: "国",
+  regionLabel: "地域",
   cityLabel: "都市",
   categoryLabel: "カテゴリ",
   dateLabel: "日付",
@@ -141,6 +144,7 @@ const splitFrontmatter = (content: string) => {
     if (key === "title") meta.title = value;
     if (key === "timezone") meta.timezone = value;
     if (key === "country") meta.country = value;
+    if (key === "region") meta.region = value;
     if (key === "city") meta.city = value;
     if (key === "category") meta.category = value;
     if (key === "date") meta.date = value;
@@ -168,6 +172,7 @@ const buildFrontmatter = (meta: Frontmatter, type: ContentType) => {
   const lines = ["---", `title: ${quote(meta.title)}`];
 
   lines.push(`timezone: ${quote(meta.timezone)}`);
+  if (meta.region) lines.push(`region: ${quote(meta.region)}`);
   if (meta.city) lines.push(`city: ${quote(meta.city)}`);
 
   if (type === "gallery") {
@@ -902,6 +907,20 @@ export default function AdminPage() {
                         setFrontmatter((prev) => ({
                           ...prev,
                           timezone: event.target.value,
+                        }))
+                      }
+                    />
+                  </label>
+
+                  <label>
+                    <span>{t.regionLabel}</span>
+                    <input
+                      type="text"
+                      value={frontmatter.region ?? ""}
+                      onChange={(event) =>
+                        setFrontmatter((prev) => ({
+                          ...prev,
+                          region: event.target.value,
                         }))
                       }
                     />

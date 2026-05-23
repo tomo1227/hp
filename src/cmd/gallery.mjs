@@ -35,6 +35,11 @@ const result = await prompts(
     },
     {
       type: "text",
+      name: "region",
+      message: "都道府県/州を入力してください:",
+    },
+    {
+      type: "text",
       name: "city",
       message: "都市名を入力してください(任意):",
     },
@@ -81,6 +86,7 @@ const title = result.title;
 const filename = result.filename;
 const description = result.description;
 const country = result.country;
+const region = result.region;
 const city = result.city;
 const timezone = result.timezone;
 const category = result.category || "photography";
@@ -100,6 +106,7 @@ try {
   const frontMatter = `---
 title: ${title}
 ${country ? `country: ${country}` : ""}
+${region ? `region: ${region}` : ""}
 ${city ? `city: ${city}` : ""}
 timezone: ${timezone}
 category: ${category}

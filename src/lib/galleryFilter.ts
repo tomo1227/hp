@@ -15,6 +15,7 @@ type GalleryFilterOption = {
   country?: string;
   timezone?: string;
   city?: string;
+  region?: string;
 };
 
 type TagFilterOptions = {
@@ -24,6 +25,7 @@ type TagFilterOptions = {
   country?: string;
   timezone?: string;
   city?: string;
+  region?: string;
 };
 
 type CountryFilterOptions = {
@@ -33,6 +35,7 @@ type CountryFilterOptions = {
   tag?: string;
   timezone?: string;
   city?: string;
+  region?: string;
 };
 
 const galleryBaseDir = (locale: Locale = "ja") =>
@@ -79,6 +82,7 @@ export const getFilteredPosts = async ({
   country,
   timezone,
   city,
+  region,
 }: GalleryFilterOption = {}) => {
   const contents = await getAllGalleries({ locale });
 
@@ -88,12 +92,14 @@ export const getFilteredPosts = async ({
     const matchesCountry = country ? frontmatter.country === country : true;
     const matchesTimezone = timezone ? frontmatter.timezone === timezone : true;
     const matchesCity = city ? frontmatter.city === city : true;
+    const matchesRegion = region ? frontmatter.region === region : true;
     return (
       matchesTag &&
       matchesCategory &&
       matchesCountry &&
       matchesTimezone &&
-      matchesCity
+      matchesCity &&
+      matchesRegion
     );
   });
 
@@ -137,6 +143,7 @@ export const getTags = async ({
   country,
   timezone,
   city,
+  region,
 }: TagFilterOptions = {}) => {
   const posts = await getFilteredPosts({
     dateOrder: dateOrder,
@@ -145,6 +152,7 @@ export const getTags = async ({
     country: country,
     timezone: timezone,
     city: city,
+    region: region,
   });
   const tags = posts.flatMap((post) => post.frontmatter.tags || []);
   // 最後にアルファベット順に並べている
@@ -162,6 +170,7 @@ export const getCountries = async ({
   tag,
   timezone,
   city,
+  region,
 }: CountryFilterOptions = {}) => {
   const posts = await getFilteredPosts({
     dateOrder: dateOrder,
@@ -170,6 +179,7 @@ export const getCountries = async ({
     tag: tag,
     timezone: timezone,
     city: city,
+    region: region,
   });
   const countries = posts.flatMap((post) =>
     post.frontmatter.country ? [post.frontmatter.country] : [],
