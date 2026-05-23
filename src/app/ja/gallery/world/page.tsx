@@ -2,7 +2,11 @@ import Link from "next/link";
 import WorldCountryPanel from "@/components/features/worldCountryPanel";
 import WorldMap from "@/components/ui/worldMap";
 import { getFilteredPosts } from "@/lib/galleryFilter";
-import { jaTranslate } from "@/lib/translator";
+import {
+  jaTranslate,
+  jaTranslateCountry,
+  jaTranslateRegion,
+} from "@/lib/translator";
 
 export default async function Page() {
   const japanPrefectures = new Set([
@@ -138,7 +142,7 @@ export default async function Page() {
                     className="world-top-chip"
                   >
                     <span className="world-top-name">
-                      {jaTranslate(item.country)}
+                      {jaTranslateCountry(item.country)}
                     </span>
                     <span className="world-top-count">
                       {item.count}
@@ -158,7 +162,7 @@ export default async function Page() {
                     className="world-top-chip"
                   >
                     <span className="world-top-name">
-                      {jaTranslate(item.prefecture)}
+                      {jaTranslateRegion(item.prefecture)}
                     </span>
                     <span className="world-top-count">
                       {item.count}

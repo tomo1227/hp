@@ -4,6 +4,8 @@ import matter from "gray-matter";
 import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
+import { getJstTimestamp } from "./date";
+import { jaTranslate } from "./translator";
 
 type dateOrder = "desc" | "asc";
 
@@ -13,6 +15,9 @@ type GalleryFilterOption = {
   category?: Category;
   tag?: string;
   country?: string;
+  timezone?: string;
+  city?: string;
+  region?: string;
 };
 
 type TagFilterOptions = {
@@ -20,6 +25,9 @@ type TagFilterOptions = {
   locale?: Locale;
   category?: Category;
   country?: string;
+  timezone?: string;
+  city?: string;
+  region?: string;
 };
 
 type CountryFilterOptions = {
@@ -27,6 +35,9 @@ type CountryFilterOptions = {
   locale?: Locale;
   category?: Category;
   tag?: string;
+  timezone?: string;
+  city?: string;
+  region?: string;
 };
 
 const galleryBaseDir = (locale: Locale = "ja") =>
@@ -71,6 +82,9 @@ export const getFilteredPosts = async ({
   category,
   tag,
   country,
+  timezone,
+  city,
+  region,
 }: GalleryFilterOption = {}) => {
   const contents = await getAllGalleries({ locale });
 
@@ -78,12 +92,22 @@ export const getFilteredPosts = async ({
     const matchesTag = tag ? frontmatter.tags?.includes(tag) : true;
     const matchesCategory = category ? frontmatter.category === category : true;
     const matchesCountry = country ? frontmatter.country === country : true;
-    return matchesTag && matchesCategory && matchesCountry;
+    const matchesTimezone = timezone ? frontmatter.timezone === timezone : true;
+    const matchesCity = city ? frontmatter.city === city : true;
+    const matchesRegion = region ? frontmatter.region === region : true;
+    return (
+      matchesTag &&
+      matchesCategory &&
+      matchesCountry &&
+      matchesTimezone &&
+      matchesCity &&
+      matchesRegion
+    );
   });
 
   const sortedContents = filteredContents.sort((a, b) => {
-    const dateA = new Date(a.frontmatter.date).getTime();
-    const dateB = new Date(b.frontmatter.date).getTime();
+    const dateA = getJstTimestamp(a.frontmatter.date);
+    const dateB = getJstTimestamp(b.frontmatter.date);
 
     return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
   });
@@ -119,17 +143,27 @@ export const getTags = async ({
   locale = "ja",
   category,
   country,
+  timezone,
+  city,
+  region,
 }: TagFilterOptions = {}) => {
   const posts = await getFilteredPosts({
     dateOrder: dateOrder,
     locale: locale,
     category: category,
     country: country,
+    timezone: timezone,
+    city: city,
+    region: region,
   });
   const tags = posts.flatMap((post) => post.frontmatter.tags || []);
-  // 最後にアルファベット順に並べている
+  // 日本語ロケールでは翻訳後の表示名でソートする
   const uniqueTags = [...new Set(tags.filter((tag) => tag))].sort((a, b) =>
-    a.localeCompare(b),
+    locale === "ja"
+      ? jaTranslate(a).localeCompare(jaTranslate(b), "ja", {
+          sensitivity: "base",
+        })
+      : a.localeCompare(b),
   );
 
   return uniqueTags;
@@ -140,12 +174,18 @@ export const getCountries = async ({
   locale = "ja",
   category,
   tag,
+  timezone,
+  city,
+  region,
 }: CountryFilterOptions = {}) => {
   const posts = await getFilteredPosts({
     dateOrder: dateOrder,
     locale: locale,
     category: category,
     tag: tag,
+    timezone: timezone,
+    city: city,
+    region: region,
   });
   const countries = posts.flatMap((post) =>
     post.frontmatter.country ? [post.frontmatter.country] : [],

@@ -1,9 +1,5 @@
-import { exec } from "node:child_process";
 import { promises as fs } from "node:fs";
-import { promisify } from "node:util";
 import prompts from "prompts";
-
-const execAsync = promisify(exec);
 
 const result = await prompts(
   [
@@ -36,6 +32,23 @@ const result = await prompts(
       type: "text",
       name: "country",
       message: "国名を入力してください:",
+    },
+    {
+      type: "text",
+      name: "region",
+      message: "都道府県/州を入力してください:",
+    },
+    {
+      type: "text",
+      name: "city",
+      message: "都市名を入力してください(任意):",
+    },
+    {
+      type: "text",
+      name: "timezone",
+      message: "timezoneを入力してください (例: Asia/Tokyo):",
+      validate: (value) =>
+        value.trim() ? true : "timezoneを入力してください。",
     },
     {
       type: "text",
@@ -73,6 +86,9 @@ const title = result.title;
 const filename = result.filename;
 const description = result.description;
 const country = result.country;
+const region = result.region;
+const city = result.city;
+const timezone = result.timezone;
 const category = result.category || "photography";
 const date = new Date();
 const tags = result.tags.split(",").map((tag) => tag.trim());
@@ -83,6 +99,31 @@ const year = result.year.trim();
 const dirPath = `./src/_galleries/ja/(${year})`;
 const filePath = `${dirPath}/${filename}.mdx`;
 
+const toFrontmatterDateTime = (value = new Date()) => {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  const parts = formatter.formatToParts(value);
+  const yearPart = parts.find((part) => part.type === "year")?.value;
+  const monthPart = parts.find((part) => part.type === "month")?.value;
+  const dayPart = parts.find((part) => part.type === "day")?.value;
+  const hourPart = parts.find((part) => part.type === "hour")?.value;
+  const minutePart = parts.find((part) => part.type === "minute")?.value;
+
+  if (!yearPart || !monthPart || !dayPart || !hourPart || !minutePart) {
+    return "";
+  }
+
+  return `${yearPart}-${monthPart}-${dayPart} ${hourPart}:${minutePart}`;
+};
+
 try {
   await fs.mkdir(dirPath, { recursive: true });
   await fs.writeFile(filePath, "", "utf8");
@@ -90,8 +131,11 @@ try {
   const frontMatter = `---
 title: ${title}
 ${country ? `country: ${country}` : ""}
+${region ? `region: ${region}` : ""}
+${city ? `city: ${city}` : ""}
+timezone: ${timezone}
 category: ${category}
-date: ${date.toISOString()}
+date: ${toFrontmatterDateTime(date)}
 description: ${description}
 tags:
 ${tags.map((tag) => `  - ${tag}`).join("\n")}

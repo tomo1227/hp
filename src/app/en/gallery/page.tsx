@@ -12,6 +12,9 @@ export default async function Page() {
     title: gallery.frontmatter.title,
     image: `${gallery.frontmatter.galleryImage}`,
     tags: gallery.frontmatter.tags ?? [],
+    city: gallery.frontmatter.city,
+    region: gallery.frontmatter.region,
+    country: gallery.frontmatter.country,
     locale: "en" as const,
   }));
 

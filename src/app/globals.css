@@ -51,7 +51,8 @@ body{
 }
 
 #body-container {
-    @apply flex flex-col items-center min-h-full w-full;
+    @apply flex flex-col items-center w-full;
+    min-height: 100dvh;
 }
 
 #main-contents {
@@ -64,6 +65,7 @@ main {
 
 .site-footer {
     width: 100%;
+    margin-top: auto;
     border-top: 1px solid rgba(23, 23, 23, 0.1);
     padding: 20px 16px 28px;
     display: flex;

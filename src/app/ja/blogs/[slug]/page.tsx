@@ -5,7 +5,7 @@ import { BlogBookmarkButton } from "@/components/features/blogBookmarks";
 import BlogShareButtons from "@/components/features/blogShareButtons";
 import { Paid } from "@/components/features/mdxComponents/paid";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
-import { formattedDate } from "@/lib/date";
+import { formattedDate, getJstYear } from "@/lib/date";
 import { jaTranslate } from "@/lib/translator";
 
 const parser = new Parser(jaModel);
@@ -65,7 +65,7 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "ja");
-  const year = await new Date(frontmatter.date).getUTCFullYear();
+  const year = getJstYear(frontmatter.date);
   const Component = require(`@/_posts/ja/(${year})/${slug}.mdx`).default;
   const splittedTitle = parser.parse(frontmatter.title);
   const canonicalUrl = `https://tomokiota.com/ja/blogs/${slug}`;

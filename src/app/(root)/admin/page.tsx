@@ -7,6 +7,7 @@ import type { ComponentType, ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
+import { toFrontmatterDateTime } from "@/lib/date";
 
 type Locale = "ja" | "en";
 
@@ -20,7 +21,10 @@ type ListItem = {
 
 type Frontmatter = {
   title: string;
+  timezone: string;
   country?: string;
+  region?: string;
+  city?: string;
   category?: string;
   date: string;
   description: string;
@@ -41,9 +45,12 @@ const CLOUD_FRONT_BASE =
 
 const DEFAULT_FRONTMATTER: Frontmatter = {
   title: "",
+  timezone: "Asia/Tokyo",
   country: "",
+  region: "",
+  city: "",
   category: "photography",
-  date: new Date().toISOString(),
+  date: toFrontmatterDateTime(),
   description: "",
   tags: [],
   ogpImage: "",
@@ -71,7 +78,10 @@ const copy = {
   save: "PR作成",
   preview: "プレビュー",
   titleLabel: "タイトル",
+  timezoneLabel: "Timezone",
   countryLabel: "国",
+  regionLabel: "地域",
+  cityLabel: "都市",
   categoryLabel: "カテゴリ",
   dateLabel: "日付",
   descLabel: "説明",
@@ -133,7 +143,10 @@ const splitFrontmatter = (content: string) => {
     const key = rawKey.trim();
     const value = rest.join(":").trim().replace(/^"|"$/g, "");
     if (key === "title") meta.title = value;
+    if (key === "timezone") meta.timezone = value;
     if (key === "country") meta.country = value;
+    if (key === "region") meta.region = value;
+    if (key === "city") meta.city = value;
     if (key === "category") meta.category = value;
     if (key === "date") meta.date = value;
     if (key === "description") meta.description = value;
@@ -159,12 +172,16 @@ const quote = (value: string) => {
 const buildFrontmatter = (meta: Frontmatter, type: ContentType) => {
   const lines = ["---", `title: ${quote(meta.title)}`];
 
+  lines.push(`timezone: ${quote(meta.timezone)}`);
+  if (meta.region) lines.push(`region: ${quote(meta.region)}`);
+  if (meta.city) lines.push(`city: ${quote(meta.city)}`);
+
   if (type === "gallery") {
     lines.push(`country: ${quote(meta.country ?? "")}`);
     lines.push(`category: ${quote(meta.category ?? "photography")}`);
   }
 
-  lines.push(`date: ${quote(meta.date)}`);
+  lines.push(`date: ${meta.date}`);
   lines.push(`description: ${quote(meta.description)}`);
 
   const tags = meta.tags.filter(Boolean);
@@ -882,6 +899,48 @@ export default function AdminPage() {
                   <h2>{t.preview}</h2>
                 </div>
                 <div className="admin-form">
+                  <label>
+                    <span>{t.timezoneLabel}</span>
+                    <input
+                      type="text"
+                      value={frontmatter.timezone}
+                      onChange={(event) =>
+                        setFrontmatter((prev) => ({
+                          ...prev,
+                          timezone: event.target.value,
+                        }))
+                      }
+                    />
+                  </label>
+
+                  <label>
+                    <span>{t.regionLabel}</span>
+                    <input
+                      type="text"
+                      value={frontmatter.region ?? ""}
+                      onChange={(event) =>
+                        setFrontmatter((prev) => ({
+                          ...prev,
+                          region: event.target.value,
+                        }))
+                      }
+                    />
+                  </label>
+
+                  <label>
+                    <span>{t.cityLabel}</span>
+                    <input
+                      type="text"
+                      value={frontmatter.city ?? ""}
+                      onChange={(event) =>
+                        setFrontmatter((prev) => ({
+                          ...prev,
+                          city: event.target.value,
+                        }))
+                      }
+                    />
+                  </label>
+
                   <label>
                     <span>{t.titleLabel}</span>
                     <input

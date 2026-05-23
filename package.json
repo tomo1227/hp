@@ -7,6 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "test:dict": "node --test src/tests/dictionary-coverage.test.mjs",
     "lint": "biome check --write ./src --diagnostic-level=error",
     "fix": "biome check --write ./src",
     "format": "biome format ./src --write",
