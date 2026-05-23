@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { GalleryFavoriteButton } from "@/components/features/galleryFavorites";
+import { getJstYear } from "@/lib/date";
 import { getFilteredPosts, getPostBySlug } from "@/lib/galleryFilter";
 
 export async function generateStaticParams() {
@@ -58,7 +59,7 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "en");
-  const year = await new Date(frontmatter.date).getUTCFullYear();
+  const year = getJstYear(frontmatter.date);
   const Component = require(`@/_galleries/en/(${year})/${slug}.mdx`).default;
 
   return (

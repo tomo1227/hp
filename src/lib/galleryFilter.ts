@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
+import { getJstTimestamp } from "./date";
 import { jaTranslate } from "./translator";
 
 type dateOrder = "desc" | "asc";
@@ -105,8 +106,8 @@ export const getFilteredPosts = async ({
   });
 
   const sortedContents = filteredContents.sort((a, b) => {
-    const dateA = new Date(a.frontmatter.date).getTime();
-    const dateB = new Date(b.frontmatter.date).getTime();
+    const dateA = getJstTimestamp(a.frontmatter.date);
+    const dateB = getJstTimestamp(b.frontmatter.date);
 
     return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
   });
