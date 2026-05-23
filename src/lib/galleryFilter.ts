@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
+import { jaTranslate } from "./translator";
 
 type dateOrder = "desc" | "asc";
 
@@ -155,9 +156,13 @@ export const getTags = async ({
     region: region,
   });
   const tags = posts.flatMap((post) => post.frontmatter.tags || []);
-  // 最後にアルファベット順に並べている
+  // 日本語ロケールでは翻訳後の表示名でソートする
   const uniqueTags = [...new Set(tags.filter((tag) => tag))].sort((a, b) =>
-    a.localeCompare(b),
+    locale === "ja"
+      ? jaTranslate(a).localeCompare(jaTranslate(b), "ja", {
+          sensitivity: "base",
+        })
+      : a.localeCompare(b),
   );
 
   return uniqueTags;
