@@ -54,7 +54,6 @@ const countryFlagMap: Record<string, string> = {
   Vietnam: "🇻🇳",
   Thailand: "🇹🇭",
   Anguilla: "🇦🇮",
-  Anguila: "🇦🇮",
   "Saint Martin": "🇲🇫",
   "Sint Maarten": "🇸🇽",
   India: "🇮🇳",

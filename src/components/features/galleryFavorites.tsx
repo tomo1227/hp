@@ -4,7 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { rgbDataURL } from "@/lib/blurImage";
-import { jaTranslate } from "@/lib/translator";
+import {
+  jaTranslate,
+  jaTranslateCity,
+  jaTranslateCountry,
+  jaTranslateRegion,
+} from "@/lib/translator";
 
 type Locale = "ja" | "en";
 
@@ -303,6 +308,48 @@ export const GalleryFavoritesTabs = ({
     [items],
   );
 
+  const availableRegions = useMemo(
+    () =>
+      regions.filter((region) => {
+        if (selectedCountry === "all") {
+          return true;
+        }
+        return items.some(
+          (item) => item.country === selectedCountry && item.region === region,
+        );
+      }),
+    [items, regions, selectedCountry],
+  );
+
+  const availableCities = useMemo(
+    () =>
+      cities.filter((city) => {
+        return items.some((item) => {
+          const countryMatched =
+            selectedCountry === "all" ? true : item.country === selectedCountry;
+          const regionMatched =
+            selectedRegion === "all" ? true : item.region === selectedRegion;
+          return countryMatched && regionMatched && item.city === city;
+        });
+      }),
+    [cities, items, selectedCountry, selectedRegion],
+  );
+
+  useEffect(() => {
+    if (
+      selectedRegion !== "all" &&
+      !availableRegions.includes(selectedRegion)
+    ) {
+      setSelectedRegion("all");
+    }
+  }, [availableRegions, selectedRegion]);
+
+  useEffect(() => {
+    if (selectedCity !== "all" && !availableCities.includes(selectedCity)) {
+      setSelectedCity("all");
+    }
+  }, [availableCities, selectedCity]);
+
   const visibleItems = items.filter((item) => {
     const matchesFavorite =
       filter === "favorites" ? favoriteSet.has(item.slug) : true;
@@ -548,7 +595,7 @@ export const GalleryFavoritesTabs = ({
                 <option value="all">{allCountriesLabel}</option>
                 {countries.map((country) => (
                   <option key={country} value={country}>
-                    {country}
+                    {locale === "ja" ? jaTranslateCountry(country) : country}
                   </option>
                 ))}
               </select>
@@ -562,9 +609,9 @@ export const GalleryFavoritesTabs = ({
                 aria-label={allRegionsLabel}
               >
                 <option value="all">{allRegionsLabel}</option>
-                {regions.map((region) => (
+                {availableRegions.map((region) => (
                   <option key={region} value={region}>
-                    {region}
+                    {locale === "ja" ? jaTranslateRegion(region) : region}
                   </option>
                 ))}
               </select>
@@ -578,9 +625,9 @@ export const GalleryFavoritesTabs = ({
                 aria-label={allCitiesLabel}
               >
                 <option value="all">{allCitiesLabel}</option>
-                {cities.map((city) => (
+                {availableCities.map((city) => (
                   <option key={city} value={city}>
-                    {city}
+                    {locale === "ja" ? jaTranslateCity(city) : city}
                   </option>
                 ))}
               </select>
