@@ -99,6 +99,31 @@ const year = result.year.trim();
 const dirPath = `./src/_galleries/ja/(${year})`;
 const filePath = `${dirPath}/${filename}.mdx`;
 
+const toFrontmatterDateTime = (value = new Date()) => {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  const parts = formatter.formatToParts(value);
+  const yearPart = parts.find((part) => part.type === "year")?.value;
+  const monthPart = parts.find((part) => part.type === "month")?.value;
+  const dayPart = parts.find((part) => part.type === "day")?.value;
+  const hourPart = parts.find((part) => part.type === "hour")?.value;
+  const minutePart = parts.find((part) => part.type === "minute")?.value;
+
+  if (!yearPart || !monthPart || !dayPart || !hourPart || !minutePart) {
+    return "";
+  }
+
+  return `${yearPart}-${monthPart}-${dayPart} ${hourPart}:${minutePart}`;
+};
+
 try {
   await fs.mkdir(dirPath, { recursive: true });
   await fs.writeFile(filePath, "", "utf8");
@@ -110,7 +135,7 @@ ${region ? `region: ${region}` : ""}
 ${city ? `city: ${city}` : ""}
 timezone: ${timezone}
 category: ${category}
-date: ${date.toISOString()}
+date: ${toFrontmatterDateTime(date)}
 description: ${description}
 tags:
 ${tags.map((tag) => `  - ${tag}`).join("\n")}

@@ -10,21 +10,20 @@ const parseNumberish = (value: string | undefined, fallback = 0) => {
   return Number.isNaN(parsed) ? fallback : parsed;
 };
 
-const normalizeDateInput = (date: DateInput): string => {
-  if (date instanceof Date) {
-    return date.toISOString();
-  }
-  if (typeof date === "string") {
-    return date;
-  }
-  if (typeof date === "number") {
-    return new Date(date).toISOString();
-  }
-  return "";
-};
-
 export const parseDateAsJst = (date: DateInput): Date => {
-  const normalizedDate = normalizeDateInput(date).trim();
+  if (date instanceof Date) {
+    return new Date(date.getTime());
+  }
+
+  if (typeof date === "number") {
+    return new Date(date);
+  }
+
+  if (typeof date !== "string") {
+    return new Date(Number.NaN);
+  }
+
+  const normalizedDate = date.trim();
   if (!normalizedDate) {
     return new Date(Number.NaN);
   }
@@ -55,6 +54,36 @@ export const parseDateAsJst = (date: DateInput): Date => {
 
 export const getJstTimestamp = (date: DateInput): number => {
   return parseDateAsJst(date).getTime();
+};
+
+export const toFrontmatterDateTime = (date: DateInput = new Date()): string => {
+  const parsedDate = parseDateAsJst(date);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return "";
+  }
+
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: JST_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(parsedDate);
+
+  const year = parts.find((part) => part.type === "year")?.value;
+  const month = parts.find((part) => part.type === "month")?.value;
+  const day = parts.find((part) => part.type === "day")?.value;
+  const hour = parts.find((part) => part.type === "hour")?.value;
+  const minute = parts.find((part) => part.type === "minute")?.value;
+
+  if (!year || !month || !day || !hour || !minute) {
+    return "";
+  }
+
+  return `${year}-${month}-${day} ${hour}:${minute}`;
 };
 
 export const getJstYear = (date: DateInput): number => {

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getFilteredPosts as getBlogPosts } from "@/lib/blogFilter";
+import { parseDateAsJst } from "@/lib/date";
 import { getFilteredPosts as getGalleryPosts } from "@/lib/galleryFilter";
 
 const BASE_URL = "https://tomokiota.com";
@@ -38,28 +39,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogRoutes: MetadataRoute.Sitemap = blogJa.map((post) => ({
     url: `${BASE_URL}/ja/blogs/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
+    lastModified: parseDateAsJst(post.frontmatter.date),
     changeFrequency: "weekly",
     priority: 0.7,
   }));
 
   const blogRoutesEn: MetadataRoute.Sitemap = blogEn.map((post) => ({
     url: `${BASE_URL}/en/blogs/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
+    lastModified: parseDateAsJst(post.frontmatter.date),
     changeFrequency: "weekly",
     priority: 0.7,
   }));
 
   const galleryRoutes: MetadataRoute.Sitemap = galleryJa.map((post) => ({
     url: `${BASE_URL}/ja/gallery/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
+    lastModified: parseDateAsJst(post.frontmatter.date),
     changeFrequency: "monthly",
     priority: 0.5,
   }));
 
   const galleryRoutesEn: MetadataRoute.Sitemap = galleryEn.map((post) => ({
     url: `${BASE_URL}/en/gallery/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
+    lastModified: parseDateAsJst(post.frontmatter.date),
     changeFrequency: "monthly",
     priority: 0.5,
   }));

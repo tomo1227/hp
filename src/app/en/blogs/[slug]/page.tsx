@@ -4,7 +4,7 @@ import { BlogBookmarkButton } from "@/components/features/blogBookmarks";
 import BlogShareButtons from "@/components/features/blogShareButtons";
 import { Paid } from "@/components/features/mdxComponents/paid";
 import { getFilteredPosts, getPostBySlug } from "@/lib/blogFilter";
-import { formattedDateEn } from "@/lib/date";
+import { formattedDateEn, getJstYear } from "@/lib/date";
 
 export async function generateStaticParams() {
   const posts = await getFilteredPosts({ dateOrder: "desc", locale: "en" });
@@ -58,7 +58,7 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const { frontmatter } = await getPostBySlug(slug, "en");
-  const year = await new Date(frontmatter.date).getUTCFullYear();
+  const year = getJstYear(frontmatter.date);
   const Component = require(`@/_posts/en/(${year})/${slug}.mdx`).default;
   const canonicalUrl = `https://tomokiota.com/en/blogs/${slug}`;
   const shareText = frontmatter.title || "tomokiota.com";

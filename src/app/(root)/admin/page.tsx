@@ -7,6 +7,7 @@ import type { ComponentType, ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
+import { toFrontmatterDateTime } from "@/lib/date";
 
 type Locale = "ja" | "en";
 
@@ -49,7 +50,7 @@ const DEFAULT_FRONTMATTER: Frontmatter = {
   region: "",
   city: "",
   category: "photography",
-  date: new Date().toISOString(),
+  date: toFrontmatterDateTime(),
   description: "",
   tags: [],
   ogpImage: "",
@@ -180,7 +181,7 @@ const buildFrontmatter = (meta: Frontmatter, type: ContentType) => {
     lines.push(`category: ${quote(meta.category ?? "photography")}`);
   }
 
-  lines.push(`date: ${quote(meta.date)}`);
+  lines.push(`date: ${meta.date}`);
   lines.push(`description: ${quote(meta.description)}`);
 
   const tags = meta.tags.filter(Boolean);
