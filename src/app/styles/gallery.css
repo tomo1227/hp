@@ -151,6 +151,7 @@
 
 .gallery-list-header {
   @apply flex justify-end items-center gap-3 flex-wrap;
+  container-type: inline-size;
 }
 
 .gallery-tabs {
@@ -159,6 +160,52 @@
 
 .gallery-columns {
   @apply inline-flex gap-1 rounded-full bg-slate-100 dark:bg-slate-800 p-1;
+}
+
+.gallery-quick-links {
+  @apply inline-flex items-center gap-2;
+}
+
+.gallery-quick-link {
+  @apply inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-600;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  color: #334155;
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.gallery-quick-link svg {
+  display: block;
+}
+
+.gallery-quick-link:hover {
+  background: #f1f5f9;
+}
+
+.gallery-filter-toggle {
+  @apply hidden rounded-full border border-slate-300 dark:border-slate-600;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  line-height: 1;
+  color: #334155;
+  background: #ffffff;
+}
+
+.gallery-filter-toggle > span {
+  @apply inline-flex items-center justify-center;
+  width: 1rem;
+  height: 1rem;
+}
+
+.gallery-filter-toggle svg {
+  display: block;
+}
+
+.gallery-filter-toggle:hover {
+  background: #f1f5f9;
 }
 
 .gallery-column-button {
@@ -197,13 +244,101 @@
 }
 
 .gallery-tag-select {
-  @apply text-xs font-semibold px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700;
+  @apply text-xs font-semibold px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700;
   color: #475569;
+  min-width: 130px;
+  white-space: nowrap;
+}
+
+.gallery-filter-panel {
+  @apply inline-flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80;
+  backdrop-filter: blur(4px);
+  padding: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
+.gallery-filter-grid {
+  @apply inline-flex items-center gap-2;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.gallery-filter-reset {
+  @apply text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-600;
+  color: #334155;
+  background: #f8fafc;
+  white-space: nowrap;
+}
+
+.gallery-filter-reset:hover {
+  background: #e2e8f0;
 }
 
 .gallery-empty {
   @apply text-center text-sm;
   color: #94a3b8;
+}
+
+.gallery-pagination {
+  @apply flex justify-center items-center gap-2;
+  margin: 2rem 0 1rem 0;
+}
+
+.gallery-pagination-arrow {
+  @apply px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 font-semibold;
+  color: #334155;
+  background: #ffffff;
+  transition: background 0.2s, color 0.2s;
+}
+
+.gallery-pagination-arrow:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.gallery-pagination-arrow:disabled {
+  @apply cursor-not-allowed;
+  color: #94a3b8;
+  background: #f8fafc;
+}
+
+.gallery-pagination-compact {
+  @apply inline-flex items-center gap-2 font-semibold;
+  color: #334155;
+}
+
+.gallery-pagination-select {
+  @apply px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600;
+  background: #ffffff;
+}
+
+.gallery-pagination-total {
+  color: #64748b;
+}
+
+.gallery-pagination-ellipsis {
+  @apply px-1;
+  color: #94a3b8;
+}
+
+.gallery-pagination-page {
+  @apply px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600;
+  min-width: 2.25rem;
+  background: #ffffff;
+  color: #334155;
+  transition: all 0.2s;
+}
+
+.gallery-pagination-page:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.gallery-pagination-page.is-active {
+  border-color: #0284c7;
+  color: #0284c7;
+  background: #e0f2fe;
+  @apply font-bold;
 }
 
 @media (max-width: 1100px) {
@@ -238,6 +373,40 @@
   }
   .card-title {
     @apply text-sm;
+  }
+
+  .gallery-pagination {
+    gap: 0.4rem;
+  }
+}
+
+@container (max-width: 860px) {
+  .gallery-filter-toggle {
+    @apply inline-flex items-center justify-center;
+  }
+
+  .gallery-filter-panel {
+    @apply w-full items-stretch;
+    display: none;
+  }
+
+  .gallery-filter-panel.is-open {
+    display: inline-flex;
+  }
+
+  .gallery-filter-grid {
+    @apply grid w-full;
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-tag-filter {
+    @apply w-full;
+  }
+
+  .gallery-tag-select,
+  .gallery-filter-reset {
+    @apply w-full;
+    min-width: 0;
   }
 }
 
