@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { rgbDataURL } from "@/lib/blurImage";
 import { getFilteredPosts, getTags } from "@/lib/galleryFilter";
-import { jaTranslate } from "@/lib/translator";
+import { jaTranslate, jaTranslateCountry } from "@/lib/translator";
 
 export async function generateStaticParams() {
   const countries = await getTags();
@@ -25,7 +25,7 @@ export default async function Page({
   return (
     <div id="tag-lists-wrapper">
       <Link href={`/ja/gallery/world`}>
-        <h1 id="tag-lists-title">{jaTranslate(country)}</h1>
+        <h1 id="tag-lists-title">{jaTranslateCountry(country)}</h1>
       </Link>
       <section className="cards-container">
         {galleries.map((gallery) => (

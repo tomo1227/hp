@@ -48,6 +48,34 @@ const DEFAULT_COLUMNS = 5;
 const MIN_COLUMNS = 1;
 const MAX_COLUMNS = 7;
 
+const normalizeLocationValue = (value?: string): string => value?.trim() ?? "";
+
+const compareByLocale = (a: string, b: string, locale: Locale): number =>
+  a.localeCompare(b, locale === "ja" ? "ja" : "en", {
+    sensitivity: "base",
+  });
+
+const uniqueSortedLocations = (
+  values: Array<string | undefined>,
+  locale: Locale,
+  translateForJa?: (value: string) => string,
+): string[] => {
+  const normalizedValues = [
+    ...new Set(
+      values
+        .map((value) => normalizeLocationValue(value))
+        .filter((value) => value.length > 0),
+    ),
+  ];
+
+  return normalizedValues.sort((a, b) => {
+    if (locale !== "ja" || !translateForJa) {
+      return compareByLocale(a, b, locale);
+    }
+    return compareByLocale(translateForJa(a), translateForJa(b), locale);
+  });
+};
+
 const normalizeItem = (item: FavoriteItem): FavoriteItem => ({
   slug: item.slug,
   title: item.title,
@@ -284,28 +312,30 @@ export const GalleryFavoritesTabs = ({
 
   const cities = useMemo(
     () =>
-      [
-        ...new Set(items.map((item) => item.city).filter(Boolean) as string[]),
-      ].sort((a, b) => a.localeCompare(b)),
-    [items],
+      uniqueSortedLocations(
+        items.map((item) => item.city),
+        locale,
+        jaTranslateCity,
+      ),
+    [items, locale],
   );
   const regions = useMemo(
     () =>
-      [
-        ...new Set(
-          items.map((item) => item.region).filter(Boolean) as string[],
-        ),
-      ].sort((a, b) => a.localeCompare(b)),
-    [items],
+      uniqueSortedLocations(
+        items.map((item) => item.region),
+        locale,
+        jaTranslateRegion,
+      ),
+    [items, locale],
   );
   const countries = useMemo(
     () =>
-      [
-        ...new Set(
-          items.map((item) => item.country).filter(Boolean) as string[],
-        ),
-      ].sort((a, b) => a.localeCompare(b)),
-    [items],
+      uniqueSortedLocations(
+        items.map((item) => item.country),
+        locale,
+        jaTranslateCountry,
+      ),
+    [items, locale],
   );
 
   const availableRegions = useMemo(
@@ -315,7 +345,9 @@ export const GalleryFavoritesTabs = ({
           return true;
         }
         return items.some(
-          (item) => item.country === selectedCountry && item.region === region,
+          (item) =>
+            normalizeLocationValue(item.country) === selectedCountry &&
+            normalizeLocationValue(item.region) === region,
         );
       }),
     [items, regions, selectedCountry],
@@ -326,10 +358,18 @@ export const GalleryFavoritesTabs = ({
       cities.filter((city) => {
         return items.some((item) => {
           const countryMatched =
-            selectedCountry === "all" ? true : item.country === selectedCountry;
+            selectedCountry === "all"
+              ? true
+              : normalizeLocationValue(item.country) === selectedCountry;
           const regionMatched =
-            selectedRegion === "all" ? true : item.region === selectedRegion;
-          return countryMatched && regionMatched && item.city === city;
+            selectedRegion === "all"
+              ? true
+              : normalizeLocationValue(item.region) === selectedRegion;
+          return (
+            countryMatched &&
+            regionMatched &&
+            normalizeLocationValue(item.city) === city
+          );
         });
       }),
     [cities, items, selectedCountry, selectedRegion],
@@ -356,13 +396,17 @@ export const GalleryFavoritesTabs = ({
     const matchesTag =
       selectedTag === "all" ? true : item.tags.includes(selectedTag);
     const matchesCity =
-      selectedCity === "all" ? true : (item.city ?? "") === selectedCity;
+      selectedCity === "all"
+        ? true
+        : normalizeLocationValue(item.city) === selectedCity;
     const matchesRegion =
-      selectedRegion === "all" ? true : (item.region ?? "") === selectedRegion;
+      selectedRegion === "all"
+        ? true
+        : normalizeLocationValue(item.region) === selectedRegion;
     const matchesCountry =
       selectedCountry === "all"
         ? true
-        : (item.country ?? "") === selectedCountry;
+        : normalizeLocationValue(item.country) === selectedCountry;
     return (
       matchesFavorite &&
       matchesTag &&

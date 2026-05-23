@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import { jaTranslate } from "@/lib/translator";
+import { jaTranslate, jaTranslateCountry } from "@/lib/translator";
 import type Locale from "@/types/locale";
 
 type CountryPanelLabels = {
@@ -73,7 +73,7 @@ export default function WorldCountryPanel({
   const items = useMemo(() => {
     return countries
       .map((name) => {
-        const label = locale === "ja" ? jaTranslate(name) : name;
+        const label = locale === "ja" ? jaTranslateCountry(name) : name;
         return {
           name,
           label,
