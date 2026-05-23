@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path, { join } from "node:path";
 import type Locale from "@/types/locale";
+import { getJstTimestamp } from "./date";
 
 const itineraryDir = () => {
   return join(process.cwd(), "src/_itineraries/");
@@ -23,12 +24,10 @@ export const getFilteredItineraries = async ({
 
   const sortedContents = jsonData.sort(
     (a: { date: string }, b: { date: string }) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
+      const dateA = getJstTimestamp(a.date);
+      const dateB = getJstTimestamp(b.date);
 
-      return dateOrder === "asc"
-        ? dateA.getTime() - dateB.getTime()
-        : dateB.getTime() - dateA.getTime();
+      return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
     },
   );
 
