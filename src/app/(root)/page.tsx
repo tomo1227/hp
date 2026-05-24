@@ -23,9 +23,10 @@ export default function Page() {
               placeholder="blur"
               blurDataURL={rgbDataURL(192, 192, 192)}
               alt="top-page-jpg"
-              width={300}
-              height={300}
+              width={1500}
+              height={1500}
               className="w-full h-auto"
+              sizes="300px"
               priority
             />
           </Link>

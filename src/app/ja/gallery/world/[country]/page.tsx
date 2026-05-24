@@ -37,8 +37,8 @@ export default async function Page({
             <Image
               src={`${gallery.frontmatter.galleryImage}`}
               alt={`${gallery.frontmatter.title}-img`}
-              width={800}
-              height={800}
+              width={1000}
+              height={1000}
               id={`${gallery.slug}-image`}
               className="aspect-square object-cover object-center w-full h-auto"
               placeholder="blur"
