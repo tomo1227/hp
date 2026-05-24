@@ -1,12 +1,11 @@
 import Image, { type ImageProps } from "next/image";
-import React from "react";
 import Zoom from "react-medium-image-zoom";
 
 export const BlogImage = async (props: ImageProps) => {
   const {
     alt = props.alt || "",
-    width = props.width || "400",
-    height = props.height || "400",
+    width = props.width || "2480",
+    height = props.height || "2480",
     ...blogImageProps
   } = props;
   return (

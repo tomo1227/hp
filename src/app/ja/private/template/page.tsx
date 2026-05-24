@@ -58,8 +58,8 @@ export default async function Page() {
               <Image
                 src={`${image.compressedUrl}`}
                 alt={`${image.id}`}
-                width={800}
-                height={800}
+                width={1000}
+                height={1000}
                 id={`${image.id}`}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(192, 192, 192)}

@@ -22,8 +22,8 @@ export default async function Page() {
           <Image
             src={`${post.frontmatter.galleryImage}`}
             alt={`${post.frontmatter.title}-img`}
-            width={800}
-            height={800}
+            width={1000}
+            height={1000}
             id={`${post.slug}-image`}
             className="aspect-square object-cover object-[center_30%] w-full h-auto"
             placeholder="blur"
