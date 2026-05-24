@@ -34,6 +34,10 @@ post:
 gal:
 	pnpm gal
 
+.PHONY: test
+test:
+	pnpm -s test:dict
+
 .PHONY: up
 up:
 	docker compose up -d
