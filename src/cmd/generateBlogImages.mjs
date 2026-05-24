@@ -49,12 +49,14 @@ rl.question(
           // 縦長判定
           const isVertical = dimensions.height > dimensions.width;
 
-          const width = isVertical ? 500 : 1000;
+          const sizeAttributes = isVertical
+            ? `width={2480} sizes="(max-width: 768px) 100vw, 500px"`
+            : `width={3720} sizes="(max-width: 768px) 100vw, 1500px"`;
 
           // 最初の5枚だけ priority
           const priority = i <= 5 ? " priority={true}" : "";
 
-          const tag = `<BlogImage src="${imageUrl}" width={${width}}${priority} />\n`;
+          const tag = `<BlogImage src="${imageUrl}" ${sizeAttributes}${priority} />\n`;
 
           output += tag;
 
