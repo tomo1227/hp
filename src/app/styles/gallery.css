@@ -87,6 +87,10 @@
   @apply object-[85%] scale-110;
 }
 
+#guanajuato-drone-image {
+  @apply scale-170;
+}
+
 #gallery-contents{
   @apply mx-3;
 }
