@@ -18,8 +18,8 @@ importers:
         specifier: ^3.1062.0
         version: 3.1062.0
       '@aws-sdk/s3-request-presigner':
-        specifier: ^3.1004.0
-        version: 3.1043.0
+        specifier: ^3.1063.0
+        version: 3.1063.0
       '@formatjs/intl-localematcher':
         specifier: ^0.8.8
         version: 0.8.8
@@ -125,10 +125,10 @@ importers:
     devDependencies:
       '@aws-amplify/backend':
         specifier: ^1.21.0
-        version: 1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+        version: 1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/backend-cli':
         specifier: ^1.8.2
-        version: 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)
+        version: 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)
       '@biomejs/biome':
         specifier: 2.4.15
         version: 2.4.15
@@ -934,6 +934,10 @@ packages:
     resolution: {integrity: sha512-r8o4h2K7j6P9ngno+8ei0aK0U/4JwDb7A2fMMxGVoSqDN8AFlIzSDeZHME9LcVLR2codyhtr1WAAg+/nmkeeMA==}
     engines: {node: '>=20.0.0'}
 
+  '@aws-sdk/core@3.974.18':
+    resolution: {integrity: sha512-JDYCPI0j7zGrzXTDFsLB346cxss7J/AxH7+O0MzWlqppJBEyB9Qe6TQXRL6iwLUo/xZkNv9KFmBL2hqElmwW0g==}
+    engines: {node: '>=20.0.0'}
+
   '@aws-sdk/credential-provider-cognito-identity@3.972.31':
     resolution: {integrity: sha512-W5JtzDp3ejzhOOknXlnt+vJsNN2GZdAcBK+hR7HQ1DCacXqS0UpmnIyihIU7CK0IB+XYWeBaN3bBv4pXavp7Vg==}
     engines: {node: '>=20.0.0'}
@@ -1060,16 +1064,16 @@ packages:
     resolution: {integrity: sha512-CvJ2ZIjK/jVD/lbOpowBVElJyC1YxLTIJ13yM0AEo0t2v7swOzGjSA6lJGH+DwZXQhcjUjoYwc8bVYCX5MDr1A==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/s3-request-presigner@3.1043.0':
-    resolution: {integrity: sha512-IgHbDo7c2crU4aGa7FjlMAUUAPgiN4koR060ImbzcFRd2G0v0PXio599O+VDjdmIbOqZwGRQHTbfBKhnDbQZ7g==}
-    engines: {node: '>=20.0.0'}
-
-  '@aws-sdk/signature-v4-multi-region@3.996.25':
-    resolution: {integrity: sha512-+CMIt3e1VzlklAECmG+DtP1sV8iKq25FuA0OKpnJ4KA0kxUtd7CgClY7/RU6VzJBQwbN4EJ9Ue6plvqx1qGadw==}
+  '@aws-sdk/s3-request-presigner@3.1063.0':
+    resolution: {integrity: sha512-uYDuWEbBYz/DfS0sEbDA3BeBCNNaLiE+dmblIRrmU02bhoqsotJb3qWfx0+I3JlukC7Vk8wRuyRgjZzq1FyXGA==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/signature-v4-multi-region@3.996.31':
     resolution: {integrity: sha512-Kn2up9SlG1KC6wRtwf0d7waTGF6rvp9DxYqB54x6UCKdQ6kyaXCqHL4WGb5vUJga5kS8FxnjhY0LqM28aMvnNQ==}
+    engines: {node: '>=20.0.0'}
+
+  '@aws-sdk/signature-v4-multi-region@3.996.32':
+    resolution: {integrity: sha512-llvApLcsWtmRFhG2wT3WIp1CmDeRaIYutqty1ZZXoMzK7TiJ6MOLOimk9eXUS8PwgG4ew4pa4QAbt0lfhn++1w==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/token-providers@3.1041.0':
@@ -1084,8 +1088,8 @@ packages:
     resolution: {integrity: sha512-992QrTO7G9qCvKD0fx1rMlqcL14plUcRAbwmqqYVsuF3GrqcvlAL9qxR+baMafarEZ+l7DUQ5lCMmt5mbMhF7g==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/types@3.973.8':
-    resolution: {integrity: sha512-gjlAdtHMbtR9X5iIhVUvbVcy55KnznpC6bkDUWW9z915bi0ckdUr5cjf16Kp6xq0bP5HBD2xzgbL9F9Quv5vUw==}
+  '@aws-sdk/types@3.973.11':
+    resolution: {integrity: sha512-YjS0qFuECClRh4qhEyW8XagW0fwEPBeZ1cfsW/gU73Kh/ExFILxbzxOfPCmzF/2DwEvhvsHYt0b0qnvStwKYrg==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/util-arn-parser@3.972.3':
@@ -1118,6 +1122,10 @@ packages:
 
   '@aws-sdk/xml-builder@3.972.27':
     resolution: {integrity: sha512-hpsCXCOI436kxWpjtRuIHVvuPP81MOw8f18jzfZeg+UOiiOvlqWcmWChzEhJEu16cOC6+ku4ncBN+7rdt+DZ9g==}
+    engines: {node: '>=20.0.0'}
+
+  '@aws-sdk/xml-builder@3.972.28':
+    resolution: {integrity: sha512-lI/l3c/vPvsxmspzV63NfS3x9q4CkMmdhJy4QiM+NThAufVkDvi/PZZQ6xETnICL0UD7jI808pY83gllf86RFg==}
     engines: {node: '>=20.0.0'}
 
   '@aws/lambda-invoke-store@0.2.4':
@@ -2743,10 +2751,6 @@ packages:
     resolution: {integrity: sha512-495/V2I15SHgedSJoDPD23JuSfKAp726ZI1V0wtjB07Wh7q/0tri/0e0DLefZCHgxZonrGKt/OCTpAtP1wE1kQ==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/signature-v4@5.3.14':
-    resolution: {integrity: sha512-1D9Y/nmlVjCeSivCbhZ7hgEpmHyY1h0GvpSZt3l0xcD9JjmjVC1CHOozS6+Gh+/ldMH8JuJ6cujObQqfayAVFA==}
-    engines: {node: '>=18.0.0'}
-
   '@smithy/signature-v4@5.4.6':
     resolution: {integrity: sha512-Ojg4B6oIDlIr1R86xCDJt1zJWnYa0VINmqdjfe9qxWjdRivHalZ3iSlQgVqYbW0MdpFOC5XfHEWsnbmdnpIILQ==}
     engines: {node: '>=18.0.0'}
@@ -2762,10 +2766,6 @@ packages:
   '@smithy/types@3.7.2':
     resolution: {integrity: sha512-bNwBYYmN8Eh9RyjS1p2gW6MIhSO2rl7X9QeLM8iTdcGRP+eDiIWDt66c9IysCc22gefKszZv+ubV9qZc7hdESg==}
     engines: {node: '>=16.0.0'}
-
-  '@smithy/types@4.14.1':
-    resolution: {integrity: sha512-59b5HtSVrVR/eYNei3BUj3DCPKD/G7EtDDe7OEJE7i7FtQFugYo6MxbotS8mVJkLNVf8gYaAlEBwwtJ9HzhWSg==}
-    engines: {node: '>=18.0.0'}
 
   '@smithy/types@4.14.3':
     resolution: {integrity: sha512-YupL0ZWmFtJexUN2cHzkvvF/b9pKrtAIfT1o7/oY/Ppu8IYeZ+lDPM5vZdQJaSeA132dJCqojjGC9NhXeF71VQ==}
@@ -6656,7 +6656,7 @@ snapshots:
       '@aws-amplify/api-rest': 4.6.4(@aws-amplify/core@6.16.3)
       '@aws-amplify/core': 6.16.3
       '@aws-amplify/data-schema': 1.25.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       graphql: 15.8.0
       rxjs: 7.8.2
       tslib: 2.8.1
@@ -6692,12 +6692,12 @@ snapshots:
       - encoding
       - supports-color
 
-  '@aws-amplify/auth-construct@1.11.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/auth-construct@1.11.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/util-arn-parser': 3.972.3
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
@@ -6717,12 +6717,12 @@ snapshots:
       '@smithy/types': 3.7.2
       tslib: 2.8.1
 
-  '@aws-amplify/backend-auth@1.9.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend-auth@1.9.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
-      '@aws-amplify/auth-construct': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/auth-construct': 1.11.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
     transitivePeerDependencies:
@@ -6734,20 +6734,20 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-cli@1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)':
+  '@aws-amplify/backend-cli@1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)':
     dependencies:
-      '@aws-amplify/backend-deployer': 2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
+      '@aws-amplify/backend-deployer': 2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/cli-core': 2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/cli-core': 2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/form-generator': 1.2.6(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/sandbox': 2.2.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
-      '@aws-amplify/schema-generator': 1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/schema-generator': 1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1044.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
@@ -6755,7 +6755,7 @@ snapshots:
       '@aws-sdk/credential-provider-ini': 3.972.38
       '@aws-sdk/credential-providers': 3.1043.0
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/context-async-hooks': 2.7.1(@opentelemetry/api@1.9.1)
       '@opentelemetry/sdk-trace-base': 2.7.1(@opentelemetry/api@1.9.1)
@@ -6788,14 +6788,14 @@ snapshots:
       - tedious
       - typescript
 
-  '@aws-amplify/backend-data@1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend-data@1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/data-construct': 1.17.2(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/data-schema-types': 1.2.1
       '@aws-amplify/graphql-generator': 0.5.3
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
       graphql: 15.10.2
@@ -6810,10 +6810,10 @@ snapshots:
       - supports-color
       - zod
 
-  '@aws-amplify/backend-deployer@2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)':
+  '@aws-amplify/backend-deployer@2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)':
     dependencies:
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-cdk/toolkit-lib': 1.16.0(@aws-cdk/cli-plugin-contract@2.182.2)
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       execa: 9.6.1
@@ -6830,11 +6830,11 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/backend-function@1.18.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend-function@1.18.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-s3': 3.1062.0
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
@@ -6852,11 +6852,11 @@ snapshots:
     dependencies:
       zod: 3.25.17
 
-  '@aws-amplify/backend-output-storage@1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend-output-storage@1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -6868,10 +6868,10 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-secret@1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/backend-secret@1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-ssm': 3.1043.0
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -6883,11 +6883,11 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/backend-storage@1.4.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend-storage@1.4.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
     transitivePeerDependencies:
@@ -6899,19 +6899,19 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend@1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend@1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
-      '@aws-amplify/backend-auth': 1.9.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/backend-data': 1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/backend-function': 1.18.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/backend-auth': 1.9.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/backend-data': 1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/backend-function': 1.18.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/backend-storage': 1.4.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-storage': 1.4.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/data-schema': 1.25.6
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1043.0
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
@@ -6928,9 +6928,9 @@ snapshots:
       - supports-color
       - zod
 
-  '@aws-amplify/cli-core@2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/cli-core@2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@inquirer/prompts': 7.10.1(@types/node@25.9.1)
       '@opentelemetry/api': 1.9.1
@@ -6952,13 +6952,13 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/client-config@1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/client-config@1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1043.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
@@ -6975,13 +6975,13 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  '@aws-amplify/client-config@1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/client-config@1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1044.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
@@ -7020,7 +7020,7 @@ snapshots:
   '@aws-amplify/core@6.16.3':
     dependencies:
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/util-hex-encoding': 2.0.0
       '@types/uuid': 9.0.8
       js-cookie: 3.0.5
@@ -7058,15 +7058,15 @@ snapshots:
       rxjs: 7.8.2
       ulid: 2.4.0
 
-  '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1043.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       zod: 3.25.17
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7077,15 +7077,15 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/deployed-backend-client@1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1044.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       zod: 3.25.17
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7221,17 +7221,17 @@ snapshots:
   '@aws-amplify/model-generator@1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/graphql-generator': 0.5.3
       '@aws-amplify/graphql-types-generator': 3.6.0
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1043.0
       '@aws-sdk/client-appsync': 3.1043.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
       '@aws-sdk/credential-providers': 3.1043.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       graphql: 15.10.2
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7248,17 +7248,17 @@ snapshots:
   '@aws-amplify/model-generator@1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/graphql-generator': 0.5.3
       '@aws-amplify/graphql-types-generator': 3.6.0
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1044.0
       '@aws-sdk/client-appsync': 3.1043.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1062.0
       '@aws-sdk/credential-providers': 3.1043.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       graphql: 15.10.2
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7275,13 +7275,13 @@ snapshots:
   '@aws-amplify/notifications@2.0.94(@aws-amplify/core@6.16.3)':
     dependencies:
       '@aws-amplify/core': 6.16.3
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       lodash: 4.18.1
       tslib: 2.8.1
 
-  '@aws-amplify/platform-core@1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/platform-core@1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-sts': 3.1043.0
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/core': 2.7.1(@opentelemetry/api@1.9.1)
@@ -7302,10 +7302,10 @@ snapshots:
       - bare-buffer
       - react-native-b4a
 
-  '@aws-amplify/plugin-types@1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/plugin-types@1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
       '@aws-cdk/toolkit-lib': 1.16.0(@aws-cdk/cli-plugin-contract@2.182.2)
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       aws-cdk-lib: 2.257.0(constructs@10.6.0)
       constructs: 10.6.0
     transitivePeerDependencies:
@@ -7317,18 +7317,18 @@ snapshots:
 
   '@aws-amplify/sandbox@2.2.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)':
     dependencies:
-      '@aws-amplify/backend-deployer': 2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
-      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/cli-core': 2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/backend-deployer': 2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
+      '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/cli-core': 2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-cloudwatch-logs': 3.1043.0
       '@aws-sdk/client-lambda': 3.1043.0
       '@aws-sdk/client-ssm': 3.1043.0
       '@aws-sdk/credential-providers': 3.1043.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@opentelemetry/api': 1.9.1
       '@parcel/watcher': 2.5.6
       debounce-promise: 3.1.2
@@ -7351,10 +7351,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@aws-amplify/schema-generator@1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/schema-generator@1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)':
     dependencies:
       '@aws-amplify/graphql-schema-generator': 0.11.14(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.11)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
       - '@aws-sdk/types'
@@ -7374,7 +7374,7 @@ snapshots:
   '@aws-amplify/storage@6.15.0(@aws-amplify/core@6.16.3)':
     dependencies:
       '@aws-amplify/core': 6.16.3
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/md5-js': 2.0.7
       buffer: 4.9.2
       crc-32: 1.2.2
@@ -7505,13 +7505,13 @@ snapshots:
   '@aws-crypto/crc32@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       tslib: 2.8.1
 
   '@aws-crypto/crc32c@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       tslib: 2.8.1
 
   '@aws-crypto/sha1-browser@5.2.0':
@@ -7545,7 +7545,7 @@ snapshots:
 
   '@aws-crypto/util@5.2.0':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
@@ -7554,8 +7554,8 @@ snapshots:
       '@aws-crypto/crc32': 5.2.0
       '@aws-crypto/crc32c': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
@@ -7608,14 +7608,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7652,14 +7652,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7696,14 +7696,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7741,14 +7741,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7786,14 +7786,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7831,14 +7831,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7876,14 +7876,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7923,14 +7923,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -7967,14 +7967,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8011,7 +8011,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
@@ -8019,7 +8019,7 @@ snapshots:
       '@aws-sdk/middleware-sdk-ec2': 3.972.22
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8057,14 +8057,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8102,14 +8102,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8147,14 +8147,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8192,14 +8192,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8236,14 +8236,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8281,14 +8281,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8329,14 +8329,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8373,14 +8373,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8422,14 +8422,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8466,7 +8466,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
@@ -8474,7 +8474,7 @@ snapshots:
       '@aws-sdk/middleware-sdk-rds': 3.972.22
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8512,7 +8512,7 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
@@ -8520,7 +8520,7 @@ snapshots:
       '@aws-sdk/middleware-sdk-route53': 3.972.12
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8575,14 +8575,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8619,14 +8619,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8663,14 +8663,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8708,15 +8708,15 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-node': 3.972.51
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/signature-v4-multi-region': 3.996.31
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/signature-v4-multi-region': 3.996.32
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -8760,10 +8760,21 @@ snapshots:
       bowser: 2.14.1
       tslib: 2.8.1
 
+  '@aws-sdk/core@3.974.18':
+    dependencies:
+      '@aws-sdk/types': 3.973.11
+      '@aws-sdk/xml-builder': 3.972.28
+      '@aws/lambda-invoke-store': 0.2.4
+      '@smithy/core': 3.24.6
+      '@smithy/signature-v4': 5.4.6
+      '@smithy/types': 4.14.3
+      bowser: 2.14.1
+      tslib: 2.8.1
+
   '@aws-sdk/credential-provider-cognito-identity@3.972.31':
     dependencies:
       '@aws-sdk/nested-clients': 3.997.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/types': 4.14.3
       tslib: 2.8.1
@@ -8772,24 +8783,24 @@ snapshots:
 
   '@aws-sdk/credential-provider-env@3.972.34':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/credential-provider-env@3.972.43':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/credential-provider-http@3.972.36':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/fetch-http-handler': 5.4.6
       '@smithy/node-http-handler': 4.7.7
       '@smithy/property-provider': 4.2.14
@@ -8801,8 +8812,8 @@ snapshots:
 
   '@aws-sdk/credential-provider-http@3.972.45':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/fetch-http-handler': 5.4.6
       '@smithy/node-http-handler': 4.7.7
@@ -8811,7 +8822,7 @@ snapshots:
 
   '@aws-sdk/credential-provider-ini@3.972.38':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-env': 3.972.34
       '@aws-sdk/credential-provider-http': 3.972.36
       '@aws-sdk/credential-provider-login': 3.972.38
@@ -8819,7 +8830,7 @@ snapshots:
       '@aws-sdk/credential-provider-sso': 3.972.38
       '@aws-sdk/credential-provider-web-identity': 3.972.38
       '@aws-sdk/nested-clients': 3.997.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/credential-provider-imds': 4.2.14
       '@smithy/property-provider': 4.2.14
       '@smithy/shared-ini-file-loader': 4.4.9
@@ -8830,7 +8841,7 @@ snapshots:
 
   '@aws-sdk/credential-provider-ini@3.972.49':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-env': 3.972.43
       '@aws-sdk/credential-provider-http': 3.972.45
       '@aws-sdk/credential-provider-login': 3.972.48
@@ -8838,7 +8849,7 @@ snapshots:
       '@aws-sdk/credential-provider-sso': 3.972.48
       '@aws-sdk/credential-provider-web-identity': 3.972.48
       '@aws-sdk/nested-clients': 3.997.16
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/credential-provider-imds': 4.3.8
       '@smithy/types': 4.14.3
@@ -8846,9 +8857,9 @@ snapshots:
 
   '@aws-sdk/credential-provider-login@3.972.38':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/protocol-http': 5.3.14
       '@smithy/shared-ini-file-loader': 4.4.9
@@ -8859,9 +8870,9 @@ snapshots:
 
   '@aws-sdk/credential-provider-login@3.972.48':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.16
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
@@ -8882,8 +8893,8 @@ snapshots:
 
   '@aws-sdk/credential-provider-process@3.972.34':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/shared-ini-file-loader': 4.4.9
       '@smithy/types': 4.14.3
@@ -8891,18 +8902,18 @@ snapshots:
 
   '@aws-sdk/credential-provider-process@3.972.43':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/credential-provider-sso@3.972.38':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.6
       '@aws-sdk/token-providers': 3.1041.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/shared-ini-file-loader': 4.4.9
       '@smithy/types': 4.14.3
@@ -8912,19 +8923,19 @@ snapshots:
 
   '@aws-sdk/credential-provider-sso@3.972.48':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.16
       '@aws-sdk/token-providers': 3.1062.0
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/credential-provider-web-identity@3.972.38':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/shared-ini-file-loader': 4.4.9
       '@smithy/types': 4.14.3
@@ -8934,9 +8945,9 @@ snapshots:
 
   '@aws-sdk/credential-provider-web-identity@3.972.48':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.16
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
@@ -8944,7 +8955,7 @@ snapshots:
   '@aws-sdk/credential-providers@3.1043.0':
     dependencies:
       '@aws-sdk/client-cognito-identity': 3.1043.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/credential-provider-cognito-identity': 3.972.31
       '@aws-sdk/credential-provider-env': 3.972.34
       '@aws-sdk/credential-provider-http': 3.972.36
@@ -8955,7 +8966,7 @@ snapshots:
       '@aws-sdk/credential-provider-sso': 3.972.38
       '@aws-sdk/credential-provider-web-identity': 3.972.38
       '@aws-sdk/nested-clients': 3.997.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/config-resolver': 4.4.17
       '@smithy/core': 3.24.6
       '@smithy/credential-provider-imds': 4.2.14
@@ -8968,7 +8979,7 @@ snapshots:
 
   '@aws-sdk/ec2-metadata-service@3.1043.0':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/node-config-provider': 4.3.14
       '@smithy/node-http-handler': 4.7.7
       '@smithy/protocol-http': 5.3.14
@@ -8995,20 +9006,20 @@ snapshots:
 
   '@aws-sdk/middleware-host-header@3.972.10':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/protocol-http': 5.3.14
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/middleware-logger@3.972.10':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/middleware-recursion-detection@3.972.11':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws/lambda-invoke-store': 0.2.4
       '@smithy/protocol-http': 5.3.14
       '@smithy/types': 4.14.3
@@ -9016,7 +9027,7 @@ snapshots:
 
   '@aws-sdk/middleware-sdk-ec2@3.972.22':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-format-url': 3.972.10
       '@smithy/middleware-endpoint': 4.4.32
       '@smithy/protocol-http': 5.3.14
@@ -9027,7 +9038,7 @@ snapshots:
 
   '@aws-sdk/middleware-sdk-rds@3.972.22':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-format-url': 3.972.10
       '@smithy/middleware-endpoint': 4.4.32
       '@smithy/protocol-http': 5.3.14
@@ -9037,7 +9048,7 @@ snapshots:
 
   '@aws-sdk/middleware-sdk-route53@3.972.12':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
@@ -9052,8 +9063,8 @@ snapshots:
 
   '@aws-sdk/middleware-user-agent@3.972.38':
     dependencies:
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@smithy/core': 3.24.6
       '@smithy/protocol-http': 5.3.14
@@ -9065,9 +9076,9 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
-      '@aws-sdk/signature-v4-multi-region': 3.996.31
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/signature-v4-multi-region': 3.996.32
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/fetch-http-handler': 5.4.6
       '@smithy/node-http-handler': 4.7.7
@@ -9078,14 +9089,14 @@ snapshots:
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
       '@aws-sdk/middleware-user-agent': 3.972.38
       '@aws-sdk/region-config-resolver': 3.972.13
-      '@aws-sdk/signature-v4-multi-region': 3.996.31
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/signature-v4-multi-region': 3.996.32
+      '@aws-sdk/types': 3.973.11
       '@aws-sdk/util-endpoints': 3.996.8
       '@aws-sdk/util-user-agent-browser': 3.972.10
       '@aws-sdk/util-user-agent-node': 3.973.24
@@ -9120,30 +9131,19 @@ snapshots:
 
   '@aws-sdk/region-config-resolver@3.972.13':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/config-resolver': 4.4.17
       '@smithy/node-config-provider': 4.3.14
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
-  '@aws-sdk/s3-request-presigner@3.1043.0':
+  '@aws-sdk/s3-request-presigner@3.1063.0':
     dependencies:
-      '@aws-sdk/signature-v4-multi-region': 3.996.25
-      '@aws-sdk/types': 3.973.8
-      '@aws-sdk/util-format-url': 3.972.10
-      '@smithy/middleware-endpoint': 4.4.32
-      '@smithy/protocol-http': 5.3.14
-      '@smithy/smithy-client': 4.12.13
-      '@smithy/types': 4.14.1
-      tslib: 2.8.1
-
-  '@aws-sdk/signature-v4-multi-region@3.996.25':
-    dependencies:
-      '@aws-sdk/middleware-sdk-s3': 3.972.47
-      '@aws-sdk/types': 3.973.8
-      '@smithy/protocol-http': 5.3.14
-      '@smithy/signature-v4': 5.3.14
-      '@smithy/types': 4.14.1
+      '@aws-sdk/core': 3.974.18
+      '@aws-sdk/signature-v4-multi-region': 3.996.32
+      '@aws-sdk/types': 3.973.11
+      '@smithy/core': 3.24.6
+      '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/signature-v4-multi-region@3.996.31':
@@ -9153,11 +9153,18 @@ snapshots:
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
+  '@aws-sdk/signature-v4-multi-region@3.996.32':
+    dependencies:
+      '@aws-sdk/types': 3.973.11
+      '@smithy/signature-v4': 5.4.6
+      '@smithy/types': 4.14.3
+      tslib: 2.8.1
+
   '@aws-sdk/token-providers@3.1041.0':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.6
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/property-provider': 4.2.14
       '@smithy/shared-ini-file-loader': 4.4.9
       '@smithy/types': 4.14.3
@@ -9167,9 +9174,9 @@ snapshots:
 
   '@aws-sdk/token-providers@3.1062.0':
     dependencies:
-      '@aws-sdk/core': 3.974.17
+      '@aws-sdk/core': 3.974.18
       '@aws-sdk/nested-clients': 3.997.16
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/core': 3.24.6
       '@smithy/types': 4.14.3
       tslib: 2.8.1
@@ -9179,9 +9186,9 @@ snapshots:
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
-  '@aws-sdk/types@3.973.8':
+  '@aws-sdk/types@3.973.11':
     dependencies:
-      '@smithy/types': 4.14.1
+      '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/util-arn-parser@3.972.3':
@@ -9190,7 +9197,7 @@ snapshots:
 
   '@aws-sdk/util-endpoints@3.996.8':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/types': 4.14.3
       '@smithy/url-parser': 4.2.14
       '@smithy/util-endpoints': 3.4.2
@@ -9198,9 +9205,9 @@ snapshots:
 
   '@aws-sdk/util-format-url@3.972.10':
     dependencies:
-      '@aws-sdk/types': 3.973.8
+      '@aws-sdk/types': 3.973.11
       '@smithy/querystring-builder': 4.2.14
-      '@smithy/types': 4.14.1
+      '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@aws-sdk/util-locate-window@3.965.5':
@@ -9209,7 +9216,7 @@ snapshots:
 
   '@aws-sdk/util-user-agent-browser@3.972.10':
     dependencies:
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/types': 4.14.3
       bowser: 2.14.1
       tslib: 2.8.1
@@ -9217,13 +9224,19 @@ snapshots:
   '@aws-sdk/util-user-agent-node@3.973.24':
     dependencies:
       '@aws-sdk/middleware-user-agent': 3.972.38
-      '@aws-sdk/types': 3.973.10
+      '@aws-sdk/types': 3.973.11
       '@smithy/node-config-provider': 4.3.14
       '@smithy/types': 4.14.3
       '@smithy/util-config-provider': 4.2.2
       tslib: 2.8.1
 
   '@aws-sdk/xml-builder@3.972.27':
+    dependencies:
+      '@smithy/types': 4.14.3
+      fast-xml-parser: 5.7.3
+      tslib: 2.8.1
+
+  '@aws-sdk/xml-builder@3.972.28':
     dependencies:
       '@smithy/types': 4.14.3
       fast-xml-parser: 5.7.3
@@ -10633,7 +10646,7 @@ snapshots:
       '@smithy/middleware-serde': 4.2.20
       '@smithy/node-config-provider': 4.3.14
       '@smithy/shared-ini-file-loader': 4.4.9
-      '@smithy/types': 4.14.1
+      '@smithy/types': 4.14.3
       '@smithy/url-parser': 4.2.14
       '@smithy/util-middleware': 4.2.14
       tslib: 2.8.1
@@ -10683,7 +10696,7 @@ snapshots:
 
   '@smithy/protocol-http@5.3.14':
     dependencies:
-      '@smithy/types': 4.14.1
+      '@smithy/types': 4.14.3
       tslib: 2.8.1
 
   '@smithy/querystring-builder@4.2.14':
@@ -10706,17 +10719,6 @@ snapshots:
       '@smithy/types': 4.14.3
       tslib: 2.8.1
 
-  '@smithy/signature-v4@5.3.14':
-    dependencies:
-      '@smithy/is-array-buffer': 4.2.2
-      '@smithy/protocol-http': 5.3.14
-      '@smithy/types': 4.14.3
-      '@smithy/util-hex-encoding': 4.2.2
-      '@smithy/util-middleware': 4.2.14
-      '@smithy/util-uri-escape': 4.2.2
-      '@smithy/util-utf8': 4.3.6
-      tslib: 2.8.1
-
   '@smithy/signature-v4@5.4.6':
     dependencies:
       '@smithy/core': 3.24.6
@@ -10729,7 +10731,7 @@ snapshots:
       '@smithy/middleware-endpoint': 4.4.32
       '@smithy/middleware-stack': 4.2.14
       '@smithy/protocol-http': 5.3.14
-      '@smithy/types': 4.14.1
+      '@smithy/types': 4.14.3
       '@smithy/util-stream': 4.5.25
       tslib: 2.8.1
 
@@ -10738,10 +10740,6 @@ snapshots:
       tslib: 2.8.1
 
   '@smithy/types@3.7.2':
-    dependencies:
-      tslib: 2.8.1
-
-  '@smithy/types@4.14.1':
     dependencies:
       tslib: 2.8.1
 
