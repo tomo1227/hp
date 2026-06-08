@@ -31,7 +31,7 @@
     "@stripe/react-stripe-js": "^6.4.0",
     "@stripe/stripe-js": "^9.6.0",
     "@types/jsdom": "^28.0.3",
-    "@types/mdx": "^2.0.13",
+    "@types/mdx": "^2.0.14",
     "aws-amplify": "^6.16.2",
     "budoux": "^0.8.4",
     "exifr": "^7.1.3",
