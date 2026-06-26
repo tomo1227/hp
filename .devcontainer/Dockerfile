@@ -1,4 +1,4 @@
-FROM node:26.2.0-trixie
+FROM node:26.4.0-trixie
 
 USER root
 
