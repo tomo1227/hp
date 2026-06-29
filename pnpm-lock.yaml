@@ -31,7 +31,7 @@ importers:
         version: 6.1.20(@fullcalendar/core@6.1.20)
       '@fullcalendar/react':
         specifier: ^6.1.19
-        version: 6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.1
@@ -40,13 +40,13 @@ importers:
         version: 3.1.1
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.1(@types/react@19.2.14)(react@19.2.5)
+        version: 3.1.1(@types/react@19.2.17)(react@19.2.7)
       '@next/mdx':
         specifier: 16.2.7
-        version: 16.2.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.5))
+        version: 16.2.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))
       '@stripe/react-stripe-js':
         specifier: ^6.6.0
-        version: 6.6.0(@stripe/stripe-js@9.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 6.6.0(@stripe/stripe-js@9.6.0)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       '@stripe/stripe-js':
         specifier: ^9.6.0
         version: 9.6.0
@@ -82,25 +82,25 @@ importers:
         version: 1.0.0
       next:
         specifier: ^16.2.1
-        version: 16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       nextjs-toploader:
         specifier: ^3.9.17
-        version: 3.9.17(next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 3.9.17(next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.7))(react@19.2.7))(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       nodemailer:
         specifier: ^9.0.1
         version: 9.0.1
       react:
-        specifier: ^19.2.4
-        version: 19.2.5
+        specifier: ^19.2.7
+        version: 19.2.7
       react-dom:
         specifier: ^19.2.4
-        version: 19.2.5(react@19.2.5)
+        version: 19.2.5(react@19.2.7)
       react-medium-image-zoom:
         specifier: ^5.4.1
-        version: 5.4.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 5.4.5(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       react-svg-worldmap:
         specifier: ^2.0.0
-        version: 2.0.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 2.0.2(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       rehype-sanitize:
         specifier: ^6.0.0
         version: 6.0.0
@@ -128,7 +128,7 @@ importers:
         version: 1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/backend-cli':
         specifier: ^1.8.2
-        version: 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)
+        version: 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
       '@biomejs/biome':
         specifier: 2.4.16
         version: 2.4.16
@@ -148,11 +148,11 @@ importers:
         specifier: ^2.4.9
         version: 2.4.9
       '@types/react':
-        specifier: ^19.2.14
-        version: 19.2.14
+        specifier: ^19.2.17
+        version: 19.2.17
       '@types/react-dom':
         specifier: ^19.2.2
-        version: 19.2.3(@types/react@19.2.14)
+        version: 19.2.3(@types/react@19.2.17)
       aws-cdk:
         specifier: ^2.1123.0
         version: 2.1123.0
@@ -3137,8 +3137,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.2.0
 
-  '@types/react@19.2.14':
-    resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
+  '@types/react@19.2.17':
+    resolution: {integrity: sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw==}
 
   '@types/svg-arc-to-cubic-bezier@3.2.3':
     resolution: {integrity: sha512-UNOnbTtl0nVTm8hwKaz5R5VZRvSulFMGojO5+Q7yucKxBoCaTtS4ibSQVRHo5VW5AaRo145U8p1Vfg5KrYe9Bg==}
@@ -5691,8 +5691,8 @@ packages:
       react-dom:
         optional: true
 
-  react@19.2.5:
-    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
+  react@19.2.7:
+    resolution: {integrity: sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@2.3.8:
@@ -6734,7 +6734,7 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-cli@1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)':
+  '@aws-amplify/backend-cli@1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)(typescript@5.9.3)':
     dependencies:
       '@aws-amplify/backend-deployer': 2.1.6(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
@@ -6742,7 +6742,7 @@ snapshots:
       '@aws-amplify/cli-core': 2.2.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(@types/node@25.9.1)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1062.0)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/form-generator': 1.2.6(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@aws-amplify/form-generator': 1.2.6(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.973.10)(aws-cdk-lib@2.257.0(constructs@10.6.0))(constructs@10.6.0)
@@ -6998,13 +6998,13 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  '@aws-amplify/codegen-ui-react@2.20.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@aws-amplify/codegen-ui-react@2.20.4(react-dom@19.2.5(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@aws-amplify/codegen-ui': 2.20.4
       '@typescript/vfs': 1.3.6
       pluralize: 8.0.0
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
       semver: 7.7.4
       typescript: 4.4.4
     optionalDependencies:
@@ -7096,11 +7096,11 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/form-generator@1.2.6(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@aws-amplify/form-generator@1.2.6(react-dom@19.2.5(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@aws-amplify/appsync-modelgen-plugin': 2.15.2(graphql@15.10.2)
       '@aws-amplify/codegen-ui': 2.20.4
-      '@aws-amplify/codegen-ui-react': 2.20.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@aws-amplify/codegen-ui-react': 2.20.4(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       '@aws-amplify/graphql-directives': 2.8.0
       '@aws-amplify/graphql-docs-generator': 4.2.1
       '@aws-sdk/client-amplifyuibuilder': 3.1043.0
@@ -9912,11 +9912,11 @@ snapshots:
     dependencies:
       '@fullcalendar/core': 6.1.20
 
-  '@fullcalendar/react@6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@fullcalendar/react@6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@fullcalendar/core': 6.1.20
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
 
   '@graphql-codegen/core@2.6.8(graphql@15.10.2)':
     dependencies:
@@ -10380,20 +10380,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.5)':
+  '@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7)':
     dependencies:
       '@types/mdx': 2.0.14
-      '@types/react': 19.2.14
-      react: 19.2.5
+      '@types/react': 19.2.17
+      react: 19.2.7
 
   '@next/env@16.2.4': {}
 
-  '@next/mdx@16.2.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.5))':
+  '@next/mdx@16.2.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
       '@mdx-js/loader': 3.1.1
-      '@mdx-js/react': 3.1.1(@types/react@19.2.14)(react@19.2.5)
+      '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
 
   '@next/swc-darwin-arm64@16.2.4':
     optional: true
@@ -10885,12 +10885,12 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@stripe/react-stripe-js@6.6.0(@stripe/stripe-js@9.6.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@stripe/react-stripe-js@6.6.0(@stripe/stripe-js@9.6.0)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@stripe/stripe-js': 9.6.0
       prop-types: 15.8.1
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
 
   '@stripe/stripe-js@9.6.0': {}
 
@@ -11151,11 +11151,11 @@ snapshots:
       '@types/node': 25.9.1
       kleur: 3.0.3
 
-  '@types/react-dom@19.2.3(@types/react@19.2.14)':
+  '@types/react-dom@19.2.3(@types/react@19.2.17)':
     dependencies:
-      '@types/react': 19.2.14
+      '@types/react': 19.2.17
 
-  '@types/react@19.2.14':
+  '@types/react@19.2.17':
     dependencies:
       csstype: 3.2.3
 
@@ -13848,16 +13848,16 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.7))(react@19.2.7):
     dependencies:
       '@next/env': 16.2.4
       '@swc/helpers': 0.5.15
       baseline-browser-mapping: 2.10.27
       caniuse-lite: 1.0.30001792
       postcss: 8.4.31
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
-      styled-jsx: 5.1.6(@babel/core@7.29.0)(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
+      styled-jsx: 5.1.6(@babel/core@7.29.0)(react@19.2.7)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.2.4
       '@next/swc-darwin-x64': 16.2.4
@@ -13873,13 +13873,13 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-toploader@3.9.17(next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  nextjs-toploader@3.9.17(next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.7))(react@19.2.7))(react-dom@19.2.5(react@19.2.7))(react@19.2.7):
     dependencies:
-      next: 16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      next: 16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       nprogress: 0.2.0
       prop-types: 15.8.1
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
 
   no-case@3.0.4:
     dependencies:
@@ -14204,34 +14204,34 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-dom@19.2.5(react@19.2.5):
+  react-dom@19.2.5(react@19.2.7):
     dependencies:
-      react: 19.2.5
+      react: 19.2.7
       scheduler: 0.27.0
 
   react-is@16.13.1: {}
 
-  react-medium-image-zoom@5.4.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-medium-image-zoom@5.4.5(react-dom@19.2.5(react@19.2.7))(react@19.2.7):
     dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
 
-  react-path-tooltip@1.0.25(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-path-tooltip@1.0.25(react-dom@19.2.5(react@19.2.7))(react@19.2.7):
     dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.7
+      react-dom: 19.2.5(react@19.2.7)
 
-  react-svg-worldmap@2.0.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-svg-worldmap@2.0.2(react-dom@19.2.5(react@19.2.7))(react@19.2.7):
     dependencies:
       d3-geo: 2.0.2
-      react: 19.2.5
-      react-path-tooltip: 1.0.25(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      react: 19.2.7
+      react-path-tooltip: 1.0.25(react-dom@19.2.5(react@19.2.7))(react@19.2.7)
       topojson-client: 3.1.0
       tslib: 2.8.1
     optionalDependencies:
-      react-dom: 19.2.5(react@19.2.5)
+      react-dom: 19.2.5(react@19.2.7)
 
-  react@19.2.5: {}
+  react@19.2.7: {}
 
   readable-stream@2.3.8:
     dependencies:
@@ -14758,10 +14758,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  styled-jsx@5.1.6(@babel/core@7.29.0)(react@19.2.5):
+  styled-jsx@5.1.6(@babel/core@7.29.0)(react@19.2.7):
     dependencies:
       client-only: 0.0.1
-      react: 19.2.5
+      react: 19.2.7
     optionalDependencies:
       '@babel/core': 7.29.0
 
