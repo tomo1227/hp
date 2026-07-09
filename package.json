@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@aws-amplify/backend": "^1.21.0",
-    "@aws-amplify/backend-cli": "^1.8.2",
+    "@aws-amplify/backend-cli": "^1.8.3",
     "@biomejs/biome": "2.4.16",
     "@tailwindcss/postcss": "^4.3.0",
     "@types/negotiator": "^0.6.3",
