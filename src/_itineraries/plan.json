@@ -434,7 +434,7 @@
     "title": "OSAKA BAY SKYLUMINA FIREWORKS & DRONES",
     "url": "https://skylumina.jp/"
   },
-    {
+  {
     "date": "2026-06-06 01:44",
     "en_title": "Maruyama Senmaida Mushiokuri",
     "title": "丸山千枚田の虫おくり",
@@ -446,7 +446,7 @@
     "title": "JAPAN FIREWORKS EXPO 2026",
     "url": "https://e-hanabi.com/"
   },
-      {
+  {
     "date": "2026-07-14 01:44",
     "en_title": "Nachi Fire Festival",
     "title": "那智の火祭り",
@@ -458,7 +458,7 @@
     "title": "うわじま牛鬼まつり海上打上花火",
     "url": "https://ushioni.gaina.ne.jp/"
   },
-    {
+  {
     "date": "2026-07-23 01:44",
     "en_title": "Otsu Shiga Fireworks Festival",
     "title": "大津志賀花火大会",
@@ -507,24 +507,24 @@
     "title": "長岡まつり 大花火大会",
     "url": "https://nagaokamatsuri.com/"
   },
-    {
+  {
     "date": "2026-08-06 01:44",
     "en_title": "Biwako Fireworks Festival",
     "title": "琵琶湖花火大会"
   },
-    {
+  {
     "date": "2026-08-09 01:44",
     "en_title": "Singapore National Day",
     "title": "シンガポールナショナルデー",
     "url": "https://jp.marinabaysands.com/guides/around-mbs/national-day.html"
   },
-    {
+  {
     "date": "2026-08-13 01:44",
     "en_title": "Kanmon Strait Fireworks Festival",
     "title": "関門海峡花火大会",
     "url": "https://www.kanmon-hanabi.love/"
   },
-      {
+  {
     "date": "2026-08-13 01:44",
     "en_title": "Shingu Fireworks Festival",
     "title": "新宮花火大会",
@@ -549,6 +549,12 @@
     "url": "https://www.kumano-kankou.info/kumano-fireworks/"
   },
   {
+    "date": "2026-08-22 00:01",
+    "en_title": "Hirokawara Matsuiage",
+    "title": "琵琶湖三市同時花火大会",
+    "url": "https://yamatanolabo.com/"
+  },
+  {
     "date": "2026-08-22 01:44",
     "en_title": "Wajima Festival",
     "period": 3,
@@ -562,41 +568,48 @@
     "url": "https://ja.kyoto.travel/event/single.php?event_id=4713"
   },
   {
-    "date": "2026-08-24 01:44",
-    "en_title": "Hirokawara Matsuiage",
-    "title": "広河原松上げ",
-    "url": "https://ja.kyoto.travel/event/single.php?event_id=4713"
-  },
-  {
     "date": "2026-08-29 01:44",
     "en_title": "Mangan no Hi Festival",
     "title": "満願の火まつり",
     "url": "https://www.kankomie.or.jp/event/5291"
   },
-    {
+  {
     "date": "2026-08-29 01:44",
     "en_title": "Ine Fireworks",
     "title": "伊根花火",
     "url": "https://kyototravel.info/inehanabi"
   },
-    {
+  {
     "date": "2026-09-05 01:44",
     "en_title": "Wakasa Ooi Super Fire Festival",
     "title": "若狭おおい スーパー大火勢",
     "url": "https://www.wakasa-ohi.co.jp/sp-ogase/"
   },
-      {
+  {
+    "date": "2026-09-11 01:44",
+    "en_title": "Katakai Festival",
+    "title": "片貝まつり",
+    "period": 2,
+    "url": "https://katakaimachi-enkakyokai.info/index.html"
+  },
+  {
     "date": "2026-09-16 01:44",
     "en_title": "Nagahama & North Biwako Fireworks 'Nagahama no Jin'",
     "title": "長浜・北びわ湖大花火大会 「長浜の陣」",
     "period": 3,
     "url": "https://kitabiwako.jp/spot/spot_21509"
   },
-    {
+  {
     "date": "2026-09-19 01:44",
     "en_title": "Tonegawa Fireworks Festival",
     "title": "利根川大花火大会",
     "url": "https://www.sakai-hanabi.com/"
+  },
+  {
+    "date": "2026-09-20 01:44",
+    "en_title": "Himeji Minato Festival Sea Fireworks",
+    "title": "姫路みなと祭海上花火大会",
+    "url": "https://himeji-minatohanabi.com/"
   },
   {
     "date": "2026-10-03 01:44",
@@ -604,14 +617,26 @@
     "title": "大曲の花火―秋の章―",
     "url": "https://www.club-t.com/sp/special/japan/oomagari/"
   },
-    {
+  {
+    "date": "2026-10-10 01:44",
+    "en_title": "Konosu Fireworks Festival",
+    "title": "鴻巣花火大会",
+    "url": "https://kounosuhanabi.com/"
+  },
+  {
+    "date": "2026-10-10 01:44",
+    "en_title": "Biwa Lake Night Cruise Fireworks",
+    "title": "琵琶湖ナイトクルーズ花火",
+    "url": "https://biwakohanabi.com/?gad_campaignid=23272008860"
+  },
+  {
     "date": "2026-10-14 01:44",
     "en_title": "Nada no Kenka Matsuri",
     "title": "灘のけんか祭り",
     "period": 2,
     "url": "https://www.nadamatsuri.jp/index.html"
   },
-        {
+  {
     "date": "2026-10-16 01:44",
     "en_title": "Nagahama & North Biwako Fireworks 'Yogo no Jin'",
     "title": "長浜・北びわ湖大花火大会 「余呉の陣」",
@@ -634,5 +659,11 @@
     "en_title": "Inagawa Fireworks Festival",
     "title": "猪名川花火大会",
     "url": "https://www.kobe-np.co.jp/info/prtimes/202512/c98199_r458.shtml"
+  },
+  {
+    "date": "2026-11-21 01:44",
+    "en_title": "Biwa Lake Night Cruise Fireworks",
+    "title": "琵琶湖ナイトクルーズ花火",
+    "url": "https://biwakohanabi.com/?gad_campaignid=23272008860"
   }
 ]
