@@ -1,0 +1,93 @@
+---
+title: X-OCN and R3D NE Video Format Comparison
+timezone: Asia/Tokyo
+category: photography
+date: 2026-08-15 04:17
+description: A comparison of various RAW video formats, including X-OCN and R3D NE.
+tags:
+  - tips
+---
+
+## Introduction
+
+In recent years, video production has increasingly adopted higher resolutions such as 4K and 8K, as well as high frame rates and HDR. RAW video offers greater flexibility for post-production and color grading, but its large file sizes can be a challenge.
+
+To balance image quality and storage efficiency, various RAW formats and codecs are widely used in professional video production.
+
+In this article, we will briefly compare the key features and data sizes of popular formats, including Sony X-OCN, Nikon N-RAW, RED R3D NE, Blackmagic RAW, and Apple ProRes.
+
+## Uncompressed RAW
+
+With uncompressed RAW, 8K at 60 fps and 16-bit color would require:
+
+7680 × 4320 × 16 bits × 60 = 4 GB/s
+
+This results in approximately 240 GB of data per minute, placing a very heavy burden on storage capacity and data transfer.
+
+## X-OCN
+
+X-OCN is a video format developed by SONY, designed to provide high-quality images for professional video production.
+
+It can preserve a high level of color information and detail and can record 16-bit scene-linear data.
+
+There are four types of X-OCN, with the compression ratio increasing as you move down the list:
+
+- X-OCN ST
+- X-OCN LT
+- X-OCN C1
+- X-OCN C2
+
+## N-RAW
+
+N-RAW is **Nikon's proprietary 12-bit RAW format**.
+
+It offers two image-quality settings:
+
+- N-RAW High
+- N-RAW Normal
+
+## R3D NE
+
+R3D NE provides a wide dynamic range of more than 15 stops, rich 12-bit tonal gradation, and RED's distinctive color reproduction.
+
+It is recorded using Log3G10 / REDWideGamutRGB, making it highly suitable for color grading and providing excellent flexibility in post-production.
+
+## Apple ProRes 4444
+
+Apple ProRes 4444 is a high-quality video codec developed by Apple and is well optimized for Mac-based workflows, including Final Cut Pro.
+Apple ProRes 4444 XQ is the highest-quality version. It is visually lossless, but its data rate and storage requirements are significantly higher.
+
+## Blackmagic RAW
+
+Blackmagic RAW is a proprietary RAW codec developed by Blackmagic Design for high-quality video recording.
+
+It offers relatively small file sizes while maintaining high image quality and flexibility, and it works particularly well with DaVinci Resolve.
+
+## Summary
+
+| Format | Color Sampling | Bit Depth | Approx. Bitrate (4K30p) | Approx. Storage per Hour (4K30p) | Tonal Levels | Colors |
+| --- | :---: | :---: | ---: | ---: | ---: | ---: |
+| Uncompressed RAW | - | 12-bit | Approx. 3,185 Mbps | 1.43 TB | 4,096 | Approx. 68.1 billion |
+| Uncompressed RAW | - | 16-bit | Approx. 4,247 Mbps | 1.91 TB | 65,536 | Approx. 281 trillion |
+| X-OCN C1 | - | 16-bit | Approx. 360 Mbps | 162 GB | 65,536 | Approx. 281 trillion |
+| X-OCN C2 | - | 16-bit | Approx. 290 Mbps | 131 GB | 65,536 | Approx. 281 trillion |
+| X-OCN LT | - | 16-bit | Approx. 486 Mbps | 219 GB | 65,536 | Approx. 281 trillion |
+| X-OCN ST | - | 16-bit | Approx. 825 Mbps | 371 GB | 65,536 | Approx. 281 trillion |
+| R3D NE | - | 12-bit | Approx. 860 Mbps | 387 GB | 4,096 | Approx. 68.7 billion |
+| N-RAW Normal | - | 12-bit | Approx. 450 Mbps | 202 GB | 4,096 | Approx. 68.7 billion |
+| N-RAW High | - | 12-bit | Approx. 860 Mbps | 387 GB | 4,096 | Approx. 68.7 billion |
+| BRAW 5:1 | - | 12-bit | Approx. 656 Mbps | 295 GB | 4,096 | Approx. 68.7 billion |
+| BRAW 8:1 | - | 12-bit | Approx. 408 Mbps | 184 GB | 4,096 | Approx. 68.7 billion |
+| BRAW 12:1 | - | 12-bit | Approx. 280 Mbps | 126 GB | 4,096 | Approx. 68.7 billion |
+| Apple ProRes 4444 | — | 12-bit | Approx. 1,320 Mbps | 594 GB | 4,096 | Approx. 68.7 billion |
+| Apple ProRes 4444 XQ | — | 12-bit | Approx. 2,000 Mbps | 900 GB | 4,096 | Approx. 68.7 billion |
+| XAVC HS 4K (H.265, Long GOP) | 4:2:2 | 10-bit | Approx. 200 Mbps | 90 GB | 1,024 | Approx. 1.07 billion |
+| XAVC S-I (H.264, All-I) | 4:2:2 | 10-bit | Approx. 240 Mbps | 108 GB | 1,024 | Approx. 1.07 billion |
+
+## 参考文献
+
+1. [動画の画像サイズ/フレームレートについて](https://onlinemanual.nikonimglib.com/z8/ja/video_frame_size_and_rate_options_40.html)
+2. [撮らぬ狸の｢Nikon ZR｣話題のRED RAWの動画容量を計算してみた｜ジョイフル](https://note.com/joyfull_2525/n/nd949483cbbf3)
+3. [映像クリエイターのためのN-RAW使いこなしガイド スペシャルコンテンツ | ニコン](https://nij.nikon.com/cms/sp/movie/n-raw/)
+4. [Apple ProResについて - Apple サポート (日本)](https://support.apple.com/ja-jp/102207)
+5. [HDR制作など、高品位コンテンツ制作を効率化する新フォーマット「X-OCN」 | ラージセンサーカメラ | ソニー](https://www.sony.jp/ls-camera/spl/x-ocn/?srsltid=AfmBOoqovKU1fPRFsDEHk4RQlYcma6PLcoM_98yHuzV7q48pZwdYXord)
