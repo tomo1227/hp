@@ -1308,7 +1308,7 @@
 }
 
 #blog-title {
-  @apply text-left leading-tight text-3xl mb-0 mt-6 pb-2 font-semibold flex flex-wrap max-md:text-2xl;
+  @apply text-center leading-tight text-3xl mb-0 mt-6 pb-2 font-semibold flex flex-wrap justify-center max-md:text-2xl;
   color: var(--blog-ink);
 }
 
