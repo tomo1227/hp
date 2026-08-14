@@ -14,6 +14,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BlogCard: BlogCard,
     Note: Note,
     Paid: Paid,
+    table: ({ children }: { children: React.ReactNode }) => (
+      <div className="table-wrapper">
+        <table style={{ minWidth: "700px" }}>{children}</table>
+      </div>
+    ),
     ...components,
   };
 }
