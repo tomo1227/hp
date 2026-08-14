@@ -1,0 +1,78 @@
+---
+title: X-OCNやR3D NEなどの動画フォーマットの比較
+timezone: Asia/Tokyo
+category: photography
+date: 2026-08-15 04:17
+description: X-OCNやR3D NEなどさまざまな動画のRAWフォーマットを比較してみます。
+tags:
+  - tips
+---
+
+## はじめに
+
+近年の映像制作では、4K・8Kなどの高解像度化に加え、高フレームレートやHDRなど、より高品質な映像を扱う機会が増えています。特にRAW動画は、撮影後のカラーグレーディングで高い自由度を持つ一方、データ容量が大きくなりやすいという課題があります。そこで実際の映像制作では、画質をできるだけ維持しながらデータ量を抑えられる、さまざまなRAWフォーマットやコーデックが利用されています。
+
+本記事では、SONYのX-OCN、NikonのN-RAW、REDのR3D NE、Blackmagic RAW、Apple ProResなど、代表的な映像フォーマットの特徴やデータ量を比較していきます。
+
+## 非圧縮RAW
+
+もし非圧縮のRAWだと8K・60fps・16bitの場合　7680 × 4320 × 16bit × 60 = 4 GB/sとなり、
+1分で約240GBのデータ量となってしまいます。これでは、ストレージや転送の面で非常に大きな負担となります。
+
+## X-OCN
+
+SONYの動画フォーマットであるX-OCNは、映像制作において高品質な映像を提供するためのフォーマットです。
+OCNは「Open Cine Network」の略で、映像の色彩やディテールを最大限に保持することができます。16bitのシーンリニアデータとして記録できます。
+X-OCNには4種類あり、下にいくほど圧縮率が高くなる。
+
+* X-OCN ST
+* X-OCN LT
+* X-OCN C1
+* X-OCN C2
+
+## N-RAW
+
+ニコン独自の12bit RAW。高画質と標準の2つの画質設定があります。
+
+## R3D NE
+
+15+ストップの幅広いダイナミックレンジ、12bitの豊かな階調、RED特有の色再現ができます。Log3G10／REDWideGamutRGB で記録され、カラーグレーディング耐性が極めて高いフォーマットです。
+
+## Apple ProRes 4444
+
+Apple ProRes 4444は、Appleが開発したRAW形式で、Final Cut ProなどMacユーザーに最適化されています。
+Apple ProRes 4444 XQは最高画質版で視覚的にロスレスですが、データ量が非常に大きいです。
+
+## Blackmagic RAW
+
+Blackmagic Design社が開発した高画質な映像記録用の独自RAWコーデック形式。
+データが軽く、柔軟性が高く、DaVinci Resolveと相性がいいです。
+
+## まとめ
+
+| フォーマット | カラーサンプリング | bit | ビットレート目安(4K30p) | 1時間の容量(4K30p) | 階調 | 色数 |
+| -------------------- | :---------: | :-----: | :--------------: | :----------: | :---------: | :--------: |
+| 非圧縮RAW | - | 12 | 約3185 Mbps | 1.43TB | 4096 | 約680億7194万色 |
+| 非圧縮RAW | - | 16 | 約4247 Mbps | 1.91 TB | 65536 | 約281兆 |
+| X-OCN C1 | - | 16 | 約360 Mbps | 162GB | 65536 | 約281兆 |
+| X-OCN C2 | - | 16 | 約290 Mbps | 131GB | 65536 | 約281兆 |
+| X-OCN LT | - | 16 | 約486 Mbps | 219GB | 65536 | 約281兆 |
+| X-OCN ST | - | 16 | 約825 Mbps | 371GB | 65536 | 約281兆 |
+| R3D NE | - | 12 | 約860 Mbps | 387GB | 4096 | 約687億 |
+| N-RAW Normal | - | 12 | 約450 Mbps | 202GB | 4096 | 約687億 |
+| N-RAW High | - | 12 | 約860 Mbps | 387GB | 4096 | 約687億 |
+| BRAW 5:1 | - | 12 | 約656 Mbps | 295GB | 4096 | 約687億 |
+| BRAW 8:1 | - | 12 | 約408 Mbps | 184GB | 4096 | 約687億 |
+| BRAW 12:1 | - | 12 | 約280 Mbps | 126GB | 4096 | 約687億 |
+| Apple ProRes 4444 | - | 12 | 約1320Mbps | 594GB | 4096 | 約687億 |
+| Apple ProRes 4444 XQ | - | 12 | 約2000 Mbps | 900GB | 4096 | 約687億 |
+| XAVC HS 4K(H.265, Long GOP) | 4:2:2 | 10 | 約200 Mbps | 90 GB | 1024 | 約10.7億 |
+| XAVC S-I(H.264, All-I) | 4:2:2 | 10 | 約240 Mbps | 108 GB | 1024 | 約10.7億 |
+
+## 参考文献
+
+1. [動画の画像サイズ/フレームレートについて](https://onlinemanual.nikonimglib.com/z8/ja/video_frame_size_and_rate_options_40.html)
+2. [撮らぬ狸の｢Nikon ZR｣話題のRED RAWの動画容量を計算してみた｜ジョイフル](https://note.com/joyfull_2525/n/nd949483cbbf3)
+3. [映像クリエイターのためのN-RAW使いこなしガイド スペシャルコンテンツ | ニコン](https://nij.nikon.com/cms/sp/movie/n-raw/)
+4. [Apple ProResについて - Apple サポート (日本)](https://support.apple.com/ja-jp/102207)
+5. [HDR制作など、高品位コンテンツ制作を効率化する新フォーマット「X-OCN」 | ラージセンサーカメラ | ソニー](https://www.sony.jp/ls-camera/spl/x-ocn/?srsltid=AfmBOoqovKU1fPRFsDEHk4RQlYcma6PLcoM_98yHuzV7q48pZwdYXord)
