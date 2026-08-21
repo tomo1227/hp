@@ -513,12 +513,6 @@
     "title": "琵琶湖花火大会"
   },
   {
-    "date": "2026-08-09 01:44",
-    "en_title": "Singapore National Day",
-    "title": "シンガポールナショナルデー",
-    "url": "https://jp.marinabaysands.com/guides/around-mbs/national-day.html"
-  },
-  {
     "date": "2026-08-13 01:44",
     "en_title": "Kanmon Strait Fireworks Festival",
     "title": "関門海峡花火大会",
@@ -550,9 +544,9 @@
   },
   {
     "date": "2026-08-22 00:01",
-    "en_title": "Hirokawara Matsuiage",
-    "title": "琵琶湖三市同時花火大会",
-    "url": "https://yamatanolabo.com/"
+    "en_title": "SBI Mai Fireworks in Osaka Sennan",
+    "title": "SBI舞花火 in 大阪・泉南",
+    "url": "https://sbimusiccircus.co.jp/sbimaihanabi/sennan"
   },
   {
     "date": "2026-08-22 01:44",
@@ -593,6 +587,12 @@
     "url": "https://katakaimachi-enkakyokai.info/index.html"
   },
   {
+    "date": "2026-09-12 01:44",
+    "en_title": "Suzuka Festival",
+    "title": "鈴鹿げんき花火大会",
+    "url": "https://www.suzuka-hanabi.com/"
+  },
+  {
     "date": "2026-09-16 01:44",
     "en_title": "Nagahama & North Biwako Fireworks 'Nagahama no Jin'",
     "title": "長浜・北びわ湖大花火大会 「長浜の陣」",
@@ -612,10 +612,28 @@
     "url": "https://himeji-minatohanabi.com/"
   },
   {
+    "date": "2026-09-20 01:44",
+    "en_title": "Suitokurawanka Fireworks Festival",
+    "title": "水都くらわんか花火大会",
+    "url": "https://suito-kurawanka.jp/"
+  },
+  {
+    "date": "2026-09-26 01:44",
+    "en_title": "Oarai Sea Fireworks Festival 2026",
+    "title": "大洗海上花火大会2026",
+    "url": "https://www.oarai-hanabi.jp/"
+  },
+  {
     "date": "2026-10-03 01:44",
     "en_title": "Omagi Fireworks -Autumn Chapter-",
     "title": "大曲の花火―秋の章―",
     "url": "https://www.club-t.com/sp/special/japan/oomagari/"
+  },
+  {
+    "date": "2026-10-04 01:44",
+    "en_title": "Joyo Autumn Fireworks 2026",
+    "title": "城陽秋花火 2026",
+    "url": "https://fmtpark.com/16984"
   },
   {
     "date": "2026-10-10 01:44",
@@ -659,6 +677,12 @@
     "en_title": "Inagawa Fireworks Festival",
     "title": "猪名川花火大会",
     "url": "https://www.kobe-np.co.jp/info/prtimes/202512/c98199_r458.shtml"
+  },
+  {
+    "date": "2026-11-14 01:44",
+    "en_title": "Nishi Awa Fireworks 2026",
+    "title": "にし阿波の花火2026",
+    "url": "https://www.awahanabi.com/"
   },
   {
     "date": "2026-11-21 01:44",
