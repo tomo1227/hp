@@ -34,16 +34,16 @@ importers:
         version: 6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
       '@mdx-js/loader':
         specifier: ^3.1.0
-        version: 3.1.1
+        version: 3.1.1(supports-color@7.2.0)
       '@mdx-js/mdx':
         specifier: ^3.1.0
-        version: 3.1.1
+        version: 3.1.1(supports-color@7.2.0)
       '@mdx-js/react':
         specifier: ^3.1.0
         version: 3.1.1(@types/react@19.2.17)(react@19.2.8)
       '@next/mdx':
         specifier: 16.3.1
-        version: 16.3.1(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.8))
+        version: 16.3.1(@mdx-js/loader@3.1.1(supports-color@7.2.0))(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.8))
       '@stripe/react-stripe-js':
         specifier: ^6.6.0
         version: 6.8.0(@stripe/stripe-js@9.12.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
@@ -61,7 +61,7 @@ importers:
         version: 6.17.0
       budoux:
         specifier: ^0.8.4
-        version: 0.8.4
+        version: 0.8.4(supports-color@7.2.0)
       exifr:
         specifier: ^7.1.3
         version: 7.1.3
@@ -82,10 +82,10 @@ importers:
         version: 1.0.0
       next:
         specifier: ^16.2.10
-        version: 16.2.12(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
+        version: 16.2.12(@babel/core@7.29.0(supports-color@7.2.0))(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
       nextjs-toploader:
         specifier: ^3.9.17
-        version: 3.9.17(next@16.2.12(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8))(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
+        version: 3.9.17(next@16.2.12(@babel/core@7.29.0(supports-color@7.2.0))(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8))(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
       nodemailer:
         specifier: ^9.0.3
         version: 9.0.3
@@ -112,10 +112,10 @@ importers:
         version: 10.0.1
       remark-frontmatter:
         specifier: ^5.0.0
-        version: 5.0.0
+        version: 5.0.0(supports-color@7.2.0)
       remark-gfm:
         specifier: ^4.0.1
-        version: 4.0.1
+        version: 4.0.1(supports-color@7.2.0)
       remark-mdx-frontmatter:
         specifier: ^5.2.0
         version: 5.2.0
@@ -125,10 +125,10 @@ importers:
     devDependencies:
       '@aws-amplify/backend':
         specifier: ^1.21.0
-        version: 1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+        version: 1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)
       '@aws-amplify/backend-cli':
         specifier: ^1.8.3
-        version: 1.8.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(typescript@5.9.3)
+        version: 1.8.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(supports-color@7.2.0)(typescript@5.9.3)
       '@biomejs/biome':
         specifier: 2.5.6
         version: 2.5.6
@@ -186,7 +186,7 @@ importers:
         version: 4.2.4
       lightningcss-linux-x64-gnu:
         specifier: ^1
-        version: 1.32.0
+        version: 1.33.0
 
 packages:
 
@@ -4939,6 +4939,13 @@ packages:
     os: [linux]
     libc: [glibc]
 
+  lightningcss-linux-x64-gnu@1.33.0:
+    resolution: {integrity: sha512-ar+Ju7LmcN0Jo4FpL4hpFybwNG9/3A/Br5KW2n2jyODg3MEZXaDYADdemoNS+BDNfMgKvylJLj4S5tyRActuAg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
   lightningcss-linux-x64-musl@1.32.0:
     resolution: {integrity: sha512-bYcLp+Vb0awsiXg/80uCRezCYHNg1/l3mt0gzHnWV9XP1W5sKa5/TCdGWaR/zBM2PeF/HbsQv/j2URNOiVuxWg==}
     engines: {node: '>= 12.0.0'}
@@ -6607,15 +6614,15 @@ snapshots:
     dependencies:
       tslib: 2.0.3
 
-  '@ardatan/relay-compiler@12.0.0(graphql@15.10.2)':
+  '@ardatan/relay-compiler@12.0.0(graphql@15.10.2)(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/generator': 7.29.1
       '@babel/parser': 7.29.3
       '@babel/runtime': 7.29.2
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
       '@babel/types': 7.29.0
-      babel-preset-fbjs: 3.4.0(@babel/core@7.29.0)
+      babel-preset-fbjs: 3.4.0(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
       chalk: 4.1.2
       fb-watchman: 2.0.2
       fbjs: 3.0.5
@@ -6693,10 +6700,10 @@ snapshots:
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@aws-amplify/appsync-modelgen-plugin@2.15.2(graphql@15.10.2)':
+  '@aws-amplify/appsync-modelgen-plugin@2.15.2(graphql@15.10.2)(supports-color@7.2.0)':
     dependencies:
       '@graphql-codegen/plugin-helpers': 3.1.2(graphql@15.10.2)
-      '@graphql-codegen/visitor-plugin-common': 1.22.0(graphql@15.10.2)
+      '@graphql-codegen/visitor-plugin-common': 1.22.0(graphql@15.10.2)(supports-color@7.2.0)
       '@graphql-tools/utils': 6.2.4(graphql@15.10.2)
       chalk: 3.0.0
       change-case: 4.1.2
@@ -6752,20 +6759,20 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend-cli@1.8.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(typescript@5.9.3)':
+  '@aws-amplify/backend-cli@1.8.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@aws-amplify/backend-deployer': 2.1.7(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/cli-core': 2.2.5(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/client-config': 1.10.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/client-config': 1.10.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)
       '@aws-amplify/deployed-backend-client': 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/form-generator': 1.2.7(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
-      '@aws-amplify/model-generator': 1.2.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/form-generator': 1.2.7(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(supports-color@7.2.0)
+      '@aws-amplify/model-generator': 1.2.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)
       '@aws-amplify/platform-core': 1.11.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/sandbox': 2.2.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
-      '@aws-amplify/schema-generator': 1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/sandbox': 2.2.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(typescript@5.9.3)
+      '@aws-amplify/schema-generator': 1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)
       '@aws-sdk/client-amplify': 3.1044.0
       '@aws-sdk/client-cloudformation': 3.1043.0
       '@aws-sdk/client-s3': 3.1050.0
@@ -6806,13 +6813,13 @@ snapshots:
       - tedious
       - typescript
 
-  '@aws-amplify/backend-data@1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend-data@1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/data-construct': 1.17.2(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/data-schema-types': 1.2.1
-      '@aws-amplify/graphql-generator': 0.5.3
+      '@aws-amplify/graphql-generator': 0.5.3(supports-color@7.2.0)
       '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       aws-cdk-lib: 2.262.1(constructs@10.6.0)
       constructs: 10.6.0
@@ -6917,16 +6924,16 @@ snapshots:
       - react-native-b4a
       - zod
 
-  '@aws-amplify/backend@1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/backend@1.22.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-auth': 1.9.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/backend-data': 1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/backend-data': 1.6.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)
       '@aws-amplify/backend-function': 1.18.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/backend-output-storage': 1.3.4(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
       '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/backend-storage': 1.4.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
-      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/client-config': 1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)
       '@aws-amplify/data-schema': 1.25.6
       '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
@@ -6970,11 +6977,11 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/client-config@1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/client-config@1.10.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1097.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/model-generator': 1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)
       '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1043.0
@@ -6993,11 +7000,11 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  '@aws-amplify/client-config@1.10.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/client-config@1.10.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/deployed-backend-client': 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/model-generator': 1.2.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)
+      '@aws-amplify/model-generator': 1.2.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)
       '@aws-amplify/platform-core': 1.11.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-sdk/client-amplify': 3.1044.0
@@ -7016,10 +7023,10 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  '@aws-amplify/codegen-ui-react@2.20.4(react-dom@19.2.5(react@19.2.8))(react@19.2.8)':
+  '@aws-amplify/codegen-ui-react@2.20.4(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(supports-color@7.2.0)':
     dependencies:
       '@aws-amplify/codegen-ui': 2.20.4
-      '@typescript/vfs': 1.3.6
+      '@typescript/vfs': 1.3.6(supports-color@7.2.0)
       pluralize: 8.0.0
       react: 19.2.8
       react-dom: 19.2.5(react@19.2.8)
@@ -7133,11 +7140,11 @@ snapshots:
       - constructs
       - react-native-b4a
 
-  '@aws-amplify/form-generator@1.2.7(react-dom@19.2.5(react@19.2.8))(react@19.2.8)':
+  '@aws-amplify/form-generator@1.2.7(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(supports-color@7.2.0)':
     dependencies:
-      '@aws-amplify/appsync-modelgen-plugin': 2.15.2(graphql@15.10.2)
+      '@aws-amplify/appsync-modelgen-plugin': 2.15.2(graphql@15.10.2)(supports-color@7.2.0)
       '@aws-amplify/codegen-ui': 2.20.4
-      '@aws-amplify/codegen-ui-react': 2.20.4(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
+      '@aws-amplify/codegen-ui-react': 2.20.4(react-dom@19.2.5(react@19.2.8))(react@19.2.8)(supports-color@7.2.0)
       '@aws-amplify/graphql-directives': 2.8.0
       '@aws-amplify/graphql-docs-generator': 4.2.1
       '@aws-sdk/client-amplifyuibuilder': 3.1043.0
@@ -7169,9 +7176,9 @@ snapshots:
       handlebars: 4.7.7
       yargs: 15.4.1
 
-  '@aws-amplify/graphql-generator@0.5.3':
+  '@aws-amplify/graphql-generator@0.5.3(supports-color@7.2.0)':
     dependencies:
-      '@aws-amplify/appsync-modelgen-plugin': 2.15.2(graphql@15.10.2)
+      '@aws-amplify/appsync-modelgen-plugin': 2.15.2(graphql@15.10.2)(supports-color@7.2.0)
       '@aws-amplify/graphql-directives': 1.1.1
       '@aws-amplify/graphql-docs-generator': 4.2.1
       '@aws-amplify/graphql-types-generator': 3.6.0
@@ -7186,7 +7193,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@aws-amplify/graphql-schema-generator@0.11.14(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/graphql-schema-generator@0.11.14(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)':
     dependencies:
       '@aws-amplify/graphql-transformer-core': 3.5.1(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/graphql-transformer-interfaces': 4.3.0(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
@@ -7198,7 +7205,7 @@ snapshots:
       fs-extra: 11.1.1
       graphql: 15.10.2
       graphql-transformer-common: 5.1.4
-      knex: 2.4.2(mysql2@3.9.9)(pg@8.11.6)
+      knex: 2.4.2(mysql2@3.9.9)(pg@8.11.6)(supports-color@7.2.0)
       mysql2: 3.9.9
       ora: 4.1.1
       pg: 8.11.6
@@ -7255,11 +7262,11 @@ snapshots:
       source-map-support: 0.5.21
       yargs: 15.4.1
 
-  '@aws-amplify/model-generator@1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/model-generator@1.2.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/deployed-backend-client': 1.8.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1043.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/graphql-generator': 0.5.3
+      '@aws-amplify/graphql-generator': 0.5.3(supports-color@7.2.0)
       '@aws-amplify/graphql-types-generator': 3.6.0
       '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
@@ -7282,11 +7289,11 @@ snapshots:
       - supports-color
       - zod
 
-  '@aws-amplify/model-generator@1.2.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(zod@3.25.17)':
+  '@aws-amplify/model-generator@1.2.3(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(zod@3.25.17)':
     dependencies:
       '@aws-amplify/backend-output-schemas': 1.8.0(zod@3.25.17)
       '@aws-amplify/deployed-backend-client': 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/graphql-generator': 0.5.3
+      '@aws-amplify/graphql-generator': 0.5.3(supports-color@7.2.0)
       '@aws-amplify/graphql-types-generator': 3.6.0
       '@aws-amplify/platform-core': 1.11.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
@@ -7388,12 +7395,12 @@ snapshots:
       - bare-buffer
       - react-native-b4a
 
-  '@aws-amplify/sandbox@2.2.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)':
+  '@aws-amplify/sandbox@2.2.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@aws-amplify/backend-deployer': 2.1.7(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(typescript@5.9.3)
       '@aws-amplify/backend-secret': 1.4.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/cli-core': 2.2.5(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(@types/node@25.9.1)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
-      '@aws-amplify/client-config': 1.10.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/client-config': 1.10.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)
       '@aws-amplify/deployed-backend-client': 1.8.2(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/client-amplify@3.1044.0)(@aws-sdk/client-cloudformation@3.1043.0)(@aws-sdk/client-s3@3.1050.0)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/platform-core': 1.11.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
       '@aws-amplify/plugin-types': 1.12.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
@@ -7424,9 +7431,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@aws-amplify/schema-generator@1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)':
+  '@aws-amplify/schema-generator@1.4.1(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)':
     dependencies:
-      '@aws-amplify/graphql-schema-generator': 0.11.14(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
+      '@aws-amplify/graphql-schema-generator': 0.11.14(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)(supports-color@7.2.0)
       '@aws-amplify/platform-core': 1.11.0(@aws-cdk/cli-plugin-contract@2.182.2)(@aws-sdk/types@3.974.4)(aws-cdk-lib@2.262.1(constructs@10.6.0))(constructs@10.6.0)
     transitivePeerDependencies:
       - '@aws-cdk/cli-plugin-contract'
@@ -7963,7 +7970,7 @@ snapshots:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-sdk/core': 3.977.8
-      '@aws-sdk/credential-provider-node': 3.972.43
+      '@aws-sdk/credential-provider-node': 3.972.74
       '@aws-sdk/middleware-host-header': 3.972.10
       '@aws-sdk/middleware-logger': 3.972.10
       '@aws-sdk/middleware-recursion-detection': 3.972.11
@@ -7975,7 +7982,7 @@ snapshots:
       '@aws-sdk/util-user-agent-node': 3.973.24
       '@smithy/config-resolver': 4.4.17
       '@smithy/core': 3.33.2
-      '@smithy/fetch-http-handler': 5.4.3
+      '@smithy/fetch-http-handler': 5.6.12
       '@smithy/hash-node': 4.2.14
       '@smithy/invalid-dependency': 4.2.14
       '@smithy/middleware-content-length': 4.2.14
@@ -7984,7 +7991,7 @@ snapshots:
       '@smithy/middleware-serde': 4.2.20
       '@smithy/middleware-stack': 4.2.14
       '@smithy/node-config-provider': 4.3.14
-      '@smithy/node-http-handler': 4.7.3
+      '@smithy/node-http-handler': 4.9.12
       '@smithy/protocol-http': 5.3.14
       '@smithy/smithy-client': 4.12.13
       '@smithy/types': 4.17.2
@@ -9409,20 +9416,20 @@ snapshots:
 
   '@babel/compat-data@7.29.3': {}
 
-  '@babel/core@7.29.0':
+  '@babel/core@7.29.0(supports-color@7.2.0)':
     dependencies:
       '@babel/code-frame': 7.29.0
       '@babel/generator': 7.29.1
       '@babel/helper-compilation-targets': 7.28.6
-      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
       '@babel/helpers': 7.29.2
       '@babel/parser': 7.29.3
       '@babel/template': 7.28.6
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
       '@babel/types': 7.29.0
       '@jridgewell/remapping': 2.3.5
       convert-source-map: 2.0.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -9457,41 +9464,41 @@ snapshots:
       lru-cache: 5.1.1
       semver: 6.3.1
 
-  '@babel/helper-create-class-features-plugin@7.29.3(@babel/core@7.29.0)':
+  '@babel/helper-create-class-features-plugin@7.29.3(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-annotate-as-pure': 7.27.3
-      '@babel/helper-member-expression-to-functions': 7.28.5
+      '@babel/helper-member-expression-to-functions': 7.28.5(supports-color@7.2.0)
       '@babel/helper-optimise-call-expression': 7.27.1
-      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
-      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
-      '@babel/traverse': 7.29.0
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1(supports-color@7.2.0)
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
   '@babel/helper-globals@7.28.0': {}
 
-  '@babel/helper-member-expression-to-functions@7.28.5':
+  '@babel/helper-member-expression-to-functions@7.28.5(supports-color@7.2.0)':
     dependencies:
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
       '@babel/types': 7.29.0
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/helper-module-imports@7.28.6':
+  '@babel/helper-module-imports@7.28.6(supports-color@7.2.0)':
     dependencies:
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
       '@babel/types': 7.29.0
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/helper-module-transforms@7.28.6(@babel/core@7.29.0)':
+  '@babel/helper-module-transforms@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
-      '@babel/helper-module-imports': 7.28.6
+      '@babel/core': 7.29.0(supports-color@7.2.0)
+      '@babel/helper-module-imports': 7.28.6(supports-color@7.2.0)
       '@babel/helper-validator-identifier': 7.28.5
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -9501,18 +9508,18 @@ snapshots:
 
   '@babel/helper-plugin-utils@7.28.6': {}
 
-  '@babel/helper-replace-supers@7.28.6(@babel/core@7.29.0)':
+  '@babel/helper-replace-supers@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
-      '@babel/helper-member-expression-to-functions': 7.28.5
+      '@babel/core': 7.29.0(supports-color@7.2.0)
+      '@babel/helper-member-expression-to-functions': 7.28.5(supports-color@7.2.0)
       '@babel/helper-optimise-call-expression': 7.27.1
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/helper-skip-transparent-expression-wrappers@7.27.1':
+  '@babel/helper-skip-transparent-expression-wrappers@7.27.1(supports-color@7.2.0)':
     dependencies:
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
       '@babel/types': 7.29.0
     transitivePeerDependencies:
       - supports-color
@@ -9532,175 +9539,175 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.0
 
-  '@babel/plugin-proposal-class-properties@7.18.6(@babel/core@7.29.0)':
+  '@babel/plugin-proposal-class-properties@7.18.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
-      '@babel/helper-create-class-features-plugin': 7.29.3(@babel/core@7.29.0)
+      '@babel/core': 7.29.0(supports-color@7.2.0)
+      '@babel/helper-create-class-features-plugin': 7.29.3(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.29.0)':
+  '@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
       '@babel/compat-data': 7.29.3
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-compilation-targets': 7.28.6
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.29.0)
-      '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.29.0)
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.29.0(supports-color@7.2.0))
 
-  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.29.0)':
+  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-flow@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-syntax-flow@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.29.0)':
+  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-arrow-functions@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-arrow-functions@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-block-scoped-functions@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-block-scoped-functions@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-block-scoping@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-transform-block-scoping@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-classes@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-transform-classes@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-annotate-as-pure': 7.27.3
       '@babel/helper-compilation-targets': 7.28.6
       '@babel/helper-globals': 7.28.0
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
-      '@babel/traverse': 7.29.0
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-computed-properties@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-transform-computed-properties@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
       '@babel/template': 7.28.6
 
-  '@babel/plugin-transform-destructuring@7.28.5(@babel/core@7.29.0)':
+  '@babel/plugin-transform-destructuring@7.28.5(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-flow-strip-types@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-flow-strip-types@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/plugin-syntax-flow': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-syntax-flow': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))
 
-  '@babel/plugin-transform-for-of@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-for-of@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-function-name@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-function-name@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-compilation-targets': 7.28.6
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/traverse': 7.29.0
+      '@babel/traverse': 7.29.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-literals@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-literals@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-member-expression-literals@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-member-expression-literals@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-modules-commonjs@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-transform-modules-commonjs@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
-      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
+      '@babel/core': 7.29.0(supports-color@7.2.0)
+      '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-object-super@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-object-super@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0)
+      '@babel/helper-replace-supers': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-parameters@7.27.7(@babel/core@7.29.0)':
+  '@babel/plugin-transform-parameters@7.27.7(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-property-literals@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-property-literals@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-react-display-name@7.28.0(@babel/core@7.29.0)':
+  '@babel/plugin-transform-react-display-name@7.28.0(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-react-jsx@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-transform-react-jsx@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-annotate-as-pure': 7.27.3
-      '@babel/helper-module-imports': 7.28.6
+      '@babel/helper-module-imports': 7.28.6(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/plugin-syntax-jsx': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-syntax-jsx': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))
       '@babel/types': 7.29.0
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-shorthand-properties@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-shorthand-properties@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-transform-spread@7.28.6(@babel/core@7.29.0)':
+  '@babel/plugin-transform-spread@7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-template-literals@7.27.1(@babel/core@7.29.0)':
+  '@babel/plugin-transform-template-literals@7.27.1(@babel/core@7.29.0(supports-color@7.2.0))':
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
       '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/runtime@7.29.2': {}
@@ -9711,7 +9718,7 @@ snapshots:
       '@babel/parser': 7.29.3
       '@babel/types': 7.29.0
 
-  '@babel/traverse@7.29.0':
+  '@babel/traverse@7.29.0(supports-color@7.2.0)':
     dependencies:
       '@babel/code-frame': 7.29.0
       '@babel/generator': 7.29.1
@@ -9719,7 +9726,7 @@ snapshots:
       '@babel/parser': 7.29.3
       '@babel/template': 7.28.6
       '@babel/types': 7.29.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -10062,11 +10069,11 @@ snapshots:
       graphql: 15.10.2
       tslib: 2.8.1
 
-  '@graphql-codegen/visitor-plugin-common@1.22.0(graphql@15.10.2)':
+  '@graphql-codegen/visitor-plugin-common@1.22.0(graphql@15.10.2)(supports-color@7.2.0)':
     dependencies:
       '@graphql-codegen/plugin-helpers': 1.18.8(graphql@15.10.2)
       '@graphql-tools/optimize': 1.4.0(graphql@15.10.2)
-      '@graphql-tools/relay-operation-optimizer': 6.5.18(graphql@15.10.2)
+      '@graphql-tools/relay-operation-optimizer': 6.5.18(graphql@15.10.2)(supports-color@7.2.0)
       array.prototype.flatmap: 1.3.3
       auto-bind: 4.0.0
       change-case-all: 1.0.14
@@ -10117,9 +10124,9 @@ snapshots:
       graphql: 15.10.2
       tslib: 2.8.1
 
-  '@graphql-tools/relay-operation-optimizer@6.5.18(graphql@15.10.2)':
+  '@graphql-tools/relay-operation-optimizer@6.5.18(graphql@15.10.2)(supports-color@7.2.0)':
     dependencies:
-      '@ardatan/relay-compiler': 12.0.0(graphql@15.10.2)
+      '@ardatan/relay-compiler': 12.0.0(graphql@15.10.2)(supports-color@7.2.0)
       '@graphql-tools/utils': 9.2.1(graphql@15.10.2)
       graphql: 15.10.2
       tslib: 2.8.1
@@ -10434,14 +10441,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mdx-js/loader@3.1.1':
+  '@mdx-js/loader@3.1.1(supports-color@7.2.0)':
     dependencies:
-      '@mdx-js/mdx': 3.1.1
+      '@mdx-js/mdx': 3.1.1(supports-color@7.2.0)
       source-map: 0.7.6
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/mdx@3.1.1':
+  '@mdx-js/mdx@3.1.1(supports-color@7.2.0)':
     dependencies:
       '@types/estree': 1.0.8
       '@types/estree-jsx': 1.0.5
@@ -10453,14 +10460,14 @@ snapshots:
       estree-util-is-identifier-name: 3.0.0
       estree-util-scope: 1.0.0
       estree-walker: 3.0.3
-      hast-util-to-jsx-runtime: 2.3.6
+      hast-util-to-jsx-runtime: 2.3.6(supports-color@7.2.0)
       markdown-extensions: 2.0.0
       recma-build-jsx: 1.0.0
       recma-jsx: 1.0.1(acorn@8.16.0)
       recma-stringify: 1.0.0
-      rehype-recma: 1.0.0
-      remark-mdx: 3.1.1
-      remark-parse: 11.0.0
+      rehype-recma: 1.0.0(supports-color@7.2.0)
+      remark-mdx: 3.1.1(supports-color@7.2.0)
+      remark-parse: 11.0.0(supports-color@7.2.0)
       remark-rehype: 11.1.2
       source-map: 0.7.6
       unified: 11.0.5
@@ -10479,11 +10486,11 @@ snapshots:
 
   '@next/env@16.2.12': {}
 
-  '@next/mdx@16.3.1(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.8))':
+  '@next/mdx@16.3.1(@mdx-js/loader@3.1.1(supports-color@7.2.0))(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.8))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
-      '@mdx-js/loader': 3.1.1
+      '@mdx-js/loader': 3.1.1(supports-color@7.2.0)
       '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.8)
 
   '@next/swc-darwin-arm64@16.2.12':
@@ -10694,7 +10701,7 @@ snapshots:
     dependencies:
       '@smithy/types': 4.17.2
       '@smithy/util-buffer-from': 4.2.2
-      '@smithy/util-utf8': 4.2.2
+      '@smithy/util-utf8': 4.3.3
       tslib: 2.8.1
 
   '@smithy/invalid-dependency@4.2.14':
@@ -10864,7 +10871,7 @@ snapshots:
   '@smithy/util-base64@4.3.2':
     dependencies:
       '@smithy/util-buffer-from': 4.2.2
-      '@smithy/util-utf8': 4.2.2
+      '@smithy/util-utf8': 4.3.3
       tslib: 2.8.1
 
   '@smithy/util-body-length-browser@4.2.2':
@@ -10904,7 +10911,7 @@ snapshots:
   '@smithy/util-defaults-mode-node@4.2.54':
     dependencies:
       '@smithy/config-resolver': 4.4.17
-      '@smithy/credential-provider-imds': 4.3.3
+      '@smithy/credential-provider-imds': 4.4.15
       '@smithy/node-config-provider': 4.3.14
       '@smithy/property-provider': 4.2.14
       '@smithy/smithy-client': 4.12.13
@@ -10938,8 +10945,8 @@ snapshots:
 
   '@smithy/util-stream@4.5.25':
     dependencies:
-      '@smithy/fetch-http-handler': 5.4.3
-      '@smithy/node-http-handler': 4.7.3
+      '@smithy/fetch-http-handler': 5.6.12
+      '@smithy/node-http-handler': 4.9.12
       '@smithy/types': 4.17.2
       '@smithy/util-base64': 4.3.2
       '@smithy/util-buffer-from': 4.2.2
@@ -11271,9 +11278,9 @@ snapshots:
 
   '@types/uuid@9.0.8': {}
 
-  '@typescript/vfs@1.3.6':
+  '@typescript/vfs@1.3.6(supports-color@7.2.0)':
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -11449,35 +11456,35 @@ snapshots:
 
   babel-plugin-syntax-trailing-function-commas@7.0.0-beta.0: {}
 
-  babel-preset-fbjs@3.4.0(@babel/core@7.29.0):
+  babel-preset-fbjs@3.4.0(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
-      '@babel/core': 7.29.0
-      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.29.0)
-      '@babel/plugin-proposal-object-rest-spread': 7.20.7(@babel/core@7.29.0)
-      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.29.0)
-      '@babel/plugin-syntax-flow': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-syntax-jsx': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.29.0)
-      '@babel/plugin-transform-arrow-functions': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-block-scoped-functions': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-block-scoping': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-classes': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-computed-properties': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-destructuring': 7.28.5(@babel/core@7.29.0)
-      '@babel/plugin-transform-flow-strip-types': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-for-of': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-function-name': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-literals': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-member-expression-literals': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-modules-commonjs': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-object-super': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.29.0)
-      '@babel/plugin-transform-property-literals': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-react-display-name': 7.28.0(@babel/core@7.29.0)
-      '@babel/plugin-transform-react-jsx': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-shorthand-properties': 7.27.1(@babel/core@7.29.0)
-      '@babel/plugin-transform-spread': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-template-literals': 7.27.1(@babel/core@7.29.0)
+      '@babel/core': 7.29.0(supports-color@7.2.0)
+      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-proposal-object-rest-spread': 7.20.7(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-syntax-flow': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-syntax-jsx': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-arrow-functions': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-block-scoped-functions': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-block-scoping': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-classes': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-computed-properties': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-destructuring': 7.28.5(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-flow-strip-types': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-for-of': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-function-name': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-literals': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-member-expression-literals': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-modules-commonjs': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-object-super': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-property-literals': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-react-display-name': 7.28.0(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-react-jsx': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-shorthand-properties': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
+      '@babel/plugin-transform-spread': 7.28.6(@babel/core@7.29.0(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/plugin-transform-template-literals': 7.27.1(@babel/core@7.29.0(supports-color@7.2.0))
       babel-plugin-syntax-trailing-function-commas: 7.0.0-beta.0
     transitivePeerDependencies:
       - supports-color
@@ -11585,10 +11592,10 @@ snapshots:
     dependencies:
       node-int64: 0.4.0
 
-  budoux@0.8.4:
+  budoux@0.8.4(supports-color@7.2.0):
     dependencies:
       commander: 14.0.3
-      google-artifactregistry-auth: 3.5.0
+      google-artifactregistry-auth: 3.5.0(supports-color@7.2.0)
       linkedom: 0.18.12
     transitivePeerDependencies:
       - canvas
@@ -12104,13 +12111,17 @@ snapshots:
 
   debounce-promise@3.1.2: {}
 
-  debug@4.3.4:
+  debug@4.3.4(supports-color@7.2.0):
     dependencies:
       ms: 2.1.2
+    optionalDependencies:
+      supports-color: 7.2.0
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
   decamelize@1.2.0: {}
 
@@ -12599,10 +12610,10 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  gaxios@6.7.1:
+  gaxios@6.7.1(supports-color@7.2.0):
     dependencies:
       extend: 3.0.2
-      https-proxy-agent: 7.0.6
+      https-proxy-agent: 7.0.6(supports-color@7.2.0)
       is-stream: 2.0.1
       node-fetch: 2.7.0
       uuid: 9.0.1
@@ -12610,9 +12621,9 @@ snapshots:
       - encoding
       - supports-color
 
-  gcp-metadata@6.1.1:
+  gcp-metadata@6.1.1(supports-color@7.2.0):
     dependencies:
-      gaxios: 6.7.1
+      gaxios: 6.7.1(supports-color@7.2.0)
       google-logging-utils: 0.0.2
       json-bigint: 1.0.0
     transitivePeerDependencies:
@@ -12715,22 +12726,22 @@ snapshots:
       merge2: 1.4.1
       slash: 3.0.0
 
-  google-artifactregistry-auth@3.5.0:
+  google-artifactregistry-auth@3.5.0(supports-color@7.2.0):
     dependencies:
-      google-auth-library: 9.15.1
+      google-auth-library: 9.15.1(supports-color@7.2.0)
       js-yaml: 4.1.1
       yargs: 17.7.2
     transitivePeerDependencies:
       - encoding
       - supports-color
 
-  google-auth-library@9.15.1:
+  google-auth-library@9.15.1(supports-color@7.2.0):
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
-      gaxios: 6.7.1
-      gcp-metadata: 6.1.1
-      gtoken: 7.1.0
+      gaxios: 6.7.1(supports-color@7.2.0)
+      gcp-metadata: 6.1.1(supports-color@7.2.0)
+      gtoken: 7.1.0(supports-color@7.2.0)
       jws: 4.0.1
     transitivePeerDependencies:
       - encoding
@@ -12776,9 +12787,9 @@ snapshots:
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
 
-  gtoken@7.1.0:
+  gtoken@7.1.0(supports-color@7.2.0):
     dependencies:
-      gaxios: 6.7.1
+      gaxios: 6.7.1(supports-color@7.2.0)
       jws: 4.0.1
     transitivePeerDependencies:
       - encoding
@@ -12827,7 +12838,7 @@ snapshots:
       '@ungap/structured-clone': 1.3.1
       unist-util-position: 5.0.0
 
-  hast-util-to-estree@3.1.3:
+  hast-util-to-estree@3.1.3(supports-color@7.2.0):
     dependencies:
       '@types/estree': 1.0.8
       '@types/estree-jsx': 1.0.5
@@ -12837,9 +12848,9 @@ snapshots:
       estree-util-attach-comments: 3.0.0
       estree-util-is-identifier-name: 3.0.0
       hast-util-whitespace: 3.0.0
-      mdast-util-mdx-expression: 2.0.1
-      mdast-util-mdx-jsx: 3.2.0
-      mdast-util-mdxjs-esm: 2.0.1
+      mdast-util-mdx-expression: 2.0.1(supports-color@7.2.0)
+      mdast-util-mdx-jsx: 3.2.0(supports-color@7.2.0)
+      mdast-util-mdxjs-esm: 2.0.1(supports-color@7.2.0)
       property-information: 7.1.0
       space-separated-tokens: 2.0.2
       style-to-js: 1.1.21
@@ -12862,7 +12873,7 @@ snapshots:
       stringify-entities: 4.0.4
       zwitch: 2.0.4
 
-  hast-util-to-jsx-runtime@2.3.6:
+  hast-util-to-jsx-runtime@2.3.6(supports-color@7.2.0):
     dependencies:
       '@types/estree': 1.0.8
       '@types/hast': 3.0.4
@@ -12871,9 +12882,9 @@ snapshots:
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
       hast-util-whitespace: 3.0.0
-      mdast-util-mdx-expression: 2.0.1
-      mdast-util-mdx-jsx: 3.2.0
-      mdast-util-mdxjs-esm: 2.0.1
+      mdast-util-mdx-expression: 2.0.1(supports-color@7.2.0)
+      mdast-util-mdx-jsx: 3.2.0(supports-color@7.2.0)
+      mdast-util-mdxjs-esm: 2.0.1(supports-color@7.2.0)
       property-information: 7.1.0
       space-separated-tokens: 2.0.2
       style-to-js: 1.1.21
@@ -12914,10 +12925,10 @@ snapshots:
       domutils: 3.2.2
       entities: 7.0.1
 
-  https-proxy-agent@7.0.6:
+  https-proxy-agent@7.0.6(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -13263,11 +13274,11 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  knex@2.4.2(mysql2@3.9.9)(pg@8.11.6):
+  knex@2.4.2(mysql2@3.9.9)(pg@8.11.6)(supports-color@7.2.0):
     dependencies:
       colorette: 2.0.19
       commander: 9.5.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@7.2.0)
       escalade: 3.2.0
       esm: 3.2.25
       get-package-type: 0.1.0
@@ -13311,6 +13322,9 @@ snapshots:
     optional: true
 
   lightningcss-linux-x64-gnu@1.32.0:
+    optional: true
+
+  lightningcss-linux-x64-gnu@1.33.0:
     optional: true
 
   lightningcss-linux-x64-musl@1.32.0:
@@ -13426,14 +13440,14 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  mdast-util-from-markdown@2.0.3:
+  mdast-util-from-markdown@2.0.3(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       '@types/unist': 3.0.3
       decode-named-character-reference: 1.3.0
       devlop: 1.1.0
       mdast-util-to-string: 4.0.0
-      micromark: 4.0.2
+      micromark: 4.0.2(supports-color@7.2.0)
       micromark-util-decode-numeric-character-reference: 2.0.2
       micromark-util-decode-string: 2.0.1
       micromark-util-normalize-identifier: 2.0.1
@@ -13443,12 +13457,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-frontmatter@2.0.1:
+  mdast-util-frontmatter@2.0.1(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       escape-string-regexp: 5.0.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       micromark-extension-frontmatter: 2.0.0
     transitivePeerDependencies:
@@ -13462,67 +13476,67 @@ snapshots:
       mdast-util-find-and-replace: 3.0.2
       micromark-util-character: 2.1.1
 
-  mdast-util-gfm-footnote@2.1.0:
+  mdast-util-gfm-footnote@2.1.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       micromark-util-normalize-identifier: 2.0.1
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-strikethrough@2.0.0:
+  mdast-util-gfm-strikethrough@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-table@2.0.0:
+  mdast-util-gfm-table@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       markdown-table: 3.0.4
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-task-list-item@2.0.0:
+  mdast-util-gfm-task-list-item@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm@3.1.0:
+  mdast-util-gfm@3.1.0(supports-color@7.2.0):
     dependencies:
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-gfm-autolink-literal: 2.0.1
-      mdast-util-gfm-footnote: 2.1.0
-      mdast-util-gfm-strikethrough: 2.0.0
-      mdast-util-gfm-table: 2.0.0
-      mdast-util-gfm-task-list-item: 2.0.0
+      mdast-util-gfm-footnote: 2.1.0(supports-color@7.2.0)
+      mdast-util-gfm-strikethrough: 2.0.0(supports-color@7.2.0)
+      mdast-util-gfm-table: 2.0.0(supports-color@7.2.0)
+      mdast-util-gfm-task-list-item: 2.0.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-mdx-expression@2.0.1:
+  mdast-util-mdx-expression@2.0.1(supports-color@7.2.0):
     dependencies:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-mdx-jsx@3.2.0:
+  mdast-util-mdx-jsx@3.2.0(supports-color@7.2.0):
     dependencies:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
@@ -13530,7 +13544,7 @@ snapshots:
       '@types/unist': 3.0.3
       ccount: 2.0.1
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       parse-entities: 4.0.2
       stringify-entities: 4.0.4
@@ -13539,23 +13553,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-mdx@3.0.0:
+  mdast-util-mdx@3.0.0(supports-color@7.2.0):
     dependencies:
-      mdast-util-from-markdown: 2.0.3
-      mdast-util-mdx-expression: 2.0.1
-      mdast-util-mdx-jsx: 3.2.0
-      mdast-util-mdxjs-esm: 2.0.1
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
+      mdast-util-mdx-expression: 2.0.1(supports-color@7.2.0)
+      mdast-util-mdx-jsx: 3.2.0(supports-color@7.2.0)
+      mdast-util-mdxjs-esm: 2.0.1(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-mdxjs-esm@2.0.1:
+  mdast-util-mdxjs-esm@2.0.1(supports-color@7.2.0):
     dependencies:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
@@ -13846,10 +13860,10 @@ snapshots:
 
   micromark-util-types@2.0.2: {}
 
-  micromark@4.0.2:
+  micromark@4.0.2(supports-color@7.2.0):
     dependencies:
       '@types/debug': 4.1.13
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       decode-named-character-reference: 1.3.0
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.3
@@ -13936,7 +13950,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@16.2.12(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8):
+  next@16.2.12(@babel/core@7.29.0(supports-color@7.2.0))(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8):
     dependencies:
       '@next/env': 16.2.12
       '@swc/helpers': 0.5.15
@@ -13945,7 +13959,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.2.8
       react-dom: 19.2.5(react@19.2.8)
-      styled-jsx: 5.1.6(@babel/core@7.29.0)(react@19.2.8)
+      styled-jsx: 5.1.6(@babel/core@7.29.0(supports-color@7.2.0))(react@19.2.8)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.2.12
       '@next/swc-darwin-x64': 16.2.12
@@ -13961,9 +13975,9 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-toploader@3.9.17(next@16.2.12(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8))(react-dom@19.2.5(react@19.2.8))(react@19.2.8):
+  nextjs-toploader@3.9.17(next@16.2.12(@babel/core@7.29.0(supports-color@7.2.0))(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8))(react-dom@19.2.5(react@19.2.8))(react@19.2.8):
     dependencies:
-      next: 16.2.12(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
+      next: 16.2.12(@babel/core@7.29.0(supports-color@7.2.0))(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
       nprogress: 0.2.0
       prop-types: 15.8.1
       react: 19.2.8
@@ -14406,11 +14420,11 @@ snapshots:
       gopd: 1.2.0
       set-function-name: 2.0.2
 
-  rehype-recma@1.0.0:
+  rehype-recma@1.0.0(supports-color@7.2.0):
     dependencies:
       '@types/estree': 1.0.8
       '@types/hast': 3.0.4
-      hast-util-to-estree: 3.1.3
+      hast-util-to-estree: 3.1.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -14441,21 +14455,21 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  remark-frontmatter@5.0.0:
+  remark-frontmatter@5.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-frontmatter: 2.0.1
+      mdast-util-frontmatter: 2.0.1(supports-color@7.2.0)
       micromark-extension-frontmatter: 2.0.0
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
-  remark-gfm@4.0.1:
+  remark-gfm@4.0.1(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-gfm: 3.1.0
+      mdast-util-gfm: 3.1.0(supports-color@7.2.0)
       micromark-extension-gfm: 3.0.0
-      remark-parse: 11.0.0
+      remark-parse: 11.0.0(supports-color@7.2.0)
       remark-stringify: 11.0.0
       unified: 11.0.5
     transitivePeerDependencies:
@@ -14470,17 +14484,17 @@ snapshots:
       unist-util-mdx-define: 1.1.2
       yaml: 2.8.4
 
-  remark-mdx@3.1.1:
+  remark-mdx@3.1.1(supports-color@7.2.0):
     dependencies:
-      mdast-util-mdx: 3.0.0
+      mdast-util-mdx: 3.0.0(supports-color@7.2.0)
       micromark-extension-mdxjs: 3.0.0
     transitivePeerDependencies:
       - supports-color
 
-  remark-parse@11.0.0:
+  remark-parse@11.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       micromark-util-types: 2.0.2
       unified: 11.0.5
     transitivePeerDependencies:
@@ -14848,12 +14862,12 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  styled-jsx@5.1.6(@babel/core@7.29.0)(react@19.2.8):
+  styled-jsx@5.1.6(@babel/core@7.29.0(supports-color@7.2.0))(react@19.2.8):
     dependencies:
       client-only: 0.0.1
       react: 19.2.8
     optionalDependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.29.0(supports-color@7.2.0)
 
   supports-color@5.5.0:
     dependencies:
