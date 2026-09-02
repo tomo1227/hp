@@ -12,8 +12,8 @@ importers:
         specifier: ^5.16.2
         version: 5.17.2
       '@amcharts/amcharts5-geodata':
-        specifier: ^5.1.5
-        version: 5.1.5
+        specifier: ^5.1.6
+        version: 5.1.6
       '@aws-sdk/client-s3':
         specifier: ^3.1062.0
         version: 3.1097.0
@@ -194,8 +194,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@amcharts/amcharts5-geodata@5.1.5':
-    resolution: {integrity: sha512-LiH726cCNHBSBc5fcT1fjHEq28zwfYD5F6B5KKZflvVTUu5oaRh/c77GDTZgU4MYEo0xspSWhmXFy39BR7mpXw==}
+  '@amcharts/amcharts5-geodata@5.1.6':
+    resolution: {integrity: sha512-5tx+De61wj1SSzwJtdnDgAw1PA1+Fx007I1hNKMc07V2HPE57vYRdjRND3n0mnyXsbXJ5USlOmJMUPlqe8eAqw==}
 
   '@amcharts/amcharts5@5.17.2':
     resolution: {integrity: sha512-u/Qc1uE+kKkQqsdm2lIYv7oHu/lzaQ+gB2OvddmyatdISNCQMBvZTruoQgiXXj5UCqHH+HWOBauR6XVyVPadwA==}
@@ -6571,7 +6571,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@amcharts/amcharts5-geodata@5.1.5':
+  '@amcharts/amcharts5-geodata@5.1.6':
     dependencies:
       '@types/geojson': 7946.0.16
 
