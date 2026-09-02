@@ -1,9 +1,12 @@
 "use client";
 
+import { isValidElement, type ReactNode, useEffect, useState } from "react";
 import { codeToHtml } from "shiki";
-import { isValidElement, useEffect, useState, type ReactNode } from "react";
 
-function collectCode(children: ReactNode): { className?: string; code: string } {
+function collectCode(children: ReactNode): {
+  className?: string;
+  code: string;
+} {
   let className: string | undefined;
   let code = "";
 
@@ -14,7 +17,9 @@ function collectCode(children: ReactNode): { className?: string; code: string } 
       code += String(node);
     } else if (Array.isArray(node)) {
       node.forEach(walk);
-    } else if (isValidElement<{ className?: string; children?: ReactNode }>(node)) {
+    } else if (
+      isValidElement<{ className?: string; children?: ReactNode }>(node)
+    ) {
       if (node.type === "code") {
         className = node.props.className || className;
       }
@@ -55,9 +60,6 @@ export function Pre({ children }: PreProps) {
   }, [code, lang]);
 
   return (
-    <div
-      className="code-block"
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <div className="code-block" dangerouslySetInnerHTML={{ __html: html }} />
   );
 }
