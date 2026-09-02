@@ -85,6 +85,24 @@ html.dark .markdown h3 {
   @apply block bg-transparent p-0 overflow-visible rounded-none;
 }
 
+.markdown .code-block pre {
+  @apply p-4 rounded-lg overflow-x-auto text-sm leading-relaxed;
+  background: var(--shiki-background);
+}
+
+.markdown .code-block code {
+  @apply font-mono;
+  background: transparent !important;
+}
+
+.markdown .center {
+  @apply text-center w-full;
+}
+
+.markdown .center > * {
+  @apply justify-center;
+}
+
 .markdown ul {
   @apply text-base pl-8 list-disc;
 }

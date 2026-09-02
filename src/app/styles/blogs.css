@@ -1302,6 +1302,10 @@
 /* blog記事 */
 #blog-wrapper {
   @apply mx-6;
+  width: 100%;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #blog-info {
   @apply flex flex-col mb-10 items-center max-md:mb-3;
@@ -1346,14 +1350,19 @@
 }
 
 #blog-content {
-  @apply flex flex-col justify-center items-center relative;
+  @apply flex flex-col relative;
 }
 
 #blog-layout {
-  @apply flex justify-around max-lg:flex-col flex-1 max-lg:-mt-4;
+  @apply flex justify-around flex-1;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1250px) {
+  #blog-layout {
+    flex-direction: column;
+    margin-top: -1rem;
+  }
+
   .sidebar-left {
     order: 1;
   }

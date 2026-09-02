@@ -588,6 +588,12 @@
   },
   {
     "date": "2026-09-12 01:44",
+    "en_title": "Sakata Fireworks",
+    "title": "酒田の花火",
+    "url": "https://sakata-hanabi.com/"
+  },
+  {
+    "date": "2026-09-12 01:44",
     "en_title": "Suzuka Festival",
     "title": "鈴鹿げんき花火大会",
     "url": "https://www.suzuka-hanabi.com/"
@@ -667,6 +673,12 @@
     "url": "https://www.yodohanabi.com/"
   },
   {
+    "date": "2026-10-24 01:44",
+    "en_title": "Ohtakaishi Super Fireworks",
+    "title": "高石超花火",
+    "url": "https://cho-hanabi.com/"
+  },
+  {
     "date": "2026-10-31 01:44",
     "en_title": "Osaka Art Fireworks 2026",
     "title": "大阪芸術花火2026",
@@ -674,9 +686,21 @@
   },
   {
     "date": "2026-11-07 01:44",
+    "en_title": "Narita Fireworks Festival in Inbanuma",
+    "title": "NARITA花火大会in印旛沼",
+    "url": "https://naritahanabi.com/"
+  },
+  {
+    "date": "2026-11-07 01:44",
     "en_title": "Inagawa Fireworks Festival",
     "title": "猪名川花火大会",
     "url": "https://www.kobe-np.co.jp/info/prtimes/202512/c98199_r458.shtml"
+  },
+  {
+    "date": "2026-11-08 01:44",
+    "en_title": "Awaji Island Festival Fireworks",
+    "title": "淡路島まつり花火大会",
+    "url": "https://www.awajishimamatsuri.jp/"
   },
   {
     "date": "2026-11-14 01:44",
@@ -689,5 +713,11 @@
     "en_title": "Biwa Lake Night Cruise Fireworks",
     "title": "琵琶湖ナイトクルーズ花火",
     "url": "https://biwakohanabi.com/?gad_campaignid=23272008860"
+  },
+  {
+    "date": "2026-11-23 01:44",
+    "en_title": "Nagano Ebisu Fireworks Festival",
+    "title": "長野えびす講煙火大会",
+    "url": "https://www.nagano-ebisukou.jp/"
   }
 ]
