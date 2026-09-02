@@ -24,6 +24,7 @@ export const TableOfContents = ({ locale }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const pathname = usePathname();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-run when pathname changes to update TOC across client-side navigation
   useEffect(() => {
     setActiveId(null);
     const article = document.querySelector("article#blog-content");
@@ -69,6 +70,7 @@ export const TableOfContents = ({ locale }: TableOfContentsProps) => {
     }
 
     return () => observer.disconnect();
+    // biome-ignore lint/correctness/useExhaustiveDependencies: re-run when pathname changes to update TOC across client-side navigation
   }, [pathname]);
 
   if (headings.length === 0) return null;

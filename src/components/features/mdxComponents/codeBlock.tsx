@@ -60,6 +60,7 @@ export function Pre({ children }: PreProps) {
   }, [code, lang]);
 
   return (
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: shiki sanitized HTML output
     <div className="code-block" dangerouslySetInnerHTML={{ __html: html }} />
   );
 }
