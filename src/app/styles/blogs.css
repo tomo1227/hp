@@ -1346,7 +1346,7 @@
 }
 
 #blog-content {
-  @apply flex flex-col justify-center items-center relative;
+  @apply flex flex-col relative;
 }
 
 #blog-layout {
