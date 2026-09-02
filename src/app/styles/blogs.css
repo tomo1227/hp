@@ -1302,6 +1302,10 @@
 /* blog記事 */
 #blog-wrapper {
   @apply mx-6;
+  width: 100%;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #blog-info {
   @apply flex flex-col mb-10 items-center max-md:mb-3;
