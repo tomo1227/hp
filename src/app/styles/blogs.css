@@ -1354,10 +1354,15 @@
 }
 
 #blog-layout {
-  @apply flex justify-around max-lg:flex-col flex-1 max-lg:-mt-4;
+  @apply flex justify-around flex-1;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1250px) {
+  #blog-layout {
+    flex-direction: column;
+    margin-top: -1rem;
+  }
+
   .sidebar-left {
     order: 1;
   }
