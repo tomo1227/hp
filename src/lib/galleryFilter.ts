@@ -40,6 +40,16 @@ type CountryFilterOptions = {
   region?: string;
 };
 
+type RegionFilterOptions = {
+  dateOrder?: dateOrder;
+  locale?: Locale;
+  category?: Category;
+  tag?: string;
+  country?: string;
+  timezone?: string;
+  city?: string;
+};
+
 const galleryBaseDir = (locale: Locale = "ja") =>
   join(process.cwd(), "src/_galleries/", locale);
 
@@ -196,4 +206,29 @@ export const getCountries = async ({
   ].sort((a, b) => a.localeCompare(b));
 
   return uniqueCountries;
+};
+
+export const getRegions = async ({
+  dateOrder = "desc",
+  locale = "ja",
+  category,
+  tag,
+  country,
+  timezone,
+  city,
+}: RegionFilterOptions = {}) => {
+  const posts = await getFilteredPosts({
+    dateOrder,
+    locale,
+    category,
+    tag,
+    country,
+    timezone,
+    city,
+  });
+  const regions = posts.flatMap((post) =>
+    post.frontmatter.region ? [post.frontmatter.region] : [],
+  );
+
+  return [...new Set(regions)].sort((a, b) => a.localeCompare(b));
 };

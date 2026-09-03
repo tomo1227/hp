@@ -7,7 +7,7 @@ import am5geodata_lang_JA from "@amcharts/amcharts5-geodata/lang/JA";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import { useRouter } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
-import { jaTranslate } from "@/lib/translator";
+import { jaTranslateRegion } from "@/lib/translator";
 import type Locale from "@/types/locale";
 
 type WorldMapProps = {
@@ -116,7 +116,7 @@ export default function WorldMap({
 
         if (!name) return text;
 
-        const displayName = locale === "ja" ? jaTranslate(name) : name;
+        const displayName = locale === "ja" ? jaTranslateRegion(name) : name;
         if (!count) return displayName;
 
         const suffix = locale === "ja" ? "件" : "posts";
@@ -184,7 +184,12 @@ export default function WorldMap({
           const countryData = geodata.features.map(
             (f: { id: string; properties?: { name?: string } }) => {
               const name = f.properties?.name;
-              const count = name ? (prefectureCounts?.[name] ?? 0) : 0;
+              const translatedName = name ? jaTranslateRegion(name) : "";
+              const count = name
+                ? (prefectureCounts?.[name] ??
+                  prefectureCounts?.[translatedName] ??
+                  0)
+                : 0;
 
               return {
                 id: f.id,
@@ -203,12 +208,8 @@ export default function WorldMap({
             templateField: "polygonSettings",
           });
 
-          // ① GeoJSON をシリーズへセット
-          countrySeries.setAll({
-            geoJSON: geodata,
-          });
-
-          // ② polygonSettings を反映させるデータをセット
+          // GeoJSON の変更時に既存データが消去されるため、色付きデータは後に設定する
+          countrySeries.set("geoJSON", geodata);
           countrySeries.data.setAll(countryData);
           countrySeries.show();
           worldSeries.hide(100);
@@ -228,7 +229,7 @@ export default function WorldMap({
       const data = dataItem.dataContext as { name?: string; count?: number };
       if (!data?.name) return;
       if ((data.count ?? 0) <= 0) return;
-      router.push(`/${locale}/gallery/tags/${data.name}`);
+      router.push(`/${locale}/gallery/japan/${encodeURIComponent(data.name)}`);
     });
 
     countrySeries.mapPolygons.template.states.create("hover", {
