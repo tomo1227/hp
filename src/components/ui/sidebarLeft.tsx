@@ -36,7 +36,6 @@ const SidebarLeft = ({ locale }: SidebarLeftProps) => {
         <div className="sidebar-instagram">
           <blockquote
             className="instagram-media"
-            data-instgrm-captioned=""
             data-instgrm-permalink={`${INSTAGRAM_POST_URL}?utm_source=ig_embed&utm_campaign=loading`}
             data-instgrm-version="14"
           >
