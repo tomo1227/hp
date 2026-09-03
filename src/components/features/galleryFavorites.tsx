@@ -703,8 +703,8 @@ export const GalleryFavoritesTabs = ({
                 <Image
                   src={gallery.image}
                   alt={`${gallery.title}-img`}
-                  width={1000}
-                  height={1000}
+                  width={700}
+                  height={700}
                   id={`${gallery.slug}-image`}
                   className="aspect-square object-cover object-center w-full h-auto"
                   placeholder="blur"
