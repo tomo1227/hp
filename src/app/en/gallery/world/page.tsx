@@ -150,7 +150,7 @@ export default async function Page() {
                 {topPrefectures.map((item) => (
                   <Link
                     key={item.prefecture}
-                    href={`/en/gallery/tags/${item.prefecture}`}
+                    href={`/en/gallery/japan/${item.prefecture}`}
                     className="world-top-chip"
                   >
                     <span className="world-top-name">{item.prefecture}</span>
