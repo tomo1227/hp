@@ -24,14 +24,14 @@ importers:
         specifier: ^0.8.8
         version: 0.8.8
       '@fullcalendar/core':
-        specifier: ^6.1.20
-        version: 6.1.20
+        specifier: ^6.1.21
+        version: 6.1.21
       '@fullcalendar/daygrid':
         specifier: ^6.1.19
-        version: 6.1.20(@fullcalendar/core@6.1.20)
+        version: 6.1.20(@fullcalendar/core@6.1.21)
       '@fullcalendar/react':
         specifier: ^6.1.19
-        version: 6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
+        version: 6.1.20(@fullcalendar/core@6.1.21)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.1(supports-color@7.2.0)
@@ -2089,8 +2089,8 @@ packages:
   '@formatjs/intl-localematcher@0.8.8':
     resolution: {integrity: sha512-pBr2hVKWvkHVnfXegW+53NT9U2uaVQCc+EgzLPCCwXqBA3nvM5fPbK9IcJlNjV+NMKGyZ2F3ZSG78iGdxAAqbA==}
 
-  '@fullcalendar/core@6.1.20':
-    resolution: {integrity: sha512-1cukXLlePFiJ8YKXn/4tMKsy0etxYLCkXk8nUCFi11nRONF2Ba2CD5b21/ovtOO2tL6afTJfwmc1ed3HG7eB1g==}
+  '@fullcalendar/core@6.1.21':
+    resolution: {integrity: sha512-t3u/+sqh3Iq7TWtUnVLcGDUE6OWZh0UD3c04bI/l7lSLAgAKr3kngBmhHiQD1QXpwC8ZN5iNqG7a7gOVixhSKQ==}
 
   '@fullcalendar/daygrid@6.1.20':
     resolution: {integrity: sha512-AO9vqhkLP77EesmJzuU+IGXgxNulsA8mgQHynclJ8U70vSwAVnbcLG9qftiTAFSlZjiY/NvhE7sflve6cJelyQ==}
@@ -10308,17 +10308,17 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 3.1.5
 
-  '@fullcalendar/core@6.1.20':
+  '@fullcalendar/core@6.1.21':
     dependencies:
       preact: 10.12.1
 
-  '@fullcalendar/daygrid@6.1.20(@fullcalendar/core@6.1.20)':
+  '@fullcalendar/daygrid@6.1.20(@fullcalendar/core@6.1.21)':
     dependencies:
-      '@fullcalendar/core': 6.1.20
+      '@fullcalendar/core': 6.1.21
 
-  '@fullcalendar/react@6.1.20(@fullcalendar/core@6.1.20)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)':
+  '@fullcalendar/react@6.1.20(@fullcalendar/core@6.1.21)(react-dom@19.2.5(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@fullcalendar/core': 6.1.20
+      '@fullcalendar/core': 6.1.21
       react: 19.2.8
       react-dom: 19.2.5(react@19.2.8)
 
