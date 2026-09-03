@@ -11,7 +11,11 @@
 }
 
 @media (min-width: 1251px) {
-  .sidebar-left,
+  .sidebar-left {
+    flex: 0 0 360px;
+    width: 360px;
+  }
+
   .sidebar-right {
     flex: 0 0 280px;
     width: 280px;
@@ -63,7 +67,33 @@
   width: 100%;
 }
 
+.sidebar-left-inner {
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sidebar-instagram {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.sidebar-instagram .instagram-media {
+  min-width: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
 @media (max-width: 1250px) {
+  .sidebar-left-inner {
+    align-items: center;
+  }
+
+  .sidebar-instagram,
+  .sidebar-youtube {
+    display: none;
+  }
+
   .sidebar-right-inner {
     align-items: center;
     padding-right: 0;

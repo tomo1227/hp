@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Script from "next/script";
+
+const INSTAGRAM_POST_URL = "https://www.instagram.com/p/DcvV1QNv_9K/";
 
 type SidebarLeftProps = {
   locale: "ja" | "en";
@@ -7,7 +10,7 @@ type SidebarLeftProps = {
 const SidebarLeft = ({ locale }: SidebarLeftProps) => {
   return (
     <div className="sidebar-container sidebar-left">
-      <div className="desktop-sidebar">
+      <div className="desktop-sidebar sidebar-left-inner">
         <ul className="sidebar-list">
           <li>
             <Link href={`/${locale}/calendar`} passHref>
@@ -30,6 +33,21 @@ const SidebarLeft = ({ locale }: SidebarLeftProps) => {
             </Link>
           </li>
         </ul>
+        <div className="sidebar-instagram">
+          <blockquote
+            className="instagram-media"
+            data-instgrm-captioned=""
+            data-instgrm-permalink={`${INSTAGRAM_POST_URL}?utm_source=ig_embed&utm_campaign=loading`}
+            data-instgrm-version="14"
+          >
+            <a href={INSTAGRAM_POST_URL} target="_blank" rel="noreferrer">
+              {locale === "ja"
+                ? "この投稿をInstagramで見る"
+                : "View this post on Instagram"}
+            </a>
+          </blockquote>
+          <Script async src="https://www.instagram.com/embed.js" />
+        </div>
       </div>
     </div>
   );
