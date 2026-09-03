@@ -1301,8 +1301,7 @@
 
 /* blog記事 */
 #blog-wrapper {
-  @apply mx-6;
-  width: 100%;
+  width: calc(100% - 1rem);
   max-width: 860px;
   margin-left: auto;
   margin-right: auto;
@@ -1371,11 +1370,14 @@
   }
   #main-blog-contents {
     order: 3;
+    flex: none;
+    width: 100%;
   }
 }
 
 #main-blog-contents {
-  flex: 1;
+  flex: 0 1 860px;
+  min-width: 0;
 }
 
 #blog-footer {
