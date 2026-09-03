@@ -1,0 +1,53 @@
+import Image from "next/image";
+import Link from "next/link";
+import { rgbDataURL } from "@/lib/blurImage";
+import { getFilteredPosts, getRegions } from "@/lib/galleryFilter";
+import { jaTranslateRegion } from "@/lib/translator";
+
+export async function generateStaticParams() {
+  const regions = await getRegions({ locale: "ja", country: "Japan" });
+  return regions.map((region) => ({ region }));
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ region: string }>;
+}) {
+  const region = decodeURIComponent((await params).region);
+  const galleries = await getFilteredPosts({
+    dateOrder: "desc",
+    locale: "ja",
+    country: "Japan",
+    region,
+  });
+
+  return (
+    <div id="tag-lists-wrapper">
+      <Link href="/ja/gallery/world">
+        <h1 id="tag-lists-title">{jaTranslateRegion(region)}</h1>
+      </Link>
+      <section className="cards-container">
+        {galleries.map((gallery) => (
+          <Link
+            className="card"
+            key={gallery.slug}
+            href={`/ja/gallery/${gallery.slug}`}
+          >
+            <Image
+              src={`${gallery.frontmatter.galleryImage}`}
+              alt={`${gallery.frontmatter.title}-img`}
+              width={1000}
+              height={1000}
+              id={`${gallery.slug}-image`}
+              className="aspect-square object-cover object-center w-full h-auto"
+              placeholder="blur"
+              blurDataURL={rgbDataURL(192, 192, 192)}
+            />
+            <div className="card-title">{gallery.frontmatter.title}</div>
+          </Link>
+        ))}
+      </section>
+    </div>
+  );
+}

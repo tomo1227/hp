@@ -79,11 +79,9 @@ export default async function Page() {
   const prefectureCounts = galleries.reduce<Record<string, number>>(
     (acc, gallery) => {
       if (gallery.frontmatter.country !== "Japan") return acc;
-      const tags = gallery.frontmatter.tags ?? [];
-      tags.forEach((tag) => {
-        if (!japanPrefectures.has(tag)) return;
-        acc[tag] = (acc[tag] ?? 0) + 1;
-      });
+      const region = gallery.frontmatter.region;
+      if (!region || !japanPrefectures.has(region)) return acc;
+      acc[region] = (acc[region] ?? 0) + 1;
       return acc;
     },
     {},
