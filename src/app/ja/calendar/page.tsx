@@ -55,7 +55,7 @@ export default async function Page() {
       title: string;
       date: string;
       period: number;
-      url?: URL;
+      url?: string;
     }) => ({
       title: itinerary.title,
       start: formattedDateWithHyphenInTimezone(

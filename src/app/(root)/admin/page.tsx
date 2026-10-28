@@ -220,7 +220,7 @@ const buildPath = (
   if (type === "post") {
     return `src/_posts/${locale}/${year}/${slug}.mdx`;
   }
-  return "src/_itineraries/plan.json";
+  return `src/_itineraries/${year}.json`;
 };
 
 export default function AdminPage() {
@@ -231,6 +231,8 @@ export default function AdminPage() {
   const [type, setType] = useState<ContentType>("gallery");
   const [yearFolders, setYearFolders] = useState<ListItem[]>([]);
   const [yearFolder, setYearFolder] = useState("(2026)");
+  const [itineraryYears, setItineraryYears] = useState<ListItem[]>([]);
+  const [itineraryYear, setItineraryYear] = useState("");
   const [files, setFiles] = useState<ListItem[]>([]);
   const [selectedFile, setSelectedFile] = useState("");
   const [newSlug, setNewSlug] = useState("");
@@ -276,9 +278,25 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!isAuthed) return;
-    if (type === "itinerary") return;
     const loadYears = async () => {
       try {
+        if (type === "itinerary") {
+          const data = await fetchJson<{ items: ListItem[] }>(
+            "/api/admin/github/list?path=src/_itineraries",
+          );
+          const years = data.items
+            .filter(
+              (item) => item.type === "file" && /^\d{4}\.json$/.test(item.name),
+            )
+            .sort((first, second) => second.name.localeCompare(first.name));
+          setItineraryYears(years);
+          setItineraryYear((previous) =>
+            years.some((item) => item.name === `${previous}.json`)
+              ? previous
+              : (years[0]?.name.replace(/\.json$/, "") ?? ""),
+          );
+          return;
+        }
         const data = await fetchJson<{ items: ListItem[] }>(
           `/api/admin/github/list?path=${encodeURIComponent(
             `src/_${type === "gallery" ? "galleries" : "posts"}/${contentLocale}`,
@@ -324,21 +342,31 @@ export default function AdminPage() {
   }, [isAuthed, contentLocale, type, yearFolder]);
 
   useEffect(() => {
-    if (type === "itinerary" && isAuthed) {
+    let cancelled = false;
+    if (type === "itinerary" && isAuthed && itineraryYear) {
+      setJsonBody("");
+      setFileSha(undefined);
       const loadJson = async () => {
         try {
           const data = await fetchJson<FilePayload>(
-            "/api/admin/github/file?path=src/_itineraries/plan.json",
+            `/api/admin/github/file?path=${encodeURIComponent(
+              buildPath("itinerary", contentLocale, itineraryYear, ""),
+            )}`,
           );
+          if (cancelled) return;
           setJsonBody(data.content);
           setFileSha(data.sha);
         } catch (error) {
+          if (cancelled) return;
           setStatus(String(error));
         }
       };
       loadJson();
     }
-  }, [type, isAuthed]);
+    return () => {
+      cancelled = true;
+    };
+  }, [type, isAuthed, itineraryYear, contentLocale]);
 
   const mdxPreviewComponents = useMemo(
     () => ({
@@ -568,19 +596,24 @@ export default function AdminPage() {
         setStatus("新規作成時はスラッグが必要です。");
         return;
       }
+      if (type === "itinerary" && (!itineraryYear || !fileSha)) {
+        setStatus("旅程の年度を選択し、読み込みが完了するまでお待ちください。");
+        return;
+      }
 
-      const path = selectedFile
-        ? selectedFile
-        : buildPath(type, contentLocale, yearFolder, newSlug);
+      const path =
+        type === "itinerary"
+          ? buildPath(type, contentLocale, itineraryYear, "")
+          : selectedFile || buildPath(type, contentLocale, yearFolder, newSlug);
       const content =
         type === "itinerary"
           ? jsonBody
           : `${buildFrontmatter(frontmatter, type)}${body}`;
       const files = [
         {
-          path: type === "itinerary" ? "src/_itineraries/plan.json" : path,
+          path,
           content,
-          sha: selectedFile ? fileSha : undefined,
+          sha: type === "itinerary" || selectedFile ? fileSha : undefined,
         },
       ];
       const data = await fetchJson<{ prUrl: string }>("/api/admin/github/pr", {
@@ -879,14 +912,40 @@ export default function AdminPage() {
                 )}
 
                 {type === "itinerary" && (
-                  <label>
-                    <span>{t.jsonLabel}</span>
-                    <textarea
-                      rows={12}
-                      value={jsonBody}
-                      onChange={(event) => setJsonBody(event.target.value)}
-                    />
-                  </label>
+                  <>
+                    <label>
+                      <span>{t.year}</span>
+                      <select
+                        value={itineraryYear}
+                        onChange={(event) => {
+                          setItineraryYear(event.target.value);
+                          setJsonBody("");
+                          setFileSha(undefined);
+                        }}
+                      >
+                        {!itineraryYear && (
+                          <option value="">選択してください</option>
+                        )}
+                        {itineraryYears.map((item) => (
+                          <option
+                            key={item.path}
+                            value={item.name.replace(/\.json$/, "")}
+                          >
+                            {item.name.replace(/\.json$/, "")}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      <span>{t.jsonLabel}</span>
+                      <textarea
+                        rows={12}
+                        value={jsonBody}
+                        onChange={(event) => setJsonBody(event.target.value)}
+                        disabled={!fileSha}
+                      />
+                    </label>
+                  </>
                 )}
 
                 {status && <p className="admin-status">{status}</p>}

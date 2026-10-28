@@ -19,8 +19,14 @@ type ItineraryFilterOption = {
 export const getFilteredItineraries = async ({
   dateOrder = "desc",
 }: ItineraryFilterOption = {}) => {
-  const fullPath = path.join(itineraryDir(), "plan.json");
-  const jsonData = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
+  const directory = itineraryDir();
+  const jsonData = fs
+    .readdirSync(directory)
+    .filter((file) => /^\d{4}\.json$/.test(file))
+    .sort()
+    .flatMap((file) =>
+      JSON.parse(fs.readFileSync(path.join(directory, file), "utf-8")),
+    );
 
   const sortedContents = jsonData.sort(
     (a: { date: string }, b: { date: string }) => {
