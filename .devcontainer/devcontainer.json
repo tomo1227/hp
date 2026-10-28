@@ -2,6 +2,9 @@
   "name": "${localWorkspaceFolderBasename}",
   "service": "devcontainer",
   "remoteUser": "vscode",
+  "remoteEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
+  },
   "workspaceFolder": "/workspace",
   "dockerComposeFile": ["./compose.yml"],
   "forwardPorts": [3000],
