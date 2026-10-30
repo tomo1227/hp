@@ -13,6 +13,9 @@ services:
         source: ${LOCAL_WORKSPACE_FOLDER:-./../}
         target: /workspace
         consistency: cached
+      - type: bind
+        source: ${HOME}/.config/gh
+        target: /home/vscode/.config/gh
     ports:
       - ${HOST_IP}:${DEVCONTAINTER_HOST_PORT}:3000
     tty: true
