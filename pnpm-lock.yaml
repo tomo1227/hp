@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@amcharts/amcharts5':
-        specifier: ^5.20.5
-        version: 5.20.5
+        specifier: ^5.21.5
+        version: 5.21.5
       '@amcharts/amcharts5-geodata':
         specifier: ^5.1.6
         version: 5.1.6
@@ -200,8 +200,8 @@ packages:
   '@amcharts/amcharts5-geodata@5.1.6':
     resolution: {integrity: sha512-5tx+De61wj1SSzwJtdnDgAw1PA1+Fx007I1hNKMc07V2HPE57vYRdjRND3n0mnyXsbXJ5USlOmJMUPlqe8eAqw==}
 
-  '@amcharts/amcharts5@5.20.5':
-    resolution: {integrity: sha512-h/U1CYtzhGQR0kqtvr/2Ox7P6b1Ddt4eVM/3xjhZfGX/mf/uLQvEbz3jwZfqm+fPjslFLA/rDbbF9Tdnip4sXg==}
+  '@amcharts/amcharts5@5.21.5':
+    resolution: {integrity: sha512-VCpspcONF6qIqUISvmbM1QEQmWZgjelrukDhK/+C/BwAEuapp1f8sBS1jD30bABpacYWQfgLWM3YYiAzFX6sQg==}
 
   '@ardatan/aggregate-error@0.0.6':
     resolution: {integrity: sha512-vyrkEHG1jrukmzTPtyWB4NLPauUw5bQeg4uhn8f+1SSynmrOcyvlb1GKQjjgoBzElLdfXCRYX8UnBlhklOHYRQ==}
@@ -3298,9 +3298,6 @@ packages:
 
   '@types/d3-hierarchy@3.1.1':
     resolution: {integrity: sha512-QwjxA3+YCKH3N1Rs3uSiSy1bdxlLB1uUiENXeJudBoAFvtDuswUxLcanoOaR2JYn1melDTuIXR8VhnVyI3yG/A==}
-
-  '@types/d3-hierarchy@3.1.7':
-    resolution: {integrity: sha512-tJFtNoYBtRtkNysX1Xq4sxtjK8YgoWUNpIiUee0/jHGRwqvzYxkq0hGVbbOGSz+JgFxxRu4K8nb3YpG3CMARtg==}
 
   '@types/d3-interpolate@3.0.4':
     resolution: {integrity: sha512-mgLPETlrpVV1YRJIglr4Ez47g7Yxjl1lj7YKsiMCb27VJH9W8NVM6Bb9d8kkpG/uAQS5AmbA48q2IAolKKo1MA==}
@@ -6946,7 +6943,7 @@ snapshots:
     dependencies:
       '@types/geojson': 7946.0.16
 
-  '@amcharts/amcharts5@5.20.5':
+  '@amcharts/amcharts5@5.21.5':
     dependencies:
       '@types/d3': 7.4.3
       '@types/d3-chord': 3.0.6
@@ -11360,8 +11357,6 @@ snapshots:
 
   '@types/d3-hierarchy@3.1.1': {}
 
-  '@types/d3-hierarchy@3.1.7': {}
-
   '@types/d3-interpolate@3.0.4':
     dependencies:
       '@types/d3-color': 3.1.3
@@ -11428,7 +11423,7 @@ snapshots:
       '@types/d3-force': 3.0.10
       '@types/d3-format': 3.0.4
       '@types/d3-geo': 3.1.1
-      '@types/d3-hierarchy': 3.1.7
+      '@types/d3-hierarchy': 3.1.1
       '@types/d3-interpolate': 3.0.4
       '@types/d3-path': 3.1.1
       '@types/d3-polygon': 3.0.2
