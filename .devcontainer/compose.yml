@@ -2,9 +2,9 @@ name: HP
 
 services:
   devcontainer:
-    hostname: ${DEVCONTAINTER_HOST_NAME}
-    container_name: ${DEVCONTAINTER_CONTAINER_NAME}
-    image: ${DEVCONTAINTER_IMAGE_NAME}
+    hostname: ${DEVCONTAINER_HOST_NAME}
+    container_name: ${DEVCONTAINER_CONTAINER_NAME}
+    image: ${DEVCONTAINER_IMAGE_NAME}
     build:
       context: ../
       dockerfile: .devcontainer/Dockerfile
@@ -14,5 +14,5 @@ services:
         target: /workspace
         consistency: cached
     ports:
-      - ${HOST_IP}:${DEVCONTAINTER_HOST_PORT}:3000
+      - ${HOST_IP}:${DEVCONTAINER_HOST_PORT}:3000
     tty: true
