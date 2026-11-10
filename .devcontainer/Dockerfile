@@ -34,4 +34,4 @@ USER $USERNAME
 
 SHELL ["/bin/bash", "-c"]
 CMD ["/bin/bash"]
-RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
+RUN curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=12.15.0 bash -
