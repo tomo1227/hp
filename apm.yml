@@ -9,7 +9,8 @@ author: tomo1227
 targets:
   - copilot
 dependencies:
-  apm: []
+  apm:
+    - microsoft/apm/packages/apm-guide#v0.38.0
   mcp: []
 includes: auto
 scripts: {}
