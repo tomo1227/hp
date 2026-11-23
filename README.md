@@ -35,7 +35,7 @@ apm audit --ci --policy ./apm-policy.yml
 ## コミットメッセージ
 
 エージェント向けの共通ルールは [AGENTS.md](AGENTS.md) にあります。
-詳しい手順は [日本語版スキル](.agents/skills/conventional-commit-ja/SKILL.md) を参照してください。
+[英語版スキル](.agents/skills/conventional-commit/SKILL.md) をベースにし、矛盾する場合は [このリポジトリの独自ルール](.agents/skills/conventional-commit-ja/SKILL.md) を優先します。
 コミットメッセージは `type(scope): 日本語の要約` の1行のみ（本文・フッターなし）とし、`scope` は必須です。
 例：`chore(apm): 日本語のコミットスキルを追加`
 
