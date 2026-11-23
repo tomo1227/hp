@@ -35,3 +35,10 @@ USER $USERNAME
 SHELL ["/bin/bash", "-c"]
 CMD ["/bin/bash"]
 RUN curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=12.15.0 bash -
+
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+
+RUN curl -fsSL https://aka.ms/apm-unix -o /tmp/apm-install.sh \
+    && sh /tmp/apm-install.sh \
+    && rm /tmp/apm-install.sh \
+    && apm --version
