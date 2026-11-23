@@ -32,6 +32,13 @@ apm audit --ci --policy ./apm-policy.yml
 このローカルファイルは `apm install` では自動検出されません。
 インストール時にも適用するには、組織ポリシー用リポジトリに配置してください。
 
+## コミットメッセージ
+
+エージェント向けの共通ルールは [AGENTS.md](AGENTS.md) にあります。
+詳しい手順は [日本語版スキル](.agents/skills/conventional-commit-ja/SKILL.md) を参照してください。
+コミットメッセージは `type(scope): 日本語の要約` の1行のみ（本文・フッターなし）とし、`scope` は必須です。
+例：`chore(apm): 日本語のコミットスキルを追加`
+
 ## PORTの割り当て
 
 [.env](.env)でホストIPを変更すれば、他プロジェクトとポートが被っても使用できる。
