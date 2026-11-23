@@ -73,3 +73,7 @@ output.txt
 
 # pnpm
 .pnpm-store/
+
+
+# APM dependencies
+apm_modules/
