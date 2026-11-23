@@ -1,0 +1,26 @@
+name: HP APM policy
+version: 1.0.0
+enforcement: block
+fetch_failure: block
+dependencies:
+  allow:
+    - "github.com/microsoft/**"
+    - "github.com/anthropics/**"
+    - "github.com/github/**"
+  deny: []
+  require_pinned_constraint: true
+mcp:
+  allow: []
+  deny:
+    - "*"
+  self_defined: deny
+  trust_transitive: false
+marketplace:
+  allow: []
+executables:
+  deny_all: true
+manifest:
+  scripts: deny
+  required_fields:
+    - version
+    - description
