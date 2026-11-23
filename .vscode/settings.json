@@ -151,7 +151,7 @@
   "errorLens.excludeBySource": ["cSpell"],
   "tailwindcss-intellisense.trace.server": "messages",
   "github.copilot.chat.commitMessageGeneration.instructions": [
-    { "file": ".agents/skills/conventional-commit-ja/SKILL.md" }
-    { "file": ".agents/skills/conventional-commit/SKILL.md" },
+    { "file": ".agents/skills/conventional-commit-ja/SKILL.md" },
+    { "file": ".agents/skills/conventional-commit/SKILL.md" }
   ]
 }
