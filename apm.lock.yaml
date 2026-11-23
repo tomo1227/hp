@@ -3,6 +3,27 @@ apm_version: 0.38.0
 manifest_targets:
 - copilot
 dependencies:
+- repo_url: github/awesome-copilot
+  name: conventional-commit
+  host: github.com
+  resolved_commit: f10fdb8b2660ce85c98f220b2f1ca24653768a5c
+  resolved_ref: f10fdb8b2660ce85c98f220b2f1ca24653768a5c
+  version: unknown
+  virtual_path: skills/conventional-commit
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/conventional-commit
+  - .agents/skills/conventional-commit/LICENSE
+  - .agents/skills/conventional-commit/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/conventional-commit/LICENSE: sha256:e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823
+    .agents/skills/conventional-commit/SKILL.md: sha256:250235f71b8c501a7744ded911281292324bcd1a2d014e34b25041e2d2c8bf73
+  content_hash: sha256:050b209f7a540376125a6c5be453472ac29e28b94fd30c45621138e606252e9f
+  carried_licenses:
+  - path: LICENSE
+    source: LICENSE
+    hash: sha256:e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823
 - repo_url: microsoft/apm
   name: apm-guide
   host: github.com
@@ -146,6 +167,33 @@ deployments:
   - microsoft/apm/packages/apm-guide
   active_owner: microsoft/apm/packages/apm-guide
   content_hash: sha256:3fd38f78fe8efdd085fe7d82b3f7117c3cb065bf1a722bfa82ee348b7f25cc23
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/conventional-commit
+  runtime: null
+  scope: project
+  owners:
+  - github/awesome-copilot/skills/conventional-commit
+  active_owner: github/awesome-copilot/skills/conventional-commit
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/conventional-commit/LICENSE
+  runtime: null
+  scope: project
+  owners:
+  - github/awesome-copilot/skills/conventional-commit
+  active_owner: github/awesome-copilot/skills/conventional-commit
+  content_hash: sha256:e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/conventional-commit/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - github/awesome-copilot/skills/conventional-commit
+  active_owner: github/awesome-copilot/skills/conventional-commit
+  content_hash: sha256:250235f71b8c501a7744ded911281292324bcd1a2d014e34b25041e2d2c8bf73
 - kind: project-relative
   target: copilot
   value: .github/agents/apm-expert.agent.md
