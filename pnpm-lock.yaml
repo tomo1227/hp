@@ -257,8 +257,8 @@ importers:
         specifier: ^5.4.9
         version: 5.4.9(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react-svg-worldmap:
-        specifier: ^2.0.0
-        version: 2.0.2(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        specifier: ^2.7.0
+        version: 2.7.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       rehype-sanitize:
         specifier: ^6.0.0
         version: 6.0.0
@@ -6035,8 +6035,8 @@ packages:
       react: '>=16'
       react-dom: '>=16.0.0'
 
-  react-svg-worldmap@2.0.2:
-    resolution: {integrity: sha512-NXk21sX0zoECm36rSMHARfZy0CQuLhl2TCJg3CQ/PtOUxduP9Bx1GUO0MCut3rX1vn3nB6ezzeXJ+WE1blvCdQ==}
+  react-svg-worldmap@2.7.0:
+    resolution: {integrity: sha512-Nz1bhjvYKKnOaH7h0EKK4slq5aZW02jqE8XuZ1B9EGg0u+PWsH1nis5Om6C4kOXcz9LnR9oVwozZ6iFysmaQBw==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=16.8'
@@ -14563,7 +14563,7 @@ snapshots:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
-  react-svg-worldmap@2.0.2(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  react-svg-worldmap@2.7.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       d3-geo: 2.0.2
       react: 19.3.1
