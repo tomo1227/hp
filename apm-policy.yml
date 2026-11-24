@@ -15,6 +15,7 @@ dependencies:
     - github.com/github/**
     - github.com/anthropics/**
     - github.com/openai/**
+    - github.com/vercel-labs/**
   deny: []
   require_pinned_constraint: true
   max_depth: 20
