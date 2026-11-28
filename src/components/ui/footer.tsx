@@ -2,19 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const hiddenPaths = new Set(["/", "/ja", "/en"]);
 
 export default function Footer() {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   if (hiddenPaths.has(pathname)) {
     return null;
