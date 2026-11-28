@@ -23,7 +23,7 @@
     "@aws-sdk/s3-request-presigner": "^3.1110.0",
     "@formatjs/intl-localematcher": "^0.8.8",
     "@fullcalendar/core": "^6.1.22",
-    "@fullcalendar/daygrid": "^6.1.19",
+    "@fullcalendar/daygrid": "^6.1.22",
     "@fullcalendar/react": "^6.1.19",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/mdx": "^3.1.0",
