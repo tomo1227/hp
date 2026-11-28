@@ -40,14 +40,26 @@ export default async function Page() {
         <span className="download-text">全ての画像のダウンロード</span>
         <div className="download-buttons">
           <S3FileDownloader filePath={`${s3_path}/original.zip`}>
-            <button type="button" className="btn-original w-5/12">
-              オリジナル(約72MB)
-            </button>
+            {({ onClick }) => (
+              <button
+                type="button"
+                className="btn-original w-5/12"
+                onClick={onClick}
+              >
+                オリジナル(約72MB)
+              </button>
+            )}
           </S3FileDownloader>
           <S3FileDownloader filePath={`${s3_path}/compressed.zip`}>
-            <button type="button" className="btn-compressed w-5/12">
-              圧縮版(約4MB)
-            </button>
+            {({ onClick }) => (
+              <button
+                type="button"
+                className="btn-compressed w-5/12"
+                onClick={onClick}
+              >
+                圧縮版(約4MB)
+              </button>
+            )}
           </S3FileDownloader>
         </div>
       </div>
@@ -69,14 +81,26 @@ export default async function Page() {
               <span className="download-text">ダウンロード</span>
               <div className="download-buttons">
                 <S3ImageDownloader imagePath={image.originalPath}>
-                  <button type="button" className="btn-original">
-                    オリジナル
-                  </button>
+                  {({ onClick }) => (
+                    <button
+                      type="button"
+                      className="btn-original"
+                      onClick={onClick}
+                    >
+                      オリジナル
+                    </button>
+                  )}
                 </S3ImageDownloader>
                 <S3ImageDownloader imagePath={image.compressedPath}>
-                  <button type="button" className="btn-compressed">
-                    圧縮版
-                  </button>
+                  {({ onClick }) => (
+                    <button
+                      type="button"
+                      className="btn-compressed"
+                      onClick={onClick}
+                    >
+                      圧縮版
+                    </button>
+                  )}
                 </S3ImageDownloader>
               </div>
             </div>
