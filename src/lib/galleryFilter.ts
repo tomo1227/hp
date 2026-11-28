@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path, { join } from "node:path";
 import matter from "gray-matter";
+import { cache } from "react";
 import type Category from "@/types/category";
 import type { Frontmatter } from "@/types/frontmatter";
 import type Locale from "@/types/locale";
@@ -115,24 +116,31 @@ export const getFilteredPosts = async ({
     );
   });
 
-  const sortedContents = filteredContents.sort((a, b) => {
-    const dateA = getJstTimestamp(a.frontmatter.date);
-    const dateB = getJstTimestamp(b.frontmatter.date);
-
-    return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
-  });
+  const stampedContents = filteredContents.map((post) => ({
+    post,
+    timestamp: getJstTimestamp(post.frontmatter.date),
+  }));
+  const sortedContents = stampedContents
+    .sort((a, b) =>
+      dateOrder === "asc"
+        ? a.timestamp - b.timestamp
+        : b.timestamp - a.timestamp,
+    )
+    .map(({ post }) => post);
 
   return sortedContents;
 };
 
-export const getPostBySlug = async (slug: string, locale: Locale = "ja") => {
-  const fullPath = searchMDfile(slug, locale);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data } = matter(fileContents);
-  return {
-    frontmatter: data as Frontmatter,
-  };
-};
+export const getPostBySlug = cache(
+  async (slug: string, locale: Locale = "ja") => {
+    const fullPath = searchMDfile(slug, locale);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
+    return {
+      frontmatter: data as Frontmatter,
+    };
+  },
+);
 
 const searchMDfile = (slug: string, locale: Locale = "ja") => {
   const baseDir = galleryBaseDir(locale);

@@ -10,6 +10,19 @@ import { useLayoutEffect, useRef } from "react";
 import { jaTranslateRegion } from "@/lib/translator";
 import type Locale from "@/types/locale";
 
+type Geodata = GeoJSON.FeatureCollection;
+
+const geodataCache = new Map<string, Geodata>();
+
+const loadGeodata = async (map: string): Promise<Geodata> => {
+  const cached = geodataCache.get(map);
+  if (cached) return cached;
+  const res = await fetch(`/json/geodata/${map}.json`);
+  const geodata = (await res.json()) as Geodata;
+  geodataCache.set(map, geodata);
+  return geodata;
+};
+
 type WorldMapProps = {
   locale: Locale;
   countries?: string[];
@@ -177,31 +190,28 @@ export default function WorldMap({
         : Promise.resolve();
 
       // クリック時の処理
-      Promise.all([zoomPromise]).then(async () => {
+      zoomPromise.then(async () => {
         try {
-          const res = await fetch(`/json/geodata/${data.map}.json`);
-          const geodata = await res.json();
-          const countryData = geodata.features.map(
-            (f: { id: string; properties?: { name?: string } }) => {
-              const name = f.properties?.name;
-              const translatedName = name ? jaTranslateRegion(name) : "";
-              const count = name
-                ? (prefectureCounts?.[name] ??
-                  prefectureCounts?.[translatedName] ??
-                  0)
-                : 0;
+          const geodata = await loadGeodata(data.map);
+          const countryData = geodata.features.map((f) => {
+            const name = f.properties?.name;
+            const translatedName = name ? jaTranslateRegion(name) : "";
+            const count = name
+              ? (prefectureCounts?.[name] ??
+                prefectureCounts?.[translatedName] ??
+                0)
+              : 0;
 
-              return {
-                id: f.id,
-                name,
-                count,
-                polygonSettings: {
-                  fill: getPrefectureFill(count),
-                  strokeWidth: 0.3,
-                },
-              };
-            },
-          );
+            return {
+              id: f.id,
+              name,
+              count,
+              polygonSettings: {
+                fill: getPrefectureFill(count),
+                strokeWidth: 0.3,
+              },
+            };
+          });
 
           // templateField を有効化
           countrySeries.mapPolygons.template.setAll({

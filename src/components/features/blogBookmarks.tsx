@@ -101,18 +101,16 @@ const useBlogBookmarks = () => {
     );
 
   const toggleBookmark = (item: BookmarkItem) => {
-    setBookmarks((prev) => {
-      const exists = prev.some(
-        (saved) => saved.slug === item.slug && saved.locale === item.locale,
-      );
-      const next = exists
-        ? prev.filter(
-            (saved) => saved.slug !== item.slug || saved.locale !== item.locale,
-          )
-        : [normalizeItem(item), ...prev];
-      writeBookmarks(next);
-      return next;
-    });
+    const exists = bookmarks.some(
+      (saved) => saved.slug === item.slug && saved.locale === item.locale,
+    );
+    const next = exists
+      ? bookmarks.filter(
+          (saved) => saved.slug !== item.slug || saved.locale !== item.locale,
+        )
+      : [normalizeItem(item), ...bookmarks];
+    writeBookmarks(next);
+    setBookmarks(next);
   };
 
   return { bookmarks, isBookmarked, toggleBookmark };
