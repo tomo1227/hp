@@ -13,7 +13,7 @@ export const BlogCard = async (props: Props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ url: props.url }),
-      cache: "no-store",
+      next: { revalidate: 86400 },
     });
 
     if (!response.ok) {
