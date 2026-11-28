@@ -1,7 +1,6 @@
 "use client";
 
 import { isValidElement, type ReactNode, useEffect, useState } from "react";
-import { codeToHtml } from "shiki";
 
 function collectCode(children: ReactNode): {
   className?: string;
@@ -48,12 +47,21 @@ export function Pre({ children }: PreProps) {
 
   useEffect(() => {
     let mounted = true;
-    void codeToHtml(code, {
-      lang,
-      theme: "one-dark-pro",
-    }).then((result) => {
-      if (mounted) setHtml(result);
-    });
+
+    (async () => {
+      try {
+        // shikiはバンドルサイズが大きいため、必要なときだけ動的に読み込む
+        const { codeToHtml } = await import("shiki");
+        const result = await codeToHtml(code, {
+          lang,
+          theme: "one-dark-pro",
+        });
+        if (mounted) setHtml(result);
+      } catch (error) {
+        console.error("Failed to highlight code:", error);
+      }
+    })();
+
     return () => {
       mounted = false;
     };
