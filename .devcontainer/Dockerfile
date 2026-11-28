@@ -41,4 +41,7 @@ ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
 RUN curl -fsSL https://aka.ms/apm-unix -o /tmp/apm-install.sh \
     && sh /tmp/apm-install.sh \
     && rm /tmp/apm-install.sh \
-    && apm --version
+    && apm --version \
+    && apm self-update
+
+RUN curl -fsSL https://github.com/awslabs/aidlc-workflows/releases/latest/download/install.sh | sh

@@ -145,5 +145,7 @@
   "github.copilot.chat.commitMessageGeneration.instructions": [
     { "file": ".agents/skills/git-commit/SKILL.md" },
     { "file": "CONTRIBUTING.md" }
-  ]
+  ],
+  "chat.agent.maxRequests": 200,
+  "chat.useHooks": true
 }
