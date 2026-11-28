@@ -38,14 +38,26 @@ export default async function Page() {
         <span className="download-text">All Images Download</span>
         <div className="download-buttons">
           <S3FileDownloader filePath={`${s3_path}/original.zip`}>
-            <button type="button" className="btn-original w-5/12">
-              Original(約72MB)
-            </button>
+            {({ onClick }) => (
+              <button
+                type="button"
+                className="btn-original w-5/12"
+                onClick={onClick}
+              >
+                Original(約72MB)
+              </button>
+            )}
           </S3FileDownloader>
           <S3FileDownloader filePath={`${s3_path}/compressed.zip`}>
-            <button type="button" className="btn-compressed w-5/12">
-              Compressed(約4MB)
-            </button>
+            {({ onClick }) => (
+              <button
+                type="button"
+                className="btn-compressed w-5/12"
+                onClick={onClick}
+              >
+                Compressed(約4MB)
+              </button>
+            )}
           </S3FileDownloader>
         </div>
       </div>
@@ -67,14 +79,26 @@ export default async function Page() {
               <span className="download-text">Download</span>
               <div className="download-buttons">
                 <S3ImageDownloader imagePath={image.originalPath}>
-                  <button type="button" className="btn-original">
-                    Original
-                  </button>
+                  {({ onClick }) => (
+                    <button
+                      type="button"
+                      className="btn-original"
+                      onClick={onClick}
+                    >
+                      Original
+                    </button>
+                  )}
                 </S3ImageDownloader>
                 <S3ImageDownloader imagePath={image.compressedPath}>
-                  <button type="button" className="btn-compressed">
-                    Compressed
-                  </button>
+                  {({ onClick }) => (
+                    <button
+                      type="button"
+                      className="btn-compressed"
+                      onClick={onClick}
+                    >
+                      Compressed
+                    </button>
+                  )}
                 </S3ImageDownloader>
               </div>
             </div>

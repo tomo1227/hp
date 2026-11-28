@@ -28,10 +28,6 @@
   @apply text-sm max-md:text-xs w-11/12 max-md:w-full;
 }
 
-.dlImgBtn {
-  @apply w-full items-center flex;
-}
-
 .download-contents button:hover {
   background-color: #0056b3;
 }

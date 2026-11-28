@@ -1,5 +1,5 @@
-import SidebarMemberActions from "@/components/ui/sidebarMemberActions";
 import { TableOfContents } from "@/components/features/tableOfContents";
+import SidebarMemberActions from "@/components/ui/sidebarMemberActions";
 
 const YOUTUBE_CHANNEL_ID = "UC5g2qhJQBZprZSp2rOgI05g";
 

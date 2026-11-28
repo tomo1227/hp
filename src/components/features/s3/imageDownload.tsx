@@ -4,33 +4,21 @@ import { getImgFromS3 } from "@/lib/s3";
 
 type S3ImageDownloaderProps = {
   imagePath: string;
-  children: React.ReactNode;
+  children: (options: { onClick: () => void }) => React.ReactNode;
 };
 
-export const S3ImageDownloader: React.FC<{
-  imagePath: string;
-  children: React.ReactNode;
-}> = ({ imagePath, children }: S3ImageDownloaderProps) => {
-  return (
-    // TODO: Add proper a11y features
-    // biome-ignore lint/a11y/noStaticElementInteractions: <explanation>
-    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-    <div className="dlImgBtn" onClick={() => handleGetButton(imagePath)}>
-      {children}
-    </div>
-  );
+export const S3ImageDownloader: React.FC<S3ImageDownloaderProps> = ({
+  imagePath,
+  children,
+}) => {
+  return <>{children({ onClick: () => handleGetButton(imagePath) })}</>;
 };
 
 async function handleGetButton(imagePath: string) {
   try {
     const base64Data = await getImgFromS3(imagePath);
     const binaryData = atob(base64Data);
-    const arrayBuffer = new ArrayBuffer(binaryData.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-
-    for (let i = 0; i < binaryData.length; i++) {
-      uint8Array[i] = binaryData.charCodeAt(i);
-    }
+    const uint8Array = Uint8Array.from(binaryData, (c) => c.charCodeAt(0));
 
     const blob = new Blob([uint8Array], {
       type: "image/jpeg",
@@ -38,10 +26,9 @@ async function handleGetButton(imagePath: string) {
 
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
-    const fileName = imagePath.split("/").pop();
+    const fileName = imagePath.split("/").pop() || "download.jpg";
     a.href = url;
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    a.download = fileName!;
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

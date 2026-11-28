@@ -3,10 +3,7 @@ type NoteProps = {
   children: React.ReactNode;
 };
 
-export const Note: React.FC<{
-  title: string;
-  children: React.ReactNode;
-}> = ({ title, children }: NoteProps) => {
+export const Note: React.FC<NoteProps> = ({ title, children }) => {
   return (
     <div className="note info">
       <svg width="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -20,10 +17,10 @@ export const Note: React.FC<{
       <div className="note-content">
         <p>
           {title && (
-            <p>
+            <>
               <strong>{title}</strong>
               <br />
-            </p>
+            </>
           )}
           {children}
         </p>

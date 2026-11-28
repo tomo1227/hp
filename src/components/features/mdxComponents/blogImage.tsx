@@ -13,7 +13,7 @@ export const BlogImage = async (props: ImageProps) => {
       <figure className="full-width justify-center flex">
         <Image
           className="object-contain w-full h-auto py-3"
-          alt=""
+          alt={alt}
           width={width}
           height={height}
           {...blogImageProps}

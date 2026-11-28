@@ -1,6 +1,6 @@
 name: HP
 version: 1.0.0
-description: Agent dependencies for Sakura Knowledge Hub
+description: Agent dependencies for HP
 targets:
   - copilot
 dependencies:

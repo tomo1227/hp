@@ -4,21 +4,14 @@ import { getZipFromS3 } from "@/lib/s3";
 
 type S3FileDownloaderProps = {
   filePath: string;
-  children: React.ReactNode;
+  children: (options: { onClick: () => void }) => React.ReactNode;
 };
 
 export const S3FileDownloader: React.FC<S3FileDownloaderProps> = ({
   filePath,
   children,
 }) => {
-  return (
-    // TODO: Add proper a11y features
-    // biome-ignore lint/a11y/noStaticElementInteractions: <explanation>
-    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-    <div className="dlImgBtn" onClick={() => handleGetButton(filePath)}>
-      {children}
-    </div>
-  );
+  return <>{children({ onClick: () => handleGetButton(filePath) })}</>;
 };
 
 async function handleGetButton(filePath: string) {
